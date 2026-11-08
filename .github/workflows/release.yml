@@ -1,0 +1,177 @@
+name: Release Multi-Platform
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g. 0.1.7-zh.1)'
+        required: true
+        default: '0.1.7-zh.1'
+
+permissions:
+  contents: write
+
+env:
+  UPSTREAM_TAG: 'v0.1.7'
+  UPSTREAM_COMMIT: '322f6544dfad0a3c8a0c8cbecf2c7f7874b14268'
+
+jobs:
+  # -------------------------------------------------------------
+  # Job 1: 构建 Windows (x64) 安装包
+  # -------------------------------------------------------------
+  build-windows:
+    name: Build Windows (x64)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout t3code-zh
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+
+      - name: Setup pnpm
+        run: corepack enable && corepack prepare pnpm@latest --activate
+
+      - name: Set Release Version
+        shell: pwsh
+        run: |
+          $ver = "${{ github.event.inputs.version }}"
+          if (-not $ver) {
+            $ver = "${{ github.ref_name }}".TrimStart('v')
+          }
+          if (-not $ver) { $ver = "0.1.7-zh.1" }
+          Write-Host "Building version: $ver"
+          "T3ZH_VERSION=$ver" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Fetch Upstream Repository
+        shell: bash
+        run: |
+          scripts/windows/fetch-upstream.sh upstream "${{ env.UPSTREAM_TAG }}" "${{ env.UPSTREAM_COMMIT }}"
+          mkdir -p .build
+          cp -r upstream .build/src
+
+      - name: Install Project Dependencies
+        run: npm ci
+
+      - name: Build Windows Installer
+        shell: pwsh
+        run: |
+          npm run build:win -- -Version ${{ env.T3ZH_VERSION }}
+
+      - name: Upload Windows Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer
+          path: release/${{ env.T3ZH_VERSION }}/T3-Code-*-x64.exe
+
+  # -------------------------------------------------------------
+  # Job 2: 构建 macOS (Apple Silicon arm64) 安装包
+  # -------------------------------------------------------------
+  build-macos:
+    name: Build macOS (ARM64)
+    runs-on: macos-14
+    steps:
+      - name: Checkout t3code-zh
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-apple-darwin
+
+      - name: Install Vite+ & pnpm
+        run: |
+          export VP_NODE_MANAGER=no
+          curl -fsSL https://vite.plus | bash
+          corepack enable && corepack prepare pnpm@latest --activate
+
+      - name: Set Release Version
+        run: |
+          VER="${{ github.event.inputs.version }}"
+          if [ -z "$VER" ]; then
+            VER="${GITHUB_REF_NAME#v}"
+          fi
+          if [ -z "$VER" ]; then VER="0.1.7-zh.1"; fi
+          echo "Building version: $VER"
+          echo "T3ZH_VERSION=$VER" >> "$GITHUB_ENV"
+
+      - name: Fetch Upstream Repository
+        run: |
+          scripts/windows/fetch-upstream.sh upstream "${{ env.UPSTREAM_TAG }}" "${{ env.UPSTREAM_COMMIT }}"
+          mkdir -p .build
+          cp -r upstream .build/src
+
+      - name: Install Project Dependencies
+        run: npm ci
+
+      - name: Build macOS DMG
+        run: |
+          source "$HOME/.config/vite-plus/env"
+          scripts/build-zh.sh "${{ env.T3ZH_VERSION }}"
+
+      - name: Upload macOS Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-installer
+          path: release/${{ env.T3ZH_VERSION }}/installer/*.dmg
+
+  # -------------------------------------------------------------
+  # Job 3: 汇总跨平台产物，发布 GitHub Release
+  # -------------------------------------------------------------
+  publish-release:
+    name: Publish GitHub Release
+    needs: [build-windows, build-macos]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all installers
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Collect Assets and Generate SHA256SUMS
+        run: |
+          mkdir -p dist
+          find artifacts/ -type f \( -name "*.exe" -o -name "*.dmg" \) -exec cp {} dist/ \;
+          cd dist
+          sha256sum * > SHA256SUMS.txt
+          echo "=== Collected Assets ==="
+          ls -lh
+          echo "=== SHA256SUMS ==="
+          cat SHA256SUMS.txt
+
+      - name: Determine Tag Name
+        id: tag
+        run: |
+          TAG="${{ github.ref_name }}"
+          if [[ ! "$TAG" =~ ^v ]]; then
+            TAG="v${{ github.event.inputs.version || '0.1.7-zh.1' }}"
+          fi
+          echo "tag_name=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Create or Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag_name }}
+          name: T3 Code 简体中文版 ${{ steps.tag.outputs.tag_name }}
+          files: |
+            dist/*.exe
+            dist/*.dmg
+            dist/SHA256SUMS.txt
+          draft: false
+          prerelease: false
+          generate_release_notes: true

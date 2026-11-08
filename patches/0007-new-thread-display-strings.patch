@@ -1,0 +1,592 @@
+# 0007-new-thread-display-strings.patch
+#
+# 新建任务页面上转换插件包不到的英文，只在显示处翻译（T09，维护者在 zh.1 手动验收时指出的四处）。
+# 基线 v0.1.7；须在 0004（Sidebar.tsx、vite-env.d.ts 的
+# 全局 `var __t3zh` 声明）之后应用；ChatComposer 直接使用原版，不依赖已停用的 0002。
+#
+# 四处英文与原因：
+#   * 顶栏 / 侧栏的 `No project`：服务端给「无项目」任务用的临时项目起的名字
+#     （apps/server/src/project/ManagedProjectFolders.ts 的 title），是数据值，插件只包源码字面量
+#   * 顶栏 / 侧栏的 `New thread`：新任务的默认标题（web 草稿与服务端共用）。服务端
+#     ThreadTitleRegenerationService 按 `=== "New thread"` 判断要不要重新生成标题，值本身必须保持英文
+#   * 大标题 `What should we build in <项目选择器>?` / `<项目选择器> to start`：文字与组件混排的 JSX，
+#     插件按 CONVENTIONS §4 记 mixed-jsx 跳过；h1 的 aria-label 是变量，插件同样不包
+#   * 输入框提示 `Ask for changes, send follow-ups, or attach images`：模块常量
+#     DISCONNECTED_COMPOSER_PLACEHOLDER，使用处是常量引用，插件不包
+#
+# 做法（CONVENTIONS §5 补丁调用 t() 的规则）：新增 apps/web/src/newThreadDisplayStrings.ts
+#   * displayDefaultName(x)：只有名单 [`New thread`, `No project`] 里的精确值交给 t()，用户起的项目名 /
+#     任务标题原样返回（规则 1、2）。数据对象、比较、重命名输入框的初值都不动，只包最终渲染处（规则 3）
+#   * translateAroundSlot(before, after)：用私有区字符 U+E000 占住句中槽位，把「固定骨架 + 槽位」整句交给
+#     t()，命中词库专用模板（`What should we build in {project}?`、`{project} to start`、`New thread in {0}`）
+#     后在槽位处切开，组件 / 项目名插在中间。t() 只收到固定骨架，不会把任意文字送进宽模板（规则 4）；
+#     没命中或槽位不唯一时返回原样英文两段，en 模式下渲染出的文本节点与原版逐个相同
+#   * translateFixed(x)：只用于词库里有精确 messages 词条的固定字面量 / 常量
+#   * 名单写成普通数组再传给 Set（规则 5）
+#
+# 改动的显示处：
+#   * components/chat/ChatHeader.tsx         面包屑项目名、任务标题（服务端 / 草稿两支）及其 tooltip、aria-label；
+#                                            「New thread in <项目>」tooltip
+#   * components/chat/DraftHeroHeadline.tsx  大标题两句混排、h1 的 aria-label、项目选择器文字与 tooltip、
+#                                            项目菜单里的项目名
+#   * components/Sidebar.tsx                 任务行的标题与项目标签（含 sr-only 与行 aria-label）、草稿行项目标签、
+#                                            悬停卡片标题与项目名、搜索结果行标题与读屏标签、
+#                                            归档确认框里内插的任务标题；删除确认框整句
+#   * hooks/useThreadActionMenu.ts、hooks/useThreadActions.ts  顶栏任务菜单等处的归档确认框内插标题、删除确认框整句
+#     （删除确认框的文案是 `[问句, 说明].join("\n")`，插件不包数组元素：问句走 fillSlot + 专用模板
+#      `Delete thread "{title}"?`，说明句走 translateFixed；归档确认框整句由插件按 D 类 `*.dialogs.confirm` 包裹）
+#   * components/chat/ChatComposer.tsx       断开阶段的输入框提示
+#   * components/settings/SettingsFontPreviews.tsx  字体预览里的同一条输入框提示
+#   * newThreadDisplayStrings.ts（新文件）
+#
+# 词库：`{project} to start` 的译文由「选择 {project} 开始」改为「{project}后开始」（这条此前无人命中、在
+# stale 清单里；槽位里是项目选择器，未选项目时显示「选择项目」，旧译文会拼成「选择 选择项目 开始」）。
+# 测试：plugin/__tests__/new-thread-display-strings.test.ts。未覆盖：LegacySidebar（旧版侧栏）、命令面板、
+# 侧栏的项目筛选下拉与右键菜单「按项目筛选」、通知、归档设置页等其他列出任务标题 / 项目名的位置，
+# 见 handoff/T09.md。
+# 上游更新后重做方法见 patches/README.md。
+#
+diff --git a/apps/web/src/components/Sidebar.tsx b/apps/web/src/components/Sidebar.tsx
+index 18aa27709e..cd74138262 100644
+--- a/apps/web/src/components/Sidebar.tsx
++++ b/apps/web/src/components/Sidebar.tsx
+@@ -171,6 +171,7 @@ import {
+ import type { SidebarThreadSummary } from "../types";
+ import { isScratchProject } from "@t3tools/client-runtime/state/projects";
+ import { cn } from "~/lib/utils";
++import { displayDefaultName, fillSlot, translateFixed } from "~/newThreadDisplayStrings";
+ import { ProjectEnvironmentBadge } from "./ProjectEnvironmentBadge";
+ import {
+   buildDraftActionMenuItems,
+@@ -2820,7 +2821,7 @@ export default function Sidebar({ routeReveal }: { routeReveal: SidebarRouteReve
+           case "archive": {
+             if (confirmThreadArchive) {
+               const confirmed = await settlePromise(() =>
+-                api.dialogs.confirm(`Archive thread "${thread.title}"?`),
++                api.dialogs.confirm(`Archive thread "${displayDefaultName(thread.title)}"?`),
+               );
+               if (confirmed._tag === "Failure" || !confirmed.value) return;
+             }
+@@ -2850,8 +2851,8 @@ export default function Sidebar({ routeReveal }: { routeReveal: SidebarRouteReve
+               const confirmed = await settlePromise(() =>
+                 api.dialogs.confirm(
+                   [
+-                    `Delete thread "${thread.title}"?`,
+-                    "This permanently clears conversation history for this thread.",
++                    fillSlot('Delete thread "', displayDefaultName(thread.title), '"?'),
++                    translateFixed("This permanently clears conversation history for this thread."),
+                   ].join("\n"),
+                   { variant: "destructive" },
+                 ),
+diff --git a/apps/web/src/components/chat/ChatComposer.tsx b/apps/web/src/components/chat/ChatComposer.tsx
+index 25b7f5ce6f..b803866a28 100644
+--- a/apps/web/src/components/chat/ChatComposer.tsx
++++ b/apps/web/src/components/chat/ChatComposer.tsx
+@@ -80,6 +80,7 @@ import {
+   replaceTextRange,
+ } from "../../composer-logic";
+ import { DEFAULT_COMPOSER_PLACEHOLDER } from "../../composerPlaceholder";
++import { translateFixed } from "~/newThreadDisplayStrings";
+ import {
+   deriveComposerSendState,
+   getAntigravitySendBlockReason,
+@@ -3426,7 +3427,7 @@ export const ChatComposer = memo(function ChatComposer(props: ChatComposerProps)
+                               ? "Choose a project above to start a thread"
+                               : showProviderUnavailable
+                                 ? "Enable a provider in Settings to send a message"
+-                                : DEFAULT_COMPOSER_PLACEHOLDER
++                                : translateFixed(DEFAULT_COMPOSER_PLACEHOLDER)
+                     }
+                     disabled={
+                       projectSelectionRequired ||
+diff --git a/apps/web/src/components/chat/ChatHeader.tsx b/apps/web/src/components/chat/ChatHeader.tsx
+index 49f21a1ddc..20df276c33 100644
+--- a/apps/web/src/components/chat/ChatHeader.tsx
++++ b/apps/web/src/components/chat/ChatHeader.tsx
+@@ -39,6 +39,7 @@ import {
+ } from "../WorkspaceBreadcrumb";
+ import { observeResize } from "~/lib/observeResize";
+ import { cn } from "~/lib/utils";
++import { displayDefaultName, translateAroundSlot } from "~/newThreadDisplayStrings";
+ import { textDirection } from "~/textDirection";
+ import { useClientSettings } from "../../hooks/useSettings";
+ import { GuestShareIndicator } from "./GuestShareControls";
+@@ -85,6 +86,8 @@ export const ChatHeader = memo(function ChatHeader({
+   onFindInThread,
+ }: ChatHeaderProps) {
+   const activeProjectName = activeProject?.isScratch ? "No project" : activeProject?.title;
++  // t3code-zh（patches/0007）：「New thread in <项目名>」提示的固定骨架；项目名在渲染处插入。
++  const [newThreadInBefore, newThreadInAfter] = translateAroundSlot("New thread in ", "");
+   const activeProjectCwd = activeProject?.workspaceRoot ?? null;
+   const interfaceFont = useClientSettings((settings) => settings.fontFamilySans);
+   const breadcrumbContainerRef = useRef<HTMLDivElement>(null);
+@@ -300,7 +303,7 @@ export const ChatHeader = memo(function ChatHeader({
+                   render={
+                     <button
+                       type="button"
+-                      aria-label={`New thread in ${activeProjectName}`}
++                      aria-label={`New thread in ${displayDefaultName(activeProjectName)}`}
+                       onClick={onNewThreadInProject}
+                       className="inline-flex min-w-0 max-w-full cursor-pointer items-center gap-1.5 rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                     />
+@@ -308,10 +311,14 @@ export const ChatHeader = memo(function ChatHeader({
+                 >
+                   <ProjectFavicon project={activeProject} className="size-3.5" />
+                   <WorkspaceBreadcrumbText className="max-w-40">
+-                    {activeProjectName}
++                    {displayDefaultName(activeProjectName)}
+                   </WorkspaceBreadcrumbText>
+                 </TooltipTrigger>
+-                <TooltipPopup side="top">New thread in {activeProjectName}</TooltipPopup>
++                <TooltipPopup side="top">
++                  {newThreadInBefore}
++                  {displayDefaultName(activeProjectName)}
++                  {newThreadInAfter}
++                </TooltipPopup>
+               </Tooltip>
+             </WorkspaceBreadcrumbItem>
+             <WorkspaceBreadcrumbSeparator>
+@@ -382,7 +389,7 @@ export const ChatHeader = memo(function ChatHeader({
+                   <button
+                     ref={titleButtonRef}
+                     type="button"
+-                    aria-label={`Thread actions for ${activeThreadTitle}`}
++                    aria-label={`Thread actions for ${displayDefaultName(activeThreadTitle)}`}
+                     aria-haspopup="menu"
+                     onClick={openMenuFromTitle}
+                     onDoubleClick={canOperateThread ? handleTitleDoubleClick : undefined}
+@@ -392,7 +399,9 @@ export const ChatHeader = memo(function ChatHeader({
+                 }
+               >
+                 <h2 className="min-w-0" dir={textDirection(activeThreadTitle)}>
+-                  <WorkspaceBreadcrumbText>{activeThreadTitle}</WorkspaceBreadcrumbText>
++                  <WorkspaceBreadcrumbText>
++                    {displayDefaultName(activeThreadTitle)}
++                  </WorkspaceBreadcrumbText>
+                 </h2>
+                 <ChevronDownIcon
+                   aria-hidden
+@@ -400,22 +409,24 @@ export const ChatHeader = memo(function ChatHeader({
+                   className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover/thread-title:opacity-100 group-focus-visible/thread-title:opacity-100"
+                 />
+               </TooltipTrigger>
+-              <TooltipPopup side="top">{activeThreadTitle}</TooltipPopup>
++              <TooltipPopup side="top">{displayDefaultName(activeThreadTitle)}</TooltipPopup>
+             </Tooltip>
+           ) : (
+             <Tooltip>
+               <TooltipTrigger
+                 render={
+                   <h2
+-                    aria-label={activeThreadTitle}
++                    aria-label={displayDefaultName(activeThreadTitle)}
+                     className="min-w-0 flex-1"
+                     dir={textDirection(activeThreadTitle)}
+                   />
+                 }
+               >
+-                <WorkspaceBreadcrumbText>{activeThreadTitle}</WorkspaceBreadcrumbText>
++                <WorkspaceBreadcrumbText>
++                  {displayDefaultName(activeThreadTitle)}
++                </WorkspaceBreadcrumbText>
+               </TooltipTrigger>
+-              <TooltipPopup side="top">{activeThreadTitle}</TooltipPopup>
++              <TooltipPopup side="top">{displayDefaultName(activeThreadTitle)}</TooltipPopup>
+             </Tooltip>
+           )}
+           {renamingTitle === null && activeThreadLinkOrigin ? (
+diff --git a/apps/web/src/components/chat/DraftHeroHeadline.tsx b/apps/web/src/components/chat/DraftHeroHeadline.tsx
+index 91bf642fcb..b9afce49fe 100644
+--- a/apps/web/src/components/chat/DraftHeroHeadline.tsx
++++ b/apps/web/src/components/chat/DraftHeroHeadline.tsx
+@@ -53,6 +53,11 @@ import { DraftProjectName } from "./DraftProjectName";
+ import { DraftHeroProjectHeading } from "./DraftHeroProjectHeading";
+ import { TriageDraftHero } from "./TriageDraftHero";
+ import { resolveProjectSettings } from "@t3tools/shared/projectSettings";
++import {
++  displayDefaultName,
++  translateAroundSlot,
++  translateFixed,
++} from "~/newThreadDisplayStrings";
+ import { resolveProjectDefaultProviderModelSelection } from "../../providerInstances";
+ import { resolveNewThreadModelSelection } from "@t3tools/shared/usageLimits";
+ 
+@@ -164,8 +169,11 @@ export function DraftHeroHeadline({
+   // Pinning from a row keeps rows in place while the picker is open.
+   const pickerItems: readonly PickerItem[] = useOrderWhileOpen(
+     [
+-      ...menuEntries.map(({ group }) => ({ value: group.projectKey, label: group.displayName })),
+-      { value: ADD_PROJECT_VALUE, label: "Add project" },
++      ...menuEntries.map(({ group }) => ({
++        value: group.projectKey,
++        label: displayDefaultName(group.displayName),
++      })),
++      { value: ADD_PROJECT_VALUE, label: translateFixed("Add project") },
+     ],
+     (item) => item.value,
+     pickerOpen,
+@@ -301,12 +309,16 @@ export function DraftHeroHeadline({
+           }
+         >
+           <DraftProjectName
+-            value={isScratchDraft ? "No project" : (activeProjectTitle ?? "Choose a project")}
++            value={
++              isScratchDraft
++                ? translateFixed("No project")
++                : (displayDefaultName(activeProjectTitle) ?? translateFixed("Choose a project"))
++            }
+             singleLine
+           />
+         </TooltipTrigger>
+         {activeProjectTitle && !isScratchDraft ? (
+-          <TooltipPopup side="top">{activeProjectTitle}</TooltipPopup>
++          <TooltipPopup side="top">{displayDefaultName(activeProjectTitle)}</TooltipPopup>
+         ) : null}
+       </Tooltip>
+       <ComboboxPopup align="center" className="w-72 overflow-hidden">
+@@ -370,10 +382,14 @@ export function DraftHeroHeadline({
+       onClick={openAddProject}
+       className="pointer-events-auto inline min-w-0 max-w-full cursor-pointer border-muted-foreground/35 border-b border-dotted text-muted-foreground/60 transition-colors hover:border-muted-foreground/60 hover:text-muted-foreground/80 focus-visible:rounded-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+     >
+-      <DraftProjectName value={activeProjectTitle ?? "Add a project"} singleLine />
++      <DraftProjectName
++        value={displayDefaultName(activeProjectTitle) ?? translateFixed("Add a project")}
++        singleLine
++      />
+     </button>
+   );
+ 
++  const [toStartBefore, toStartAfter] = translateAroundSlot("", " to start");
+   const noProjectShortcut = shortcutLabelForCommand(keybindings, "chat.newWithoutProject");
+   const orStartWithoutProject =
+     scratchWorkspaceRoot !== null && !isScratchDraft && (hasResolvedProject || canChooseProject) ? (
+@@ -414,7 +430,9 @@ export function DraftHeroHeadline({
+   return (
+     <div className="mx-auto flex w-full max-w-5xl flex-col items-center">
+       {hasResolvedProject && !isScratchDraft ? (
+-        <DraftHeroProjectHeading projectName={activeProjectTitle ?? "Choose a project"}>
++        <DraftHeroProjectHeading
++          projectName={displayDefaultName(activeProjectTitle) ?? translateFixed("Choose a project")}
++        >
+           {projectSelector}
+         </DraftHeroProjectHeading>
+       ) : (
+@@ -422,7 +440,11 @@ export function DraftHeroHeadline({
+           {isScratchDraft ? (
+             <>What should we work on?</>
+           ) : canChooseProject ? (
+-            <>{projectSelector} to start</>
++            <>
++              {toStartBefore}
++              {projectSelector}
++              {toStartAfter}
++            </>
+           ) : (
+             <>Add a project to start</>
+           )}
+diff --git a/apps/web/src/components/chat/DraftHeroProjectHeading.tsx b/apps/web/src/components/chat/DraftHeroProjectHeading.tsx
+index d5db58f503..ad2f122c99 100644
+--- a/apps/web/src/components/chat/DraftHeroProjectHeading.tsx
++++ b/apps/web/src/components/chat/DraftHeroProjectHeading.tsx
+@@ -1,5 +1,7 @@
+ import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
+ 
++import { translateAroundSlot, translateFixed } from "~/newThreadDisplayStrings";
++
+ import { observeResize } from "~/lib/observeResize";
+ 
+ export function DraftHeroProjectHeading({
+@@ -9,6 +11,7 @@ export function DraftHeroProjectHeading({
+   children: ReactNode;
+   projectName: string;
+ }) {
++  const [buildInBefore, buildInAfter] = translateAroundSlot("What should we build in ", "?");
+   const containerRef = useRef<HTMLDivElement>(null);
+   const inlineRef = useRef<HTMLSpanElement>(null);
+   const [fitsInline, setFitsInline] = useState(false);
+@@ -39,21 +42,20 @@ export function DraftHeroProjectHeading({
+           ref={inlineRef}
+           className="flex w-max items-baseline gap-2 whitespace-nowrap font-normal text-3xl tracking-tight"
+         >
+-          <span>What should we build in</span>
++          <span>{buildInBefore.trimEnd()}</span>
+           <span>
+-            <span className="font-medium">{projectName}</span>?
++            <span className="font-medium">{projectName}</span>{buildInAfter}
+           </span>
+         </span>
+       </span>
+       <h1 className="flex w-full flex-col items-center justify-center gap-2 text-center font-normal text-2xl text-foreground tracking-tight sm:text-3xl lg:group-data-[inline=true]/draft-hero:flex-row">
+         <span className="max-w-full lg:group-data-[inline=true]/draft-hero:shrink-0">
+-          What should we build
+-          <span className="lg:group-data-[inline=true]/draft-hero:hidden">?</span>
+-          <span className="hidden lg:group-data-[inline=true]/draft-hero:inline"> in</span>
++          <span className="lg:group-data-[inline=true]/draft-hero:hidden">{translateFixed("What should we build?")}</span>
++          <span className="hidden lg:group-data-[inline=true]/draft-hero:inline">{buildInBefore.trimEnd()}</span>
+         </span>
+         <span className="flex min-w-0 max-w-full items-baseline justify-center text-base tracking-normal lg:group-data-[inline=true]/draft-hero:text-3xl lg:group-data-[inline=true]/draft-hero:tracking-tight">
+           <span className="min-w-0">{children}</span>
+-          <span className="hidden shrink-0 lg:group-data-[inline=true]/draft-hero:inline">?</span>
++          <span className="hidden shrink-0 lg:group-data-[inline=true]/draft-hero:inline">{buildInAfter}</span>
+         </span>
+       </h1>
+     </div>
+diff --git a/apps/web/src/components/settings/SettingsFontPreviews.tsx b/apps/web/src/components/settings/SettingsFontPreviews.tsx
+index b7d4d0c14d..90bf07fd1c 100644
+--- a/apps/web/src/components/settings/SettingsFontPreviews.tsx
++++ b/apps/web/src/components/settings/SettingsFontPreviews.tsx
+@@ -12,6 +12,7 @@ import { EMPTY_COMPOSER_CONTEXT_RECORDS } from "../composerContextPresentation";
+ import { terminalThemeFromApp } from "../ThreadTerminalDrawer";
+ import { useRenderedAppearance, useTheme } from "../../hooks/useTheme";
+ import { DEFAULT_COMPOSER_PLACEHOLDER } from "../../composerPlaceholder";
++import { translateFixed } from "~/newThreadDisplayStrings";
+ import { resolveDiffThemeName, type DiffThemeName } from "../../lib/diffRendering";
+ import { PREFERRED_HIGHLIGHTER } from "../../lib/syntaxHighlighting";
+ import { GhosttyTerminalSurface } from "~/terminal/ghostty/surface";
+@@ -45,7 +46,7 @@ export function PromptFontPreview() {
+         contextRecords={EMPTY_COMPOSER_CONTEXT_RECORDS}
+         skills={PREVIEW_SKILLS}
+         disabled={false}
+-        placeholder={DEFAULT_COMPOSER_PLACEHOLDER}
++        placeholder={translateFixed(DEFAULT_COMPOSER_PLACEHOLDER)}
+         className="max-h-42"
+         onChange={onChange}
+         onPaste={noop}
+diff --git a/apps/web/src/components/sidebar/SidebarDraftBlock.tsx b/apps/web/src/components/sidebar/SidebarDraftBlock.tsx
+index bc15ca5945..825dd3bc6b 100644
+--- a/apps/web/src/components/sidebar/SidebarDraftBlock.tsx
++++ b/apps/web/src/components/sidebar/SidebarDraftBlock.tsx
+@@ -10,6 +10,7 @@ import {
+ import type { EnvironmentProject } from "@t3tools/client-runtime/state/shell";
+ import { useShallow } from "zustand/react/shallow";
+ import { cn } from "~/lib/utils";
++import { displayDefaultName } from "~/newThreadDisplayStrings";
+ import { resolveSidebarRowAccessibility } from "../Sidebar.logic";
+ import { ProjectFavicon, type ProjectFaviconProject } from "../ProjectFavicon";
+ import { Tooltip, TooltipPopup, TooltipTrigger } from "../ui/tooltip";
+@@ -52,7 +53,7 @@ const SidebarDraftRow = memo(function SidebarDraftRow(props: {
+   const accessibility = resolveSidebarRowAccessibility({
+     title: preview,
+     statusLabel: "Unsent draft",
+-    projectDisplayName: props.projectDisplayName,
++    projectDisplayName: displayDefaultName(props.projectDisplayName),
+     isActive: props.isActive,
+   });
+   const handleActivate = () => onNavigate(draftId);
+@@ -104,7 +105,7 @@ const SidebarDraftRow = memo(function SidebarDraftRow(props: {
+               <ProjectFavicon project={props.project} className="size-4 shrink-0" />
+             ) : null}
+             <span className="min-w-0 flex-1 truncate text-xs font-medium text-secondary-label">
+-              {props.projectDisplayName}
++              {displayDefaultName(props.projectDisplayName)}
+             </span>
+             <span className="ml-auto flex h-5 min-w-5 shrink-0 items-center justify-end">
+               <Tooltip>
+diff --git a/apps/web/src/components/sidebar/SidebarThreadRow.tsx b/apps/web/src/components/sidebar/SidebarThreadRow.tsx
+index dcb479a9bc..51b43f4ab4 100644
+--- a/apps/web/src/components/sidebar/SidebarThreadRow.tsx
++++ b/apps/web/src/components/sidebar/SidebarThreadRow.tsx
+@@ -72,6 +72,7 @@ import { formatRelativeTimeLabel, parseTimestampDate } from "../../timestampForm
+ import type { SidebarThreadSummary } from "../../types";
+ import type { EnvironmentProject } from "@t3tools/client-runtime/state/shell";
+ import { cn } from "~/lib/utils";
++import { displayDefaultName } from "~/newThreadDisplayStrings";
+ import { textDirection } from "~/textDirection";
+ import { EnvironmentMachineIcon } from "../EnvironmentMachineIcon";
+ import {
+@@ -267,7 +268,7 @@ function SidebarThreadTooltip({
+   return (
+     <ThreadHoverCardPopup side="right" align="start" sideOffset={4}>
+       <ThreadHoverCard
+-        title={thread.title}
++        title={displayDefaultName(thread.title)}
+         footer={
+           supportsMultiplePullRequests && thread.pullRequests.length > 0 ? (
+             <div className="border-t border-border/60 pt-2 pl-0.5 text-xs text-muted-foreground">
+@@ -279,7 +280,9 @@ function SidebarThreadTooltip({
+         {projectDisplayName ? (
+           <div className="flex min-w-0 items-center gap-2">
+             {project ? <ProjectFavicon project={project} className="size-3 shrink-0" /> : null}
+-            <div className="min-w-0 truncate text-foreground/75">{projectDisplayName}</div>
++            <div className="min-w-0 truncate text-foreground/75">
++              {displayDefaultName(projectDisplayName)}
++            </div>
+           </div>
+         ) : null}
+         {environmentLabel ? (
+@@ -998,9 +1001,9 @@ const SidebarThreadRow = memo(function SidebarThreadRow(props: SidebarThreadRowP
+     ) : null;
+ 
+   const accessibility = resolveSidebarRowAccessibility({
+-    title: thread.title,
++    title: displayDefaultName(thread.title),
+     statusLabel: topStatus?.label ?? null,
+-    projectDisplayName: props.projectDisplayName,
++    projectDisplayName: displayDefaultName(props.projectDisplayName),
+     isActive: props.isActive,
+   });
+ 
+@@ -1040,10 +1043,12 @@ const SidebarThreadRow = memo(function SidebarThreadRow(props: SidebarThreadRowP
+       )}
+       dir={textDirection(thread.title)}
+     >
+-      {thread.title}
++      {displayDefaultName(thread.title)}
+     </span>
+   );
+-  const accessibleTitle = isRenaming ? null : <span className="sr-only">{thread.title}</span>;
++  const accessibleTitle = isRenaming ? null : (
++    <span className="sr-only">{displayDefaultName(thread.title)}</span>
++  );
+ 
+   const prBadgeShape = supportsMultiplePullRequests
+     ? resolveThreadPullRequestBadge(thread.pullRequests)
+@@ -1439,7 +1444,7 @@ const SidebarThreadRow = memo(function SidebarThreadRow(props: SidebarThreadRowP
+                 <span
+                   className={cn("min-w-0 flex-1 truncate font-normal text-secondary-label text-xs")}
+                 >
+-                  {props.projectDisplayName}
++                  {displayDefaultName(props.projectDisplayName)}
+                 </span>
+               ) : (
+                 <span className="flex-1" />
+@@ -1626,9 +1631,9 @@ export const SidebarSearchResultRow = memo(function SidebarSearchResultRow(props
+   const thread =
+     useThreadShell(scopeThreadRef(props.thread.environmentId, props.thread.id)) ?? props.thread;
+   const accessibility = resolveSidebarRowAccessibility({
+-    title: thread.title,
++    title: displayDefaultName(thread.title),
+     statusLabel: null,
+-    projectDisplayName: props.projectDisplayName,
++    projectDisplayName: displayDefaultName(props.projectDisplayName),
+     isActive: props.isRouteActive,
+   });
+   const threadRef = scopeThreadRef(thread.environmentId, thread.id);
+@@ -1736,7 +1741,7 @@ export const SidebarSearchResultRow = memo(function SidebarSearchResultRow(props
+                   thread.titleRegeneration != null && "opacity-55",
+                 )}
+               >
+-                {thread.title}
++                {displayDefaultName(thread.title)}
+               </span>
+               <span id={`${props.resultId}-pr`} className="contents">
+                 <ThreadSearchPullRequestNumber
+diff --git a/apps/web/src/hooks/useThreadActionMenu.ts b/apps/web/src/hooks/useThreadActionMenu.ts
+index d22b1d9cf6..918c44e419 100644
+--- a/apps/web/src/hooks/useThreadActionMenu.ts
++++ b/apps/web/src/hooks/useThreadActionMenu.ts
+@@ -46,6 +46,7 @@ import { useCopyToClipboard } from "./useCopyToClipboard";
+ import { useNewThreadHandler } from "./useHandleNewThread";
+ import { useClientSettings } from "./useSettings";
+ import { canTurnThreadIntoProject, useThreadActions } from "./useThreadActions";
++import { displayDefaultName, fillSlot, translateFixed } from "~/newThreadDisplayStrings";
+ 
+ function failureToast(title: string, error: unknown) {
+   toastManager.add(
+@@ -306,7 +307,7 @@ export function useThreadActionMenu(input: {
+         case "archive": {
+           if (confirmThreadArchive) {
+             const confirmed = await settlePromise(() =>
+-              api.dialogs.confirm(`Archive thread "${thread.title}"?`),
++              api.dialogs.confirm(`Archive thread "${displayDefaultName(thread.title)}"?`),
+             );
+             if (confirmed._tag === "Failure" || !confirmed.value) return;
+           }
+@@ -329,8 +330,8 @@ export function useThreadActionMenu(input: {
+             const confirmed = await settlePromise(() =>
+               api.dialogs.confirm(
+                 [
+-                  `Delete thread "${thread.title}"?`,
+-                  "This permanently clears conversation history for this thread.",
++                  fillSlot('Delete thread "', displayDefaultName(thread.title), '"?'),
++                  translateFixed("This permanently clears conversation history for this thread."),
+                 ].join("\n"),
+                 { variant: "destructive" },
+               ),
+diff --git a/apps/web/src/hooks/useThreadActions.ts b/apps/web/src/hooks/useThreadActions.ts
+index 904b94ebfc..f7f805e322 100644
+--- a/apps/web/src/hooks/useThreadActions.ts
++++ b/apps/web/src/hooks/useThreadActions.ts
+@@ -57,6 +57,7 @@ import { useClientSettings } from "./useSettings";
+ import * as ThreadUndo from "@t3tools/client-runtime/state/thread-undo";
+ import { showThreadUndoNotice } from "./showThreadUndoNotice";
+ import { useAtomCommand } from "../state/use-atom-command";
++import { displayDefaultName, fillSlot, translateFixed } from "~/newThreadDisplayStrings";
+ import { useOrchestrationCommand } from "../state/use-orchestration-command";
+ import { useAtomQueryRunner } from "../state/use-atom-query-runner";
+ 
+@@ -932,8 +933,8 @@ export function useThreadActions() {
+       const confirmationResult = await settlePromise(() =>
+         localApi.dialogs.confirm(
+           [
+-            `Delete thread "${title}"?`,
+-            "This permanently clears conversation history for this thread.",
++            fillSlot('Delete thread "', displayDefaultName(title), '"?'),
++            translateFixed("This permanently clears conversation history for this thread."),
+           ].join("\n"),
+           { variant: "destructive" },
+         ),
+diff --git a/apps/web/src/newThreadDisplayStrings.ts b/apps/web/src/newThreadDisplayStrings.ts
+new file mode 100644
+index 0000000000..71aca95aeb
+--- /dev/null
++++ b/apps/web/src/newThreadDisplayStrings.ts
+@@ -0,0 +1,58 @@
++/**
++ * t3code-zh（patches/0007）：新建任务页面上转换插件包不到的几处英文，只在显示处翻译。
++ *
++ * - 默认名：服务端给「无项目」任务用的临时项目起名 `No project`（apps/server/src/project/ManagedProjectFolders.ts），
++ *   新任务的默认标题是 `New thread`（web 草稿与服务端共用；ThreadTitleRegenerationService 按
++ *   `=== "New thread"` 判断要不要重新生成标题）。两者都是数据值，不能在定义处翻译，只能在渲染处按精确名单查表；
++ *   用户自己起的项目名、任务标题原样返回。
++ * - 句子中间嵌着组件或运行时值（`What should we build in <项目选择器>?`）：文字与表达式混排的 JSX 被插件记为
++ *   mixed-jsx 跳过。这里用一个私有区字符占住槽位，把「固定骨架 + 槽位」整句交给 t()，按词库的专用模板翻译后
++ *   在槽位处切开。t() 只会收到固定骨架，不会把项目名这类任意文字送进宽模板（CONVENTIONS §5 补丁规则 1、4）。
++ *
++ * 词条都在 dict/zh-CN.json；plugin/__tests__/new-thread-display-strings.test.ts 用真实主词库逐条核对。
++ * 名单写成普通数组再传给 Set，不写成 `new Set([...字面量])`——那种写法会被预扫描记为值用途，
++ * 影响别处同名文字的翻译。
++ */
++
++// 服务端 / 客户端起的默认名。
++const DEFAULT_NAMES: readonly string[] = ["New thread", "No project"];
++const defaultNames = new Set(DEFAULT_NAMES);
++
++/** 句子槽位的占位字符（Unicode 私有区），不会出现在词库和界面文字里。 */
++const SLOT = "";
++
++function translate(value: string): string {
++  return globalThis.__t3zh?.t?.(value) ?? value;
++}
++
++/** 名单里的默认名查表翻译，其余（含 null / undefined）原样返回。 */
++export function displayDefaultName(value: string): string;
++export function displayDefaultName(value: string | undefined): string | undefined;
++export function displayDefaultName(value: string | null): string | null;
++export function displayDefaultName(value: string | null | undefined): string | null | undefined;
++export function displayDefaultName(value: string | null | undefined): string | null | undefined {
++  if (typeof value !== "string" || !defaultNames.has(value)) return value;
++  return translate(value);
++}
++
++/**
++ * 句子 `before + <槽位> + after` 按词库模板翻译后在槽位处切开，返回 [槽位前, 槽位后]。
++ * 没有命中模板、或译文里的槽位不是恰好一个时，返回原样的 [before, after]（en 模式即如此）。
++ */
++export function translateAroundSlot(before: string, after: string): [string, string] {
++  const translated = translate(before + SLOT + after);
++  const index = translated.indexOf(SLOT);
++  if (index < 0 || translated.indexOf(SLOT, index + SLOT.length) >= 0) return [before, after];
++  return [translated.slice(0, index), translated.slice(index + SLOT.length)];
++}
++
++/** 同 translateAroundSlot，槽位处直接填入文字（调用方负责先对默认名调用 displayDefaultName）。 */
++export function fillSlot(before: string, value: string, after: string): string {
++  const [head, tail] = translateAroundSlot(before, after);
++  return head + value + tail;
++}
++
++/** 固定字面量的显示翻译。只用于词库里有精确 messages 词条的字面量，不传任意文字。 */
++export function translateFixed(value: string): string {
++  return translate(value);
++}

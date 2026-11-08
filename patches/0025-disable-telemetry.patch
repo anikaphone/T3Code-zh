@@ -1,0 +1,305 @@
+# Disable product usage telemetry, owner/device tracking, and relay tracing by default.
+# Baseline: v0.1.7 322f6544dfad0a3c8a0c8cbecf2c7f7874b14268.
+diff --git a/apps/desktop/src/ipc/methods/window.test.ts b/apps/desktop/src/ipc/methods/window.test.ts
+index 2ddc672891..18a3530faf 100644
+--- a/apps/desktop/src/ipc/methods/window.test.ts
++++ b/apps/desktop/src/ipc/methods/window.test.ts
+@@ -212,7 +212,8 @@ describe("installRelayTelemetryEnabled", () => {
+   it.effect("reads the desktop host opt-out before returning the renderer policy", () =>
+     Effect.gen(function* () {
+       assert.isFalse(yield* relayTelemetryEnabled({ T3CODE_TELEMETRY_ENABLED: "false" }));
+-      assert.isTrue(yield* relayTelemetryEnabled({}));
++      assert.isFalse(yield* relayTelemetryEnabled({}));
++      assert.isTrue(yield* relayTelemetryEnabled({ T3CODE_TELEMETRY_ENABLED: "true" }));
+     }),
+   );
+ 
+@@ -223,12 +224,13 @@ describe("installRelayTelemetryEnabled", () => {
+         organization: "Example Corp",
+         limits,
+       });
+-      assert.isFalse(yield* relayTelemetryEnabled({}, policy({ telemetry: false })));
+-      assert.isTrue(yield* relayTelemetryEnabled({}, policy({ webhookTasks: false })));
++      const enabledEnv = { T3CODE_TELEMETRY_ENABLED: "true" };
++      assert.isFalse(yield* relayTelemetryEnabled(enabledEnv, policy({ telemetry: false })));
++      assert.isTrue(yield* relayTelemetryEnabled(enabledEnv, policy({ webhookTasks: false })));
+       // A policy that cannot be read fails closed.
+       assert.isFalse(
+         yield* relayTelemetryEnabled(
+-          {},
++          enabledEnv,
+           new ManagedPolicyFileError({ path: "/test", reason: "bad JSON" }),
+         ),
+       );
+diff --git a/apps/server/src/cloud/publicConfig.test.ts b/apps/server/src/cloud/publicConfig.test.ts
+index ca1d86b8dd..0d274e735a 100644
+--- a/apps/server/src/cloud/publicConfig.test.ts
++++ b/apps/server/src/cloud/publicConfig.test.ts
+@@ -61,6 +61,11 @@ it("product opt-out disables relay tracing with either built-in or runtime crede
+     tracesDataset: "embedded-dataset",
+     tracesToken: "embedded-token",
+   };
++  assert.equal(resolveRelayClientTracingConfig({}, fallback), null);
++  assert.deepEqual(
++    resolveRelayClientTracingConfig({ T3CODE_TELEMETRY_ENABLED: "true" }, fallback),
++    fallback,
++  );
+   const env = {
+     T3CODE_TELEMETRY_ENABLED: "false",
+     T3CODE_OTEL_SDK_DISABLED: "false",
+diff --git a/apps/server/src/telemetry/AnalyticsService.test.ts b/apps/server/src/telemetry/AnalyticsService.test.ts
+index 4d3c2d5421..68982c4fe0 100644
+--- a/apps/server/src/telemetry/AnalyticsService.test.ts
++++ b/apps/server/src/telemetry/AnalyticsService.test.ts
+@@ -7,6 +7,7 @@ import * as ConfigProvider from "effect/ConfigProvider";
+ import * as Effect from "effect/Effect";
+ import * as Exit from "effect/Exit";
+ import * as Fiber from "effect/Fiber";
++import * as FileSystem from "effect/FileSystem";
+ import * as Layer from "effect/Layer";
+ import * as Schema from "effect/Schema";
+ import * as Scope from "effect/Scope";
+@@ -24,7 +25,7 @@ import type { ManagedPolicyDocument } from "@t3tools/contracts";
+ 
+ import * as ServerConfig from "../config.ts";
+ import * as ManagedPolicy from "../policy/ManagedPolicy.ts";
+-import { getTelemetryIdentity } from "./Identify.ts";
++import { getServerOwners, getTelemetryIdentity } from "./Identify.ts";
+ import * as AnalyticsService from "./AnalyticsService.ts";
+ 
+ interface RecordedBatchRequest {
+@@ -438,4 +439,48 @@ it.layer(Layer.mergeAll(NodeServices.layer, NodeCrypto.layer))("AnalyticsService
+       assert.deepEqual(capturedPaths, []);
+     }),
+   );
++
++  it.effect(
++    "defaults telemetry to disabled and does not create anonymous-id when unconfigured",
++    () =>
++      Effect.gen(function* () {
++        const capturedPaths: Array<string> = [];
++        const layerServerConfig = ServerConfig.ServerConfig.layerTest(process.cwd(), {
++          prefix: "t3-telemetry-default-off-",
++        });
++        const layerTelemetry = AnalyticsService.layer.pipe(Layer.provideMerge(layerServerConfig));
++        const layerConfig = ConfigProvider.layer(ConfigProvider.fromUnknown({}));
++        const layerBatchServer = HttpServer.serve(
++          Effect.gen(function* () {
++            const request = yield* HttpServerRequest.HttpServerRequest;
++            capturedPaths.push(request.url);
++            return HttpServerResponse.jsonUnsafe({});
++          }),
++        );
++        const layerRuntime = layerTelemetry.pipe(
++          Layer.provide(layerConfig),
++          Layer.provide(
++            Layer.mergeAll(
++              Layer.succeed(HostProcess.Platform, "linux"),
++              Layer.succeed(HostProcess.Architecture, "arm64"),
++              ManagedPolicy.layerTest(),
++            ),
++          ),
++          Layer.provideMerge(NodeHttpServer.layerTest),
++        );
++
++        yield* Effect.gen(function* () {
++          yield* Layer.launch(layerBatchServer).pipe(Effect.forkScoped);
++          const fs = yield* FileSystem.FileSystem;
++          const serverConfig = yield* ServerConfig.ServerConfig;
++          const analytics = yield* AnalyticsService.AnalyticsService;
++          yield* analytics.record("test.default-off", { index: 1 });
++          yield* analytics.flush;
++          assert.equal(yield* fs.exists(serverConfig.anonymousIdPath), false);
++          assert.deepEqual(yield* getServerOwners, []);
++        }).pipe(Effect.provide(layerRuntime));
++
++        assert.deepEqual(capturedPaths, []);
++      }),
++  );
+ });
+diff --git a/apps/server/src/telemetry/AnalyticsService.ts b/apps/server/src/telemetry/AnalyticsService.ts
+index 384da92b3f..d90c9c1474 100644
+--- a/apps/server/src/telemetry/AnalyticsService.ts
++++ b/apps/server/src/telemetry/AnalyticsService.ts
+@@ -65,13 +65,9 @@ function retryDelayMs(failures: number, random: number): number {
+ }
+ 
+ const TelemetryEnvConfig = Config.all({
+-  posthogKey: Config.String("T3CODE_POSTHOG_KEY").pipe(
+-    Config.withDefault("phc_XOWci4oZP4VvLiEyrFqkFjP4CZn55mjYYBMREK5Wd6m"),
+-  ),
+-  posthogHost: Config.String("T3CODE_POSTHOG_HOST").pipe(
+-    Config.withDefault("https://ingest.t3.codes"),
+-  ),
+-  enabled: Config.Boolean("T3CODE_TELEMETRY_ENABLED").pipe(Config.withDefault(true)),
++  posthogKey: Config.String("T3CODE_POSTHOG_KEY").pipe(Config.withDefault("")),
++  posthogHost: Config.String("T3CODE_POSTHOG_HOST").pipe(Config.withDefault("")),
++  enabled: Config.Boolean("T3CODE_TELEMETRY_ENABLED").pipe(Config.withDefault(false)),
+   flushBatchSize: Config.Number("T3CODE_TELEMETRY_FLUSH_BATCH_SIZE").pipe(Config.withDefault(20)),
+   maxBufferedEvents: Config.Number("T3CODE_TELEMETRY_MAX_BUFFERED_EVENTS").pipe(
+     Config.withDefault(1_000),
+@@ -127,13 +123,19 @@ export const make = Effect.gen(function* () {
+     ManagedPolicy.deniedBy(yield* ManagedPolicy.ManagedPolicy, "telemetry") === undefined;
+   // A cached PATH does not establish consent from the current login shell.
+   const telemetryEnabled = Effect.suspend(() => {
+-    if (!telemetryConfig.enabled || !policyAllows) return Effect.succeed(false);
++    if (
++      !telemetryConfig.enabled ||
++      !policyAllows ||
++      telemetryConfig.posthogKey.trim().length === 0 ||
++      telemetryConfig.posthogHost.trim().length === 0
++    )
++      return Effect.succeed(false);
+     if (!awaitingShellConsent) return Effect.succeed(true);
+     if (hostEnvironment.T3CODE_DESKTOP_SHELL_DISCOVERY_PENDING === "1")
+       return Effect.succeed(false);
+     const preference = hostEnvironment.T3CODE_TELEMETRY_ENABLED;
+     return Config.Boolean("T3CODE_TELEMETRY_ENABLED").pipe(
+-      Config.withDefault(true),
++      Config.withDefault(false),
+       Effect.provideService(
+         ConfigProvider.ConfigProvider,
+         ConfigProvider.fromEnv({
+@@ -145,7 +147,13 @@ export const make = Effect.gen(function* () {
+   });
+   const httpClient = yield* HttpClient.HttpClient;
+   const serverConfig = yield* ServerConfig.ServerConfig;
+-  const { distinctId, installId } = yield* getTelemetryIdentity;
++  const { distinctId, installId } =
++    telemetryConfig.enabled &&
++    policyAllows &&
++    telemetryConfig.posthogKey.trim().length > 0 &&
++    telemetryConfig.posthogHost.trim().length > 0
++      ? yield* getTelemetryIdentity
++      : { distinctId: null, installId: null };
+   const crypto = yield* SecureRandom.SecureRandom;
+   const bufferRef = yield* Ref.make<ReadonlyArray<BufferedAnalyticsEvent>>([]);
+   const deliveryRef = yield* Ref.make<DeliveryState>({
+diff --git a/apps/server/src/telemetry/Identify.ts b/apps/server/src/telemetry/Identify.ts
+index 7ea7e9d296..8ca0d468e4 100644
+--- a/apps/server/src/telemetry/Identify.ts
++++ b/apps/server/src/telemetry/Identify.ts
+@@ -1,3 +1,4 @@
++import * as Config from "effect/Config";
+ import * as SecureRandom from "effect/crypto/SecureRandom";
+ import * as Effect from "effect/Effect";
+ import * as Base64Url from "effect/encoding/Base64Url";
+@@ -338,4 +339,11 @@ export const getServerOwnersForHome = Effect.fn("getServerOwnersForHome")(functi
+   );
+ });
+ 
+-export const getServerOwners = Effect.flatMap(HostProcess.HomeDirectory, getServerOwnersForHome);
++export const getServerOwners = Effect.gen(function* () {
++  const enabled = yield* Config.Boolean("T3CODE_TELEMETRY_ENABLED").pipe(
++    Config.withDefault(false),
++    Effect.orElseSucceed(() => false),
++  );
++  if (!enabled) return [];
++  return yield* Effect.flatMap(HostProcess.HomeDirectory, getServerOwnersForHome);
++});
+diff --git a/apps/web/src/cloud/publicConfig.ts b/apps/web/src/cloud/publicConfig.ts
+index f7f53ca2c3..55799c47d6 100644
+--- a/apps/web/src/cloud/publicConfig.ts
++++ b/apps/web/src/cloud/publicConfig.ts
+@@ -63,7 +63,7 @@ export function resolveCloudPublicConfig(): CloudPublicConfig {
+ 
+ export function resolveRelayTracingConfig() {
+   // The relay exporter is created during module initialization, so this must be synchronous.
+-  if (typeof window !== "undefined" && window.desktopBridge?.getRelayTelemetryEnabled() === false) {
++  if (typeof window === "undefined" || window.desktopBridge?.getRelayTelemetryEnabled() !== true) {
+     return null;
+   }
+   const { relayTracing } = resolveCloudPublicConfig();
+diff --git a/apps/web/src/connection/platform.ts b/apps/web/src/connection/platform.ts
+index e60ed172e9..e3b0206a88 100644
+--- a/apps/web/src/connection/platform.ts
++++ b/apps/web/src/connection/platform.ts
+@@ -52,7 +52,6 @@ import {
+ import { clearComposerDraftsEnvironment } from "../composerDraftStore";
+ import { isHostedStaticApp } from "../hostedPairing";
+ import { isLocalEnvironmentDisabled } from "../localEnvironment";
+-import { randomUUID } from "../lib/utils";
+ import { appAtomRegistry } from "../rpc/atomRegistry";
+ import { acknowledgeRpcRequest, trackRpcRequestSent } from "../rpc/requestLatencyState";
+ import {
+@@ -309,17 +308,8 @@ export const prepareDesktopSshEnvironment = Effect.fn("web.connectionPlatform.ss
+   },
+ );
+ 
+-const ANALYTICS_DEVICE_ID_KEY = "t3code:analytics-device-id";
+-
+-// Lives as long as this browser profile's site data. Storage can be blocked, which only drops the id.
+ const analyticsDevice = {
+-  id: Effect.try(() => {
+-    const existing = window.localStorage.getItem(ANALYTICS_DEVICE_ID_KEY);
+-    if (existing) return existing;
+-    const created = randomUUID();
+-    window.localStorage.setItem(ANALYTICS_DEVICE_ID_KEY, created);
+-    return created;
+-  }).pipe(Effect.option),
++  id: Effect.succeedNone,
+ };
+ 
+ const layerCapabilities = Layer.effectContext(
+diff --git a/apps/web/src/lib/runtime.test.ts b/apps/web/src/lib/runtime.test.ts
+index 22e362ddd2..7338b35878 100644
+--- a/apps/web/src/lib/runtime.test.ts
++++ b/apps/web/src/lib/runtime.test.ts
+@@ -21,9 +21,9 @@ describe("web runtime relay telemetry policy", () => {
+       exports: true,
+     },
+     {
+-      surface: "ordinary browser ignores host opt-out",
++      surface: "ordinary browser defaults to off",
+       desktopBridge: undefined,
+-      exports: true,
++      exports: false,
+     },
+   ])("applies $surface before the first relay span", async ({ desktopBridge, exports }) => {
+     vi.resetModules();
+diff --git a/packages/shared/src/otelEnvironment.test.ts b/packages/shared/src/otelEnvironment.test.ts
+index 21df52609f..97260ad344 100644
+--- a/packages/shared/src/otelEnvironment.test.ts
++++ b/packages/shared/src/otelEnvironment.test.ts
+@@ -387,17 +387,25 @@ describe("OtelEnvironment", () => {
+ });
+ 
+ describe("isRelayTracingEnabled", () => {
+-  it("defaults on and respects the T3CODE SDK override of the standard kill switch", () => {
+-    assert.isTrue(OtelEnvironment.isRelayTracingEnabled({}));
+-    assert.isFalse(OtelEnvironment.isRelayTracingEnabled({ OTEL_SDK_DISABLED: "true" }));
++  it("defaults off and respects the T3CODE SDK override of the standard kill switch when opted in", () => {
++    assert.isFalse(OtelEnvironment.isRelayTracingEnabled({}));
++    assert.isTrue(OtelEnvironment.isRelayTracingEnabled({ T3CODE_TELEMETRY_ENABLED: "true" }));
++    assert.isFalse(
++      OtelEnvironment.isRelayTracingEnabled({
++        T3CODE_TELEMETRY_ENABLED: "true",
++        OTEL_SDK_DISABLED: "true",
++      }),
++    );
+     assert.isTrue(
+       OtelEnvironment.isRelayTracingEnabled({
++        T3CODE_TELEMETRY_ENABLED: "true",
+         OTEL_SDK_DISABLED: "true",
+         T3CODE_OTEL_SDK_DISABLED: "false",
+       }),
+     );
+     assert.isFalse(
+       OtelEnvironment.isRelayTracingEnabled({
++        T3CODE_TELEMETRY_ENABLED: "true",
+         OTEL_SDK_DISABLED: "false",
+         T3CODE_OTEL_SDK_DISABLED: "true",
+       }),
+diff --git a/packages/shared/src/otelEnvironment.ts b/packages/shared/src/otelEnvironment.ts
+index 95392206a8..39fdbd3337 100644
+--- a/packages/shared/src/otelEnvironment.ts
++++ b/packages/shared/src/otelEnvironment.ts
+@@ -324,7 +324,7 @@ export const isRelayTracingEnabled = (env: Readonly<Record<string, string | unde
+     telemetry: flag("T3CODE_TELEMETRY_ENABLED", T3CODE_TRUE, T3CODE_FALSE, String),
+   }).pipe(
+     Effect.map(
+-      ({ telemetry, t3, spec }) => telemetry.value !== false && !(t3.value ?? spec.value ?? false),
++      ({ telemetry, t3, spec }) => telemetry.value === true && !(t3.value ?? spec.value ?? false),
+     ),
+     Effect.provide(ConfigProvider.layer(ConfigProvider.fromEnvRecord(env))),
+     Effect.orDie,

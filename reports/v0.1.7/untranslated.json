@@ -1,0 +1,5102 @@
+[
+  {
+    "text": "Side chat",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/RightPanelTabs.tsx",
+        "line": 400,
+        "category": "C",
+        "context": "RightPanelEmptyState"
+      },
+      {
+        "file": "apps/web/src/components/RightPanelTabs.tsx",
+        "line": 596,
+        "category": "C",
+        "context": "surfaceTitle"
+      },
+      {
+        "file": "apps/web/src/components/RightPanelTabs.tsx",
+        "line": 1153,
+        "category": "C",
+        "context": "RightPanelTabs"
+      },
+      {
+        "file": "apps/web/src/components/chat/SideChatPane.tsx",
+        "line": 129,
+        "category": "A",
+        "context": "SideChatPane"
+      }
+    ]
+  },
+  {
+    "text": "Automation",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/QueuedRunsControl.tsx",
+        "line": 423,
+        "category": "C",
+        "context": "QueuedMessage"
+      },
+      {
+        "file": "apps/web/src/components/chat/TimelineUserMessageRow.tsx",
+        "line": 307,
+        "category": "A",
+        "context": "AutomationMessageRow"
+      },
+      {
+        "file": "apps/web/src/components/chat/TimelineUserMessageRow.tsx",
+        "line": 310,
+        "category": "B",
+        "context": "AutomationMessageRow"
+      }
+    ]
+  },
+  {
+    "text": "Default true.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 658,
+        "category": "C",
+        "context": "OrchestratorMcpScheduleTaskInput"
+      },
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 465,
+        "category": "C",
+        "context": "PreviewAutomationEvaluateInput"
+      },
+      {
+        "file": "packages/contracts/src/worktreeMcp.ts",
+        "line": 21,
+        "category": "C",
+        "context": "WorktreeMcpHandoffInput"
+      }
+    ]
+  },
+  {
+    "text": "Page {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/PdfViewer.tsx",
+        "line": 125,
+        "category": "B",
+        "context": "PdfPage"
+      },
+      {
+        "file": "apps/web/src/components/files/extendedDocumentPreview.ts",
+        "line": 377,
+        "category": "C",
+        "context": "openDocument"
+      },
+      {
+        "file": "apps/web/src/components/files/extendedDocumentPreview.ts",
+        "line": 493,
+        "category": "C",
+        "context": "finishPage"
+      }
+    ]
+  },
+  {
+    "text": "Permissions: {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/ComposerContextPermissions.tsx",
+        "line": 46,
+        "category": "B",
+        "context": "ComposerContextPermissions"
+      },
+      {
+        "file": "apps/web/src/components/chat/ComposerFooterControls.tsx",
+        "line": 120,
+        "category": "B",
+        "context": "ComposerFooterModeControls"
+      },
+      {
+        "file": "apps/web/src/components/chat/ComposerModelEffort.tsx",
+        "line": 620,
+        "category": "B",
+        "context": "PermissionsMenu"
+      }
+    ]
+  },
+  {
+    "text": "Pin project",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/CommandPalette.tsx",
+        "line": 1629,
+        "category": "C",
+        "context": "OpenCommandPaletteDialog"
+      },
+      {
+        "file": "apps/web/src/components/Sidebar.tsx",
+        "line": 1282,
+        "category": "C",
+        "context": "handleProjectFolderContextMenu"
+      },
+      {
+        "file": "apps/web/src/components/settings/ProjectSettingsPanel.tsx",
+        "line": 624,
+        "category": "B",
+        "context": "ProjectDetail"
+      }
+    ]
+  },
+  {
+    "text": "Share with guest",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/CommandPalette.tsx",
+        "line": 1411,
+        "category": "C",
+        "context": "OpenCommandPaletteDialog"
+      },
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 113,
+        "category": "A",
+        "context": "GuestShareDialog"
+      },
+      {
+        "file": "apps/web/src/components/threadActionMenu.logic.ts",
+        "line": 182,
+        "category": "C",
+        "context": "buildThreadActionMenuItems"
+      }
+    ]
+  },
+  {
+    "text": ", then select Refresh.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
+        "line": 88,
+        "category": "A",
+        "context": "T3ChatUserProfilePage"
+      },
+      {
+        "file": "apps/web/src/components/clerk/T3ConnectUserProfilePage.tsx",
+        "line": 137,
+        "category": "A",
+        "context": "T3ConnectTunnelUsage"
+      }
+    ]
+  },
+  {
+    "text": "Another address…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
+        "line": 505,
+        "category": "A",
+        "context": "MachinePicker"
+      },
+      {
+        "file": "apps/web/src/components/settings/LinkMachineSelect.tsx",
+        "line": 81,
+        "category": "A",
+        "context": "LinkMachineSelect"
+      }
+    ]
+  },
+  {
+    "text": "Boring sidebar (group by project)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
+        "line": 48,
+        "category": "B",
+        "context": "BoringSidebarRow"
+      },
+      {
+        "file": "apps/web/src/components/settings/settingsSearch.ts",
+        "line": 458,
+        "category": "C",
+        "context": "title"
+      }
+    ]
+  },
+  {
+    "text": "Confirm on",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
+        "line": 79,
+        "category": "A",
+        "context": "T3ChatUserProfilePage"
+      },
+      {
+        "file": "apps/web/src/components/clerk/T3ConnectUserProfilePage.tsx",
+        "line": 128,
+        "category": "A",
+        "context": "T3ConnectTunnelUsage"
+      }
+    ]
+  },
+  {
+    "text": "Context window",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadDetailsUsage.tsx",
+        "line": 100,
+        "category": "B",
+        "context": "ThreadDetailsContext"
+      },
+      {
+        "file": "apps/web/src/components/chat/threadDetailsItems.ts",
+        "line": 16,
+        "category": "C",
+        "context": "label"
+      }
+    ]
+  },
+  {
+    "text": "Could not link the environment",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
+        "line": 214,
+        "category": "D",
+        "context": "resolvePairingCode"
+      },
+      {
+        "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
+        "line": 246,
+        "category": "D",
+        "context": "submit"
+      }
+    ]
+  },
+  {
+    "text": "Could not prepare the {0} checkout",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
+        "line": 922,
+        "category": "C",
+        "context": "startHandoff"
+      },
+      {
+        "file": "apps/web/src/components/pullRequest/usePullRequestActions.ts",
+        "line": 365,
+        "category": "C",
+        "context": "startHandoff"
+      }
+    ]
+  },
+  {
+    "text": "Could not turn thread into a project",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/Sidebar.tsx",
+        "line": 2742,
+        "category": "C",
+        "context": "handleThreadContextMenu"
+      },
+      {
+        "file": "apps/web/src/hooks/useThreadActionMenu.ts",
+        "line": 274,
+        "category": "D",
+        "context": "openMenu"
+      }
+    ]
+  },
+  {
+    "text": "EAS Simulator",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
+        "line": 551,
+        "category": "A",
+        "context": "DeviceSourcesSettings"
+      },
+      {
+        "file": "apps/web/src/components/settings/easDeviceHostsSettings.logic.ts",
+        "line": 12,
+        "category": "C",
+        "context": "newEasDeviceHost"
+      }
+    ]
+  },
+  {
+    "text": "Effort display",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/AppearanceSettingsPanel.tsx",
+        "line": 315,
+        "category": "B",
+        "context": "AppearanceSettingsPanel"
+      },
+      {
+        "file": "apps/web/src/components/settings/settingsSearch.ts",
+        "line": 348,
+        "category": "C",
+        "context": "title"
+      }
+    ]
+  },
+  {
+    "text": "Empty value",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-pi/src/server/adapter.ts",
+        "line": 3403,
+        "category": "C",
+        "context": "piQuestion"
+      },
+      {
+        "file": "packages/provider-pi/src/server/adapter.ts",
+        "line": 3404,
+        "category": "C",
+        "context": "piQuestion"
+      }
+    ]
+  },
+  {
+    "text": "Enter an http or https URL.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/preview/PreviewView.tsx",
+        "line": 268,
+        "category": "C",
+        "context": "handleSubmitUrl"
+      },
+      {
+        "file": "apps/web/src/components/preview/PreviewView.tsx",
+        "line": 290,
+        "category": "C",
+        "context": "handleOpenServerUrl"
+      }
+    ]
+  },
+  {
+    "text": "Get help",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/ManagedPolicy.tsx",
+        "line": 65,
+        "category": "A",
+        "context": "ManagedByOrganization"
+      },
+      {
+        "file": "apps/web/src/components/settings/SettingsPanels.tsx",
+        "line": 2025,
+        "category": "A",
+        "context": "AboutSettingsPanel"
+      }
+    ]
+  },
+  {
+    "text": "HTML",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/composer-code-languages.ts",
+        "line": 16,
+        "category": "C",
+        "context": "label"
+      },
+      {
+        "file": "packages/shared/src/htmlRender.ts",
+        "line": 66,
+        "category": "C",
+        "context": "readHtmlRenderReference"
+      }
+    ]
+  },
+  {
+    "text": "Invalid run time",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/scheduledTasksSettings.logic.ts",
+        "line": 113,
+        "category": "C",
+        "context": "scheduleDraftErrors"
+      },
+      {
+        "file": "apps/web/src/components/settings/scheduledTasksSettings.logic.ts",
+        "line": 117,
+        "category": "C",
+        "context": "scheduleDraftErrors"
+      }
+    ]
+  },
+  {
+    "text": "Kiro API key",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-kiro/src/client.ts",
+        "line": 26,
+        "category": "C",
+        "context": "kiroClient"
+      },
+      {
+        "file": "packages/provider-kiro/src/server/status.ts",
+        "line": 153,
+        "category": "C",
+        "context": "kiroAuthFromWhoami"
+      }
+    ]
+  },
+  {
+    "text": "Next {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/OfficeViewer.tsx",
+        "line": 240,
+        "category": "B",
+        "context": "ExtendedOfficeViewer"
+      },
+      {
+        "file": "packages/client-runtime/src/state/threadSettled.ts",
+        "line": 244,
+        "category": "C",
+        "context": "snoozePresetLabel"
+      }
+    ]
+  },
+  {
+    "text": "Opening…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
+        "line": 106,
+        "category": "A",
+        "context": "T3ChatUserProfilePage"
+      },
+      {
+        "file": "apps/web/src/components/clerk/T3ConnectUserProfilePage.tsx",
+        "line": 144,
+        "category": "A",
+        "context": "T3ConnectTunnelUsage"
+      }
+    ]
+  },
+  {
+    "text": "Paste the code",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
+        "line": 409,
+        "category": "B",
+        "context": "LinkRequestDialog"
+      },
+      {
+        "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
+        "line": 329,
+        "category": "B",
+        "context": "LinkEnvironmentAction"
+      }
+    ]
+  },
+  {
+    "text": "Preparing the {0} checkout...",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
+        "line": 893,
+        "category": "C",
+        "context": "toastId"
+      },
+      {
+        "file": "apps/web/src/components/pullRequest/usePullRequestActions.ts",
+        "line": 339,
+        "category": "C",
+        "context": "toastId"
+      }
+    ]
+  },
+  {
+    "text": "Refreshing {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
+        "line": 212,
+        "category": "B",
+        "context": "PullRequestActionsMenu"
+      },
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
+        "line": 230,
+        "category": "A",
+        "context": "PullRequestActionsMenu"
+      }
+    ]
+  },
+  {
+    "text": "Review {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestComposer.tsx",
+        "line": 85,
+        "category": "B",
+        "context": "PullRequestComposer"
+      },
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestComposer.tsx",
+        "line": 126,
+        "category": "A",
+        "context": "PullRequestComposer"
+      }
+    ]
+  },
+  {
+    "text": "Sending…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/TimelineUserMessageRow.tsx",
+        "line": 123,
+        "category": "A",
+        "context": "UserFileCard"
+      },
+      {
+        "file": "apps/web/src/components/chat/TimelineUserMessageRow.tsx",
+        "line": 950,
+        "category": "A",
+        "context": "UserTimelineRow"
+      }
+    ]
+  },
+  {
+    "text": "Snooze until limits reset",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SettingsPanels.tsx",
+        "line": 1627,
+        "category": "B",
+        "context": "ThreadsSettingsPanel"
+      },
+      {
+        "file": "apps/web/src/components/settings/settingsSearch.ts",
+        "line": 440,
+        "category": "C",
+        "context": "title"
+      }
+    ]
+  },
+  {
+    "text": "T3 Code {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/textGeneration.ts",
+        "line": 214,
+        "category": "C",
+        "context": "runAgainstServer"
+      },
+      {
+        "file": "packages/provider-opencode/src/server/v2/textGeneration.ts",
+        "line": 123,
+        "category": "C",
+        "context": "generate"
+      }
+    ]
+  },
+  {
+    "text": "The MCP server returned an error.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/mcpOverAcpBridge.ts",
+        "line": 50,
+        "category": "C",
+        "context": "errorMessage"
+      },
+      {
+        "file": "packages/provider-acp/src/server/mcpOverAcpBridge.ts",
+        "line": 55,
+        "category": "C",
+        "context": "errorMessage"
+      }
+    ]
+  },
+  {
+    "text": "Unpin project",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/CommandPalette.tsx",
+        "line": 1629,
+        "category": "C",
+        "context": "OpenCommandPaletteDialog"
+      },
+      {
+        "file": "apps/web/src/components/Sidebar.tsx",
+        "line": 1281,
+        "category": "C",
+        "context": "handleProjectFolderContextMenu"
+      }
+    ]
+  },
+  {
+    "text": "User input",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/adapter.ts",
+        "line": 1790,
+        "category": "C",
+        "context": "runtimeRequestTurnItem"
+      },
+      {
+        "file": "packages/provider-opencode/src/server/v2/adapter.ts",
+        "line": 1870,
+        "category": "C",
+        "context": "showRequest"
+      }
+    ]
+  },
+  {
+    "text": "project unarchive",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/CommandPalette.tsx",
+        "line": 440,
+        "category": "C",
+        "context": "updateProject"
+      },
+      {
+        "file": "apps/web/src/components/desktop/DesktopAppActivationCoordinator.tsx",
+        "line": 24,
+        "category": "C",
+        "context": "updateProject"
+      }
+    ]
+  },
+  {
+    "text": "(guest)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/guestMessageStyle.tsx",
+        "line": 11,
+        "category": "A",
+        "context": "GuestMessageName"
+      }
+    ]
+  },
+  {
+    "text": ", needs you",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/sidebar/SidebarProjectFolderHeader.tsx",
+        "line": 22,
+        "category": "C",
+        "context": "FOLDER_DOT_LABEL"
+      }
+    ]
+  },
+  {
+    "text": ", then run:",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/onboarding/WelcomeWizard.tsx",
+        "line": 653,
+        "category": "A",
+        "context": "PairingForm"
+      }
+    ]
+  },
+  {
+    "text": ", working",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/sidebar/SidebarProjectFolderHeader.tsx",
+        "line": 25,
+        "category": "C",
+        "context": "FOLDER_DOT_LABEL"
+      }
+    ]
+  },
+  {
+    "text": ". An alpha that may change or break. T3 Code never installs Simlock.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
+        "line": 190,
+        "category": "A",
+        "context": "SimlockHostsRow"
+      }
+    ]
+  },
+  {
+    "text": "1 click, 2 double, 3 triple. Default 1.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 312,
+        "category": "C",
+        "context": "PreviewAutomationClickInput"
+      }
+    ]
+  },
+  {
+    "text": "A new link ends the current one.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 136,
+        "category": "A",
+        "context": "GuestShareDialog"
+      }
+    ]
+  },
+  {
+    "text": "AGENT_DEVICE_DAEMON_AUTH_TOKEN",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 185,
+        "category": "A",
+        "context": "SimlockDeviceHostEditor"
+      }
+    ]
+  },
+  {
+    "text": "AGENT_DEVICE_DAEMON_BASE_URL",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 186,
+        "category": "A",
+        "context": "SimlockDeviceHostEditor"
+      }
+    ]
+  },
+  {
+    "text": "Accepted as {0}.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 253,
+        "category": "A",
+        "context": "SimlockTokenField"
+      }
+    ]
+  },
+  {
+    "text": "Actual image size",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/PreviewImageContent.tsx",
+        "line": 70,
+        "category": "B",
+        "context": "PreviewImageContent"
+      }
+    ]
+  },
+  {
+    "text": "Add Simlock host",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 129,
+        "category": "A",
+        "context": "SimlockDeviceHostEditor"
+      }
+    ]
+  },
+  {
+    "text": "Add an \"origin\" remote before pushing or creating {0}.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/state/gitActions.ts",
+        "line": 178,
+        "category": "C",
+        "context": "resolveQuickAction"
+      }
+    ]
+  },
+  {
+    "text": "Add color",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ProviderAccentColorPicker.tsx",
+        "line": 96,
+        "category": "A",
+        "context": "ProviderCustomColorPanel"
+      }
+    ]
+  },
+  {
+    "text": "Add option",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 320,
+        "category": "A",
+        "context": "SnoozePresetList"
+      }
+    ]
+  },
+  {
+    "text": "Add source",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
+        "line": 524,
+        "category": "A",
+        "context": "DeviceSourcesSettings"
+      }
+    ]
+  },
+  {
+    "text": "Agent token",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 172,
+        "category": "B",
+        "context": "SimlockDeviceHostEditor"
+      }
+    ]
+  },
+  {
+    "text": "Agent token · {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 172,
+        "category": "B",
+        "context": "SimlockDeviceHostEditor"
+      }
+    ]
+  },
+  {
+    "text": "All must match. Max 16. Omitted: keep stored. [] clears.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 155,
+        "category": "C",
+        "context": "ScheduledTaskWebhookFilters"
+      }
+    ]
+  },
+  {
+    "text": "Allow once",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-kiro/src/server/acpSupport.ts",
+        "line": 102,
+        "category": "C",
+        "context": "kiroApprovalOptions"
+      }
+    ]
+  },
+  {
+    "text": "Already linked. Linking again renews it with the access you pick.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
+        "line": 293,
+        "category": "A",
+        "context": "LinkEnvironmentAction"
+      }
+    ]
+  },
+  {
+    "text": "Also turn it off. Default false.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/device.ts",
+        "line": 695,
+        "category": "C",
+        "context": "DeviceToolCloseInput"
+      }
+    ]
+  },
+  {
+    "text": "Always allow",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-kiro/src/server/acpSupport.ts",
+        "line": 104,
+        "category": "C",
+        "context": "kiroApprovalOptions"
+      }
+    ]
+  },
+  {
+    "text": "Amount",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 435,
+        "category": "B",
+        "context": "DurationFields"
+      }
+    ]
+  },
+  {
+    "text": "Android list may be incomplete",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
+        "line": 120,
+        "category": "C",
+        "context": "hostStatus"
+      }
+    ]
+  },
+  {
+    "text": "Approval from {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ChildThreadApprovals.tsx",
+        "line": 23,
+        "category": "B",
+        "context": "ChildApproval"
+      }
+    ]
+  },
+  {
+    "text": "Ask a side question while this thread keeps working.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/RightPanelTabs.tsx",
+        "line": 401,
+        "category": "C",
+        "context": "RightPanelEmptyState"
+      }
+    ]
+  },
+  {
+    "text": "Assembly",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/composer-code-languages.ts",
+        "line": 3,
+        "category": "C",
+        "context": "label"
+      }
+    ]
+  },
+  {
+    "text": "Audio unavailable. Open the file or retry playback.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/AudioPreview.tsx",
+        "line": 117,
+        "category": "B",
+        "context": "AudioChip"
+      }
+    ]
+  },
+  {
+    "text": "Auto-settle",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SettingsPanels.tsx",
+        "line": 1634,
+        "category": "B",
+        "context": "ThreadsSettingsPanel"
+      }
+    ]
+  },
+  {
+    "text": "Background setup",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/TimelineWorkGroupRows.tsx",
+        "line": 331,
+        "category": "A",
+        "context": "BackgroundWorktreeSetupChip"
+      }
+    ]
+  },
+  {
+    "text": "Before the cache expires (beta)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/settings.ts",
+        "line": 692,
+        "category": "C",
+        "context": "label"
+      }
+    ]
+  },
+  {
+    "text": "Beta",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
+        "line": 21,
+        "category": "B",
+        "context": "LabsSettingsPanel"
+      }
+    ]
+  },
+  {
+    "text": "Bing",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
+        "line": 693,
+        "category": "C",
+        "context": "SEARCH_ENGINE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Browsing",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
+        "line": 1582,
+        "category": "B",
+        "context": "BrowserSettingsPanel"
+      }
+    ]
+  },
+  {
+    "text": "Button. Default left. Right opens the menu.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 307,
+        "category": "C",
+        "context": "PreviewAutomationClickInput"
+      }
+    ]
+  },
+  {
+    "text": "Can't connect",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
+        "line": 427,
+        "category": "C",
+        "context": "DeviceSourcesSettings"
+      }
+    ]
+  },
+  {
+    "text": "Card title, such as 'GitHub webhook secret'.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 733,
+        "category": "C",
+        "context": "OrchestratorMcpRequestSecretInput"
+      }
+    ]
+  },
+  {
+    "text": "Case counts.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 479,
+        "category": "C",
+        "context": "PreviewAutomationWaitForInput"
+      }
+    ]
+  },
+  {
+    "text": "Cell {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/NotebookPreview.tsx",
+        "line": 112,
+        "category": "B",
+        "context": "NotebookPreview"
+      }
+    ]
+  },
+  {
+    "text": "Cell {0} output",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/NotebookPreview.tsx",
+        "line": 157,
+        "category": "B",
+        "context": "NotebookPreview"
+      }
+    ]
+  },
+  {
+    "text": "Chapter",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/OfficeViewer.tsx",
+        "line": 222,
+        "category": "B",
+        "context": "ExtendedOfficeViewer"
+      }
+    ]
+  },
+  {
+    "text": "Chapter {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/extendedDocumentPreview.ts",
+        "line": 404,
+        "category": "C",
+        "context": "openEpub"
+      }
+    ]
+  },
+  {
+    "text": "Check delegated work.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-pi/src/server/mcpBridge.testkit.ts",
+        "line": 73,
+        "category": "C",
+        "context": "catalog"
+      }
+    ]
+  },
+  {
+    "text": "Choose machine…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
+        "line": 146,
+        "category": "A",
+        "context": "PendingLinkRequest"
+      }
+    ]
+  },
+  {
+    "text": "Choose what the thread details card shows. You can also right-click the card.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ThreadDetailsItemsRow.tsx",
+        "line": 22,
+        "category": "B",
+        "context": "ThreadDetailsItemsRow"
+      }
+    ]
+  },
+  {
+    "text": "Closed {0} pull request{1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/usePullRequestActions.ts",
+        "line": 232,
+        "category": "C",
+        "context": "close"
+      }
+    ]
+  },
+  {
+    "text": "Coalescing runs the latest payload once when the window from the first delivery closes. Empty keys run normally.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 1759,
+        "category": "A",
+        "context": "ScheduledTaskEditorForm"
+      }
+    ]
+  },
+  {
+    "text": "Compacting before the cache expires…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/userMessage.ts",
+        "line": 22,
+        "category": "C",
+        "context": "IDLE_COMPACTING_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Compacting context...",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-pi/src/server/adapter.ts",
+        "line": 335,
+        "category": "C",
+        "context": "compactionTitle"
+      }
+    ]
+  },
+  {
+    "text": "Compacting for",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/TimelineWorkGroupRows.tsx",
+        "line": 352,
+        "category": "A",
+        "context": "CompactingLabel"
+      }
+    ]
+  },
+  {
+    "text": "Context automatically compacted before cache expiry",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/userMessage.ts",
+        "line": 28,
+        "category": "C",
+        "context": "IDLE_COMPACTION_TITLES"
+      }
+    ]
+  },
+  {
+    "text": "Context compacted after {0} idle",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/MessagesTimeline.logic.ts",
+        "line": 1615,
+        "category": "C",
+        "context": "compactionTitle"
+      }
+    ]
+  },
+  {
+    "text": "Context compacted before sending",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/userMessage.ts",
+        "line": 29,
+        "category": "C",
+        "context": "IDLE_COMPACTION_TITLES"
+      }
+    ]
+  },
+  {
+    "text": "Context compaction",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/MessagesTimeline.logic.ts",
+        "line": 2018,
+        "category": "C",
+        "context": "deriveMessagesTimelineRows"
+      }
+    ]
+  },
+  {
+    "text": "Copy version",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/AboutVersionTitle.tsx",
+        "line": 43,
+        "category": "A",
+        "context": "AboutVersionTitle"
+      }
+    ]
+  },
+  {
+    "text": "Copy version {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/AboutVersionTitle.tsx",
+        "line": 36,
+        "category": "B",
+        "context": "AboutVersionTitle"
+      }
+    ]
+  },
+  {
+    "text": "Could not bring back the side chat",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/SideChatPane.tsx",
+        "line": 85,
+        "category": "C",
+        "context": "bringBack"
+      }
+    ]
+  },
+  {
+    "text": "Could not copy. Type {0} instead.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/hooks/useStartTriage.ts",
+        "line": 25,
+        "category": "C",
+        "context": "copyTriageCliCommand"
+      }
+    ]
+  },
+  {
+    "text": "Could not delete the side chat",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/SideChatPane.tsx",
+        "line": 119,
+        "category": "C",
+        "context": "deleteSideChat"
+      }
+    ]
+  },
+  {
+    "text": "Could not force stop the agent",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/useForceStopThread.ts",
+        "line": 38,
+        "category": "C",
+        "context": "forceStopThread"
+      }
+    ]
+  },
+  {
+    "text": "Could not link the {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestThreadLinks.tsx",
+        "line": 103,
+        "category": "C",
+        "context": "changeLink"
+      }
+    ]
+  },
+  {
+    "text": "Could not link: {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/linkRequest.ts",
+        "line": 237,
+        "category": "C",
+        "context": "linkRequestDisplay"
+      }
+    ]
+  },
+  {
+    "text": "Could not load older threads. Retry",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/Sidebar.tsx",
+        "line": 3602,
+        "category": "A",
+        "context": "Sidebar"
+      }
+    ]
+  },
+  {
+    "text": "Could not load the cited response",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/citationProcedure.ts",
+        "line": 41,
+        "category": "C",
+        "context": "title"
+      }
+    ]
+  },
+  {
+    "text": "Could not reach the OpenCode server.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/v2/OpenCode2Server.ts",
+        "line": 67,
+        "category": "C",
+        "context": "describeInfoFailure"
+      }
+    ]
+  },
+  {
+    "text": "Could not render this Office document.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/OpenXmlOfficeViewer.tsx",
+        "line": 46,
+        "category": "D",
+        "context": "fail"
+      }
+    ]
+  },
+  {
+    "text": "Could not rewrite this guide. {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestGuideTab.tsx",
+        "line": 140,
+        "category": "A",
+        "context": "PullRequestGuideTab"
+      }
+    ]
+  },
+  {
+    "text": "Could not save grouping rule",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ProjectSettingsPanel.tsx",
+        "line": 102,
+        "category": "C",
+        "context": "CheckoutGroupingSelect"
+      }
+    ]
+  },
+  {
+    "text": "Could not save pull request routing permission",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/PullRequestRoutingSettings.tsx",
+        "line": 97,
+        "category": "C",
+        "context": "PullRequestRoutingSettings"
+      }
+    ]
+  },
+  {
+    "text": "Could not unlink T3 Chat",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/clerk/useT3ChatLink.ts",
+        "line": 70,
+        "category": "D",
+        "context": "unlink"
+      }
+    ]
+  },
+  {
+    "text": "Could not unlink the {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestThreadLinks.tsx",
+        "line": 103,
+        "category": "C",
+        "context": "changeLink"
+      }
+    ]
+  },
+  {
+    "text": "Could not write a review guide",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestGuideTab.tsx",
+        "line": 113,
+        "category": "A",
+        "context": "PullRequestGuideTab"
+      }
+    ]
+  },
+  {
+    "text": "Creating...",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 166,
+        "category": "A",
+        "context": "GuestShareDialog"
+      }
+    ]
+  },
+  {
+    "text": "Creation",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/WorktreesSettings.tsx",
+        "line": 60,
+        "category": "B",
+        "context": "WorktreesSettingsPanel"
+      }
+    ]
+  },
+  {
+    "text": "Cursor API key ({0})",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-cursor/src/server/status.ts",
+        "line": 195,
+        "category": "C",
+        "context": "cursorSdkAuth"
+      }
+    ]
+  },
+  {
+    "text": "Decrease",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 433,
+        "category": "B",
+        "context": "DurationFields"
+      }
+    ]
+  },
+  {
+    "text": "Default 'async'. 'wait' only if this turn needs the result. A question or approval ends the wait.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 182,
+        "category": "C",
+        "context": "OrchestratorMcpDelegateTaskInput"
+      }
+    ]
+  },
+  {
+    "text": "Default 10 min.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 745,
+        "category": "C",
+        "context": "OrchestratorMcpRequestSecretInput"
+      }
+    ]
+  },
+  {
+    "text": "Default 15000.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 23,
+        "category": "C",
+        "context": "OptionalTimeoutMs"
+      }
+    ]
+  },
+  {
+    "text": "Default http.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 185,
+        "category": "C",
+        "context": "BrowserNavigationTarget"
+      }
+    ]
+  },
+  {
+    "text": "Default: checked-out branch.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/worktreeMcp.ts",
+        "line": 10,
+        "category": "C",
+        "context": "WorktreeMcpHandoffInput"
+      }
+    ]
+  },
+  {
+    "text": "Default: every day.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 43,
+        "category": "C",
+        "context": "ScheduledTaskFixedTimeSchedule"
+      }
+    ]
+  },
+  {
+    "text": "Default: stored secret.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 175,
+        "category": "C",
+        "context": "ScheduledTaskUpsertWebhookSchedule"
+      }
+    ]
+  },
+  {
+    "text": "Default: your thread's project, or all outside a thread.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 706,
+        "category": "C",
+        "context": "OrchestratorMcpListScheduledTasksInput"
+      }
+    ]
+  },
+  {
+    "text": "Delegated task{0} {1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/notification.ts",
+        "line": 185,
+        "category": "C",
+        "context": "delegatedCompletionNotification"
+      }
+    ]
+  },
+  {
+    "text": "Delete side chat",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/SideChatPane.tsx",
+        "line": 151,
+        "category": "B",
+        "context": "SideChatPane"
+      }
+    ]
+  },
+  {
+    "text": "Describe this {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestSummaryTab.tsx",
+        "line": 769,
+        "category": "B",
+        "context": "PullRequestSummaryTab"
+      }
+    ]
+  },
+  {
+    "text": "Destination",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 1159,
+        "category": "B",
+        "context": "ScheduledTaskDestination"
+      }
+    ]
+  },
+  {
+    "text": "Dev-server port here.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 182,
+        "category": "C",
+        "context": "BrowserNavigationTarget"
+      }
+    ]
+  },
+  {
+    "text": "Device id from `device_list`. Default: the booted or last used device.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/device.ts",
+        "line": 640,
+        "category": "C",
+        "context": "DeviceToolOpenInput"
+      }
+    ]
+  },
+  {
+    "text": "Device. Default: the last one opened here.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/device.ts",
+        "line": 668,
+        "category": "C",
+        "context": "DeviceToolTargetInput"
+      }
+    ]
+  },
+  {
+    "text": "Dismiss fallback model notice",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ComposerUsageLimits.tsx",
+        "line": 100,
+        "category": "C",
+        "context": "modelFallbackBannerItem"
+      }
+    ]
+  },
+  {
+    "text": "Dismiss message from {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 306,
+        "category": "B",
+        "context": "GuestPendingMessages"
+      }
+    ]
+  },
+  {
+    "text": "Display",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SettingsPanels.tsx",
+        "line": 1028,
+        "category": "B",
+        "context": "GeneralSettingsPanel"
+      }
+    ]
+  },
+  {
+    "text": "Downstream pipeline",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/source-control-gitlab/src/server/gitLabMergeRequestJson.ts",
+        "line": 443,
+        "category": "C",
+        "context": "decodeTriggerJobChecksJson"
+      }
+    ]
+  },
+  {
+    "text": "DuckDuckGo",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
+        "line": 691,
+        "category": "C",
+        "context": "SEARCH_ENGINE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Earlier steps are not shown.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/NativeChildWorkDialog.tsx",
+        "line": 96,
+        "category": "A",
+        "context": "NativeChild"
+      }
+    ]
+  },
+  {
+    "text": "Ecosia",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
+        "line": 696,
+        "category": "C",
+        "context": "SEARCH_ENGINE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Empty clears it.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 327,
+        "category": "C",
+        "context": "PreviewAutomationSelectInput"
+      }
+    ]
+  },
+  {
+    "text": "Empty content.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/DiffPanel.tsx",
+        "line": 1307,
+        "category": "A",
+        "context": "DiffPanel"
+      }
+    ]
+  },
+  {
+    "text": "Enjoying T3 Code?",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/GitHubStarPrompt.tsx",
+        "line": 60,
+        "category": "C",
+        "context": "id"
+      }
+    ]
+  },
+  {
+    "text": "Enter a valid secret reference.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SecretSourceInput.tsx",
+        "line": 184,
+        "category": "A",
+        "context": "SecretSourceInput"
+      }
+    ]
+  },
+  {
+    "text": "Explain this {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
+        "line": 262,
+        "category": "A",
+        "context": "PullRequestActionsMenu"
+      }
+    ]
+  },
+  {
+    "text": "False returns a ref. Default true.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 468,
+        "category": "C",
+        "context": "PreviewAutomationEvaluateInput"
+      }
+    ]
+  },
+  {
+    "text": "File explorer",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/FileExplorerPane.tsx",
+        "line": 64,
+        "category": "B",
+        "context": "FileExplorerPane"
+      }
+    ]
+  },
+  {
+    "text": "Fit image",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/PreviewImageContent.tsx",
+        "line": 63,
+        "category": "B",
+        "context": "PreviewImageContent"
+      }
+    ]
+  },
+  {
+    "text": "Focus Next Workspace Area",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/KeybindingsSettings.logic.ts",
+        "line": 371,
+        "category": "C",
+        "context": "commandLabel"
+      }
+    ]
+  },
+  {
+    "text": "Focus Previous Workspace Area",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/KeybindingsSettings.logic.ts",
+        "line": 372,
+        "category": "C",
+        "context": "commandLabel"
+      }
+    ]
+  },
+  {
+    "text": "Force stop",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadActivityBanners.tsx",
+        "line": 148,
+        "category": "A",
+        "context": "runStopNowItem"
+      }
+    ]
+  },
+  {
+    "text": "Force stopping...",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadActivityBanners.tsx",
+        "line": 148,
+        "category": "A",
+        "context": "runStopNowItem"
+      }
+    ]
+  },
+  {
+    "text": "Forgejo",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/source-control-forgejo/src/shared/definition.ts",
+        "line": 59,
+        "category": "C",
+        "context": "definition"
+      }
+    ]
+  },
+  {
+    "text": "Forget",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
+        "line": 160,
+        "category": "A",
+        "context": "LinkedEnvironmentRow"
+      }
+    ]
+  },
+  {
+    "text": "Forgetting…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
+        "line": 160,
+        "category": "A",
+        "context": "LinkedEnvironmentRow"
+      }
+    ]
+  },
+  {
+    "text": "Friday",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 60,
+        "category": "C",
+        "context": "WHEN_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Gateway URL",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 151,
+        "category": "A",
+        "context": "SimlockDeviceHostEditor"
+      }
+    ]
+  },
+  {
+    "text": "Go · Monthly",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/usageLimits.ts",
+        "line": 162,
+        "category": "C",
+        "context": "readOpenCodeGoUsageLimits"
+      }
+    ]
+  },
+  {
+    "text": "Go · Session",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/usageLimits.ts",
+        "line": 146,
+        "category": "C",
+        "context": "readOpenCodeGoUsageLimits"
+      }
+    ]
+  },
+  {
+    "text": "Go · Weekly",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/usageLimits.ts",
+        "line": 154,
+        "category": "C",
+        "context": "readOpenCodeGoUsageLimits"
+      }
+    ]
+  },
+  {
+    "text": "Google",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
+        "line": 692,
+        "category": "C",
+        "context": "SEARCH_ENGINE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Grok account",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-grok/src/server/status.ts",
+        "line": 509,
+        "category": "C",
+        "context": "checkGrokProviderStatus"
+      }
+    ]
+  },
+  {
+    "text": "Guest link active",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 212,
+        "category": "A",
+        "context": "GuestShareStatus"
+      }
+    ]
+  },
+  {
+    "text": "Header with the signature, such as x-hub-signature-256.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 78,
+        "category": "C",
+        "context": "description"
+      }
+    ]
+  },
+  {
+    "text": "Hidden slide",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/office/Presentation.tsx",
+        "line": 146,
+        "category": "A",
+        "context": "Presentation"
+      }
+    ]
+  },
+  {
+    "text": "Host from `device_list`. Default local.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/device.ts",
+        "line": 649,
+        "category": "C",
+        "context": "DeviceToolOpenInput"
+      }
+    ]
+  },
+  {
+    "text": "How we handle your data. {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SettingsPanels.tsx",
+        "line": 2051,
+        "category": "B",
+        "context": "AboutSettingsPanel"
+      }
+    ]
+  },
+  {
+    "text": "In",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 53,
+        "category": "C",
+        "context": "WHEN_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "In {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/state/threadSettled.ts",
+        "line": 237,
+        "category": "C",
+        "context": "snoozePresetLabel"
+      }
+    ]
+  },
+  {
+    "text": "Increase",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 444,
+        "category": "B",
+        "context": "DurationFields"
+      }
+    ]
+  },
+  {
+    "text": "Inspect the collaborative browser.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-pi/src/server/mcpBridge.testkit.ts",
+        "line": 76,
+        "category": "C",
+        "context": "catalog"
+      }
+    ]
+  },
+  {
+    "text": "It really helps T3 Code grow.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/GitHubStarPrompt.tsx",
+        "line": 46,
+        "category": "C",
+        "context": "starInPlace"
+      }
+    ]
+  },
+  {
+    "text": "J",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/guide/GuideStop.tsx",
+        "line": 123,
+        "category": "A",
+        "context": "GuideStop"
+      }
+    ]
+  },
+  {
+    "text": "JSON-text schedule. Prefer the object form.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 62,
+        "category": "C",
+        "context": "OrchestratorMcpScheduleFromJsonString"
+      }
+    ]
+  },
+  {
+    "text": "Join",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/guest/GuestPage.tsx",
+        "line": 392,
+        "category": "A",
+        "context": "NameForm"
+      }
+    ]
+  },
+  {
+    "text": "K",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/guide/GuideStop.tsx",
+        "line": 124,
+        "category": "A",
+        "context": "GuideStop"
+      }
+    ]
+  },
+  {
+    "text": "Kagi",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
+        "line": 695,
+        "category": "C",
+        "context": "SEARCH_ENGINE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Keep",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ComposerPrimaryActions.tsx",
+        "line": 375,
+        "category": "A",
+        "context": "ComposerPrimaryActions"
+      }
+    ]
+  },
+  {
+    "text": "Kiro account",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-kiro/src/server/status.ts",
+        "line": 157,
+        "category": "C",
+        "context": "kiroAuthFromWhoami"
+      }
+    ]
+  },
+  {
+    "text": "MR",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/source-control-gitlab/src/shared/definition.ts",
+        "line": 31,
+        "category": "C",
+        "context": "definition"
+      }
+    ]
+  },
+  {
+    "text": "Machine over SSH",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
+        "line": 537,
+        "category": "A",
+        "context": "DeviceSourcesSettings"
+      }
+    ]
+  },
+  {
+    "text": "Machine, {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/EnvironmentContextChip.tsx",
+        "line": 25,
+        "category": "B",
+        "context": "EnvironmentContextChip"
+      }
+    ]
+  },
+  {
+    "text": "Maintenance",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/settingsSearch.ts",
+        "line": 107,
+        "category": "C",
+        "context": "SETTINGS_SECTION_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Menu now: {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 310,
+        "category": "A",
+        "context": "SnoozePresetList"
+      }
+    ]
+  },
+  {
+    "text": "Menus offer only Custom…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 310,
+        "category": "A",
+        "context": "SnoozePresetList"
+      }
+    ]
+  },
+  {
+    "text": "Merge stack through #{0} into {1} ({2} {3})",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestStackMenu.tsx",
+        "line": 233,
+        "category": "A",
+        "context": "PullRequestStackMenu"
+      }
+    ]
+  },
+  {
+    "text": "Merge this {0} ({1})",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadDetailsPrRow.tsx",
+        "line": 358,
+        "category": "C",
+        "context": "ThreadDetailsPrRow"
+      }
+    ]
+  },
+  {
+    "text": "Merge {0} {1}?",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestStackMenu.tsx",
+        "line": 247,
+        "category": "A",
+        "context": "PullRequestStackMenu"
+      }
+    ]
+  },
+  {
+    "text": "Message {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ChatComposer.tsx",
+        "line": 3385,
+        "category": "B",
+        "context": "ChatComposer"
+      }
+    ]
+  },
+  {
+    "text": "Min 60000.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 208,
+        "category": "C",
+        "context": "ScheduledTaskUpsertSchedule"
+      }
+    ]
+  },
+  {
+    "text": "Mode 'wait' only. Default 10 min. A timeout does not cancel the child.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 186,
+        "category": "C",
+        "context": "OrchestratorMcpDelegateTaskInput"
+      }
+    ]
+  },
+  {
+    "text": "Model: {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/guest/GuestPage.tsx",
+        "line": 629,
+        "category": "B",
+        "context": "GuestModelLabel"
+      }
+    ]
+  },
+  {
+    "text": "Monday",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 56,
+        "category": "C",
+        "context": "WHEN_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Monitor: {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-grok/src/server/xaiAcpExtension.ts",
+        "line": 536,
+        "category": "C",
+        "context": "resolveXAiAcpToolTitle"
+      }
+    ]
+  },
+  {
+    "text": "Muse retry",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-muse/src/server/adapter.ts",
+        "line": 1634,
+        "category": "C",
+        "context": "handleNotification"
+      }
+    ]
+  },
+  {
+    "text": "Needed with no `deviceId` when both platforms exist.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/device.ts",
+        "line": 645,
+        "category": "C",
+        "context": "DeviceToolOpenInput"
+      }
+    ]
+  },
+  {
+    "text": "Next matching page",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/PdfViewer.tsx",
+        "line": 419,
+        "category": "B",
+        "context": "PdfViewer"
+      }
+    ]
+  },
+  {
+    "text": "Next page",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/PdfViewer.tsx",
+        "line": 364,
+        "category": "B",
+        "context": "PdfViewer"
+      }
+    ]
+  },
+  {
+    "text": "Next slide",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/office/Presentation.tsx",
+        "line": 113,
+        "category": "B",
+        "context": "Presentation"
+      }
+    ]
+  },
+  {
+    "text": "No connected environment can add a project",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/CommandPalette.tsx",
+        "line": 1201,
+        "category": "C",
+        "context": "addProjectEntryGroups"
+      }
+    ]
+  },
+  {
+    "text": "No favorites yet",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ModelPickerContent.tsx",
+        "line": 1072,
+        "category": "B",
+        "context": "ModelPickerContent"
+      }
+    ]
+  },
+  {
+    "text": "No secret providers configured.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SecretsSettings.tsx",
+        "line": 117,
+        "category": "B",
+        "context": "EnvironmentSecretProviders"
+      }
+    ]
+  },
+  {
+    "text": "No token saved; the server uses {0} or the {1} login.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SourceControlTokenSettings.tsx",
+        "line": 141,
+        "category": "A",
+        "context": "SourceControlTokenSettings"
+      }
+    ]
+  },
+  {
+    "text": "No transcript yet.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/NativeChildWorkDialog.tsx",
+        "line": 99,
+        "category": "A",
+        "context": "NativeChild"
+      }
+    ]
+  },
+  {
+    "text": "Non-empty, without commas or surrounding whitespace.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 131,
+        "category": "C",
+        "context": "WebhookFilterListValue"
+      }
+    ]
+  },
+  {
+    "text": "Not available",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
+        "line": 726,
+        "category": "A",
+        "context": "PlatformIcon"
+      }
+    ]
+  },
+  {
+    "text": "Not sent",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/guest/GuestPage.tsx",
+        "line": 193,
+        "category": "C",
+        "context": "STATUS_LABEL"
+      }
+    ]
+  },
+  {
+    "text": "Oldest pending approval, or null. Ends a wait. Grants no approval rights.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 234,
+        "category": "C",
+        "context": "OrchestratorMcpDelegateTaskResult"
+      }
+    ]
+  },
+  {
+    "text": "On a tailnet, run",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/onboarding/WelcomeWizard.tsx",
+        "line": 657,
+        "category": "A",
+        "context": "PairingForm"
+      }
+    ]
+  },
+  {
+    "text": "On pace",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadDetailsUsage.tsx",
+        "line": 28,
+        "category": "C",
+        "context": "PACE_LABEL"
+      }
+    ]
+  },
+  {
+    "text": "On the computer with your code, start T3 Code or run",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/onboarding/WelcomeWizard.tsx",
+        "line": 652,
+        "category": "A",
+        "context": "PairingForm"
+      }
+    ]
+  },
+  {
+    "text": "Once",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 1651,
+        "category": "A",
+        "context": "ScheduledTaskEditorForm"
+      }
+    ]
+  },
+  {
+    "text": "Once, {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 304,
+        "category": "C",
+        "context": "scheduleLabel"
+      }
+    ]
+  },
+  {
+    "text": "Only a session that manages access here can answer this.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
+        "line": 151,
+        "category": "A",
+        "context": "PendingLinkRequest"
+      }
+    ]
+  },
+  {
+    "text": "Only an address the user gave: https, Tailscale, LAN or loopback. Never guess one.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 782,
+        "category": "C",
+        "context": "OrchestratorMcpEnvironmentLinkInput"
+      }
+    ]
+  },
+  {
+    "text": "OpenCode could not generate the text.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/v2/textGeneration.ts",
+        "line": 96,
+        "category": "C",
+        "context": "runOnServer"
+      }
+    ]
+  },
+  {
+    "text": "OpenCode session failed without an error payload.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/adapter.ts",
+        "line": 852,
+        "category": "C",
+        "context": "openCodeErrorMessage"
+      }
+    ]
+  },
+  {
+    "text": "OpenCode stopped the generation.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/v2/textGeneration.ts",
+        "line": 102,
+        "category": "C",
+        "context": "runOnServer"
+      }
+    ]
+  },
+  {
+    "text": "Opens a thread that knows which {0} you mean.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
+        "line": 254,
+        "category": "A",
+        "context": "PullRequestActionsMenu"
+      }
+    ]
+  },
+  {
+    "text": "Options from `orchestrator_capabilities`, such as {effort:'max'}. Given values override inherited. [] or {} clears.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 111,
+        "category": "C",
+        "context": "OrchestratorMcpTarget"
+      }
+    ]
+  },
+  {
+    "text": "PDF",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/PdfViewer.tsx",
+        "line": 354,
+        "category": "A",
+        "context": "PdfViewer"
+      }
+    ]
+  },
+  {
+    "text": "Page",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/office/WordDocument.tsx",
+        "line": 101,
+        "category": "B",
+        "context": "WordDocument"
+      }
+    ]
+  },
+  {
+    "text": "Parent folder",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/BinaryViewer.tsx",
+        "line": 198,
+        "category": "B",
+        "context": "BinaryViewer"
+      }
+    ]
+  },
+  {
+    "text": "Pasted text",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/TimelineUserMessageRow.logic.ts",
+        "line": 6,
+        "category": "C",
+        "context": "userMessageFileLabel"
+      }
+    ]
+  },
+  {
+    "text": "Pending. Sent when you submit the review",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestReviewAnnotation.tsx",
+        "line": 90,
+        "category": "A",
+        "context": "PendingReviewCommentCard"
+      }
+    ]
+  },
+  {
+    "text": "Prefer `providerInstanceId`.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 104,
+        "category": "C",
+        "context": "OrchestratorMcpTarget"
+      }
+    ]
+  },
+  {
+    "text": "Present when an administrator's policy stops this task from running.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 694,
+        "category": "C",
+        "context": "OrchestratorMcpScheduledTask"
+      }
+    ]
+  },
+  {
+    "text": "Previous page",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/PdfViewer.tsx",
+        "line": 357,
+        "category": "B",
+        "context": "PdfViewer"
+      }
+    ]
+  },
+  {
+    "text": "Previous slide",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/office/Presentation.tsx",
+        "line": 103,
+        "category": "B",
+        "context": "Presentation"
+      }
+    ]
+  },
+  {
+    "text": "Previous {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/OfficeViewer.tsx",
+        "line": 188,
+        "category": "B",
+        "context": "ExtendedOfficeViewer"
+      }
+    ]
+  },
+  {
+    "text": "Provider instance id from `orchestrator_capabilities`.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 99,
+        "category": "C",
+        "context": "OrchestratorMcpTarget"
+      }
+    ]
+  },
+  {
+    "text": "Queue: Send First Queued Message",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/KeybindingsSettings.logic.ts",
+        "line": 376,
+        "category": "C",
+        "context": "commandLabel"
+      }
+    ]
+  },
+  {
+    "text": "Re-add {0} if you want that terminal output included.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/ChatView.logic.ts",
+        "line": 794,
+        "category": "C",
+        "context": "buildExpiredTerminalContextToastCopy"
+      }
+    ]
+  },
+  {
+    "text": "Rebase {0} {1}?",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestStackMenu.tsx",
+        "line": 248,
+        "category": "A",
+        "context": "PullRequestStackMenu"
+      }
+    ]
+  },
+  {
+    "text": "Reclaim freed database space",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DatabaseStorageNotice.tsx",
+        "line": 37,
+        "category": "B",
+        "context": "DatabaseStorageNotice"
+      }
+    ]
+  },
+  {
+    "text": "Recorded content after",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/lib/toolCallDiff.ts",
+        "line": 73,
+        "category": "C",
+        "context": "toolCallDiff"
+      }
+    ]
+  },
+  {
+    "text": "Recorded content before",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/lib/toolCallDiff.ts",
+        "line": 72,
+        "category": "C",
+        "context": "toolCallDiff"
+      }
+    ]
+  },
+  {
+    "text": "Refresh failed. Retry",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/FileBreadcrumbs.tsx",
+        "line": 203,
+        "category": "A",
+        "context": "BreadcrumbMenuContent"
+      }
+    ]
+  },
+  {
+    "text": "Refreshing...",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ProviderStatusBanner.tsx",
+        "line": 174,
+        "category": "A",
+        "context": "ProviderStatusBanner"
+      }
+    ]
+  },
+  {
+    "text": "Replay a recorded turn",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/DevReplayHost.tsx",
+        "line": 127,
+        "category": "A",
+        "context": "DevReplayHost"
+      }
+    ]
+  },
+  {
+    "text": "Requests with the same key run only once within 7 days.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 1721,
+        "category": "A",
+        "context": "ScheduledTaskEditorForm"
+      }
+    ]
+  },
+  {
+    "text": "Reset reading size",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/DocumentPages.tsx",
+        "line": 118,
+        "category": "B",
+        "context": "DocumentPages"
+      }
+    ]
+  },
+  {
+    "text": "Reuse `tabId`, or your current tab. Default true. False makes a new tab.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 156,
+        "category": "C",
+        "context": "PreviewAutomationOpenInput"
+      }
+    ]
+  },
+  {
+    "text": "Review link…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
+        "line": 146,
+        "category": "A",
+        "context": "PendingLinkRequest"
+      }
+    ]
+  },
+  {
+    "text": "Review {0}, {1} {2} pending",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestComposer.tsx",
+        "line": 83,
+        "category": "B",
+        "context": "PullRequestComposer"
+      }
+    ]
+  },
+  {
+    "text": "Same as /side",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/useComposerMenuItems.ts",
+        "line": 259,
+        "category": "C",
+        "context": "items"
+      }
+    ]
+  },
+  {
+    "text": "Saturday",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 61,
+        "category": "C",
+        "context": "WHEN_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Searching messages…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/CommandPalette.tsx",
+        "line": 2790,
+        "category": "A",
+        "context": "OpenCommandPaletteDialog"
+      }
+    ]
+  },
+  {
+    "text": "Sending attachment",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/TimelineUserMessageRow.tsx",
+        "line": 142,
+        "category": "B",
+        "context": "UserFileCard"
+      }
+    ]
+  },
+  {
+    "text": "Sent",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/guest/GuestPage.tsx",
+        "line": 192,
+        "category": "C",
+        "context": "STATUS_LABEL"
+      }
+    ]
+  },
+  {
+    "text": "Session mode advertised by the ACP agent.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/sessionConfig.ts",
+        "line": 133,
+        "category": "C",
+        "context": "acpProviderOptionDescriptors"
+      }
+    ]
+  },
+  {
+    "text": "Set by desktop",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/TelemetryExportSettings.tsx",
+        "line": 43,
+        "category": "C",
+        "context": "OVERRIDE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Set by environment",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/TelemetryExportSettings.tsx",
+        "line": 43,
+        "category": "C",
+        "context": "OVERRIDE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Settled {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/useThreadLifecycle.tsx",
+        "line": 624,
+        "category": "B",
+        "context": "useThreadLifecycle"
+      }
+    ]
+  },
+  {
+    "text": "Sheet",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/OfficeViewer.tsx",
+        "line": 202,
+        "category": "B",
+        "context": "ExtendedOfficeViewer"
+      }
+    ]
+  },
+  {
+    "text": "Side chats take text only",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/useComposerSend.ts",
+        "line": 517,
+        "category": "C",
+        "context": "onSend"
+      }
+    ]
+  },
+  {
+    "text": "Side chats · {0} running",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadRelationshipsControl.tsx",
+        "line": 960,
+        "category": "B",
+        "context": "ThreadRelationshipsPanel"
+      }
+    ]
+  },
+  {
+    "text": "Sign-in failed. Start again.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/providerAuthFlow.ts",
+        "line": 45,
+        "category": "C",
+        "context": "failureMessage"
+      }
+    ]
+  },
+  {
+    "text": "Signed-in GitHub account",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SourceControlAppSignInSettings.tsx",
+        "line": 168,
+        "category": "B",
+        "context": "SourceControlAppSignInSettings"
+      }
+    ]
+  },
+  {
+    "text": "Simlock device hosts (alpha)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/settingsSearch.ts",
+        "line": 484,
+        "category": "C",
+        "context": "title"
+      }
+    ]
+  },
+  {
+    "text": "Simlock pool (alpha)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
+        "line": 560,
+        "category": "A",
+        "context": "DeviceSourcesSettings"
+      }
+    ]
+  },
+  {
+    "text": "Size",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/BinaryViewer.tsx",
+        "line": 297,
+        "category": "A",
+        "context": "BinaryViewer"
+      }
+    ]
+  },
+  {
+    "text": "Slide",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/office/Presentation.tsx",
+        "line": 123,
+        "category": "B",
+        "context": "Presentation"
+      }
+    ]
+  },
+  {
+    "text": "Snooze option {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 284,
+        "category": "B",
+        "context": "SnoozePresetList"
+      }
+    ]
+  },
+  {
+    "text": "Snoozed, {0} left",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/useThreadLifecycle.tsx",
+        "line": 615,
+        "category": "B",
+        "context": "useThreadLifecycle"
+      }
+    ]
+  },
+  {
+    "text": "Source control providers{0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SourceControlSettings.tsx",
+        "line": 504,
+        "category": "B",
+        "context": "SourceControlSettingsPanel"
+      }
+    ]
+  },
+  {
+    "text": "Starring…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/GitHubStarPrompt.tsx",
+        "line": 39,
+        "category": "C",
+        "context": "starInPlace"
+      }
+    ]
+  },
+  {
+    "text": "Starting triage…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/hooks/useStartTriage.ts",
+        "line": 95,
+        "category": "C",
+        "context": "pendingTimer"
+      }
+    ]
+  },
+  {
+    "text": "Stop localhost:{0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadServersPanel.tsx",
+        "line": 162,
+        "category": "B",
+        "context": "ThreadServersList"
+      }
+    ]
+  },
+  {
+    "text": "Stop sharing",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 201,
+        "category": "A",
+        "context": "GuestShareIndicator"
+      }
+    ]
+  },
+  {
+    "text": "Stopping",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadActivityBanners.tsx",
+        "line": 133,
+        "category": "C",
+        "context": "runStopNowItem"
+      }
+    ]
+  },
+  {
+    "text": "Submit empty value",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-pi/src/server/adapter.ts",
+        "line": 3411,
+        "category": "C",
+        "context": "piQuestion"
+      }
+    ]
+  },
+  {
+    "text": "Subscription",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-grok/src/server/usageLimits.ts",
+        "line": 88,
+        "category": "C",
+        "context": "grokUsageResponseToLimits"
+      }
+    ]
+  },
+  {
+    "text": "Suggested access. The user picks; default approval-required.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 791,
+        "category": "C",
+        "context": "OrchestratorMcpEnvironmentLinkInput"
+      }
+    ]
+  },
+  {
+    "text": "Sunday",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 62,
+        "category": "C",
+        "context": "WHEN_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Switches the branch you are working in.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestDetailActions.tsx",
+        "line": 137,
+        "category": "A",
+        "context": "PullRequestCheckoutMenu"
+      }
+    ]
+  },
+  {
+    "text": "T3 Code environment",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/EnvironmentContextChip.tsx",
+        "line": 36,
+        "category": "A",
+        "context": "EnvironmentContextChip"
+      }
+    ]
+  },
+  {
+    "text": "T3 Code home",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/sidebar/SidebarChrome.tsx",
+        "line": 168,
+        "category": "B",
+        "context": "SidebarBrand"
+      }
+    ]
+  },
+  {
+    "text": "T3 Code removed {0} hidden character{1}. Read the prompt before you send it.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/promptLinks/linkedPrompt.ts",
+        "line": 12,
+        "category": "C",
+        "context": "warnAboutHiddenCharacters"
+      }
+    ]
+  },
+  {
+    "text": "Table",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/BinaryViewer.tsx",
+        "line": 228,
+        "category": "B",
+        "context": "BinaryViewer"
+      }
+    ]
+  },
+  {
+    "text": "Tailscale",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/connection/routes.ts",
+        "line": 172,
+        "category": "C",
+        "context": "connectionRouteLabel"
+      }
+    ]
+  },
+  {
+    "text": "Task output",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-grok/src/server/xaiAcpExtension.ts",
+        "line": 544,
+        "category": "C",
+        "context": "resolveXAiAcpToolTitle"
+      }
+    ]
+  },
+  {
+    "text": "Tasks {0}/{1}{2}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/session-logic.ts",
+        "line": 525,
+        "category": "C",
+        "context": "projectedWorkEntry"
+      }
+    ]
+  },
+  {
+    "text": "Testing connection",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
+        "line": 416,
+        "category": "C",
+        "context": "DeviceSourcesSettings"
+      }
+    ]
+  },
+  {
+    "text": "That snooze time has passed. Choose another time.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/Sidebar.snooze.ts",
+        "line": 43,
+        "category": "C",
+        "context": "pickSnoozePreset"
+      }
+    ]
+  },
+  {
+    "text": "The OpenCode event stream was lost.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/v2/textGeneration.ts",
+        "line": 113,
+        "category": "C",
+        "context": "runOnServer"
+      }
+    ]
+  },
+  {
+    "text": "The OpenCode server returned HTTP {0}.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/v2/OpenCode2Server.ts",
+        "line": 72,
+        "category": "C",
+        "context": "describeInfoFailure"
+      }
+    ]
+  },
+  {
+    "text": "The access the user chose.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 811,
+        "category": "C",
+        "context": "OrchestratorMcpEnvironmentLinkResult"
+      }
+    ]
+  },
+  {
+    "text": "The account shorthand, sign-in address without https://, or ID that op account list shows.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SecretProviderDialog.tsx",
+        "line": 134,
+        "category": "A",
+        "context": "SecretProviderDialog"
+      }
+    ]
+  },
+  {
+    "text": "The main thread gets this side chat with your next message there.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/SideChatPane.tsx",
+        "line": 79,
+        "category": "C",
+        "context": "bringBack"
+      }
+    ]
+  },
+  {
+    "text": "The model provider failed the request (HTTP {0}).",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/providerErrorMessage.ts",
+        "line": 14,
+        "category": "C",
+        "context": "readableProviderErrorMessage"
+      }
+    ]
+  },
+  {
+    "text": "The owner approves each message",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/guest/GuestPage.tsx",
+        "line": 815,
+        "category": "A",
+        "context": "GuestComposer"
+      }
+    ]
+  },
+  {
+    "text": "The owner stopped sharing this thread.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/guest/GuestPage.tsx",
+        "line": 321,
+        "category": "B",
+        "context": "GuestSession"
+      }
+    ]
+  },
+  {
+    "text": "The provider recorded file content without a diff.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/DiffPanel.tsx",
+        "line": 1296,
+        "category": "A",
+        "context": "DiffPanel"
+      }
+    ]
+  },
+  {
+    "text": "This T3 Connect server does not support T3 Chat linking.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
+        "line": 64,
+        "category": "A",
+        "context": "T3ChatUserProfilePage"
+      }
+    ]
+  },
+  {
+    "text": "This afternoon",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/state/threadSettled.ts",
+        "line": 240,
+        "category": "C",
+        "context": "snoozePresetLabel"
+      }
+    ]
+  },
+  {
+    "text": "This app cannot switch: {0}.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/UpdateTrackSwitchDialog.tsx",
+        "line": 174,
+        "category": "B",
+        "context": "SwitchPlan"
+      }
+    ]
+  },
+  {
+    "text": "This database has no readable tables.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/BinaryViewer.tsx",
+        "line": 389,
+        "category": "A",
+        "context": "BinaryViewer"
+      }
+    ]
+  },
+  {
+    "text": "This morning",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/state/threadSettled.ts",
+        "line": 240,
+        "category": "C",
+        "context": "snoozePresetLabel"
+      }
+    ]
+  },
+  {
+    "text": "This sheet could not be opened.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/office/Spreadsheet.tsx",
+        "line": 92,
+        "category": "D",
+        "context": "show"
+      }
+    ]
+  },
+  {
+    "text": "This side chat was deleted.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/SideChatPane.tsx",
+        "line": 163,
+        "category": "A",
+        "context": "SideChatPane"
+      }
+    ]
+  },
+  {
+    "text": "This slide could not be drawn.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/office/Presentation.tsx",
+        "line": 137,
+        "category": "A",
+        "context": "Presentation"
+      }
+    ]
+  },
+  {
+    "text": "This {0} has no file changes.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx",
+        "line": 1443,
+        "category": "A",
+        "context": "PullRequestCodeTab"
+      }
+    ]
+  },
+  {
+    "text": "Thread {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 1166,
+        "category": "A",
+        "context": "ScheduledTaskDestination"
+      }
+    ]
+  },
+  {
+    "text": "Thursday",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 59,
+        "category": "C",
+        "context": "WHEN_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Today",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 54,
+        "category": "C",
+        "context": "WHEN_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Todo list",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/adapter.ts",
+        "line": 1742,
+        "category": "C",
+        "context": "emitTodo"
+      }
+    ]
+  },
+  {
+    "text": "Toggle account visibility",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SecretsSettings.tsx",
+        "line": 144,
+        "category": "B",
+        "context": "EnvironmentSecretProviders"
+      }
+    ]
+  },
+  {
+    "text": "Triage an issue",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/CommandPalette.tsx",
+        "line": 1290,
+        "category": "C",
+        "context": "OpenCommandPaletteDialog"
+      }
+    ]
+  },
+  {
+    "text": "Trigger: {type:'interval',everyMs}, {type:'fixed_time',timeOfDay,weekdays?}, {type:'once',runAt}, or {type:'webhook'}.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 70,
+        "category": "C",
+        "context": "OrchestratorMcpSchedule"
+      }
+    ]
+  },
+  {
+    "text": "True: fetch, start from the remote ref; check `startedFromOrigin`. Default: server setting.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/worktreeMcp.ts",
+        "line": 16,
+        "category": "C",
+        "context": "WorktreeMcpHandoffInput"
+      }
+    ]
+  },
+  {
+    "text": "Tuesday",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 57,
+        "category": "C",
+        "context": "WHEN_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Type a URL above, or run a dev script. Local servers this thread starts will show up here automatically.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/preview/PreviewEmptyState.tsx",
+        "line": 43,
+        "category": "A",
+        "context": "PreviewEmptyState"
+      }
+    ]
+  },
+  {
+    "text": "Under pace",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadDetailsUsage.tsx",
+        "line": 29,
+        "category": "C",
+        "context": "PACE_LABEL"
+      }
+    ]
+  },
+  {
+    "text": "Unlinking…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
+        "line": 102,
+        "category": "A",
+        "context": "T3ChatUserProfilePage"
+      }
+    ]
+  },
+  {
+    "text": "Unsupported ACP update: {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/adapter.ts",
+        "line": 5435,
+        "category": "C",
+        "context": "handleSessionUpdate"
+      }
+    ]
+  },
+  {
+    "text": "Unsupported provider ({0})",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SecretsSettings.tsx",
+        "line": 151,
+        "category": "B",
+        "context": "EnvironmentSecretProviders"
+      }
+    ]
+  },
+  {
+    "text": "Using this machine's agent-device token ({0}).",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 252,
+        "category": "A",
+        "context": "SimlockTokenField"
+      }
+    ]
+  },
+  {
+    "text": "Using {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ComposerUsageLimits.tsx",
+        "line": 93,
+        "category": "C",
+        "context": "modelFallbackBannerItem"
+      }
+    ]
+  },
+  {
+    "text": "Webhook URL",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 1068,
+        "category": "B",
+        "context": "WebhookEndpointField"
+      }
+    ]
+  },
+  {
+    "text": "Website URL. {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 175,
+        "category": "C",
+        "context": "BrowserNavigationTarget"
+      }
+    ]
+  },
+  {
+    "text": "Website URL. {0} For public pages.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 200,
+        "category": "C",
+        "context": "PreviewAutomationNavigateInput"
+      }
+    ]
+  },
+  {
+    "text": "Wednesday",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 58,
+        "category": "C",
+        "context": "WHEN_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "What agents here may do there",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/LinkAccessPicker.tsx",
+        "line": 22,
+        "category": "A",
+        "context": "LinkAccessPicker"
+      }
+    ]
+  },
+  {
+    "text": "What should we build in",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/DraftHeroProjectHeading.tsx",
+        "line": 42,
+        "category": "A",
+        "context": "DraftHeroProjectHeading"
+      }
+    ]
+  },
+  {
+    "text": "What went wrong?",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/TriageDraftHero.tsx",
+        "line": 19,
+        "category": "A",
+        "context": "TriageDraftHero"
+      }
+    ]
+  },
+  {
+    "text": "When you return",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/settings.ts",
+        "line": 691,
+        "category": "C",
+        "context": "label"
+      }
+    ]
+  },
+  {
+    "text": "Why the other environment refused the link, as the user saw it.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 822,
+        "category": "C",
+        "context": "OrchestratorMcpEnvironmentLinkResult"
+      }
+    ]
+  },
+  {
+    "text": "Word (default)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/AppearanceSettingsPanel.tsx",
+        "line": 319,
+        "category": "A",
+        "context": "AppearanceSettingsPanel"
+      }
+    ]
+  },
+  {
+    "text": "Write-only headers JSON, e.g. {\"Authorization\":\"Bearer …\"}",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/AcpSessionManagementSection.tsx",
+        "line": 597,
+        "category": "B",
+        "context": "AcpSessionManagementSection"
+      }
+    ]
+  },
+  {
+    "text": "Writing & review",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SourceControlWritingSettings.tsx",
+        "line": 175,
+        "category": "B",
+        "context": "SourceControlWritingSettingsSection"
+      }
+    ]
+  },
+  {
+    "text": "Your name",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/guest/GuestPage.tsx",
+        "line": 376,
+        "category": "A",
+        "context": "NameForm"
+      }
+    ]
+  },
+  {
+    "text": "Your typed text was set aside",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/usePendingThreadRequests.ts",
+        "line": 410,
+        "category": "C",
+        "context": "onSelectActivePendingUserInputOption"
+      }
+    ]
+  },
+  {
+    "text": "Your unsaved edit{0} was discarded.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/useQueuedRunEdit.ts",
+        "line": 281,
+        "category": "C",
+        "context": "beginEdit"
+      }
+    ]
+  },
+  {
+    "text": "Zoom {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/PreviewImageContent.tsx",
+        "line": 88,
+        "category": "B",
+        "context": "PreviewImageContent"
+      }
+    ]
+  },
+  {
+    "text": "[ACP audio ({0})]",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/runtimeModel.ts",
+        "line": 347,
+        "category": "C",
+        "context": "acpContentBlockDisplayText"
+      }
+    ]
+  },
+  {
+    "text": "[ACP binary resource{0}{1}]",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/runtimeModel.ts",
+        "line": 338,
+        "category": "C",
+        "context": "acpContentBlockDisplayText"
+      }
+    ]
+  },
+  {
+    "text": "[ACP image ({0}){1}]",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/runtimeModel.ts",
+        "line": 343,
+        "category": "C",
+        "context": "acpContentBlockDisplayText"
+      }
+    ]
+  },
+  {
+    "text": "[Historical {0}; {1}; thread={2}; run={3}; item={4}; provider-thread={5}; status={6}{7}]\n{8}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/handoffBudget.ts",
+        "line": 171,
+        "category": "C",
+        "context": "renderHistoricalMessage"
+      }
+    ]
+  },
+  {
+    "text": "[Unsupported ACP content: {0}]",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/runtimeModel.ts",
+        "line": 350,
+        "category": "C",
+        "context": "acpContentBlockDisplayText"
+      }
+    ]
+  },
+  {
+    "text": "active host power interval",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/BackgroundActivitySettings.tsx",
+        "line": 239,
+        "category": "B",
+        "context": "BackgroundActivityAdvancedDialog"
+      }
+    ]
+  },
+  {
+    "text": "at",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
+        "line": 377,
+        "category": "A",
+        "context": "SnoozePresetFields"
+      }
+    ]
+  },
+  {
+    "text": "base64",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 1819,
+        "category": "A",
+        "context": "ScheduledTaskEditorForm"
+      }
+    ]
+  },
+  {
+    "text": "declined: the user chose not to. cancelled: the card closed unanswered, when the thread was stopped or archived.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 816,
+        "category": "C",
+        "context": "OrchestratorMcpEnvironmentLinkResult"
+      }
+    ]
+  },
+  {
+    "text": "effort display",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/AppearanceSettingsPanel.tsx",
+        "line": 299,
+        "category": "B",
+        "context": "AppearanceSettingsPanel"
+      }
+    ]
+  },
+  {
+    "text": "file holds the value.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 760,
+        "category": "C",
+        "context": "OrchestratorMcpRequestSecretResult"
+      }
+    ]
+  },
+  {
+    "text": "git clone",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/AddProjectToMachineDialog.tsx",
+        "line": 246,
+        "category": "A",
+        "context": "AddProjectToMachineDialog"
+      }
+    ]
+  },
+  {
+    "text": "hex",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 1818,
+        "category": "A",
+        "context": "ScheduledTaskEditorForm"
+      }
+    ]
+  },
+  {
+    "text": "idle host power interval",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/BackgroundActivitySettings.tsx",
+        "line": 267,
+        "category": "B",
+        "context": "BackgroundActivityAdvancedDialog"
+      }
+    ]
+  },
+  {
+    "text": "in",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/DraftHeroProjectHeading.tsx",
+        "line": 52,
+        "category": "A",
+        "context": "DraftHeroProjectHeading"
+      }
+    ]
+  },
+  {
+    "text": "instead.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/onboarding/WelcomeWizard.tsx",
+        "line": 657,
+        "category": "A",
+        "context": "PairingForm"
+      }
+    ]
+  },
+  {
+    "text": "kiro-cli",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-kiro/src/settings.ts",
+        "line": 20,
+        "category": "C",
+        "context": "KiroSettings"
+      }
+    ]
+  },
+  {
+    "text": "not available",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
+        "line": 675,
+        "category": "A",
+        "context": "PlatformIcon"
+      }
+    ]
+  },
+  {
+    "text": "npx t3 pair --tailscale",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/onboarding/WelcomeWizard.tsx",
+        "line": 657,
+        "category": "A",
+        "context": "PairingForm"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.529681 0.01551 326.299)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 398,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.530733 0.01795 323.79)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 533,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.532177 0.019333 325.784)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 803,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.532339 0.017796 331.748)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 668,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.549927 0.090215 323.149)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 263,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.657087 0.028226 307.985)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 327,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.706249 0.014508 306.607)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 867,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.721641 0.010192 281.271)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 597,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.723533 0.008741 4.515)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 732,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.739243 0.002222 223.225)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 462,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "opened this {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/pullRequestDetail.logic.ts",
+        "line": 672,
+        "category": "C",
+        "context": "buildPullRequestTimeline"
+      }
+    ]
+  },
+  {
+    "text": "or run",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/TriageDraftHero.tsx",
+        "line": 51,
+        "category": "A",
+        "context": "TriageDraftHero"
+      }
+    ]
+  },
+  {
+    "text": "pool, added in",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
+        "line": 186,
+        "category": "A",
+        "context": "SimlockHostsRow"
+      }
+    ]
+  },
+  {
+    "text": "project name",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ProjectSettingsPanel.tsx",
+        "line": 529,
+        "category": "B",
+        "context": "ProjectDetail"
+      }
+    ]
+  },
+  {
+    "text": "provider health interval",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/BackgroundActivitySettings.tsx",
+        "line": 211,
+        "category": "B",
+        "context": "BackgroundActivityAdvancedDialog"
+      }
+    ]
+  },
+  {
+    "text": "resolve guest message",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 232,
+        "category": "C",
+        "context": "resolveGuestMessage"
+      }
+    ]
+  },
+  {
+    "text": "restarts last",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/sidebar/UpdateEverythingDialog.tsx",
+        "line": 175,
+        "category": "A",
+        "context": "UpdateEverythingDialogContent"
+      }
+    ]
+  },
+  {
+    "text": "simlock --gateway token create --role agent",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 183,
+        "category": "A",
+        "context": "SimlockDeviceHostEditor"
+      }
+    ]
+  },
+  {
+    "text": "stop guest share",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 180,
+        "category": "C",
+        "context": "closeGuestShare"
+      }
+    ]
+  },
+  {
+    "text": "t3 auth pairing create",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/auth/ConnectAgentSurface.tsx",
+        "line": 246,
+        "category": "A",
+        "context": "ConnectAgentSurface"
+      }
+    ]
+  },
+  {
+    "text": "xAI API key",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-grok/src/server/status.ts",
+        "line": 507,
+        "category": "C",
+        "context": "checkGrokProviderStatus"
+      }
+    ]
+  },
+  {
+    "text": "{\n  \"version\": 1,\n  \"name\": \"Aurora\",\n  \"appearance\": \"light\",\n  \"colors\": { ... }\n}",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ThemeImportDialog.tsx",
+        "line": 128,
+        "category": "B",
+        "context": "ThemeJsonEditor"
+      }
+    ]
+  },
+  {
+    "text": "{0} #{1}, status pending",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/ThreadStatusIndicators.tsx",
+        "line": 746,
+        "category": "B",
+        "context": "ThreadRowLeadingStatus"
+      }
+    ]
+  },
+  {
+    "text": "{0} (HTTP {1}).",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/providerErrorMessage.ts",
+        "line": 13,
+        "category": "C",
+        "context": "readableProviderErrorMessage"
+      }
+    ]
+  },
+  {
+    "text": "{0} (guest)",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/TimelineUserMessageRow.tsx",
+        "line": 876,
+        "category": "A",
+        "context": "UserTimelineRow"
+      }
+    ]
+  },
+  {
+    "text": "{0} CLI (`{1}`)",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/textGenerationUtils.ts",
+        "line": 90,
+        "category": "C",
+        "context": "cliLabel"
+      }
+    ]
+  },
+  {
+    "text": "{0} Nightly builds are not available{1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SettingsPanels.tsx",
+        "line": 329,
+        "category": "B",
+        "context": "AboutVersionSection"
+      }
+    ]
+  },
+  {
+    "text": "{0} Only stable releases can be installed.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/managedPolicy.ts",
+        "line": 151,
+        "category": "C",
+        "context": "managedNightlyDeniedMessage"
+      }
+    ]
+  },
+  {
+    "text": "{0} actions loading",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestGhosts.tsx",
+        "line": 176,
+        "category": "B",
+        "context": "PullRequestDetailGhost"
+      }
+    ]
+  },
+  {
+    "text": "{0} composer",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestComposer.tsx",
+        "line": 106,
+        "category": "B",
+        "context": "PullRequestComposer"
+      }
+    ]
+  },
+  {
+    "text": "{0} delegated tasks {1}{2}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/notification.ts",
+        "line": 196,
+        "category": "C",
+        "context": "delegatedCompletionNotification"
+      }
+    ]
+  },
+  {
+    "text": "{0} description",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestSummaryTab.tsx",
+        "line": 768,
+        "category": "B",
+        "context": "PullRequestSummaryTab"
+      }
+    ]
+  },
+  {
+    "text": "{0} guest message{1} waiting",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 274,
+        "category": "B",
+        "context": "GuestPendingMessages"
+      }
+    ]
+  },
+  {
+    "text": "{0} machines still run",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SettingsPanels.tsx",
+        "line": 338,
+        "category": "A",
+        "context": "AboutVersionSection"
+      }
+    ]
+  },
+  {
+    "text": "{0} malformed or inconsistent usage record(s) were skipped; usage may be incomplete.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/usageFormat.ts",
+        "line": 21,
+        "category": "C",
+        "context": "formatMalformedUsageWarning"
+      }
+    ]
+  },
+  {
+    "text": "{0} manages T3 Code updates.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/managedPolicy.ts",
+        "line": 146,
+        "category": "C",
+        "context": "managedUpdatesMessage"
+      }
+    ]
+  },
+  {
+    "text": "{0} more {1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestMoreReplies.tsx",
+        "line": 13,
+        "category": "A",
+        "context": "PullRequestMoreReplies"
+      }
+    ]
+  },
+  {
+    "text": "{0} needs {1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/state/threadShell.ts",
+        "line": 164,
+        "category": "C",
+        "context": "childThreadInputsTitle"
+      }
+    ]
+  },
+  {
+    "text": "{0} policy does not allow the {1} provider.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/settings.ts",
+        "line": 1512,
+        "category": "C",
+        "context": "disallowedProviderMessage"
+      }
+    ]
+  },
+  {
+    "text": "{0} provider {1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/sidebar/UpdateEverythingDialog.tsx",
+        "line": 142,
+        "category": "A",
+        "context": "UpdateEverythingDialogContent"
+      }
+    ]
+  },
+  {
+    "text": "{0} pull request routing",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/PullRequestRoutingSettings.tsx",
+        "line": 106,
+        "category": "B",
+        "context": "PullRequestRoutingSettings"
+      }
+    ]
+  },
+  {
+    "text": "{0} reference",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SecretSourceInput.tsx",
+        "line": 179,
+        "category": "B",
+        "context": "SecretSourceInput"
+      }
+    ]
+  },
+  {
+    "text": "{0} source",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SecretSourceInput.tsx",
+        "line": 120,
+        "category": "B",
+        "context": "SecretSourceInput"
+      }
+    ]
+  },
+  {
+    "text": "{0} subagent {1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/subagentProjection.ts",
+        "line": 40,
+        "category": "C",
+        "context": "subagentThreadTitle"
+      }
+    ]
+  },
+  {
+    "text": "{0} title",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestTitleEditor.tsx",
+        "line": 98,
+        "category": "B",
+        "context": "PullRequestTitleEditor"
+      }
+    ]
+  },
+  {
+    "text": "{0} token",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SourceControlTokenSettings.tsx",
+        "line": 129,
+        "category": "B",
+        "context": "SourceControlTokenSettings"
+      }
+    ]
+  },
+  {
+    "text": "{0} turned off anonymous usage data.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/state/managedPolicy.ts",
+        "line": 38,
+        "category": "C",
+        "context": "managedTelemetryOffMessage"
+      }
+    ]
+  },
+  {
+    "text": "{0} {1} chained by base branch.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/ThreadPullRequestsPanel.tsx",
+        "line": 249,
+        "category": "A",
+        "context": "LinkRowImpl"
+      }
+    ]
+  },
+  {
+    "text": "{0} {1} phase, {2}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadLineageWorkflowRow.tsx",
+        "line": 206,
+        "category": "B",
+        "context": "ThreadLineageWorkflowRow"
+      }
+    ]
+  },
+  {
+    "text": "{0} {1}s need {2}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/state/threadShell.ts",
+        "line": 165,
+        "category": "C",
+        "context": "childThreadInputsTitle"
+      }
+    ]
+  },
+  {
+    "text": "{0}'s policy does not allow {1}.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/managedPolicy.ts",
+        "line": 167,
+        "category": "C",
+        "context": "managedPolicyDeniedMessage"
+      }
+    ]
+  },
+  {
+    "text": "{0}h left",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/guest/guestStream.logic.ts",
+        "line": 194,
+        "category": "C",
+        "context": "formatGuestExpiry"
+      }
+    ]
+  },
+  {
+    "text": "{0}m left",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/guest/guestStream.logic.ts",
+        "line": 194,
+        "category": "C",
+        "context": "formatGuestExpiry"
+      }
+    ]
+  },
+  {
+    "text": "· Indexing…",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/LargeTextViewer.tsx",
+        "line": 224,
+        "category": "A",
+        "context": "LargeTextViewer"
+      }
+    ]
+  }
+]

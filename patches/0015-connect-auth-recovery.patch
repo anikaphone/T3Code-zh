@@ -1,0 +1,261 @@
+# The maintainer explicitly authorized this functional recovery fix on 2026-10-07.
+# Baseline: v0.1.7 / 322f6544dfad0a3c8a0c8cbecf2c7f7874b14268
+# Keep T3 Connect loading/failure visible and offer a manual renderer reload.
+# Does not change auth sessions, scopes, account state or SDK dependencies.
+diff --git a/apps/web/src/components/clerk/T3ConnectSidebarSignIn.behavior.browser.test.tsx b/apps/web/src/components/clerk/T3ConnectSidebarSignIn.behavior.browser.test.tsx
+new file mode 100644
+index 0000000000..15792eec48
+--- /dev/null
++++ b/apps/web/src/components/clerk/T3ConnectSidebarSignIn.behavior.browser.test.tsx
+@@ -0,0 +1,159 @@
++import type { ComponentProps, PropsWithChildren } from "react";
++import { act, render as renderDom, type Screen } from "../../../test/render";
++import { afterEach, beforeEach, expect, it, vi } from "vite-plus/test";
++
++const auth = vi.hoisted(() => ({
++  configured: true,
++  status: "loading" as "loading" | "error" | "ready" | "degraded",
++  signedIn: false,
++  authLoaded: undefined as boolean | undefined,
++  openSignIn: vi.fn(),
++  reload: vi.fn(),
++  listeners: new Set<() => void>(),
++  reloadClick: undefined as (() => void) | undefined,
++}));
++
++vi.mock("@clerk/react", async () => {
++  const { useSyncExternalStore } = await import("react");
++  // React Compiler can retain zero-prop children; the mocked SDK must publish auth changes just like Clerk.
++  const useSnapshot = () => useSyncExternalStore(
++    (listener) => { auth.listeners.add(listener); return () => { auth.listeners.delete(listener); }; },
++    () => `${auth.status}:${auth.signedIn}:${auth.authLoaded}`,
++  );
++  const loaded = () => auth.status === "ready" || auth.status === "degraded";
++  const UserButton = Object.assign(
++    ({ children }: PropsWithChildren) => <button>Account menu{children}</button>,
++    { UserProfilePage: () => null },
++  );
++  return {
++    ClerkLoading: ({ children }: PropsWithChildren) => { useSnapshot(); return auth.status === "loading" ? children : null; },
++    ClerkFailed: ({ children }: PropsWithChildren) => { useSnapshot(); return auth.status === "error" ? children : null; },
++    ClerkLoaded: ({ children }: PropsWithChildren) => { useSnapshot(); return loaded() ? children : null; },
++    useAuth: () => { useSnapshot(); return { isLoaded: auth.authLoaded ?? loaded(), isSignedIn: auth.signedIn }; },
++    UserButton,
++  };
++});
++vi.mock("../../cloud/publicConfig", () => ({ hasCloudPublicConfig: () => auth.configured }));
++vi.mock("./T3ConnectAccountPages", () => ({ T3_CONNECT_ACCOUNT_PAGES: [] }));
++vi.mock("./useT3ConnectAuthPrompt", () => ({
++  useT3ConnectAuthPrompt: () => ({ authPrompt: null, openAuthPrompt: auth.openSignIn }),
++}));
++vi.mock("../ui/sidebar", () => ({
++  SidebarMenu: "ul", SidebarMenuItem: "li", SidebarMenuButton: "button",
++}));
++vi.mock("../ui/button", () => ({
++  Button: ({ onClick, children }: ComponentProps<"button">) => {
++    auth.reloadClick = onClick as (() => void) | undefined;
++    return <button onClick={onClick}>{children}</button>;
++  },
++}));
++
++import { T3ConnectSidebarAvatar, T3ConnectSidebarSignIn } from "./T3ConnectSidebarSignIn";
++
++let tree: Screen | undefined;
++const footer = () => <><T3ConnectSidebarSignIn /><T3ConnectSidebarAvatar /></>;
++async function render() {
++  await act(() => { for (const listener of auth.listeners) listener(); });
++  if (tree) await tree.rerender(footer());
++  else tree = await renderDom(footer(), { router: false });
++}
++const text = () => tree!.container.textContent ?? "";
++const reloadButton = () => Array.from(tree!.container.querySelectorAll("button"))
++  .find(button => button.textContent?.includes("Reload app"));
++
++beforeEach(() => {
++  vi.useFakeTimers();
++  auth.configured = true; auth.status = "loading"; auth.signedIn = false; auth.authLoaded = undefined;
++  auth.openSignIn.mockReset(); auth.reload.mockReset();
++  auth.reloadClick = undefined;
++});
++afterEach(async () => {
++  await tree?.[Symbol.asyncDispose](); tree = undefined;
++  vi.clearAllTimers(); vi.useRealTimers(); vi.unstubAllGlobals();
++});
++
++it("keeps a visible account status while loading without attempting sign-in", async () => {
++  await render();
++  expect(text()).toContain("Connecting to T3 Connect…");
++  expect(reloadButton()).toBeUndefined();
++  expect(auth.openSignIn).not.toHaveBeenCalled();
++});
++
++it("offers a manual reload after 15 seconds, without refreshing automatically", async () => {
++  await render();
++  await act(async () => { vi.advanceTimersByTime(14_999); });
++  expect(reloadButton()).toBeUndefined();
++  await act(async () => { vi.advanceTimersByTime(1); });
++  expect(text()).toContain("T3 Connect is taking longer than expected.");
++  expect(text()).toContain("Save any unfinished input before reloading.");
++  expect(reloadButton()).toBeDefined();
++  expect(auth.reload).not.toHaveBeenCalled();
++  // Chromium location is not mockable. Execute the captured real button handler with an isolated window.
++  const reload = new Function("window", `return (${String(auth.reloadClick)})`)({ location: { reload: auth.reload } });
++  await act(async () => reload());
++  expect(auth.reload).toHaveBeenCalledTimes(1);
++});
++
++it("shows a load failure immediately instead of hiding both account entries", async () => {
++  auth.status = "error";
++  await render();
++  expect(text()).toContain("T3 Connect could not load.");
++  expect(reloadButton()).toBeDefined();
++  expect(text()).not.toContain("Sign in to T3 Connect");
++  expect(auth.openSignIn).not.toHaveBeenCalled();
++  expect(auth.reload).not.toHaveBeenCalled();
++});
++
++it("replaces the recovery notice with normal sign-in when the runtime recovers", async () => {
++  auth.status = "error"; await render();
++  auth.status = "ready"; await render();
++  expect(text()).toContain("Sign in to T3 Connect");
++  expect(text()).not.toContain("could not load");
++  expect(text()).not.toContain("Account menu");
++  await act(async () => tree!.container.querySelector("button")!.click());
++  expect(auth.openSignIn).toHaveBeenCalledTimes(1);
++  expect(auth.reload).not.toHaveBeenCalled();
++});
++
++it("restores only the avatar for a signed-in account and cancels the loading timer", async () => {
++  await render();
++  auth.status = "ready"; auth.signedIn = true; await render();
++  expect(text()).toContain("Account menu");
++  expect(text()).not.toContain("Sign in to T3 Connect");
++  expect(vi.getTimerCount()).toBe(0);
++  await act(async () => { vi.advanceTimersByTime(30_000); });
++  expect(text()).not.toContain("longer than expected");
++  expect(auth.reload).not.toHaveBeenCalled();
++});
++
++it("retains the SDK's loaded degraded-session behavior", async () => {
++  auth.status = "degraded"; auth.signedIn = true; await render();
++  expect(text()).toContain("Account menu");
++  expect(text()).not.toContain("could not load");
++});
++
++it("does not introduce account UI or timers in a cloudless build", async () => {
++  auth.configured = false; await render();
++  expect(tree!.container.childNodes.length).toBe(0);
++  expect(vi.getTimerCount()).toBe(0);
++});
++
++it("removes the pending timeout when the sidebar unmounts", async () => {
++  await render();
++  expect(vi.getTimerCount()).toBe(1);
++  await tree![Symbol.asyncDispose](); tree = undefined;
++  expect(vi.getTimerCount()).toBe(0);
++});
++
++it("keeps the entry visible when the SDK is ready but the auth snapshot is still loading", async () => {
++  auth.status = "ready"; auth.authLoaded = false; await render();
++  expect(text()).toContain("Connecting to T3 Connect…");
++  expect(text()).not.toContain("Sign in to T3 Connect");
++  await act(async () => { vi.advanceTimersByTime(15_000); });
++  expect(reloadButton()).toBeDefined();
++  expect(auth.openSignIn).not.toHaveBeenCalled();
++  auth.authLoaded = true; await render();
++  expect(text()).toContain("Sign in to T3 Connect");
++  expect(text()).not.toContain("longer than expected");
++  expect(vi.getTimerCount()).toBe(0);
++});
+diff --git a/apps/web/src/components/clerk/T3ConnectSidebarSignIn.tsx b/apps/web/src/components/clerk/T3ConnectSidebarSignIn.tsx
+index 6b66bed808..4688c823cd 100644
+--- a/apps/web/src/components/clerk/T3ConnectSidebarSignIn.tsx
++++ b/apps/web/src/components/clerk/T3ConnectSidebarSignIn.tsx
+@@ -1,15 +1,29 @@
+-import { UserButton, useAuth } from "@clerk/react";
+-import { LogInIcon } from "lucide-react";
++import { ClerkFailed, ClerkLoaded, ClerkLoading, UserButton, useAuth } from "@clerk/react";
++import { LogInIcon, RotateCwIcon } from "lucide-react";
++import { useEffect, useState } from "react";
+ 
+ import { hasCloudPublicConfig } from "../../cloud/publicConfig";
+ import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
++import { Button } from "../ui/button";
+ import { T3_CONNECT_ACCOUNT_PAGES } from "./T3ConnectAccountPages";
+ import { useT3ConnectAuthPrompt } from "./useT3ConnectAuthPrompt";
+ 
+ export function T3ConnectSidebarSignIn() {
+   if (!hasCloudPublicConfig()) return null;
+ 
+-  return <ConfiguredT3ConnectSidebarSignIn />;
++  return (
++    <>
++      <ClerkLoading>
++        <T3ConnectAuthRecovery loading />
++      </ClerkLoading>
++      <ClerkFailed>
++        <T3ConnectAuthRecovery />
++      </ClerkFailed>
++      <ClerkLoaded>
++        <ConfiguredT3ConnectSidebarSignIn />
++      </ClerkLoaded>
++    </>
++  );
+ }
+ 
+ export function T3ConnectSidebarAvatar() {
+@@ -51,7 +65,8 @@ function ConfiguredT3ConnectSidebarSignIn() {
+   const { isLoaded, isSignedIn } = useAuth();
+   const { openAuthPrompt } = useT3ConnectAuthPrompt();
+ 
+-  if (!isLoaded || isSignedIn) return null;
++  if (!isLoaded) return <T3ConnectAuthRecovery loading />;
++  if (isSignedIn) return null;
+ 
+   return (
+     <SidebarMenu>
+@@ -64,3 +79,44 @@ function ConfiguredT3ConnectSidebarSignIn() {
+     </SidebarMenu>
+   );
+ }
++
++
++function T3ConnectAuthRecovery({ loading = false }: { readonly loading?: boolean }) {
++  const [timedOut, setTimedOut] = useState(false);
++
++  useEffect(() => {
++    if (!loading) return;
++    const timer = window.setTimeout(() => setTimedOut(true), 15_000);
++    return () => window.clearTimeout(timer);
++  }, [loading]);
++
++  const canReload = !loading || timedOut;
++
++  return (
++    <SidebarMenu>
++      <SidebarMenuItem>
++        <div className="space-y-2 px-2 py-1">
++          <p className="text-sm font-medium">T3 Connect</p>
++          <p role="status" className="text-xs text-sidebar-muted-foreground">
++            {loading
++              ? timedOut
++                ? "T3 Connect is taking longer than expected."
++                : "Connecting to T3 Connect…"
++              : "T3 Connect could not load."}
++          </p>
++          {canReload && (
++            <>
++              <Button variant="outline" size="sm" onClick={() => window.location.reload()}>
++                <RotateCwIcon />
++                <span>Reload app</span>
++              </Button>
++              <p className="text-xs text-sidebar-muted-foreground">
++                Save any unfinished input before reloading.
++              </p>
++            </>
++          )}
++        </div>
++      </SidebarMenuItem>
++    </SidebarMenu>
++  );
++}
