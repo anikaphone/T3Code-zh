@@ -116,6 +116,8 @@ jobs:
         run: npm ci
 
       - name: Build macOS DMG
+        env:
+          T3ZH_SKIP_REPORT: '1'
         run: |
           source "$HOME/.config/vite-plus/env"
           bash scripts/build-zh.sh "${{ env.T3ZH_VERSION }}"

@@ -24,6 +24,7 @@ fi
 mkdir -p "${dest}"
 export GIT_TERMINAL_PROMPT=0
 git -C "${dest}" init -q
+git -C "${dest}" config core.autocrlf false
 git -C "${dest}" remote add origin "${repo}"
 git -C "${dest}" fetch -q --no-tags --depth=1 origin "refs/tags/${tag}"
 git -C "${dest}" sparse-checkout set --no-cone '/*' '!/.repos/'
