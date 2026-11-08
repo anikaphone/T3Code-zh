@@ -56,9 +56,7 @@ jobs:
       - name: Fetch Upstream Repository
         shell: bash
         run: |
-          bash scripts/windows/fetch-upstream.sh upstream "${{ env.UPSTREAM_TAG }}" "${{ env.UPSTREAM_COMMIT }}"
-          mkdir -p .build
-          cp -r upstream .build/src
+          bash scripts/windows/fetch-upstream.sh .build/src "${{ env.UPSTREAM_TAG }}" "${{ env.UPSTREAM_COMMIT }}"
 
       - name: Install Project Dependencies
         run: npm ci
@@ -112,9 +110,7 @@ jobs:
 
       - name: Fetch Upstream Repository
         run: |
-          bash scripts/windows/fetch-upstream.sh upstream "${{ env.UPSTREAM_TAG }}" "${{ env.UPSTREAM_COMMIT }}"
-          mkdir -p .build
-          cp -r upstream .build/src
+          bash scripts/windows/fetch-upstream.sh .build/src "${{ env.UPSTREAM_TAG }}" "${{ env.UPSTREAM_COMMIT }}"
 
       - name: Install Project Dependencies
         run: npm ci
