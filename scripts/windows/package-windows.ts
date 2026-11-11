@@ -40,8 +40,8 @@ import {
 import { cliArchiveStem } from "./check-cli-archive.ts";
 
 export const ARCH = "x64";
-/** 与仅 Windows 补丁 0001 中的 WINDOWS_PACKAGED_PAYLOAD_FILE_LIMIT（80 + 2）一致。 */
-export const PAYLOAD_FILE_LIMIT = 82;
+/** 与仅 Windows 补丁 0001 中的 WINDOWS_PACKAGED_PAYLOAD_FILE_LIMIT（80 + 30）一致。 */
+export const PAYLOAD_FILE_LIMIT = 110;
 export const EXPECTED_LOCALES = ["en-US.pak", "zh-CN.pak"];
 
 export function installerName(version: string): string {

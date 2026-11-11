@@ -10,27 +10,29 @@
 #   2. NSIS 单语简体中文安装器：installerLanguages ["zh_CN"]；language "2052" 让安装器版本资源也用 zh-CN。
 #      electron-builder 自带的 messages.yml 有 3 条罕见错误提示（decompressionFailed、
 #      uninstallFailed、appClosing）没有 zh_CN，会回退英文，属上游限制（T23 起 electron-builder 26.16.1）。
-#   3. WINDOWS_PACKAGED_PAYLOAD_FILE_LIMIT 80 → 80 + 2：汉化版比上游多两个文件
-#      （共享补丁 0019 的 T3-Code-LICENSE.txt、本补丁的 zh-CN.pak），保留上游原有余量。
+#   3. WINDOWS_PACKAGED_PAYLOAD_FILE_LIMIT 80 → 80 + 30：上游在 Linux 交叉构建 Windows（跳过
+#      prepare-server-compile-cache.cjs），本项目在原生 Windows 上构建会额外生成 server-compile-cache
+#      （22 个字节码文件）、原生编译 conpty（2 个）并多出 T3-Code-LICENSE.txt 与 locales/zh-CN.pak（2 个）。
 #
 # 上游改了这几处时：按 v0.1.8 原文重做，git apply --check 通过后再跑 scripts/windows/windows-ci.test.ts。
 #
 diff --git a/scripts/build-desktop-artifact.ts b/scripts/build-desktop-artifact.ts
-index 3dea658bb3..7d240235b5 100644
+index 2fff4919c..7d9d27ef5 100644
 --- a/scripts/build-desktop-artifact.ts
 +++ b/scripts/build-desktop-artifact.ts
-@@ -1051,7 +1051,9 @@ export function resolveWindowsServerAsarIgnoreGlobs(arch: typeof BuildArch.Type)
+@@ -1061,7 +1061,10 @@ export function resolveWindowsServerAsarIgnoreGlobs(arch: typeof BuildArch.Type)
    ];
  }
  
 -export const WINDOWS_PACKAGED_PAYLOAD_FILE_LIMIT = 80;
-+// t3code-zh（仅 Windows 构建）：汉化版在 Windows 包里多出两个文件——共享补丁 0019 的
-+// resources/T3-Code-LICENSE.txt 与本补丁保留的 locales/zh-CN.pak。上限同步 +2，保留上游原有余量。
-+export const WINDOWS_PACKAGED_PAYLOAD_FILE_LIMIT = 80 + 2;
++// t3code-zh（仅 Windows 构建）：上游 CI 在 Linux 上交叉打包 Windows（跳过 prepare-server-compile-cache.cjs），
++// 本项目在原生 Windows runner 上构建，多出 server-compile-cache（22 个字节码文件）、原生编译 conpty（2 个）
++// 及 T3-Code-LICENSE.txt、locales/zh-CN.pak（2 个）（v0.1.8 实测 91~93 个文件）。上限同步 +30。
++export const WINDOWS_PACKAGED_PAYLOAD_FILE_LIMIT = 80 + 30;
  export const WINDOWS_SERVER_RESOURCE_SOURCE_DIR = "apps/desktop/prod-resources/windows-server";
  export const WINDOWS_SERVER_EXTRA_RESOURCES = [
    {
-@@ -2779,7 +2781,12 @@ export const createBuildConfig = Effect.fn("createBuildConfig")(function* (
+@@ -2784,7 +2787,12 @@ export const createBuildConfig = Effect.fn("createBuildConfig")(function* (
      appId: DESKTOP_APP_ID,
      productName: resolveDesktopProductName(version),
      artifactName: "T3-Code-${version}-${arch}.${ext}",
@@ -44,7 +46,7 @@ index 3dea658bb3..7d240235b5 100644
      files: [
        ...DESKTOP_FILE_EXCLUSIONS,
        ...(platform === "mac"
-@@ -2943,9 +2950,14 @@ export const createBuildConfig = Effect.fn("createBuildConfig")(function* (
+@@ -2950,9 +2958,14 @@ export const createBuildConfig = Effect.fn("createBuildConfig")(function* (
  
    if (platform === "win") {
      buildConfig.npmRebuild = false;
