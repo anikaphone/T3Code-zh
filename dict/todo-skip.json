@@ -1,11 +1,35 @@
 [
   {
+    "key": "'shared' (default): parent checkout. 'worktree': new prepared checkout from the parent commit, for a separate checkout or PR per child. Uncommitted edits stay out.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "1 click, 2 double, 3 triple. Default 1.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "1 for a click, 2 for a double-click, 3 for a triple-click. Defaults to 1.",
     "reason": "发给 Agent 的浏览器自动化工具/schema 说明，保持英文；不是界面文案。"
   },
   {
+    "key": "1Password",
+    "reason": "密码管理服务/产品名称，保持英文。"
+  },
+  {
+    "key": "A question blocks the child and ends a wait. Answer via `t3_pending_request` on `childThreadId`, or the user does.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "A secret the user entered through request_secret, used instead of secret. It is consumed by this save.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "AGENT_DEVICE_DAEMON_AUTH_TOKEN",
+    "reason": "环境变量名，保持英文原样。"
+  },
+  {
+    "key": "AGENT_DEVICE_DAEMON_BASE_URL",
+    "reason": "环境变量名，保持英文原样。"
   },
   {
     "key": "Absolute paths of files on the environment to give the page. An empty list cancels the open file picker.",
@@ -20,6 +44,10 @@
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "All must match. Max 16. Omitted: keep stored. [] clears.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Allow all edits this session",
     "reason": "服务端代码，不进 web 构建"
   },
@@ -32,8 +60,24 @@
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "Also turn it off. Default false.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Also wait for its delegated and background tasks and their completions to settle. `resultRun` then names the run with its final answer.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Answers the page's open file picker, or sets files on a file input when locator/selector is given.",
     "reason": "发给 Agent 的浏览器自动化工具/schema 说明，保持英文；不是界面文案。"
+  },
+  {
+    "key": "Anthropic",
+    "reason": "AI 服务商/品牌名称，保持英文。"
+  },
+  {
+    "key": "Assembly",
+    "reason": "编程语言名称，保持英文。"
   },
   {
     "key": "Bing",
@@ -48,12 +92,28 @@
     "reason": "搜索引擎产品名，保持英文。"
   },
   {
+    "key": "Button. Default left. Right opens the menu.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Card title, such as 'GitHub webhook secret'.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Case counts.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Check delegated work.",
     "reason": "provider-pi MCP bridge 测试工具目录说明，作为 AI 工具元数据使用，不属于用户界面。"
   },
   {
     "key": "Chooses options in one native <select> element.",
     "reason": "发给 Agent 的浏览器自动化工具/schema 说明，保持英文；不是界面文案。"
+  },
+  {
+    "key": "Clear the input first. Default false.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "Closed {0} pull request{1}",
@@ -72,6 +132,10 @@
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "Context compacted after {0} idle",
+    "reason": "槽位是 claudeResumeCompactionAge 返回的英文时长（{0}h {1}m 或 {0}m）；已在 part1.extra.json 补齐具体时长模板，避免英文单位残留。"
+  },
+  {
     "key": "Context compaction failed",
     "reason": "服务端代码，不进 web 构建"
   },
@@ -84,12 +148,68 @@
     "reason": "第二个占位符是 file/files；已在 v0.1.1.extra.json 补全单复数具体模板，避免英文名词残留。"
   },
   {
+    "key": "Could not link the {0}",
+    "reason": "占位符为 pull/merge/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文名词残留。"
+  },
+  {
+    "key": "Could not prepare the {0} checkout",
+    "reason": "占位符为 pull/merge/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文名词残留。"
+  },
+  {
     "key": "Could not reach the OpenCode server.",
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "Could not unlink the {0}",
+    "reason": "占位符为 pull/merge/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文名词残留。"
+  },
+  {
     "key": "Cursor API key ({0})",
     "reason": "服务端代码，不进 web 构建"
+  },
+  {
+    "key": "Cursor Origin",
+    "reason": "源代码托管服务/产品名称，保持英文。"
+  },
+  {
+    "key": "Default 'async'. 'wait' only if this turn needs the result. A question or approval ends the wait.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Default 'load'. 'none': return at once.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Default 15000.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Default http.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Default true.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Default true: runs post in this thread. False: new thread per run.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Default: checked-out branch.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Default: every day.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Default: stored secret.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Default: your thread's project, or all outside a thread.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "Defaults to async. Use wait only when this turn needs the child's result before you can continue. A blocking question or a pending approval in the child ends the wait early with the task still running.",
@@ -110,6 +230,26 @@
   {
     "key": "Delegated task{0} {1}",
     "reason": "服务端代码，不进 web 构建"
+  },
+  {
+    "key": "Describe this {0}",
+    "reason": "占位符为 pull/merge/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文残留与宽模板误配。"
+  },
+  {
+    "key": "Dev-server port here.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Device id from `device_list`. Default: the booted or last used device.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Device to close. None: close all here.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Device. Default: the last one opened here.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "Discover available providers and models.",
@@ -136,6 +276,10 @@
     "reason": "搜索引擎产品名，保持英文。"
   },
   {
+    "key": "Empty clears it.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Empty value",
     "reason": "服务端代码，不进 web 构建"
   },
@@ -148,12 +292,28 @@
     "reason": "发给 Agent 的工具说明"
   },
   {
+    "key": "Explain this {0}",
+    "reason": "占位符为 PR/MR/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文残留与宽模板误配。"
+  },
+  {
+    "key": "False returns a ref. Default true.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Fetch the remote baseRef belongs to and start the worktree branch from its remote-tracking commit instead of the local ref. Defaults to the server's 'new worktrees start from remote' setting.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "First page URL. {0} Omit to open a blank tab.",
     "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "Forgejo",
     "reason": "Forgejo 产品名，保留英文。"
+  },
+  {
+    "key": "From `request_secret`. Instead of `secret`. Spent by this save.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "GH_TOKEN",
@@ -176,16 +336,32 @@
     "reason": "搜索引擎产品名，保持英文。"
   },
   {
+    "key": "Grok Voice Transcribe",
+    "reason": "云端语音转写服务/产品名称，保持英文。"
+  },
+  {
     "key": "Grok account",
     "reason": "服务端代码，不进 web 构建"
+  },
+  {
+    "key": "HMAC-SHA256 check on the raw body.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "HTML",
     "reason": "保留英文：格式名"
   },
   {
+    "key": "Header with the signature, such as x-hub-signature-256.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Hint inside the input, e.g. 'Paste your GitHub token'.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "Host from `device_list`. Default local.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "How long to wait for the user. Default 10 minutes.",
@@ -200,12 +376,32 @@
     "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
+    "key": "Import {0} {1} and start",
+    "reason": "第二个占位符是 project/projects；已在 part2.extra.json 补全单复数具体模板，避免英文名词残留。"
+  },
+  {
+    "key": "Import {0} {1} and their threads",
+    "reason": "第二个占位符是 project/projects；已在 part2.extra.json 补全单复数具体模板，避免英文名词残留。"
+  },
+  {
+    "key": "In {0}",
+    "reason": "宽泛短模板（易误截静态英文），且 {0} 为未包裹的单复数时长（minute/minutes/hour/hours/day/days）；已由 extra 单复数具体模板覆盖。"
+  },
+  {
     "key": "Inspect the collaborative browser.",
     "reason": "provider-pi MCP bridge 测试工具目录说明，作为 AI 工具元数据使用，不属于用户界面。"
   },
   {
+    "key": "It is shared with {0} working {1}. Stop those to free it.",
+    "reason": "占位符含 other/数字 与单复数 thread/threads；已在 part1.extra.json 拆分为精确词条与单复数具体模板。"
+  },
+  {
     "key": "J",
     "reason": "键盘按键名 J，保留英文。"
+  },
+  {
+    "key": "JSON-text schedule. Prefer the object form.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "JavaScript expression evaluated in the page's main frame, for example document.title or (() => ({href: location.href}))().",
@@ -228,11 +424,71 @@
     "reason": "发给 Agent 的浏览器自动化工具/schema 说明，保持英文；不是界面文案。"
   },
   {
+    "key": "Linked environment to act in. Omit for this one. Ids are then that environment's.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Linked environment to run in. Provider and model default to yours; others come from `orchestrator_capabilities` with this `environmentId`.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Linked {0}{1}",
+    "reason": "第二个占位符为可选后缀 \"\" / \" · {access}\"，直接入库会遮蔽现有模板 Linked {0}；已由现有 Linked {0} 与 extra 的 Linked {0} · {1} 覆盖。"
+  },
+  {
+    "key": "Local time as HH:MM, such as 09:30.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "MR",
     "reason": "GitLab 合并请求缩写 MR，保留英文。"
   },
   {
+    "key": "Mark this {0} as ready for review",
+    "reason": "占位符是未包裹的 pull/merge/change request；主词库已有 pull request 词条，已在 part1.extra.json 补齐其余精确词条。"
+  },
+  {
+    "key": "Match model ids and labels. Replaces the short list.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Max chars per item, 1 to 50000.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Max items, 1 to 100.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Max recent runs, 1 to 50.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Merge stack through #{0} into {1} ({2} {3})",
+    "reason": "第四个占位符为 pull/merge/change request 单复数；已在 part2.extra.json 补全单复数具体模板，避免英文名词残留。"
+  },
+  {
+    "key": "Merge this {0} ({1})",
+    "reason": "占位符是未包裹的 pull/merge/change request 与合并方式（merge/squash/rebase）；已在 part1.extra.json 补齐全部精确组合词条。"
+  },
+  {
+    "key": "Merge {0} {1}?",
+    "reason": "第二个占位符为 pull/merge/change request 单复数；已在主词库及 part2.extra.json 补全具体模板，避免英文名词残留。"
+  },
+  {
+    "key": "Min 60000.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Mode 'wait' only. Default 10 min. A timeout does not cancel the child.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Model options from orchestrator_capabilities. For the same provider instance and model, overrides individual inherited values; [] or {} clears them. Claude: {effort: 'max', fastMode: true}; Codex: {reasoningEffort: 'max', serviceTier: 'priority'}. Only use options advertised by the selected model.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Model the provider reported running, or null when unavailable. Can differ from the requested `model`.",
     "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
@@ -252,6 +508,14 @@
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "Needed with no `deviceId` when both platforms exist.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Next {0}",
+    "reason": "槽位是未包裹的导航类型（sheet / chapter / slide / page）或星期名（Tuesday..Sunday）；已由已有词条与 part1.extra.json 具体词条覆盖。"
+  },
+  {
     "key": "Non-empty, without commas or surrounding whitespace.",
     "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
@@ -260,8 +524,36 @@
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "Old alias for `open`.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Oldest pending approval, or null. Ends a wait. Grants no approval rights.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Omit for URL token only.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Omit unless the user asks for a supervised child. Narrow modes pause for human approval, not read-only. Above yours is rejected.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "One or two sentences on what it is for and where the user gets or also enters it.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "One sentence for the card.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "One-use. Pass to a tool that accepts a secretRef. You never see the value.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Only an address the user gave: https, Tailscale, LAN or loopback. Never guess one.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "Only list this project's tasks. Omit for the calling thread's project, or for every project when the caller is not a T3 thread.",
@@ -288,6 +580,10 @@
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "Opens a thread that knows which {0} you mean.",
+    "reason": "占位符为 pull/merge/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文名词残留。"
+  },
+  {
     "key": "Option values or visible labels to select. Pass several for a multiple select, or an empty list to clear it.",
     "reason": "发给 Agent 的浏览器自动化工具/schema 说明，保持英文；不是界面文案。"
   },
@@ -300,16 +596,92 @@
     "reason": "发给 Agent 的浏览器自动化工具/schema 说明，保持英文；不是界面文案。"
   },
   {
+    "key": "Options from `orchestrator_capabilities`, such as {effort:'max'}. Given values override inherited. [] or {} clears.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明（且含非法花括号字面量），不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Owner-only file with the value. Read it inside commands and never print it. Deleted after 24 hours.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "PDF",
+    "reason": "文件格式名称 PDF 保持英文。"
+  },
+  {
+    "key": "Pass it as environmentId to act there; t3_environment_links lists it.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Pass it to a tool that accepts a secretRef; it works once, and you never see the value.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "Pasted in this thread; no card.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Path, query, and fragment, such as /settings?tab=account.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Path: `headers.x-event` or `body.action`. String compare. Objects pass only 'exists'. A `[]` segment matches any array item. `notEquals` passes only if no item equals.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Prefer `providerInstanceId`.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Preparing the {0} checkout...",
+    "reason": "占位符为 pull/merge/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文名词残留。"
+  },
+  {
+    "key": "Present when an administrator's policy stops this task from running.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Previous {0}",
+    "reason": "槽位是未包裹的导航类型（sheet / chapter / slide / page）；已由已有词条与 part1.extra.json 具体词条覆盖，避免英文名词残留。"
   },
   {
     "key": "Project to act on. Omit for the calling thread's project; required when the caller is not a T3 thread.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
   },
   {
+    "key": "Project to use. Default: your thread's project. Required outside a thread.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Provider instance id from `orchestrator_capabilities`.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Public URL for the sender. Absent: no T3 Connect tunnel. The user must enable T3 Connect remote access.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Public URL to give the sender. Absent when this environment has no T3 Connect managed tunnel; the user must enable T3 Connect remote access first.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "Re-add {0} if you want that terminal output included.",
+    "reason": "占位符是代词 it / them；已在 part1.extra.json 补全单复数精确词条，避免英文代词残留。"
+  },
+  {
+    "key": "Rebase {0} {1}?",
+    "reason": "第二个占位符为 pull/merge/change request 单复数；已在主词库及 part2.extra.json 补全具体模板，避免英文名词残留。"
+  },
+  {
+    "key": "Refreshing {0}",
+    "reason": "占位符为 pull/merge/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文残留与宽模板误配。"
+  },
+  {
+    "key": "Remove {0} or re-add {1} to include terminal output.",
+    "reason": "占位符是代词 it / them；已在 part1.extra.json 补全单复数精确词条，避免英文代词残留。"
+  },
+  {
+    "key": "Replay and coalesce key templates. Window in seconds, default 120.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "Replay key template (7 days), coalesce key template, and fixed window in seconds (default 120).",
@@ -324,20 +696,52 @@
     "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
+    "key": "Retry key.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Reuse `tabId`, or your current tab. Default true. False makes a new tab.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Reuse it to retry the same call. A new call gets a new key.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Reuse when retrying a call that lost its result, so the user sees one card and its answer is returned again. Use a new id to ask again after timed_out or cancelled.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "Review {0}",
+    "reason": "占位符为 pull/merge/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文残留与宽模板误配。"
+  },
+  {
+    "key": "Review {0}, {1} {2} pending",
+    "reason": "占位符含 pull/merge/change request 与 comment/comments 单复数；已在 part2.extra.json 补全具体模板，避免英文名词残留。"
   },
   {
     "key": "Run on each request to the task's webhook URL. The prompt may use {{body.path}}, {{headers.name}}, {{query.name}}, {{body}} and {{request}} placeholders.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
   },
   {
+    "key": "Run on each webhook request.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Run only when every filter matches the request; other requests are logged as filtered. Up to 16. Omit to keep the stored filters; pass [] to clear them.",
     "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
+    "key": "Run per webhook request. Prompt can use {{body.path}}, {{headers.name}}, {{query.name}}, {{body}}, {{request}}.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明（且含双花括号模板语法），不属于界面文案，保持英文。"
+  },
+  {
     "key": "Run when the task's webhook URL receives a request.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "Runs share one thread but each starts a fresh session without earlier runs' context. Unbound: the first run makes the thread.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "SSH {0}{1}",
@@ -364,6 +768,10 @@
     "reason": "发给 Agent 的浏览器自动化工具/schema 说明，保持英文；不是界面文案。"
   },
   {
+    "key": "Set files on this <input type=file> instead of the open picker.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Settled {0}",
     "reason": "槽位是 formatRelativeTimeLabel 的英文时间（5m ago / just now），通用模板会中英夹杂；已在 .extra.json 按输出形态补具体模板与词条（Settled {0}m/h/d ago、Settled just now）"
   },
@@ -372,12 +780,32 @@
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
   },
   {
+    "key": "Show the preview to the user. Default true. False for background only.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Show {0} hidden test {1}",
+    "reason": "第二个占位符是单复数 file / files；已在 part1.extra.json 补全单复数具体模板，避免英文名词残留。"
+  },
+  {
     "key": "Sign-in failed. Start again.",
     "reason": "服务端代码，不进入 web 构建；在最终 web 产物核对不存在。"
   },
   {
+    "key": "Sign-in or setup page for the value. Shown as a button.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Signature check; omit or null to accept requests by URL token only.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "Simlock",
+    "reason": "Simlock 为设备池产品名，且用作新主机默认名称，保持英文。"
+  },
+  {
+    "key": "Skip requests held offline over this many minutes. Omit to run all.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "Skip requests the relay held longer than this many minutes while the environment was offline. Null runs every request.",
@@ -386,6 +814,22 @@
   {
     "key": "Snoozed, {0}",
     "reason": "槽位是 formatRelativeTimeUntilLabel 的英文时间（5m left / Soon / Expired），通用模板会中英夹杂；已在 .extra.json 按输出形态补具体模板与词条（Snoozed, {0}s/m/h/d left、Snoozed, Soon、Snoozed, Expired）"
+  },
+  {
+    "key": "Snoozed, {0} left",
+    "reason": "槽位是 snoozeWakeLabel 返回的英文时长（5m / 2h / 3d）；主词库已有 Snoozed, {0}m/h/d left 具体模板覆盖。"
+  },
+  {
+    "key": "Sort and filter models: {0}{1}",
+    "reason": "第二个占位符为可选后缀 \"\" / \", downloaded only\"，已由 extra 具体模板覆盖。"
+  },
+  {
+    "key": "Stack of {0} {1}, {2}",
+    "reason": "第二个占位符是未包裹的 pull/merge/change requests；主词库已有 pull requests 模板，已在 part1.extra.json 补齐其余具体模板。"
+  },
+  {
+    "key": "Start a new provider session without the thread's earlier context, like /clear. Never steers.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "Stored model option selections for the child run, or its thread before a run starts. Omitted selections use provider defaults.",
@@ -406,6 +850,10 @@
   {
     "key": "Subscription",
     "reason": "服务端代码，不进 web 构建"
+  },
+  {
+    "key": "Suggested access. The user picks; default approval-required.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "Summarize the conversation and reduce context usage",
@@ -440,6 +888,10 @@
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
   },
   {
+    "key": "Text before the digest, such as 'sha256='. Empty for none.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "The <select> element, for example aria-ref=<ref> or role=combobox[name='Size'].",
     "reason": "发给 Agent 的浏览器自动化工具/schema 说明，保持英文；不是界面文案。"
   },
@@ -456,16 +908,48 @@
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "The access the user chose.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "The card is waiting for the user. Their answer arrives as a message in this thread.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "The linked environment to forget, from t3_environment_links.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "The machine, when known, e.g. from a mentioned machine. Otherwise the user picks it in the card.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "The server is not an OpenCode 2 server.",
     "reason": "服务端代码，不进 web 构建"
+  },
+  {
+    "key": "The user's words for the machine, e.g. \"vps\". Preselects it in the card.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "The values of the options now selected.",
     "reason": "发给 Agent 的浏览器自动化工具/schema 说明，保持英文；不是界面文案。"
   },
   {
+    "key": "These databases still hold space freed by history cleanup.{0}",
+    "reason": "占位符为空或固定英文尾句；已在 part2.extra.json 补全两种完整精确词条，避免空占位符失配与英文残留。"
+  },
+  {
+    "key": "This {0} has no file changes.",
+    "reason": "占位符为 pull/merge/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文名词残留。"
+  },
+  {
     "key": "Thread to update. Omit to update the calling thread.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "Threads and files are kept.",
+    "reason": "项目更新负载 Schema 注解说明（ProjectUpdatePayload），不属于界面文案，保持英文。"
   },
   {
     "key": "Todo list",
@@ -474,6 +958,22 @@
   {
     "key": "Trigger object: {type:'interval', everyMs}, {type:'fixed_time', timeOfDay, weekdays?}, or {type:'webhook'} to run on each request to a generated URL. Never stringify it unless the provider requires the compatibility form.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "Trigger: {type:'interval',everyMs}, {type:'fixed_time',timeOfDay,weekdays?}, {type:'once',runAt}, or {type:'webhook'}.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明（且含非法花括号字面量），不属于界面文案，保持英文。"
+  },
+  {
+    "key": "True only on the timed-out wait call. The child keeps running.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "True: fetch, start from the remote ref; check `startedFromOrigin`. Default: server setting.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "URL",
+    "reason": "术语表规定 URL 保持英文。"
   },
   {
     "key": "Ultracode",
@@ -492,6 +992,10 @@
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "Update {0} {1}?",
+    "reason": "第二个占位符为 machine/machines 单复数词形，已由 extra 单复数具体模板覆盖。"
+  },
+  {
     "key": "Use locator='aria-ref=<ref>' with a ref from the latest server snapshot (including iframe elements), or a unique Playwright role/text selector. Refs expire on navigation, a new snapshot, or control handoff; refresh the snapshot after a stale-ref error.",
     "reason": "发给 Agent 的浏览器自动化工具/schema 说明，保持英文；不是界面文案。"
   },
@@ -504,6 +1008,22 @@
     "reason": "保留英文：术语本身"
   },
   {
+    "key": "Website URL. {0}",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Website URL. {0} For public pages.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Weekday. 0 is Sunday, 6 is Saturday.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "What it is for and where to get it. A link goes in `url`.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "What should we build",
     "reason": "DraftHeroProjectHeading 已由 0007 补丁改为整句 What should we build in {project}? / What should we build?，不保留拆分词条。"
   },
@@ -512,8 +1032,16 @@
     "reason": "DraftHeroProjectHeading 已由 0007 补丁改为整句 What should we build in {project}? / What should we build?，不保留拆分词条。"
   },
   {
+    "key": "What to do next.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "What you need, shown as the card's title, e.g. 'GitHub webhook secret'.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "When true, T3 stops this action's terminal and child processes when its thread settles.",
+    "reason": "t3.json 配置文件的 Schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "When true, the script runs in the thread's worktree each time the thread settles, for example to delete build output. Threads without their own worktree skip it.",
@@ -524,12 +1052,36 @@
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
   },
   {
+    "key": "Why the other environment refused the link, as the user saw it.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Windows (PowerShell)",
+    "reason": "操作系统与终端名称 Windows (PowerShell) 保持英文。"
+  },
+  {
+    "key": "With `environmentId`: its project to run in. Default: the one with this project's repository.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "Work to resume in the worktree next turn. Omitted: thread waits.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "Writable trigger. Pass an object with type 'interval', 'fixed_time' or 'webhook'.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
   },
   {
     "key": "Write-only headers JSON, e.g. {\"Authorization\":\"Bearer …\"}",
     "reason": "T05 已知限制：含花括号的输入示例，保持英文"
+  },
+  {
+    "key": "Your unsaved edit{0} was discarded.",
+    "reason": "占位符为空串或未包裹的 in “{title}”；已在 part1.extra.json 拆分为精确词条与具体模板，避免漏译和英文残留。"
+  },
+  {
+    "key": "Your unsaved edit{0} was kept in the composer.",
+    "reason": "占位符为空串或未包裹的 in “{title}”；已在 part1.extra.json 拆分为精确词条与具体模板，避免漏译和英文残留。"
   },
   {
     "key": "[ACP audio ({0})]",
@@ -552,12 +1104,36 @@
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "`startFromOrigin` default for `t3_worktree_handoff`.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "a single line of text",
+    "reason": "服务端请求参数 Schema 校验描述（GuestRedeemRequest），不属于界面文案，保持英文。"
+  },
+  {
     "key": "base64",
     "reason": "保留英文：编码格式名"
   },
   {
+    "key": "change model",
+    "reason": "AtomCommand 内部控制台日志标签，不展示给用户。"
+  },
+  {
+    "key": "declined: the user chose not to. cancelled: the card closed unanswered, when the thread was stopped or archived.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "declined: the user chose not to. cancelled: the request ended with the run. timed_out: the user did not answer in time; the card is closed, so ask again with a new clientRequestId if still needed.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "declined: user chose not to; don't ask again. cancelled: ended with the run. timed_out: no answer in time. After cancelled or timed_out, ask again with a new `clientRequestId` only if still needed.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
+    "key": "file holds the value.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
   },
   {
     "key": "gh",
@@ -578,6 +1154,14 @@
   {
     "key": "in",
     "reason": "DraftHeroProjectHeading 已由 0007 补丁改为整句 What should we build in {project}? / What should we build?，不保留拆分词条。"
+  },
+  {
+    "key": "kiro-cli",
+    "reason": "CLI 命令/可执行文件名，保持原样。"
+  },
+  {
+    "key": "macOS, Linux",
+    "reason": "操作系统名称 macOS, Linux 保持英文。"
   },
   {
     "key": "oklch(0.529681 0.01551 326.299)",
@@ -620,6 +1204,10 @@
     "reason": "不是界面文字：主题颜色值"
   },
   {
+    "key": "opened this {0}",
+    "reason": "占位符为 pull/merge/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文残留与宽模板误配。"
+  },
+  {
     "key": "opened, reopened",
     "reason": "Webhook 请求状态的示例协议值 opened, reopened，保持原样。"
   },
@@ -632,8 +1220,36 @@
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "project unarchive",
+    "reason": "AtomCommand 内部控制台日志标签，不展示给用户。"
+  },
+  {
+    "key": "resolve guest message",
+    "reason": "AtomCommand 内部控制台日志标签，不展示给用户。"
+  },
+  {
+    "key": "secretRef (default) for a T3 tool; file for a command.",
+    "reason": "发给 AI 的 MCP 工具/schema 说明，不属于界面文案，保持英文。"
+  },
+  {
     "key": "secretRef holds the value.",
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
+  },
+  {
+    "key": "simlock --gateway token create --role agent",
+    "reason": "命令行示例，保持英文原样。"
+  },
+  {
+    "key": "sorry",
+    "reason": "语音口头更正触发词的默认英文示例（如 sorry），保持原样。"
+  },
+  {
+    "key": "stop guest share",
+    "reason": "AtomCommand 内部控制台日志标签，不展示给用户。"
+  },
+  {
+    "key": "t3",
+    "reason": "CLI 命令名 t3 保持英文。"
   },
   {
     "key": "t3 auth pairing create",
@@ -642,6 +1258,18 @@
   {
     "key": "text-blue-600 dark:text-blue-400",
     "reason": "不是界面文字：Tailwind 类名"
+  },
+  {
+    "key": "text-sidebar-muted-foreground",
+    "reason": "不是界面文字：Tailwind CSS 类名。"
+  },
+  {
+    "key": "vs",
+    "reason": "分支对比简写符号 vs，在窄工具栏中保持原样。"
+  },
+  {
+    "key": "web-queued-run-edits",
+    "reason": "内部状态存储调试标签，不展示给用户。"
   },
   {
     "key": "xAI API key",
@@ -656,12 +1284,44 @@
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "{0} Nightly builds are not available{1}",
+    "reason": "第二个占位符为句号或切换至稳定版的英文提示；已在 part2.extra.json 补全两条具体模板，避免英文尾句残留。"
+  },
+  {
+    "key": "{0} actions loading",
+    "reason": "占位符为 Pull/Merge/Change request；已在主词库及 part2.extra.json 补全精确词条，避免宽模板误配。"
+  },
+  {
+    "key": "{0} composer",
+    "reason": "占位符为 Pull/Merge/Change request；已在主词库及 part2.extra.json 补全精确词条，避免宽模板误配。"
+  },
+  {
     "key": "{0} delegated tasks {1}{2}",
     "reason": "服务端代码，不进 web 构建"
   },
   {
+    "key": "{0} description",
+    "reason": "占位符为 Pull/Merge/Change request；已在主词库及 part2.extra.json 补全精确词条，避免宽模板误配。"
+  },
+  {
+    "key": "{0} guest message{1} waiting",
+    "reason": "第二个占位符是复数后缀 \"\" / \"s\"；已在 part1.extra.json 补全单复数具体模板。"
+  },
+  {
+    "key": "{0} is out of usage{1}",
+    "reason": "第二个占位符为空串或 · resets {时间}；已在 part1.extra.json 拆分为两条具体模板，避免英文 resets 残留。"
+  },
+  {
     "key": "{0} more {1}",
     "reason": "第二个占位符是 reply/replies；已在 v0.1.1.extra.json 补全单复数具体模板，避免将英文名词插入译文。"
+  },
+  {
+    "key": "{0} needs {1}",
+    "reason": "宽泛短模板，占位符为 Side chat/Subagent 与 input/approval/you 英文枚举；Subagent 分支已存在，Side chat 分支已由 extra 精确词条覆盖。"
+  },
+  {
+    "key": "{0} provider {1}",
+    "reason": "第二个占位符为 update/updates 单复数词形，已由 extra 单复数具体模板覆盖。"
   },
   {
     "key": "{0} subagent {1}",
@@ -672,11 +1332,35 @@
     "reason": "{1} 为 input/approval/you 固定需求值；extra 按具体取值提供完整模板，避免英文需求混入中文。"
   },
   {
+    "key": "{0} title",
+    "reason": "占位符为 Pull/Merge/Change request；已在主词库及 part2.extra.json 补全精确词条，避免宽模板误配。"
+  },
+  {
+    "key": "{0} {1} available. Pick one in a text generation model picker.",
+    "reason": "第二个占位符为 model/models 单复数词形，已由 extra 单复数具体模板覆盖。"
+  },
+  {
+    "key": "{0} {1} chained by base branch.",
+    "reason": "第二个占位符为 pull/merge/change requests；已在主词库及 part2.extra.json 补全具体模板，避免英文名词残留。"
+  },
+  {
+    "key": "{0} {1} on {2} may be incomplete.",
+    "reason": "前两个占位符是平台名组合与单复数 list/lists；已在 part1.extra.json 按 iOS / Android 补全具体模板，避免英文残留。"
+  },
+  {
     "key": "{0} {1} phase, {2}",
     "reason": "首槽为 Collapse/Expand、末槽为参与状态比较的固定英文；由显示补丁使用 extra 中展开/收起专用模板及状态显示名单处理，避免翻译比较值。"
   },
   {
+    "key": "{0} {1}s need {2}",
+    "reason": "带复数词尾 s 的枚举拼接模板（{1} 为 side chat/subagent/thread，{2} 为 input/approval/you）；subagents 分支已存在，其余分支已由 extra 具体模板覆盖。"
+  },
+  {
     "key": "{0}{1}, tool call failed",
     "reason": "由 0009 的 displayFailedTool 用单槽位骨架覆盖，动态前缀不交给 t()"
+  },
+  {
+    "key": "⇥ Tab",
+    "reason": "键盘按键标识 ⇥ Tab 保持原样。"
   }
 ]

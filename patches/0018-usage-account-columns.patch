@@ -1,4 +1,4 @@
-# 基线 v0.1.7 / 322f6544dfad0a3c8a0c8cbecf2c7f7874b14268；按编号顺序普通 apply。
+# 基线 v0.1.8 / bf469bb19669671d0df2efda74ed73867a7137c0；按编号顺序普通 apply。
 diff --git a/apps/web/src/components/usage/UsageLimitsPooled.tsx b/apps/web/src/components/usage/UsageLimitsPooled.tsx
 index f54fcdcd23..57268017c7 100644
 --- a/apps/web/src/components/usage/UsageLimitsPooled.tsx

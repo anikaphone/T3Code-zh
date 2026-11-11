@@ -7,16 +7,16 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Release version (e.g. 0.1.7-zh.1)'
+        description: 'Release version (e.g. 0.1.8-zh.1)'
         required: true
-        default: '0.1.7-zh.1'
+        default: '0.1.8-zh.1'
 
 permissions:
   contents: write
 
 env:
-  UPSTREAM_TAG: 'v0.1.7'
-  UPSTREAM_COMMIT: '322f6544dfad0a3c8a0c8cbecf2c7f7874b14268'
+  UPSTREAM_TAG: 'v0.1.8'
+  UPSTREAM_COMMIT: 'bf469bb19669671d0df2efda74ed73867a7137c0'
 
 jobs:
   # -------------------------------------------------------------
@@ -49,7 +49,7 @@ jobs:
           if (-not $ver) {
             $ver = "${{ github.ref_name }}".TrimStart('v')
           }
-          if (-not $ver) { $ver = "0.1.7-zh.1" }
+          if (-not $ver) { $ver = "0.1.8-zh.1" }
           Write-Host "Building version: $ver"
           "T3ZH_VERSION=$ver" | Out-File -FilePath $env:GITHUB_ENV -Append
 
@@ -104,7 +104,7 @@ jobs:
           if [ -z "$VER" ]; then
             VER="${GITHUB_REF_NAME#v}"
           fi
-          if [ -z "$VER" ]; then VER="0.1.7-zh.1"; fi
+          if [ -z "$VER" ]; then VER="0.1.8-zh.1"; fi
           echo "Building version: $VER"
           echo "T3ZH_VERSION=$VER" >> "$GITHUB_ENV"
 
@@ -157,7 +157,7 @@ jobs:
         run: |
           TAG="${{ github.ref_name }}"
           if [[ ! "$TAG" =~ ^v ]]; then
-            TAG="v${{ github.event.inputs.version || '0.1.7-zh.1' }}"
+            TAG="v${{ github.event.inputs.version || '0.1.8-zh.1' }}"
           fi
           echo "tag_name=$TAG" >> "$GITHUB_OUTPUT"
 

@@ -1,0 +1,992 @@
+[
+  {
+    "key": "Installed at {0} and added to PATH in {1}. Open a new terminal to use it.",
+    "section": "templates",
+    "zh": "已安装于 {0}，并已在 {1} 中加入 PATH。打开新终端即可使用。"
+  },
+  {
+    "key": "Installed at {0}, which is not on your PATH yet.",
+    "section": "templates",
+    "zh": "已安装于 {0}，其目录尚未加入 PATH。"
+  },
+  {
+    "key": "Import {0} project and start",
+    "section": "templates",
+    "zh": "导入 {0} 个项目并开始"
+  },
+  {
+    "key": "Import {0} projects and start",
+    "section": "templates",
+    "zh": "导入 {0} 个项目并开始"
+  },
+  {
+    "key": "Expired terminal context won't be sent",
+    "section": "messages",
+    "zh": "过期的终端上下文不会发送"
+  },
+  {
+    "key": "Expired terminal contexts won't be sent",
+    "section": "messages",
+    "zh": "过期的终端上下文不会发送"
+  },
+  {
+    "key": "Remove them or re-add them to include terminal output.",
+    "section": "messages",
+    "zh": "请移除它们，或重新添加以包含终端输出。"
+  },
+  {
+    "key": "Expired terminal context omitted from message",
+    "section": "messages",
+    "zh": "已从消息中省略过期的终端上下文"
+  },
+  {
+    "key": "Expired terminal contexts omitted from message",
+    "section": "messages",
+    "zh": "已从消息中省略过期的终端上下文"
+  },
+  {
+    "key": "Re-add them if you want that terminal output included.",
+    "section": "messages",
+    "zh": "如需包含这些终端输出，请重新添加。"
+  },
+  {
+    "key": "Show {0} hidden test file",
+    "section": "templates",
+    "zh": "显示 {0} 个已隐藏的测试文件"
+  },
+  {
+    "key": "Show {0} hidden test files",
+    "section": "templates",
+    "zh": "显示 {0} 个已隐藏的测试文件"
+  },
+  {
+    "key": "Stack of {0} merge requests, {1}",
+    "section": "templates",
+    "zh": "包含 {0} 个合并请求的堆栈，{1}"
+  },
+  {
+    "key": "Stack of {0} change requests, {1}",
+    "section": "templates",
+    "zh": "包含 {0} 个变更请求的堆栈，{1}"
+  },
+  {
+    "key": "{0} is out of usage",
+    "section": "templates",
+    "zh": "{0} 用量已耗尽"
+  },
+  {
+    "key": "{0} is out of usage · resets {1}",
+    "section": "templates",
+    "zh": "{0} 用量已耗尽 · 重置时间：{1}"
+  },
+  {
+    "key": "{0} guest message waiting",
+    "section": "templates",
+    "zh": "{0} 条访客消息待处理"
+  },
+  {
+    "key": "{0} guest messages waiting",
+    "section": "templates",
+    "zh": "{0} 条访客消息待处理"
+  },
+  {
+    "key": "Context compacted after {0}h {1}m idle",
+    "section": "templates",
+    "zh": "闲置 {0} 小时 {1} 分钟后已压缩上下文"
+  },
+  {
+    "key": "Context compacted after {0}m idle",
+    "section": "templates",
+    "zh": "闲置 {0} 分钟后已压缩上下文"
+  },
+  {
+    "key": "Mark this merge request as ready for review",
+    "section": "messages",
+    "zh": "将此合并请求标记为可供评审"
+  },
+  {
+    "key": "Mark this change request as ready for review",
+    "section": "messages",
+    "zh": "将此变更请求标记为可供评审"
+  },
+  {
+    "key": "Merge this pull request (merge)",
+    "section": "messages",
+    "zh": "合并此拉取请求（合并）"
+  },
+  {
+    "key": "Merge this pull request (squash)",
+    "section": "messages",
+    "zh": "合并此拉取请求（压缩合并）"
+  },
+  {
+    "key": "Merge this pull request (rebase)",
+    "section": "messages",
+    "zh": "合并此拉取请求（变基）"
+  },
+  {
+    "key": "Merge this merge request (merge)",
+    "section": "messages",
+    "zh": "合并此合并请求（合并）"
+  },
+  {
+    "key": "Merge this merge request (squash)",
+    "section": "messages",
+    "zh": "合并此合并请求（压缩合并）"
+  },
+  {
+    "key": "Merge this merge request (rebase)",
+    "section": "messages",
+    "zh": "合并此合并请求（变基）"
+  },
+  {
+    "key": "Merge this change request (merge)",
+    "section": "messages",
+    "zh": "合并此变更请求（合并）"
+  },
+  {
+    "key": "Merge this change request (squash)",
+    "section": "messages",
+    "zh": "合并此变更请求（压缩合并）"
+  },
+  {
+    "key": "Merge this change request (rebase)",
+    "section": "messages",
+    "zh": "合并此变更请求（变基）"
+  },
+  {
+    "key": "Delegated from a linked environment. Connect to it to open the parent thread.",
+    "section": "messages",
+    "zh": "由关联环境委派。连接该环境即可打开父任务。"
+  },
+  {
+    "key": "Transcribe speech on your transcription environment and use voice input across environments.",
+    "section": "messages",
+    "zh": "在转写环境中转写语音，并在各个环境中使用语音输入。"
+  },
+  {
+    "key": "It is shared with other working threads. Stop those to free it.",
+    "section": "messages",
+    "zh": "该进程正与其他进行中的任务共享。请停止那些任务以释放进程。"
+  },
+  {
+    "key": "It is shared with {0} working thread. Stop those to free it.",
+    "section": "templates",
+    "zh": "该进程正与 {0} 个进行中的任务共享。请停止该任务以释放进程。"
+  },
+  {
+    "key": "It is shared with {0} working threads. Stop those to free it.",
+    "section": "templates",
+    "zh": "该进程正与 {0} 个进行中的任务共享。请停止那些任务以释放进程。"
+  },
+  {
+    "key": "Your unsaved edit in “{0}” was kept in the composer.",
+    "section": "templates",
+    "zh": "“{0}”中未保存的编辑已保留在输入框中。"
+  },
+  {
+    "key": "Your unsaved edit in “{0}” was discarded.",
+    "section": "templates",
+    "zh": "“{0}”中未保存的编辑已丢弃。"
+  },
+  {
+    "key": "iOS list on {0} may be incomplete.",
+    "section": "templates",
+    "zh": "{0} 上的 iOS 设备列表可能不完整。"
+  },
+  {
+    "key": "Android list on {0} may be incomplete.",
+    "section": "templates",
+    "zh": "{0} 上的 Android 设备列表可能不完整。"
+  },
+  {
+    "key": "iOS and Android lists on {0} may be incomplete.",
+    "section": "templates",
+    "zh": "{0} 上的 iOS 和 Android 设备列表可能不完整。"
+  },
+  {
+    "key": "Android and iOS lists on {0} may be incomplete.",
+    "section": "templates",
+    "zh": "{0} 上的 Android 和 iOS 设备列表可能不完整。"
+  },
+  {
+    "key": "Previous sheet",
+    "section": "messages",
+    "zh": "上一张工作表"
+  },
+  {
+    "key": "Next sheet",
+    "section": "messages",
+    "zh": "下一张工作表"
+  },
+  {
+    "key": "Previous chapter",
+    "section": "messages",
+    "zh": "上一章"
+  },
+  {
+    "key": "Next chapter",
+    "section": "messages",
+    "zh": "下一章"
+  },
+  {
+    "key": "Next Monday",
+    "section": "messages",
+    "zh": "下周一"
+  },
+  {
+    "key": "Next Tuesday",
+    "section": "messages",
+    "zh": "下周二"
+  },
+  {
+    "key": "Next Wednesday",
+    "section": "messages",
+    "zh": "下周三"
+  },
+  {
+    "key": "Next Thursday",
+    "section": "messages",
+    "zh": "下周四"
+  },
+  {
+    "key": "Next Friday",
+    "section": "messages",
+    "zh": "下周五"
+  },
+  {
+    "key": "Next Saturday",
+    "section": "messages",
+    "zh": "下周六"
+  },
+  {
+    "key": "Next Sunday",
+    "section": "messages",
+    "zh": "下周日"
+  },
+  {
+    "key": "Import {0} project and their threads",
+    "section": "templates",
+    "zh": "导入 {0} 个项目及其任务"
+  },
+  {
+    "key": "Import {0} projects and their threads",
+    "section": "templates",
+    "zh": "导入 {0} 个项目及其任务"
+  },
+  {
+    "key": "Refreshing merge request",
+    "section": "messages",
+    "zh": "正在刷新合并请求"
+  },
+  {
+    "key": "Refreshing change request",
+    "section": "messages",
+    "zh": "正在刷新变更请求"
+  },
+  {
+    "key": "More merge request actions",
+    "section": "messages",
+    "zh": "更多合并请求操作"
+  },
+  {
+    "key": "More change request actions",
+    "section": "messages",
+    "zh": "更多变更请求操作"
+  },
+  {
+    "key": "Adds the merge request to this thread's composer.",
+    "section": "messages",
+    "zh": "将合并请求添加到当前任务的输入框。"
+  },
+  {
+    "key": "Adds the change request to this thread's composer.",
+    "section": "messages",
+    "zh": "将变更请求添加到当前任务的输入框。"
+  },
+  {
+    "key": "Opens a thread that knows which merge request you mean.",
+    "section": "messages",
+    "zh": "打开一个已关联此合并请求的任务。"
+  },
+  {
+    "key": "Opens a thread that knows which change request you mean.",
+    "section": "messages",
+    "zh": "打开一个已关联此变更请求的任务。"
+  },
+  {
+    "key": "Explain this MR",
+    "section": "messages",
+    "zh": "解释此 MR"
+  },
+  {
+    "key": "Explain this change request",
+    "section": "messages",
+    "zh": "解释此变更请求"
+  },
+  {
+    "key": "Loading merge request diff...",
+    "section": "messages",
+    "zh": "正在加载合并请求差异..."
+  },
+  {
+    "key": "Loading change request diff...",
+    "section": "messages",
+    "zh": "正在加载变更请求差异..."
+  },
+  {
+    "key": "This merge request has no file changes.",
+    "section": "messages",
+    "zh": "此合并请求没有文件更改。"
+  },
+  {
+    "key": "This change request has no file changes.",
+    "section": "messages",
+    "zh": "此变更请求没有文件更改。"
+  },
+  {
+    "key": "Merge request #{0} files",
+    "section": "templates",
+    "zh": "合并请求 #{0} 的文件"
+  },
+  {
+    "key": "Change request #{0} files",
+    "section": "templates",
+    "zh": "变更请求 #{0} 的文件"
+  },
+  {
+    "key": "Comment on this merge request",
+    "section": "messages",
+    "zh": "评论此合并请求"
+  },
+  {
+    "key": "Comment on this change request",
+    "section": "messages",
+    "zh": "评论此变更请求"
+  },
+  {
+    "key": "Review pull request, {0} comment pending",
+    "section": "templates",
+    "zh": "评审拉取请求，{0} 条评论待提交"
+  },
+  {
+    "key": "Review pull request, {0} comments pending",
+    "section": "templates",
+    "zh": "评审拉取请求，{0} 条评论待提交"
+  },
+  {
+    "key": "Review merge request, {0} comment pending",
+    "section": "templates",
+    "zh": "评审合并请求，{0} 条评论待提交"
+  },
+  {
+    "key": "Review merge request, {0} comments pending",
+    "section": "templates",
+    "zh": "评审合并请求，{0} 条评论待提交"
+  },
+  {
+    "key": "Review change request, {0} comment pending",
+    "section": "templates",
+    "zh": "评审变更请求，{0} 条评论待提交"
+  },
+  {
+    "key": "Review change request, {0} comments pending",
+    "section": "templates",
+    "zh": "评审变更请求，{0} 条评论待提交"
+  },
+  {
+    "key": "Review merge request",
+    "section": "messages",
+    "zh": "评审合并请求"
+  },
+  {
+    "key": "Review change request",
+    "section": "messages",
+    "zh": "评审变更请求"
+  },
+  {
+    "key": "Comment on merge request",
+    "section": "messages",
+    "zh": "评论合并请求"
+  },
+  {
+    "key": "Comment on change request",
+    "section": "messages",
+    "zh": "评论变更请求"
+  },
+  {
+    "key": "Merge request composer",
+    "section": "messages",
+    "zh": "合并请求输入框"
+  },
+  {
+    "key": "Change request composer",
+    "section": "messages",
+    "zh": "变更请求输入框"
+  },
+  {
+    "key": "Open merge request #{0} on host",
+    "section": "templates",
+    "zh": "在托管服务中打开合并请求 #{0}"
+  },
+  {
+    "key": "Open change request #{0} on host",
+    "section": "templates",
+    "zh": "在托管服务中打开变更请求 #{0}"
+  },
+  {
+    "key": "Revert merge request opened",
+    "section": "messages",
+    "zh": "还原合并请求已创建"
+  },
+  {
+    "key": "Revert change request opened",
+    "section": "messages",
+    "zh": "还原变更请求已创建"
+  },
+  {
+    "key": "The pull request is in the composer. Type your question, then send.",
+    "section": "messages",
+    "zh": "拉取请求已加入输入框，请输入问题后发送。"
+  },
+  {
+    "key": "The merge request is in the composer. Type your question, then send.",
+    "section": "messages",
+    "zh": "合并请求已加入输入框，请输入问题后发送。"
+  },
+  {
+    "key": "The change request is in the composer. Type your question, then send.",
+    "section": "messages",
+    "zh": "变更请求已加入输入框，请输入问题后发送。"
+  },
+  {
+    "key": "Preparing the merge request checkout...",
+    "section": "messages",
+    "zh": "正在准备合并请求检出目录..."
+  },
+  {
+    "key": "Preparing the change request checkout...",
+    "section": "messages",
+    "zh": "正在准备变更请求检出目录..."
+  },
+  {
+    "key": "Could not prepare the merge request checkout",
+    "section": "messages",
+    "zh": "无法准备合并请求检出目录"
+  },
+  {
+    "key": "Could not prepare the change request checkout",
+    "section": "messages",
+    "zh": "无法准备变更请求检出目录"
+  },
+  {
+    "key": "This repository is on the merge request's branch, with a thread open on it.",
+    "section": "messages",
+    "zh": "此仓库已切换到合并请求分支，并打开了一个任务。"
+  },
+  {
+    "key": "This repository is on the change request's branch, with a thread open on it.",
+    "section": "messages",
+    "zh": "此仓库已切换到变更请求分支，并打开了一个任务。"
+  },
+  {
+    "key": "The merge request is in its own worktree, with a thread open on it.",
+    "section": "messages",
+    "zh": "合并请求已进入独立工作树，并打开了一个任务。"
+  },
+  {
+    "key": "The change request is in its own worktree, with a thread open on it.",
+    "section": "messages",
+    "zh": "变更请求已进入独立工作树，并打开了一个任务。"
+  },
+  {
+    "key": "Collapse merge request panel",
+    "section": "messages",
+    "zh": "收起合并请求面板"
+  },
+  {
+    "key": "Collapse change request panel",
+    "section": "messages",
+    "zh": "收起变更请求面板"
+  },
+  {
+    "key": "Copy merge request branch",
+    "section": "messages",
+    "zh": "复制合并请求分支"
+  },
+  {
+    "key": "Copy change request branch",
+    "section": "messages",
+    "zh": "复制变更请求分支"
+  },
+  {
+    "key": "Merge request #{0} not found",
+    "section": "templates",
+    "zh": "未找到合并请求 #{0}"
+  },
+  {
+    "key": "Change request #{0} not found",
+    "section": "templates",
+    "zh": "未找到变更请求 #{0}"
+  },
+  {
+    "key": "Merge request actions loading",
+    "section": "messages",
+    "zh": "正在加载合并请求操作"
+  },
+  {
+    "key": "Change request actions loading",
+    "section": "messages",
+    "zh": "正在加载变更请求操作"
+  },
+  {
+    "key": "Loading merge request conversation",
+    "section": "messages",
+    "zh": "正在加载合并请求对话"
+  },
+  {
+    "key": "Loading change request conversation",
+    "section": "messages",
+    "zh": "正在加载变更请求对话"
+  },
+  {
+    "key": "Quick actions for merge request #{0}",
+    "section": "templates",
+    "zh": "合并请求 #{0} 的快捷操作"
+  },
+  {
+    "key": "Quick actions for change request #{0}",
+    "section": "templates",
+    "zh": "变更请求 #{0} 的快捷操作"
+  },
+  {
+    "key": "Open this merge request to merge its stack",
+    "section": "messages",
+    "zh": "打开此合并请求以合并其堆栈"
+  },
+  {
+    "key": "Open this change request to merge its stack",
+    "section": "messages",
+    "zh": "打开此变更请求以合并其堆栈"
+  },
+  {
+    "key": "Merge stack through #{0} into {1} ({2} pull request)",
+    "section": "templates",
+    "zh": "将截至 #{0} 的堆栈合并到 {1}（{2} 个拉取请求）"
+  },
+  {
+    "key": "Merge stack through #{0} into {1} ({2} pull requests)",
+    "section": "templates",
+    "zh": "将截至 #{0} 的堆栈合并到 {1}（{2} 个拉取请求）"
+  },
+  {
+    "key": "Merge stack through #{0} into {1} ({2} merge request)",
+    "section": "templates",
+    "zh": "将截至 #{0} 的堆栈合并到 {1}（{2} 个合并请求）"
+  },
+  {
+    "key": "Merge stack through #{0} into {1} ({2} merge requests)",
+    "section": "templates",
+    "zh": "将截至 #{0} 的堆栈合并到 {1}（{2} 个合并请求）"
+  },
+  {
+    "key": "Merge stack through #{0} into {1} ({2} change request)",
+    "section": "templates",
+    "zh": "将截至 #{0} 的堆栈合并到 {1}（{2} 个变更请求）"
+  },
+  {
+    "key": "Merge stack through #{0} into {1} ({2} change requests)",
+    "section": "templates",
+    "zh": "将截至 #{0} 的堆栈合并到 {1}（{2} 个变更请求）"
+  },
+  {
+    "key": "Merge {0} pull request?",
+    "section": "templates",
+    "zh": "合并 {0} 个拉取请求？"
+  },
+  {
+    "key": "Merge {0} merge request?",
+    "section": "templates",
+    "zh": "合并 {0} 个合并请求？"
+  },
+  {
+    "key": "Merge {0} merge requests?",
+    "section": "templates",
+    "zh": "合并 {0} 个合并请求？"
+  },
+  {
+    "key": "Merge {0} change request?",
+    "section": "templates",
+    "zh": "合并 {0} 个变更请求？"
+  },
+  {
+    "key": "Merge {0} change requests?",
+    "section": "templates",
+    "zh": "合并 {0} 个变更请求？"
+  },
+  {
+    "key": "Rebase {0} pull request?",
+    "section": "templates",
+    "zh": "变基 {0} 个拉取请求？"
+  },
+  {
+    "key": "Rebase {0} merge request?",
+    "section": "templates",
+    "zh": "变基 {0} 个合并请求？"
+  },
+  {
+    "key": "Rebase {0} merge requests?",
+    "section": "templates",
+    "zh": "变基 {0} 个合并请求？"
+  },
+  {
+    "key": "Rebase {0} change request?",
+    "section": "templates",
+    "zh": "变基 {0} 个变更请求？"
+  },
+  {
+    "key": "Rebase {0} change requests?",
+    "section": "templates",
+    "zh": "变基 {0} 个变更请求？"
+  },
+  {
+    "key": "Merge request description",
+    "section": "messages",
+    "zh": "合并请求说明"
+  },
+  {
+    "key": "Change request description",
+    "section": "messages",
+    "zh": "变更请求说明"
+  },
+  {
+    "key": "Describe this merge request",
+    "section": "messages",
+    "zh": "描述此合并请求"
+  },
+  {
+    "key": "Describe this change request",
+    "section": "messages",
+    "zh": "描述此变更请求"
+  },
+  {
+    "key": "Could not unlink the merge request",
+    "section": "messages",
+    "zh": "无法取消关联合并请求"
+  },
+  {
+    "key": "Could not unlink the change request",
+    "section": "messages",
+    "zh": "无法取消关联变更请求"
+  },
+  {
+    "key": "Could not link the merge request",
+    "section": "messages",
+    "zh": "无法关联合并请求"
+  },
+  {
+    "key": "Could not link the change request",
+    "section": "messages",
+    "zh": "无法关联变更请求"
+  },
+  {
+    "key": "Merge request opened",
+    "section": "messages",
+    "zh": "合并请求已创建"
+  },
+  {
+    "key": "Change request opened",
+    "section": "messages",
+    "zh": "变更请求已创建"
+  },
+  {
+    "key": "Merge request merged",
+    "section": "messages",
+    "zh": "合并请求已合并"
+  },
+  {
+    "key": "Change request merged",
+    "section": "messages",
+    "zh": "变更请求已合并"
+  },
+  {
+    "key": "Merge request closed",
+    "section": "messages",
+    "zh": "合并请求已关闭"
+  },
+  {
+    "key": "Change request closed",
+    "section": "messages",
+    "zh": "变更请求已关闭"
+  },
+  {
+    "key": "Merge request title",
+    "section": "messages",
+    "zh": "合并请求标题"
+  },
+  {
+    "key": "Change request title",
+    "section": "messages",
+    "zh": "变更请求标题"
+  },
+  {
+    "key": "MR link copied",
+    "section": "messages",
+    "zh": "MR 链接已复制"
+  },
+  {
+    "key": "change request link copied",
+    "section": "messages",
+    "zh": "变更请求链接已复制"
+  },
+  {
+    "key": "Failed to copy MR link",
+    "section": "messages",
+    "zh": "复制 MR 链接失败"
+  },
+  {
+    "key": "Failed to copy change request link",
+    "section": "messages",
+    "zh": "复制变更请求链接失败"
+  },
+  {
+    "key": "{0} merge requests chained by base branch.",
+    "section": "templates",
+    "zh": "{0} 个合并请求按基础分支串联。"
+  },
+  {
+    "key": "{0} change requests chained by base branch.",
+    "section": "templates",
+    "zh": "{0} 个变更请求按基础分支串联。"
+  },
+  {
+    "key": "This checkout could not be confirmed at the merge request's latest commit, so its code may differ. Local commits or uncommitted work keep a checkout where it is.",
+    "section": "messages",
+    "zh": "无法确认此检出目录是否处于合并请求的最新提交，因此代码可能不同。存在本地提交或未提交的更改时，检出目录会保持当前状态。"
+  },
+  {
+    "key": "This checkout could not be confirmed at the change request's latest commit, so its code may differ. Local commits or uncommitted work keep a checkout where it is.",
+    "section": "messages",
+    "zh": "无法确认此检出目录是否处于变更请求的最新提交，因此代码可能不同。存在本地提交或未提交的更改时，检出目录会保持当前状态。"
+  },
+  {
+    "key": "opened this merge request",
+    "section": "messages",
+    "zh": "创建了此合并请求"
+  },
+  {
+    "key": "opened this change request",
+    "section": "messages",
+    "zh": "创建了此变更请求"
+  },
+  {
+    "key": "The environment couldn't load this merge request's diff. Try again, or view the changes on {0}.",
+    "section": "templates",
+    "zh": "此环境无法加载此合并请求的差异。请重试，或在 {0} 上查看更改。"
+  },
+  {
+    "key": "The environment couldn't load this change request's diff. Try again, or view the changes on {0}.",
+    "section": "templates",
+    "zh": "此环境无法加载此变更请求的差异。请重试，或在 {0} 上查看更改。"
+  },
+  {
+    "key": "These databases still hold space freed by history cleanup.",
+    "section": "messages",
+    "zh": "这些数据库仍占用着历史记录清理所释放的空间。"
+  },
+  {
+    "key": "These databases still hold space freed by history cleanup. Run the command on each machine to reclaim it. It restarts the background service. Quit the desktop app first if it hosts the environment.",
+    "section": "messages",
+    "zh": "这些数据库仍占用着历史记录清理所释放的空间。请在每台设备上运行该命令以回收空间；该命令会重启后台服务，若桌面应用承载着该环境，请先退出桌面应用。"
+  },
+  {
+    "key": "{0} Nightly builds are not available; switch to Stable to keep getting updates.",
+    "section": "templates",
+    "zh": "{0} 夜间版不可用；请切换到稳定版以继续接收更新。"
+  },
+  {
+    "key": "{0} Nightly builds are not available.",
+    "section": "templates",
+    "zh": "{0} 夜间版不可用。"
+  },
+  {
+    "key": "{0} model available. Pick one in a text generation model picker.",
+    "section": "templates",
+    "zh": "有 {0} 个可用模型。请在文本生成模型选择器中选用。"
+  },
+  {
+    "key": "{0} models available. Pick one in a text generation model picker.",
+    "section": "templates",
+    "zh": "有 {0} 个可用模型。请在文本生成模型选择器中选用。"
+  },
+  {
+    "key": "Sort and filter models: {0}",
+    "section": "templates",
+    "zh": "排序与筛选模型：{0}"
+  },
+  {
+    "key": "Sort and filter models: {0}, downloaded only",
+    "section": "templates",
+    "zh": "排序与筛选模型：{0}，仅已下载"
+  },
+  {
+    "key": "Update {0} machine?",
+    "section": "templates",
+    "zh": "更新 {0} 台设备？"
+  },
+  {
+    "key": "Update {0} machines?",
+    "section": "templates",
+    "zh": "更新 {0} 台设备？"
+  },
+  {
+    "key": "{0} provider update",
+    "section": "templates",
+    "zh": "{0} 项服务提供方更新"
+  },
+  {
+    "key": "{0} provider updates",
+    "section": "templates",
+    "zh": "{0} 项服务提供方更新"
+  },
+  {
+    "key": "Tasks {0}/{1}",
+    "section": "templates",
+    "zh": "任务清单 {0}/{1}"
+  },
+  {
+    "key": "Tasks {0}/{1} · {2}",
+    "section": "templates",
+    "zh": "任务清单 {0}/{1} · {2}"
+  },
+  {
+    "key": "Linked {0} · {1}",
+    "section": "templates",
+    "zh": "已关联 {0} · {1}"
+  },
+  {
+    "key": "Create and checkout a branch before pushing or opening an MR.",
+    "section": "messages",
+    "zh": "推送或创建 MR 前，请先创建并检出一个分支。"
+  },
+  {
+    "key": "Create and checkout a branch before pushing or opening a change request.",
+    "section": "messages",
+    "zh": "推送或创建变更请求前，请先创建并检出一个分支。"
+  },
+  {
+    "key": "Add an \"origin\" remote before pushing or creating an MR.",
+    "section": "messages",
+    "zh": "推送或创建 MR 前，请先添加名为“origin”的远程仓库。"
+  },
+  {
+    "key": "Add an \"origin\" remote before pushing or creating a change request.",
+    "section": "messages",
+    "zh": "推送或创建变更请求前，请先添加名为“origin”的远程仓库。"
+  },
+  {
+    "key": "This action will commit, push, and create an MR on \"{0}\". You can continue on this branch or create a feature branch and run the same action there.",
+    "section": "templates",
+    "zh": "此操作会在“{0}”上提交、推送并创建 MR。你可以继续使用此分支，也可以创建功能分支后执行相同操作。"
+  },
+  {
+    "key": "This action will commit, push, and create a change request on \"{0}\". You can continue on this branch or create a feature branch and run the same action there.",
+    "section": "templates",
+    "zh": "此操作会在“{0}”上提交、推送并创建变更请求。你可以继续使用此分支，也可以创建功能分支后执行相同操作。"
+  },
+  {
+    "key": "This action will push local commits and create an MR on \"{0}\". You can continue on this branch or create a feature branch and run the same action there.",
+    "section": "templates",
+    "zh": "此操作会推送“{0}”上的本地提交并创建 MR。你可以继续使用此分支，也可以创建功能分支后执行相同操作。"
+  },
+  {
+    "key": "This action will push local commits and create a change request on \"{0}\". You can continue on this branch or create a feature branch and run the same action there.",
+    "section": "templates",
+    "zh": "此操作会推送“{0}”上的本地提交并创建变更请求。你可以继续使用此分支，也可以创建功能分支后执行相同操作。"
+  },
+  {
+    "key": "In {0} minute",
+    "section": "templates",
+    "zh": "{0} 分钟后"
+  },
+  {
+    "key": "In {0} minutes",
+    "section": "templates",
+    "zh": "{0} 分钟后"
+  },
+  {
+    "key": "In {0} hour",
+    "section": "templates",
+    "zh": "{0} 小时后"
+  },
+  {
+    "key": "In {0} hours",
+    "section": "templates",
+    "zh": "{0} 小时后"
+  },
+  {
+    "key": "In {0} day",
+    "section": "templates",
+    "zh": "{0} 天后"
+  },
+  {
+    "key": "In {0} days",
+    "section": "templates",
+    "zh": "{0} 天后"
+  },
+  {
+    "key": "Side chat needs input",
+    "section": "messages",
+    "zh": "侧边对话需要输入"
+  },
+  {
+    "key": "Side chat needs approval",
+    "section": "messages",
+    "zh": "侧边对话需要批准"
+  },
+  {
+    "key": "Side chat needs you",
+    "section": "messages",
+    "zh": "侧边对话需要你处理"
+  },
+  {
+    "key": "{0} side chats need input",
+    "section": "templates",
+    "zh": "{0} 个侧边对话需要输入"
+  },
+  {
+    "key": "{0} side chats need approval",
+    "section": "templates",
+    "zh": "{0} 个侧边对话需要批准"
+  },
+  {
+    "key": "{0} side chats need you",
+    "section": "templates",
+    "zh": "{0} 个侧边对话需要你处理"
+  },
+  {
+    "key": "{0} threads need input",
+    "section": "templates",
+    "zh": "{0} 个任务需要输入"
+  },
+  {
+    "key": "{0} threads need approval",
+    "section": "templates",
+    "zh": "{0} 个任务需要批准"
+  },
+  {
+    "key": "{0} threads need you",
+    "section": "templates",
+    "zh": "{0} 个任务需要你处理"
+  },
+  {
+    "key": "Your organization policy does not allow the {0} provider.",
+    "section": "templates",
+    "zh": "你所在组织的策略不允许使用 {0} 服务提供方。"
+  },
+  {
+    "key": "{0}'s policy does not allow the {1} provider.",
+    "section": "templates",
+    "zh": "{0} 的策略不允许使用 {1} 服务提供方。"
+  }
+]

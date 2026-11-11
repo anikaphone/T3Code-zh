@@ -1,14 +1,14 @@
 {
-  "baseline": "v0.1.7",
+  "baseline": "v0.1.8",
   "dict": {
-    "path": "dict\\zh-CN.json",
-    "messages": 5680,
-    "templates": 1281
+    "path": "dict/zh-CN.json",
+    "messages": 6595,
+    "templates": 1546
   },
-  "allowSuspicious": 67,
+  "allowSuspicious": 80,
   "prescan": {
-    "files": 2851,
-    "valueUseLiterals": 30631
+    "files": 2948,
+    "valueUseLiterals": 31529
   },
   "pluginOrder": [
     "vite:optimized-deps",
@@ -69,84 +69,86 @@
     "vite:import-analysis"
   ],
   "modules": {
-    "scanned": 1737,
-    "transformed": 621,
-    "transformCalls": 1774,
-    "skippedQueries": {}
+    "scanned": 1801,
+    "transformed": 644,
+    "transformCalls": 1839,
+    "skippedQueries": {
+      "worker&url": 1
+    }
   },
   "totals": {
-    "candidates": 9186,
-    "translate": 7029,
-    "skip": 1417,
-    "suspicious": 740,
-    "edits": 7029,
-    "translateWithDictMessage": 5885
+    "candidates": 9741,
+    "translate": 7919,
+    "skip": 1530,
+    "suspicious": 292,
+    "edits": 7919,
+    "translateWithDictMessage": 6817
   },
   "byCategory": {
     "A": {
-      "skip": 784,
-      "suspicious": 153,
-      "translate": 2378
+      "skip": 874,
+      "suspicious": 4,
+      "translate": 2692
     },
     "B": {
-      "skip": 84,
-      "suspicious": 146,
-      "translate": 1803
+      "skip": 90,
+      "suspicious": 1,
+      "translate": 2096
     },
     "C": {
-      "skip": 548,
-      "suspicious": 422,
-      "translate": 2710
+      "skip": 563,
+      "suspicious": 271,
+      "translate": 2974
     },
     "D": {
-      "skip": 1,
-      "suspicious": 19,
-      "translate": 138
+      "skip": 3,
+      "suspicious": 16,
+      "translate": 157
     }
   },
   "reasons": {
     "translate": {
-      "allow-listed": 130,
-      "as-const-property": 340,
-      "attribute": 1795,
-      "call-arg": 134,
+      "allow-listed": 136,
+      "as-const-property": 390,
+      "attribute": 2087,
+      "call-arg": 153,
       "destructuring-default": 17,
-      "jsx-expression": 999,
-      "jsx-text": 1185,
-      "jsx-text-fragment": 192,
-      "label-function-return": 440,
-      "label-map": 156,
-      "property": 1641
+      "jsx-expression": 1130,
+      "jsx-text": 1345,
+      "jsx-text-fragment": 210,
+      "label-function-return": 458,
+      "label-map": 215,
+      "property": 1778
     },
     "skip": {
-      "brand-name": 3,
+      "brand-name": 2,
       "data-function": 16,
       "error-constructor": 54,
       "identifier-like": 39,
-      "mixed-jsx": 326,
-      "no-letters": 674,
-      "non-display-call": 303,
+      "mixed-jsx": 386,
+      "no-letters": 717,
+      "non-display-call": 314,
       "rpc-input": 2
     },
     "suspicious": {
-      "template-collision": 542,
-      "value-use": 198
+      "template-collision": 73,
+      "value-use": 219
     }
   },
   "byRule": {
     "E1": {
-      "skip": 22,
-      "suspicious": 51,
-      "translate": 352
+      "skip": 21,
+      "suspicious": 24,
+      "translate": 403
     },
     "E2": {
-      "suspicious": 46,
-      "translate": 170
+      "suspicious": 33,
+      "translate": 228
     },
     "E3": {
-      "skip": 105,
-      "suspicious": 50,
-      "translate": 467
+      "skip": 108,
+      "suspicious": 38,
+      "translate": 485
     }
   },
   "suspicious": [
@@ -158,51 +160,11 @@
       "key": "Nightly"
     },
     {
-      "file": "apps/web/src/components/AppRouteModal.tsx",
-      "line": 83,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Close (Esc)",
-      "template": "Close {name}"
-    },
-    {
-      "file": "apps/web/src/components/BranchToolbar.tsx",
-      "line": 273,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Run context: {0}",
-      "template": "Run {0}"
-    },
-    {
-      "file": "apps/web/src/components/BranchToolbar.tsx",
-      "line": 298,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Run context: {0}",
-      "template": "Run {0}"
-    },
-    {
       "file": "apps/web/src/components/ChatView.logic.ts",
-      "line": 455,
+      "line": 450,
       "category": "C",
       "reason": "value-use",
       "key": "New thread"
-    },
-    {
-      "file": "apps/web/src/components/ChatView.logic.ts",
-      "line": 789,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Remove {0} or re-add {1} to include terminal output.",
-      "template": "Remove {theme}"
-    },
-    {
-      "file": "apps/web/src/components/CommandPalette.logic.ts",
-      "line": 597,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Suggestions",
-      "template": "{0}s"
     },
     {
       "file": "apps/web/src/components/CommandPalette.logic.ts",
@@ -212,187 +174,19 @@
       "key": "Settings"
     },
     {
-      "file": "apps/web/src/components/CommandPalette.logic.ts",
-      "line": 660,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "In messages",
-      "template": "{0}s"
-    },
-    {
       "file": "apps/web/src/components/CommandPalette.tsx",
-      "line": 862,
+      "line": 879,
       "category": "C",
       "reason": "value-use",
       "key": "No project"
     },
     {
-      "file": "apps/web/src/components/CommandPalette.tsx",
-      "line": 1058,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Open Settings -> Source control to configure this provider.",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/CommandPalette.tsx",
-      "line": 1202,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Connect an environment",
-      "template": "Connect {0}"
-    },
-    {
-      "file": "apps/web/src/components/CommandPalette.tsx",
-      "line": 1293,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "An agent investigates a T3 Code problem and helps file an issue",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/CommandPalette.tsx",
-      "line": 1371,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Copy thread",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/CommandPalette.tsx",
-      "line": 1978,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Repository name incomplete",
-      "template": "Repository {0}"
-    },
-    {
-      "file": "apps/web/src/components/CustomSnoozeDialog.tsx",
-      "line": 243,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Edit snooze options",
-      "template": "{profile} options"
-    },
-    {
-      "file": "apps/web/src/components/DevReplayHost.tsx",
-      "line": 116,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Replay failed",
-      "template": "{0} failed"
-    },
-    {
-      "file": "apps/web/src/components/DevReplayHost.tsx",
-      "line": 127,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Replay in {0}",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/DevReplayHost.tsx",
-      "line": 133,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Needs a project and the Replay (dev) provider, which dev servers start.",
-      "template": "{first} and {second}"
-    },
-    {
       "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 871,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Commits",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 919,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Open commit {0}",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 946,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Loading commits...",
-      "template": "Loading {0}..."
-    },
-    {
-      "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 948,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "No commits on this branch.",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 951,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Showing latest {0} commits",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 982,
+      "line": 1010,
       "category": "A",
       "reason": "template-collision",
       "key": "vs",
       "template": "v{0}"
-    },
-    {
-      "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 1211,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Hide test files",
-      "template": "{count} files"
-    },
-    {
-      "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 1223,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Show {0} hidden test {1}",
-      "template": "Show {model}"
-    },
-    {
-      "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 1224,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Hide test files",
-      "template": "{count} files"
-    },
-    {
-      "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 1318,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Loading tool call diff...",
-      "template": "Loading {0}..."
-    },
-    {
-      "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 1324,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Loading commit...",
-      "template": "Loading {0}..."
-    },
-    {
-      "file": "apps/web/src/components/EnvironmentContextChip.tsx",
-      "line": 36,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Machine not in this app",
-      "template": "{0} in {1}"
     },
     {
       "file": "apps/web/src/components/GitActionsControl.logic.ts",
@@ -479,78 +273,6 @@
       "key": "Commit"
     },
     {
-      "file": "apps/web/src/components/GitActionsControl.tsx",
-      "line": 197,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Provider status unavailable. Open Settings -> Source control and rescan.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/GitActionsControl.tsx",
-      "line": 208,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} is not authenticated. Open Settings -> Source control for setup guidance.",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/GitActionsControl.tsx",
-      "line": 699,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Open Settings -> Source control to configure this provider.",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/GitHubStarPrompt.tsx",
-      "line": 45,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Thanks for the star!",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/GitHubStarPrompt.tsx",
-      "line": 57,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Open GitHub",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/GitHubStarPrompt.tsx",
-      "line": 61,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Give us a star on GitHub to let us know!",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/GitHubStarPrompt.tsx",
-      "line": 64,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Star on GitHub",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/HostedEmptyState.tsx",
-      "line": 52,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Open Environments",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/PermissionUpdateNotice.ts",
-      "line": 51,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Open Sharing & access",
-      "template": "Open {0}"
-    },
-    {
       "file": "apps/web/src/components/ProjectCloneToastCoordinator.tsx",
       "line": 178,
       "category": "C",
@@ -573,14 +295,6 @@
     },
     {
       "file": "apps/web/src/components/ServerUpdateAction.tsx",
-      "line": 124,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} not updated",
-      "template": "{server} updated"
-    },
-    {
-      "file": "apps/web/src/components/ServerUpdateAction.tsx",
       "line": 271,
       "category": "C",
       "reason": "value-use",
@@ -595,82 +309,66 @@
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1116,
+      "line": 1098,
       "category": "C",
       "reason": "value-use",
       "key": "Pending Approval"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1125,
+      "line": 1107,
       "category": "C",
       "reason": "value-use",
       "key": "Awaiting Input"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1134,
+      "line": 1116,
       "category": "C",
       "reason": "value-use",
       "key": "Guest Request"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1146,
+      "line": 1128,
       "category": "C",
       "reason": "value-use",
       "key": "Working"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1159,
+      "line": 1141,
       "category": "C",
       "reason": "value-use",
       "key": "Connecting"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1171,
+      "line": 1153,
       "category": "C",
       "reason": "value-use",
       "key": "Waiting"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1194,
+      "line": 1176,
       "category": "C",
       "reason": "value-use",
       "key": "Plan Ready"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1203,
+      "line": 1185,
       "category": "C",
       "reason": "value-use",
       "key": "Completed"
     },
     {
       "file": "apps/web/src/components/Sidebar.tsx",
-      "line": 1277,
+      "line": 1263,
       "category": "C",
       "reason": "value-use",
       "key": "New thread"
-    },
-    {
-      "file": "apps/web/src/components/Sidebar.tsx",
-      "line": 2735,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Project created",
-      "template": "{theme} created"
-    },
-    {
-      "file": "apps/web/src/components/Sidebar.tsx",
-      "line": 3640,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "No threads in these projects yet",
-      "template": "No threads in {project} yet"
     },
     {
       "file": "apps/web/src/components/SidebarStageBackdrop.tsx",
@@ -687,499 +385,51 @@
       "key": "Nightly"
     },
     {
-      "file": "apps/web/src/components/ThreadStatusIndicators.tsx",
-      "line": 181,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Stack of {0} {1}, {2}",
-      "template": "{selected} of {total}"
-    },
-    {
-      "file": "apps/web/src/components/auth/ConnectAgentSurface.tsx",
-      "line": 246,
+      "file": "apps/web/src/components/chat/ChatComposer.tsx",
+      "line": 3487,
       "category": "A",
       "reason": "template-collision",
-      "key": "Create one in Settings → Sharing & access, or run",
-      "template": "Create {request}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ChatComposer.tsx",
-      "line": 2528,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Folders can only be referenced on a server running on this computer",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ChatComposer.tsx",
-      "line": 3418,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Send feedback to decline this request",
-      "template": "Send {signal}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ChatComposer.tsx",
-      "line": 3419,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Send a message to decline and redirect the agent",
-      "template": "Send a message to {0}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ChildThreadApprovals.tsx",
-      "line": 33,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Provider process is gone. Interrupt or restart the child thread to respond.",
-      "template": "{0} process {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ComposerModelEffort.tsx",
-      "line": 485,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "No effort levels",
-      "template": "{0}s"
+      "key": "⇥ Tab",
+      "template": "{0}b"
     },
     {
       "file": "apps/web/src/components/chat/ComposerPrimaryActions.tsx",
-      "line": 70,
+      "line": 69,
       "category": "C",
       "reason": "value-use",
       "key": "Next"
     },
     {
-      "file": "apps/web/src/components/chat/ComposerUsageLimits.tsx",
-      "line": 94,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} is out of usage{1}",
-      "template": "{selected} of {total}"
-    },
-    {
-      "file": "apps/web/src/components/chat/GuestShareControls.tsx",
-      "line": 115,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "The guest sees the thread as you do, including command output and the agent's reasoning. Each message they send waits for you.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/chat/GuestShareControls.tsx",
-      "line": 124,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Guest link",
-      "template": "{0} link"
-    },
-    {
-      "file": "apps/web/src/components/chat/GuestShareControls.tsx",
-      "line": 137,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "The link works once and expires in 24 hours.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/chat/GuestShareControls.tsx",
-      "line": 210,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Guest link expired",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/chat/GuestShareControls.tsx",
-      "line": 212,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "{0} is a guest",
-      "template": "{0} is {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/GuestShareControls.tsx",
-      "line": 314,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Send message from {0}",
-      "template": "Send {signal}"
-    },
-    {
-      "file": "apps/web/src/components/chat/GuestShareControls.tsx",
-      "line": 317,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Send",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
-      "line": 121,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Link a machine to this environment",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
-      "line": 122,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Link {0} to this environment",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
-      "line": 333,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Link a machine",
-      "template": "L{0}"
-    },
-    {
-      "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
-      "line": 333,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Link {0}",
-      "template": "L{0}"
-    },
-    {
-      "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
-      "line": 334,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Agents here can then launch, message and wait on threads there. Revoke it in that machine's Connections.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
-      "line": 376,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Address",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
-      "line": 462,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Linking…",
-      "template": "L{0}"
-    },
-    {
-      "file": "apps/web/src/components/chat/LinkRequestCard.tsx",
-      "line": 462,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Use this link",
-      "template": "{0} link"
-    },
-    {
-      "file": "apps/web/src/components/chat/MessagesTimeline.logic.ts",
-      "line": 1214,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Continued for {0}",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/MessagesTimeline.logic.ts",
-      "line": 1214,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Continued",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/chat/MessagesTimeline.tsx",
-      "line": 1100,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Context from",
-      "template": "{minutes}m"
-    },
-    {
-      "file": "apps/web/src/components/chat/MessagesTimeline.tsx",
-      "line": 1624,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Loading work history",
-      "template": "Loading {name}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ModelPickerSidebar.tsx",
-      "line": 18,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0}: Disabled in settings.",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/NativeChildWorkDialog.tsx",
-      "line": 39,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Subagent work",
-      "template": "{0}k"
-    },
-    {
-      "file": "apps/web/src/components/chat/NativeChildWorkDialog.tsx",
-      "line": 43,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Subagent work",
-      "template": "{0}k"
-    },
-    {
-      "file": "apps/web/src/components/chat/NativeChildWorkDialog.tsx",
-      "line": 44,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Read only. These subagents cannot take messages.",
-      "template": "Read {0} {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/NativeChildWorkDialog.tsx",
-      "line": 72,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "The provider has no record of which subagents this call started.",
-      "template": "{selected} of {total}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ProviderStatusBanner.tsx",
-      "line": 168,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Refresh {0} provider status",
-      "template": "{0} provider status"
-    },
-    {
       "file": "apps/web/src/components/chat/QueuedRunsControl.tsx",
-      "line": 254,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Queued message {0} of {1}, not sent",
-      "template": "{selected} of {total}"
-    },
-    {
-      "file": "apps/web/src/components/chat/QueuedRunsControl.tsx",
-      "line": 301,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Editing in the composer",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/QueuedRunsControl.tsx",
-      "line": 380,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Show fewer",
-      "template": "Show {model}"
-    },
-    {
-      "file": "apps/web/src/components/chat/QueuedRunsControl.tsx",
-      "line": 380,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Show all {0} queued",
-      "template": "Show {model}"
-    },
-    {
-      "file": "apps/web/src/components/chat/QueuedRunsControl.tsx",
-      "line": 429,
+      "line": 438,
       "category": "C",
       "reason": "value-use",
       "key": "Agent"
     },
     {
-      "file": "apps/web/src/components/chat/QueuedRunsControl.tsx",
-      "line": 517,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Open automation",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/chat/SideChatPane.tsx",
-      "line": 78,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Brought back",
-      "template": "{0}k"
-    },
-    {
-      "file": "apps/web/src/components/chat/SideChatPane.tsx",
-      "line": 140,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Bring back",
-      "template": "{0}k"
-    },
-    {
-      "file": "apps/web/src/components/chat/SideChatPane.tsx",
-      "line": 145,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Adds this side chat to the main thread's next message.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/chat/SideChatPane.tsx",
-      "line": 157,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Close side chat",
-      "template": "Close {name}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadActivityBanners.tsx",
-      "line": 133,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Agent not responding to Stop",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadActivityBanners.tsx",
-      "line": 135,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "It may be short on memory. Force stop kills its processes.",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadActivityBanners.tsx",
-      "line": 265,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Branch changed from",
-      "template": "{0} changed {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadDetailsItemsMenu.tsx",
-      "line": 21,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Show in thread details",
-      "template": "{label} details"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadDetailsPanel.tsx",
-      "line": 281,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Choose what to show",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadDetailsPrRow.tsx",
-      "line": 338,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Mark this {0} as ready for review",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadDetailsUsage.tsx",
-      "line": 27,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Ahead of pace",
-      "template": "{selected} of {total}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadDetailsUsage.tsx",
-      "line": 119,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Context: {0}% used",
-      "template": "{percent}% used"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadDetailsUsage.tsx",
-      "line": 119,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Context: {0} tokens used",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadErrorBanner.tsx",
-      "line": 22,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Request copied",
-      "template": "{0} copied"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadErrorBanner.tsx",
-      "line": 23,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Send it to your workspace admin.",
-      "template": "Send {signal}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadErrorBanner.tsx",
-      "line": 25,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not copy the request",
-      "template": "Could not copy {target}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadErrorBanner.tsx",
-      "line": 101,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "You've reached your workspace's limit for using your ChatGPT plan in other apps. Copy a request to ask your workspace admin for increased usage limits.",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadErrorBanner.tsx",
-      "line": 102,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Review your usage settings in ChatGPT.",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadErrorBanner.tsx",
-      "line": 113,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Copy request for admin",
-      "template": "{0} for {1}"
-    },
-    {
       "file": "apps/web/src/components/chat/ThreadLineageWorkflowRow.tsx",
-      "line": 43,
+      "line": 44,
       "category": "C",
       "reason": "value-use",
       "key": "running"
     },
     {
       "file": "apps/web/src/components/chat/ThreadLineageWorkflowRow.tsx",
-      "line": 44,
+      "line": 45,
       "category": "C",
       "reason": "value-use",
       "key": "failed"
     },
     {
       "file": "apps/web/src/components/chat/ThreadLineageWorkflowRow.tsx",
-      "line": 48,
+      "line": 49,
       "category": "C",
       "reason": "value-use",
       "key": "stopped"
     },
     {
       "file": "apps/web/src/components/chat/ThreadLineageWorkflowRow.tsx",
-      "line": 50,
+      "line": 51,
       "category": "C",
       "reason": "value-use",
       "key": "done"
@@ -1213,118 +463,6 @@
       "key": "Stopped"
     },
     {
-      "file": "apps/web/src/components/chat/ThreadRelationshipsControl.tsx",
-      "line": 318,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Runs on {0}. Connect to it to open the thread there.",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadRelationshipsControl.tsx",
-      "line": 380,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Delegated from {0}. Connect to it to open the parent thread.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadRelationshipsControl.tsx",
-      "line": 381,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Open parent agent",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadRelationshipsControl.tsx",
-      "line": 592,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not merge back",
-      "template": "{0}k"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadRelationshipsControl.tsx",
-      "line": 614,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not disconnect agent session",
-      "template": "{count} session"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadRelationshipsControl.tsx",
-      "line": 969,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Side chats",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadServersPanel.tsx",
-      "line": 86,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "Unable to open in browser",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadServersPanel.tsx",
-      "line": 104,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "Could not stop server",
-      "template": "{0} server"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadServersPanel.tsx",
-      "line": 109,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Servers",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/chat/ThreadServersPanel.tsx",
-      "line": 174,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Stop server",
-      "template": "{0} server"
-    },
-    {
-      "file": "apps/web/src/components/chat/TimelinePendingApprovalRow.tsx",
-      "line": 79,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Waiting for approval",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/TimelinePendingApprovalRow.tsx",
-      "line": 100,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Provider process is gone. Interrupt or restart the run to respond.",
-      "template": "{0} process {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/TimelineUserMessageRow.tsx",
-      "line": 337,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Open automation",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/chat/TimelineWorkGroupRows.tsx",
-      "line": 327,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Background setup is still running: {0}. Show setup progress.",
-      "template": "{0} {1} is {2}"
-    },
-    {
       "file": "apps/web/src/components/chat/TraitsPicker.tsx",
       "line": 59,
       "category": "C",
@@ -1333,54 +471,31 @@
     },
     {
       "file": "apps/web/src/components/chat/TraitsSpeed.tsx",
-      "line": 14,
+      "line": 13,
       "category": "C",
       "reason": "value-use",
       "key": "Fast"
-    },
-    {
-      "file": "apps/web/src/components/chat/TriageDraftHero.tsx",
-      "line": 34,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "The agent reads T3 Code's logs and source here, and asks before it applies a fix or posts anything.",
-      "template": "{leading}, and {last}"
-    },
-    {
-      "file": "apps/web/src/components/chat/TriageDraftHero.tsx",
-      "line": 54,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Copy command, for a terminal",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/V2LifecycleRow.tsx",
-      "line": 175,
-      "category": "C",
-      "reason": "value-use",
-      "key": "Running"
     },
     {
       "file": "apps/web/src/components/chat/V2LifecycleRow.tsx",
       "line": 176,
       "category": "C",
       "reason": "value-use",
+      "key": "Running"
+    },
+    {
+      "file": "apps/web/src/components/chat/V2LifecycleRow.tsx",
+      "line": 177,
+      "category": "C",
+      "reason": "value-use",
       "key": "Waiting"
     },
     {
       "file": "apps/web/src/components/chat/V2LifecycleRow.tsx",
-      "line": 178,
+      "line": 179,
       "category": "C",
       "reason": "value-use",
       "key": "Completed"
-    },
-    {
-      "file": "apps/web/src/components/chat/V2LifecycleRow.tsx",
-      "line": 180,
-      "category": "C",
-      "reason": "value-use",
-      "key": "Stopped"
     },
     {
       "file": "apps/web/src/components/chat/V2LifecycleRow.tsx",
@@ -1391,50 +506,17 @@
     },
     {
       "file": "apps/web/src/components/chat/V2LifecycleRow.tsx",
-      "line": 339,
+      "line": 182,
       "category": "C",
       "reason": "value-use",
       "key": "Stopped"
     },
     {
-      "file": "apps/web/src/components/chat/citationProcedure.ts",
-      "line": 43,
+      "file": "apps/web/src/components/chat/V2LifecycleRow.tsx",
+      "line": 340,
       "category": "C",
-      "reason": "template-collision",
-      "key": "Load earlier turns, then click the citation to try again. Your saved quote is unchanged.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/chat/citationProcedure.ts",
-      "line": 48,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The cited response is unavailable",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/chat/citationProcedure.ts",
-      "line": 49,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "It may have been removed. The selected text is still saved in your citation.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/chat/citationProcedure.ts",
-      "line": 71,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The citation does not refer to an assistant response",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/chat/citationProcedure.ts",
-      "line": 72,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The selected text is still saved in your citation.",
-      "template": "{0} {1} is {2}"
+      "reason": "value-use",
+      "key": "Stopped"
     },
     {
       "file": "apps/web/src/components/chat/externalLinkContextMenu.ts",
@@ -1444,219 +526,27 @@
       "key": "show-link-context-menu"
     },
     {
-      "file": "apps/web/src/components/chat/threadDetailsItems.ts",
-      "line": 5,
+      "file": "apps/web/src/components/chat/useApplyThreadModelPick.ts",
+      "line": 18,
       "category": "C",
       "reason": "template-collision",
-      "key": "Environment and worktree",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/chat/threadDetailsItems.ts",
-      "line": 8,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Branch and pull request",
-      "template": "{0}{1} pull request"
-    },
-    {
-      "file": "apps/web/src/components/chat/threadDetailsItems.ts",
-      "line": 11,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Servers",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/chat/threadDetailsItems.ts",
-      "line": 14,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Side chats",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/chat/timelineMinimapItems.ts",
-      "line": 89,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "a thread",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/chat/useComposerMenuItems.ts",
-      "line": 252,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Ask a side question in a new side chat",
-      "template": "{0} in {1}"
+      "key": "change model",
+      "template": "{count} model"
     },
     {
       "file": "apps/web/src/components/chat/useComposerSend.ts",
-      "line": 498,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Side chat not started",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/chat/useComposerSend.ts",
-      "line": 518,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Remove the attachments and context, then send it again.",
-      "template": "Remove {theme}"
-    },
-    {
-      "file": "apps/web/src/components/chat/useComposerSend.ts",
-      "line": 1024,
+      "line": 899,
       "category": "D",
       "reason": "value-use",
       "key": "This connection cannot change threads."
     },
     {
-      "file": "apps/web/src/components/chat/useComposerSend.ts",
-      "line": 1081,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "Send approval feedback without attachments or added context.",
-      "template": "Send {signal}"
-    },
-    {
-      "file": "apps/web/src/components/chat/useComposerSend.ts",
-      "line": 1149,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Send again when it's ready.",
-      "template": "Send {signal}"
-    },
-    {
-      "file": "apps/web/src/components/chat/useForceStopThread.ts",
-      "line": 47,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Turn stopped; the agent is still shutting down",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/chat/useForceStopThread.ts",
-      "line": 53,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Turn stopped; the agent process kept running",
-      "template": "{0} process {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/useForceStopThread.ts",
-      "line": 54,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "It is shared with {0} working {1}. Stop those to free it.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/chat/usePendingThreadRequests.ts",
-      "line": 411,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "It will be back in the composer once the question is answered.",
-      "template": "{0} {1} is {2}"
-    },
-    {
       "file": "apps/web/src/components/chat/useQueuedRunEdit.ts",
-      "line": 72,
+      "line": 74,
       "category": "C",
       "reason": "template-collision",
       "key": "web-queued-run-edits",
       "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/chat/useQueuedRunEdit.ts",
-      "line": 280,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Your unsaved edit{0} was kept in the composer.",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/chat/useSystemComposerBanners.tsx",
-      "line": 166,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Hide this server's threads. Switch it on again in Environments.",
-      "template": "Hide {model}"
-    },
-    {
-      "file": "apps/web/src/components/clerk/RemoveT3ConnectEnvironmentDialog.tsx",
-      "line": 76,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "It's no longer on your T3 Connect account.",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
-      "line": 17,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Upgrade on T3 Chat",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
-      "line": 24,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Premier · up to {0} tunnels",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
-      "line": 48,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Link a paid T3 Chat account for more T3 Connect tunnels: up to {0} with Pro, {1} with Premier.",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
-      "line": 59,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Could not load T3 Chat link",
-      "template": "{0} link"
-    },
-    {
-      "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
-      "line": 72,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Not linked",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
-      "line": 91,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "You confirm the link on t3.chat.",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
-      "line": 102,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Unlink",
-      "template": "{0}k"
-    },
-    {
-      "file": "apps/web/src/components/clerk/T3ChatUserProfilePage.tsx",
-      "line": 106,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Link T3 Chat",
-      "template": "L{0}"
     },
     {
       "file": "apps/web/src/components/clerk/T3ConnectAccountPages.tsx",
@@ -1666,155 +556,11 @@
       "key": "T3 Connect"
     },
     {
-      "file": "apps/web/src/components/clerk/T3ConnectUserProfilePage.tsx",
-      "line": 144,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Link T3 Chat",
-      "template": "L{0}"
-    },
-    {
-      "file": "apps/web/src/components/clerk/T3ConnectUserProfilePage.tsx",
-      "line": 153,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Upgrade on T3 Chat",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/clerk/useT3ChatLink.ts",
-      "line": 56,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "Could not start linking",
-      "template": "Could not start {0}"
-    },
-    {
-      "file": "apps/web/src/components/cloud/ConnectOnboardingDialog.tsx",
-      "line": 220,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Mesh your devices together. Publish this environment and connect the rest, all in one place.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/cloud/TunnelUsage.tsx",
-      "line": 51,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "T3 Connect tunnels in use",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/cloud/TunnelUsage.tsx",
-      "line": 90,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Link T3 Chat",
-      "template": "L{0}"
-    },
-    {
-      "file": "apps/web/src/components/cloud/TunnelUsage.tsx",
-      "line": 97,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Upgrade on T3 Chat",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/cloud/TunnelUsage.tsx",
-      "line": 101,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Manage tunnels",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/cloud/TunnelUsage.tsx",
-      "line": 107,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "You're out of tunnels (they cost us money).",
-      "template": "{selected} of {total}"
-    },
-    {
-      "file": "apps/web/src/components/cloud/TunnelUsage.tsx",
-      "line": 110,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Switch to Tailscale or get more tunnels by linking your T3 Chat sub (sorry!)",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/cloud/TunnelUsage.tsx",
-      "line": 112,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Switch to Tailscale or get more tunnels by upgrading your T3 Chat sub (sorry!)",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/cloud/TunnelUsage.tsx",
-      "line": 113,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Switch to Tailscale or deregister an environment you no longer use (sorry!)",
-      "template": "{head} to {base}"
-    },
-    {
       "file": "apps/web/src/components/cloud/cloudEnvironmentConnectionPresentation.ts",
       "line": 18,
       "category": "C",
       "reason": "value-use",
       "key": "Connected"
-    },
-    {
-      "file": "apps/web/src/components/desktop/DesktopWebLinkCoordinator.tsx",
-      "line": 118,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Failed to add backend.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/desktop/DesktopWebLinkCoordinator.tsx",
-      "line": 134,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "Add the backend at {0}?",
-      "template": "{0} at {1}"
-    },
-    {
-      "file": "apps/web/src/components/device/DeviceControlsRail.tsx",
-      "line": 232,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Return device to the pool",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/files/AttachmentFilePreview.tsx",
-      "line": 80,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Show Mermaid source",
-      "template": "Show {model}"
-    },
-    {
-      "file": "apps/web/src/components/files/AttachmentFilePreview.tsx",
-      "line": 80,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Show rendered diagram",
-      "template": "Show {model}"
-    },
-    {
-      "file": "apps/web/src/components/files/AttachmentFilePreview.tsx",
-      "line": 431,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not copy file",
-      "template": "Could not copy {target}"
     },
     {
       "file": "apps/web/src/components/files/AttachmentFilePreview.tsx",
@@ -1824,275 +570,11 @@
       "key": "Wait for the file to finish loading before copying."
     },
     {
-      "file": "apps/web/src/components/files/AttachmentFilePreview.tsx",
-      "line": 441,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not copy file",
-      "template": "Could not copy {target}"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 71,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Preview limited to the first 1 MB.",
-      "template": "Preview {0}"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 104,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "This file took too long to preview. Close it and try again.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 198,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Back to archive",
-      "template": "Back to {path}"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 210,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Archive contents",
-      "template": "Archive {0}"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 243,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Previous rows",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 251,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "0 rows",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 252,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "{0}–{1} of {2}",
-      "template": "{selected} of {total}"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 255,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Next rows",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 270,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Read-only. Up to 50 columns and 1,024 characters per cell. Blob contents are omitted.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 288,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Archive entries",
-      "template": "Archive {0}"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 300,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Modified",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/files/BinaryViewer.tsx",
-      "line": 385,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "This table is empty.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/files/DocumentPages.tsx",
-      "line": 103,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Decrease reading size",
-      "template": "Decrease {name}"
-    },
-    {
-      "file": "apps/web/src/components/files/DocumentPages.tsx",
-      "line": 111,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Increase reading size",
-      "template": "Increase {name}"
-    },
-    {
-      "file": "apps/web/src/components/files/FilePreviewPanel.tsx",
-      "line": 973,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Show Mermaid source",
-      "template": "Show {model}"
-    },
-    {
-      "file": "apps/web/src/components/files/FilePreviewPanel.tsx",
-      "line": 973,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Show rendered diagram",
-      "template": "Show {model}"
-    },
-    {
-      "file": "apps/web/src/components/files/FilePreviewPanel.tsx",
-      "line": 1585,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not read file",
-      "template": "{count} file"
-    },
-    {
-      "file": "apps/web/src/components/files/FilePreviewPanel.tsx",
-      "line": 1622,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Full file",
-      "template": "{count} file"
-    },
-    {
-      "file": "apps/web/src/components/files/FontViewer.tsx",
-      "line": 49,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "The font took too long to load.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/files/FontViewer.tsx",
-      "line": 58,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "The font is damaged or unsupported.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/files/LargeTextViewer.tsx",
-      "line": 131,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "Could not load the text viewer. Close the file and try again.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/files/LargeTextViewer.tsx",
-      "line": 220,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "rows",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/files/LargeTextViewer.tsx",
-      "line": 220,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "lines",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/files/LargeTextViewer.tsx",
-      "line": 221,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "· {0} columns",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/files/LargeTextViewer.tsx",
-      "line": 228,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Loading the rest of the file…",
-      "template": "Loading {name}"
-    },
-    {
-      "file": "apps/web/src/components/files/LargeTextViewer.tsx",
-      "line": 233,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Showing the first 1,024 columns. Source and Save retain every column.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/files/LargeTextViewer.tsx",
-      "line": 255,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "This file is empty.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/files/MermaidViewer.tsx",
-      "line": 18,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "This diagram contains resource URLs, markup, node metadata, or custom configuration. Show Mermaid source to inspect it safely.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/files/NotebookPreview.tsx",
-      "line": 106,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Saved outputs only. Code is never executed.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/files/NotebookPreview.tsx",
-      "line": 171,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "This notebook is empty.",
-      "template": "{0} {1} is {2}"
-    },
-    {
       "file": "apps/web/src/components/files/OfficeViewer.tsx",
       "line": 93,
       "category": "D",
       "reason": "value-use",
       "key": "Preview limited to files under 50 MB."
-    },
-    {
-      "file": "apps/web/src/components/files/OfficeViewer.tsx",
-      "line": 264,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Text and images. Layout and embedded objects may differ from the original.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/files/OfficeViewer.tsx",
-      "line": 286,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "This sheet is empty.",
-      "template": "{0} {1} is {2}"
     },
     {
       "file": "apps/web/src/components/files/OpenXmlOfficeViewer.tsx",
@@ -2102,499 +584,11 @@
       "key": "Preview limited to files under 50 MB."
     },
     {
-      "file": "apps/web/src/components/files/OpenXmlOfficeViewer.tsx",
-      "line": 115,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "· Fit to width",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/files/OpenXmlOfficeViewer.tsx",
-      "line": 121,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Preview limited. Save it or open it in another app to read the full document.",
-      "template": "Preview {0}"
-    },
-    {
-      "file": "apps/web/src/components/files/PdfViewer.tsx",
-      "line": 167,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "This PDF took too long to load. Try again.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/files/PdfViewer.tsx",
-      "line": 204,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "Unable to open PDF.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/files/PdfViewer.tsx",
-      "line": 354,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "{0} / {1} pages",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/files/PdfViewer.tsx",
-      "line": 378,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Fit width",
-      "template": "{0}h"
-    },
-    {
-      "file": "apps/web/src/components/files/PdfViewer.tsx",
-      "line": 388,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Fit width",
-      "template": "{0}h"
-    },
-    {
-      "file": "apps/web/src/components/files/PdfViewer.tsx",
-      "line": 401,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Find in PDF",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/files/PdfViewer.tsx",
-      "line": 402,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Find in PDF",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/files/PreviewImageContent.tsx",
-      "line": 44,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Loading image…",
-      "template": "Loading {name}"
-    },
-    {
-      "file": "apps/web/src/components/files/office/Presentation.tsx",
-      "line": 150,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Speaker notes",
-      "template": "{0} notes"
-    },
-    {
-      "file": "apps/web/src/components/files/office/Spreadsheet.tsx",
-      "line": 111,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Sheets",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/guest/GuestPage.tsx",
-      "line": 191,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Waiting for approval",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/guest/GuestPage.tsx",
-      "line": 253,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "This link has ended or is not valid",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/guest/GuestPage.tsx",
-      "line": 254,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Ask the owner for a new link. Each link works in one browser.",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/guest/GuestPage.tsx",
-      "line": 321,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "This link has ended",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/guest/GuestPage.tsx",
-      "line": 337,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "This link has ended or is not valid",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/guest/GuestPage.tsx",
-      "line": 338,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Ask the owner for a new link. Each link works in one browser.",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/guest/GuestPage.tsx",
-      "line": 374,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Join a shared thread",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/guest/GuestPage.tsx",
-      "line": 395,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "The owner sees your name and approves each message before the agent gets it.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/guest/GuestPage.tsx",
-      "line": 747,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Attached files",
-      "template": "{count} files"
-    },
-    {
-      "file": "apps/web/src/components/guest/GuestPage.tsx",
-      "line": 798,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Files to attach",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/guest/GuestPage.tsx",
-      "line": 820,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Send",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/preview/PreviewView.tsx",
-      "line": 266,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not open this address",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/preview/PreviewView.tsx",
-      "line": 288,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not open this address",
-      "template": "{0}s"
-    },
-    {
       "file": "apps/web/src/components/projectScriptEditor.tsx",
-      "line": 328,
+      "line": 332,
       "category": "D",
       "reason": "value-use",
       "key": "This connection cannot change keyboard shortcuts."
-    },
-    {
-      "file": "apps/web/src/components/promptLinks/HostedPromptLinkLanding.tsx",
-      "line": 50,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Open this thread",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/promptLinks/HostedPromptLinkLanding.tsx",
-      "line": 51,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "It opens in T3 Code if you're connected to the machine it runs on.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
-      "line": 195,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not save maintainer access",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
-      "line": 213,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "More {0} actions",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
-      "line": 231,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "More {0} actions",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
-      "line": 253,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Adds the {0} to this thread's composer.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
-      "line": 295,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Allow edits from maintainers",
-      "template": "{0}m {1}s"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
-      "line": 300,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Allow edits from maintainers",
-      "template": "{0}m {1}s"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
-      "line": 302,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Maintainers can push to this branch. If your fork has workflows, this can also give access to its secrets.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx",
-      "line": 1201,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "The host withheld part of this diff: a binary file, or a change too large to inline.",
-      "template": "{selected} of {total}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx",
-      "line": 1356,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Hide test files",
-      "template": "{count} files"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx",
-      "line": 1367,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Show test files",
-      "template": "{count} files"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx",
-      "line": 1367,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Hide test files",
-      "template": "{count} files"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx",
-      "line": 1422,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Loading {0} diff...",
-      "template": "Loading {0}..."
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx",
-      "line": 1570,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "{0} #{1} files",
-      "template": "{count} files"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestCommentForm.tsx",
-      "line": 95,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Comment on this {0}",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestComposer.tsx",
-      "line": 86,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Comment on {0}",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestComposer.tsx",
-      "line": 126,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Comment on {0}",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailCrumbs.tsx",
-      "line": 81,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Open {0} #{1} on host",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 691,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Revert {0} opened",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 819,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The question is in the composer. Read it over, then send.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 820,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The {0} is in the composer. Type your question, then send.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 857,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The question is in the composer. Read it over, then send.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 858,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The {0} is in the composer. Type your question, then send.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 873,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The task is in the composer. Read it over, then send.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 957,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "This repository is on the {0}'s branch, with a thread open on it.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 958,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The {0} is in its own worktree, with a thread open on it.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 971,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The task is in the composer. Read it over, then send.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 1401,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Collapse {0} panel",
-      "template": "Collapse {0}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 1557,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Copy {0} branch",
-      "template": "{0}h"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 1720,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} #{1} not found",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
-      "line": 1819,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Loading {0} diff...",
-      "template": "Loading {0}..."
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestGhosts.tsx",
-      "line": 156,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Open {0} #{1} on host",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestGhosts.tsx",
-      "line": 184,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Collapse {0} panel",
-      "template": "Collapse {0}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestGhosts.tsx",
-      "line": 254,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Copy {0} branch",
-      "template": "{0}h"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestGhosts.tsx",
-      "line": 420,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Loading {0} conversation",
-      "template": "{count} conversation"
     },
     {
       "file": "apps/web/src/components/pullRequest/PullRequestListFilters.tsx",
@@ -2604,139 +598,11 @@
       "key": "Failing"
     },
     {
-      "file": "apps/web/src/components/pullRequest/PullRequestListFilters.tsx",
-      "line": 326,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Couldn't search authors on the host",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestListFilters.tsx",
-      "line": 399,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "No labels found",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestListFilters.tsx",
-      "line": 399,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Couldn't search labels on the host",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestSpeedActions.tsx",
-      "line": 86,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Quick actions for {0} #{1}",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestSpeedActions.tsx",
-      "line": 114,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Open this {0} to merge its stack",
-      "template": "Open {0}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestTimelineTab.tsx",
-      "line": 516,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} opened",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestTimelineTab.tsx",
-      "line": 521,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} merged",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestTimelineTab.tsx",
-      "line": 525,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} closed",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestsPage.tsx",
-      "line": 1143,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Loading pull requests…",
-      "template": "Loading {name}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestsPage.tsx",
-      "line": 1150,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Loading pull requests…",
-      "template": "Loading {name}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestsPage.tsx",
-      "line": 1404,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} link copied",
-      "template": "{0} copied"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/PullRequestsPage.tsx",
-      "line": 1411,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Failed to copy {0} link",
-      "template": "Failed to copy {0}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/pullRequestCheckoutToast.ts",
-      "line": 7,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "This checkout could not be confirmed at the {0}'s latest commit, so its code may differ. Local commits or uncommitted work keep a checkout where it is.",
-      "template": "{0} at {1}"
-    },
-    {
       "file": "apps/web/src/components/pullRequest/pullRequestDetail.logic.ts",
-      "line": 524,
+      "line": 526,
       "category": "C",
       "reason": "value-use",
       "key": "commented"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/pullRequestDetail.logic.ts",
-      "line": 722,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} merged",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/pullRequestDetail.logic.ts",
-      "line": 742,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} closed",
-      "template": "{0}d"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/pullRequestDiffError.ts",
-      "line": 12,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The environment couldn't load this {0}'s diff. Try again, or view the changes on {1}.",
-      "template": "{failure} on {environment}"
     },
     {
       "file": "apps/web/src/components/pullRequest/pullRequestPresentation.tsx",
@@ -2746,78 +612,6 @@
       "key": "Running"
     },
     {
-      "file": "apps/web/src/components/pullRequest/usePullRequestActions.ts",
-      "line": 324,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The question is in the composer. Read it over, then send.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/usePullRequestActions.ts",
-      "line": 325,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The {0} is in the composer. Type your question, then send.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/usePullRequestActions.ts",
-      "line": 399,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "This repository is on the {0}'s branch, with a thread open on it.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/usePullRequestActions.ts",
-      "line": 400,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The {0} is in its own worktree, with a thread open on it.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/pullRequest/usePullRequestActions.ts",
-      "line": 413,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "The task is in the composer. Read it over, then send.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/settings/AboutVersionTitle.tsx",
-      "line": 19,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not copy version",
-      "template": "Could not copy {target}"
-    },
-    {
-      "file": "apps/web/src/components/settings/AddProviderInstanceDialog.tsx",
-      "line": 516,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "More providers",
-      "template": "{0} providers"
-    },
-    {
-      "file": "apps/web/src/components/settings/AppearanceSettingsPanel.tsx",
-      "line": 42,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Nightly artwork",
-      "template": "{0}k"
-    },
-    {
-      "file": "apps/web/src/components/settings/AppearanceSettingsPanel.tsx",
-      "line": 43,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Dev artwork",
-      "template": "{0}k"
-    },
-    {
       "file": "apps/web/src/components/settings/AppearanceSettingsPanel.tsx",
       "line": 83,
       "category": "C",
@@ -2825,152 +619,32 @@
       "key": "Word"
     },
     {
-      "file": "apps/web/src/components/settings/AppearanceSettingsPanel.tsx",
-      "line": 84,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Bars",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/AppearanceSettingsPanel.tsx",
-      "line": 295,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Show reasoning effort in the composer as its name, such as High, or as bars.",
-      "template": "Show {model}"
-    },
-    {
-      "file": "apps/web/src/components/settings/AppearanceSettingsPanel.tsx",
-      "line": 320,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Bars",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/AuthorizedClientsSettings.tsx",
-      "line": 370,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Pairing link. Scan to open on another device",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/settings/AuthorizedClientsSettings.tsx",
-      "line": 473,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Pairing link. Scan to open on another device",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/settings/DatabaseStorageNotice.tsx",
-      "line": 38,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Old history is cleaned up automatically, but these databases still hold the freed space. Run the command on each machine to return it to disk; it pauses and restarts the background service. Quit the desktop app first if it hosts the environment.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/DatabaseStorageNotice.tsx",
-      "line": 43,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "{0} GiB on {1}",
-      "template": "{failure} on {environment}"
-    },
-    {
       "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 115,
+      "line": 116,
       "category": "C",
       "reason": "value-use",
       "key": "Loading"
     },
     {
       "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 189,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "This connection cannot change settings on {0}.",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 238,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Device host not saved",
-      "template": "{theme} saved"
-    },
-    {
-      "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 357,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Local simulators",
-      "template": "L{0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 360,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Simulators and emulators installed on each environment's own machine.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 361,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Simulators and emulators installed on this environment's machine.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 428,
+      "line": 431,
       "category": "C",
       "reason": "value-use",
       "key": "Retry"
     },
     {
       "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 568,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Device sources",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 608,
+      "line": 611,
       "category": "C",
       "reason": "value-use",
       "key": "iOS"
     },
     {
       "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 609,
+      "line": 612,
       "category": "C",
       "reason": "value-use",
       "key": "Android"
-    },
-    {
-      "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 675,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "available on some",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
-      "line": 734,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Not set up on this machine.",
-      "template": "{failure} on {environment}"
     },
     {
       "file": "apps/web/src/components/settings/DiagnosticsSettings.tsx",
@@ -3002,266 +676,33 @@
     },
     {
       "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
-      "line": 647,
+      "line": 653,
       "category": "C",
       "reason": "value-use",
       "key": "T3 Code"
     },
     {
       "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
-      "line": 696,
+      "line": 702,
       "category": "C",
       "reason": "template-collision",
       "key": "Brave Search",
       "template": "{0}h"
     },
     {
-      "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
-      "line": 784,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Clicking a pull request link opens it in T3 Code. Turn off to open pull request links like any other link, on your git host.",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
-      "line": 953,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Open simulators and emulators in the Device panel. Hub:",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
-      "line": 992,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "New agent sessions can open and drive these devices. agent-device:",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
-      "line": 1606,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Recordings",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/IntervalSecondsField.tsx",
-      "line": 71,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "{0}{1} in seconds",
-      "template": "{name} in seconds"
-    },
-    {
-      "file": "apps/web/src/components/settings/KeybindingsSettings.logic.ts",
-      "line": 378,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Pull Request: Copy Link or Thread",
-      "template": "{0}d"
-    },
-    {
       "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 40,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Group sidebar threads into project folders. Pinned threads stay on top, and Snoozed and Settled stay below the folders.",
-      "template": "{leading}, and {last}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 61,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "In the boring sidebar, show folder threads on two lines: the title, then the branch, pull request, and agent.",
-      "template": "{leading}, and {last}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 68,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Two-line folder rows",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 84,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Share a thread with a guest who watches it live in their browser and sends messages you approve. Sign in to T3 Connect to use guest links.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 115,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Share a thread with a guest who watches it live in their browser and sends messages you approve. Needs T3 Connect: sign in and link this machine in",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 118,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Sharing & access",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 120,
-      "category": "A",
-      "reason": "template-collision",
-      "key": ". While it is off, every guest link stops working.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 128,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Guest links",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 145,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Let agents here work on your other machines, and theirs here. Turn it on for each machine, then link them in",
-      "template": "{leading}, and {last}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 150,
-      "category": "A",
-      "reason": "template-collision",
-      "key": ". While it is off, nothing new starts over a link; tasks already running finish.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 160,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Linked environments",
-      "template": "Linked {0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 177,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Let the Device panel lease simulators and emulators from your own",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 184,
+      "line": 210,
       "category": "A",
       "reason": "template-collision",
       "key": "Simlock",
       "template": "{0}k"
     },
     {
-      "file": "apps/web/src/components/settings/LabsSettingsPanel.tsx",
-      "line": 200,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Simlock device hosts",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
-      "line": 71,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Could not load linked environments",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
-      "line": 73,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Loading linked environments…",
-      "template": "Loading {name}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
-      "line": 76,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "No linked environments",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
-      "line": 77,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Link another machine running T3 Code, such as a VPS, so agents here can launch and drive threads there.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
-      "line": 106,
+      "file": "apps/web/src/components/settings/MicrophoneTest.tsx",
+      "line": 128,
       "category": "D",
-      "reason": "template-collision",
-      "key": "Forget {0}? Agents here stop working there. Revoke \"T3 Code · …\" in {1}'s Connections to end the session there too.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
-      "line": 114,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "Could not forget the link",
-      "template": "{0} link"
-    },
-    {
-      "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
-      "line": 267,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Link an environment",
-      "template": "L{0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
-      "line": 269,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Agents here can then launch, message and wait on threads there. It appears in that environment's Connections, where it can be revoked.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
-      "line": 298,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Address",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
-      "line": 328,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "From that environment's Connections, or t3 pair there",
-      "template": "From {0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx",
-      "line": 352,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Linking…",
-      "template": "L{0}"
+      "reason": "value-use",
+      "key": "The microphone disconnected."
     },
     {
       "file": "apps/web/src/components/settings/MobileAppSettingsRow.tsx",
@@ -3272,22 +713,6 @@
     },
     {
       "file": "apps/web/src/components/settings/ProjectDefaultsSettings.tsx",
-      "line": 144,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Default model for new threads, selected automatically. Projects can override it.",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectDefaultsSettings.tsx",
-      "line": 171,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Automatic (mixed)",
-      "template": "Automatic ({icon})"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectDefaultsSettings.tsx",
       "line": 172,
       "category": "C",
       "reason": "value-use",
@@ -3295,114 +720,10 @@
     },
     {
       "file": "apps/web/src/components/settings/ProjectDefaultsSettings.tsx",
-      "line": 264,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Used for new threads when the default model's provider is out of usage.",
-      "template": "Used {0} {1}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectDefaultsSettings.tsx",
-      "line": 268,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "fallback model",
-      "template": "{count} model"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectDefaultsSettings.tsx",
-      "line": 284,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Fallback model",
-      "template": "{count} model"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectDefaultsSettings.tsx",
-      "line": 286,
+      "line": 285,
       "category": "C",
       "reason": "value-use",
       "key": "Mixed"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectDefaultsSettings.tsx",
-      "line": 296,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Fallback model not saved",
-      "template": "{theme} saved"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectDefaultsSettings.tsx",
-      "line": 457,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Remove recognized agent credit lines from merge and squash messages on hosts that support it, keeping human co-authors. Includes auto-merge. Excludes merge queues, stack merges, and existing commits.",
-      "template": "Remove {theme}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectSettingsPanel.tsx",
-      "line": 112,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Grouping rule for {0} on {1}",
-      "template": "Grouping rule for {checkout}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectSettingsPanel.tsx",
-      "line": 438,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Grouping rule decides how each checkout joins project groups in the sidebar. Changing it can move a checkout to a different project.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectSettingsPanel.tsx",
-      "line": 614,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Pinned projects come first in project pickers.",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectSettingsPanel.tsx",
-      "line": 633,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Hidden from project pickers. Threads and files are kept.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProjectSettingsPanel.tsx",
-      "line": 634,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Hides the project from project pickers. Threads and files are kept.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProviderInstanceCard.tsx",
-      "line": 976,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "{0}, view details",
-      "template": "{label} details"
-    },
-    {
-      "file": "apps/web/src/components/settings/ProviderSettingsPanel.tsx",
-      "line": 1128,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "This interval is configured here, then the shared Background activity policy decides whether provider probes may run when the timer fires. Custom intervals appear as Advanced in Maintenance settings.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/settings/PullRequestRoutingSettings.tsx",
-      "line": 69,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Machines you trust here can read PR data through each other's source control access. Enable both machines. Read and act may use broader permissions than the machine that owns them. This applies only to this device.",
-      "template": "{first} and {second}"
     },
     {
       "file": "apps/web/src/components/settings/ResourceTelemetryDiagnostics.tsx",
@@ -3433,32 +754,8 @@
       "key": "Unavailable"
     },
     {
-      "file": "apps/web/src/components/settings/SavedEnvironmentRows.tsx",
-      "line": 496,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Get more tunnels",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/SavedEnvironmentRows.tsx",
-      "line": 662,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Sign in to make this environment available to your other devices through T3 Connect.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SavedEnvironmentRows.tsx",
-      "line": 705,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Sign in to send activity to mobile notifications and Live Activities.",
-      "template": "{first} and {second}"
-    },
-    {
       "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
-      "line": 254,
+      "line": 283,
       "category": "B",
       "reason": "template-collision",
       "key": "opened, reopened",
@@ -3466,123 +763,11 @@
     },
     {
       "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
-      "line": 597,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "This task was deleted or belongs to a different project. Check your project filter.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
-      "line": 697,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "This task was deleted or belongs to a different project. Check your project filter.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
-      "line": 1115,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Change in Sharing & access",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
-      "line": 1170,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Each run starts a new thread with the workspace and model below.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
-      "line": 1176,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Each run continues this conversation, in its workspace and with its current model.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
-      "line": 1334,
-      "category": "D",
-      "reason": "template-collision",
-      "key": "Once is not available here",
-      "template": "{0} is {1}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
-      "line": 1396,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Run a prompt automatically on an interval, at a fixed time, once at a set date, or when a webhook is called.",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
-      "line": 1674,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "{0} Switch this task to a time or an interval, or turn it off, to save it.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
-      "line": 1686,
+      "line": 1887,
       "category": "A",
       "reason": "template-collision",
       "key": "Each request runs the prompt. Use {{body.path}}, {{headers.name}}, {{query.name}}, {{body}} or {{request}} in the prompt; only what it names reaches the agent.",
       "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
-      "line": 1715,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Duplicate request key",
-      "template": "Duplicate {theme}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SecretProviderDialog.tsx",
-      "line": 70,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Add a 1Password provider",
-      "template": "{0} provider"
-    },
-    {
-      "file": "apps/web/src/components/settings/SecretsSettings.tsx",
-      "line": 58,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Connect an environment to manage the secret providers its provider variables read from.",
-      "template": "Connect {0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SecretsSettings.tsx",
-      "line": 112,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Environment-wide setting. Select an environment to change it.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SecretsSettings.tsx",
-      "line": 118,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Add a 1Password account, then pick it as the source of a provider variable.",
-      "template": "{selected} of {total}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SecretsSettings.tsx",
-      "line": 222,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Remove provider",
-      "template": "{0} provider"
     },
     {
       "file": "apps/web/src/components/settings/SettingInheritance.tsx",
@@ -3593,7 +778,7 @@
     },
     {
       "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 140,
+      "line": 145,
       "category": "C",
       "reason": "template-collision",
       "key": "English",
@@ -3601,193 +786,24 @@
     },
     {
       "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 345,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "1 machine still runs",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 359,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Switches this app and every connected machine whose database the target release supports.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 758,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Legacy",
-      "template": "L{0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 891,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Fold working and monitoring threads into a Working section. They return to the top of the inbox when they need you. The boring sidebar in Labs has no Working section.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1112,
+      "line": 1085,
       "category": "C",
       "reason": "value-use",
       "key": "Enter"
     },
     {
       "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1223,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Follow-ups",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1324,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Diffs",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1451,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Open pull requests and changes panels proactively",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1478,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "When to compact an idle Claude thread over 200,000 tokens: after you return, just before its prompt cache expires, or never. Each Claude provider can override this.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1482,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "compact idle threads",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1497,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Compact idle threads",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1585,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "New projects",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1631,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Automatically resume threads when their usage limits reset. You can cancel auto-resume in each thread.",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1640,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Resume after usage limits",
-      "template": "Resume {0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1647,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Snooze threads until their usage limits reset. Enable auto-resume to continue the agent after the reset.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1800,
+      "line": 1851,
       "category": "C",
       "reason": "value-use",
       "key": "Mixed"
     },
     {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1937,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Updates",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 2046,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "This environment is managed by {0}. Some settings and features follow its policy.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 2076,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Legal",
-      "template": "L{0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SettingsSidebarNav.tsx",
-      "line": 382,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Settings sections",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
-      "line": 129,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Edit Simlock host",
-      "template": "Edit {theme}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
-      "line": 132,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Each selected environment's server leases devices from your Simlock gateway with its own agent token, and releases them when they close.",
-      "template": "{leading}, and {last}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
-      "line": 133,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "The environment's server leases devices from your Simlock gateway and releases them when they close.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
-      "line": 292,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Clear agent token",
-      "template": "Clear {0}"
+      "file": "apps/web/src/components/settings/SnapShotSetupDialog.tsx",
+      "line": 26,
+      "category": "C",
+      "reason": "value-use",
+      "key": "Access"
     },
     {
       "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
@@ -3832,167 +848,15 @@
       "key": "day"
     },
     {
-      "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
-      "line": 189,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Choices in every snooze menu, listed soonest first. Weekdays mean the next one after today.",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
-      "line": 193,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "snooze options",
-      "template": "{profile} options"
-    },
-    {
-      "file": "apps/web/src/components/settings/SnoozePresetsSettings.tsx",
-      "line": 300,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Remove snooze option {0}",
-      "template": "Remove {theme}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlAccountSettings.tsx",
-      "line": 104,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Hide {0} accounts",
-      "template": "{count} accounts"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlAccountSettings.tsx",
-      "line": 104,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Reveal {0} accounts",
-      "template": "{count} accounts"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlAccountSettings.tsx",
-      "line": 131,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Use {0} on {1}",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlAccountSettings.tsx",
-      "line": 149,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "{0} account for {1}",
-      "template": "{0} for {1}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlAppSignInSettings.tsx",
-      "line": 169,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Show account",
-      "template": "Show {model}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlAppSignInSettings.tsx",
-      "line": 170,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Hide account",
-      "template": "Hide {model}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlAppSignInSettings.tsx",
-      "line": 206,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Sign in with GitHub",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlAppSignInSettings.tsx",
-      "line": 248,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Copy code & open GitHub",
-      "template": "{0}b"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlAppSignInSettings.tsx",
-      "line": 262,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Reaches repositories in accounts and organizations that installed the app.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlAppSignInSettings.tsx",
-      "line": 264,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Install on an organization",
-      "template": "Install {0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlAppSignInSettings.tsx",
-      "line": 265,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Manage on GitHub",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlSettings.tsx",
-      "line": 412,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Or use your own credentials",
-      "template": "{0} credentials"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlSettings.tsx",
-      "line": 482,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Source control providers",
-      "template": "{0} providers"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlSettings.tsx",
-      "line": 503,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Source control providers",
-      "template": "{0} providers"
-    },
-    {
       "file": "apps/web/src/components/settings/SourceControlWritingSettings.tsx",
-      "line": 298,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Add a Guide tab to pull requests. An agent explains the changes and points out decisions that need review.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlWritingSettings.tsx",
-      "line": 333,
+      "line": 354,
       "category": "C",
       "reason": "value-use",
       "key": "Mixed"
     },
     {
       "file": "apps/web/src/components/settings/SourceControlWritingSettings.tsx",
-      "line": 501,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Model for source control text and branch or bookmark names. When disabled, use the text generation model configured for this environment.",
-      "template": "Model {0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/SourceControlWritingSettings.tsx",
-      "line": 524,
+      "line": 543,
       "category": "C",
       "reason": "value-use",
       "key": "Mixed"
@@ -4012,14 +876,6 @@
       "key": "Unreachable"
     },
     {
-      "file": "apps/web/src/components/settings/TelemetryExportSettings.tsx",
-      "line": 240,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "from",
-      "template": "{minutes}m"
-    },
-    {
       "file": "apps/web/src/components/settings/ThemeEditorPanel.tsx",
       "line": 162,
       "category": "C",
@@ -4032,118 +888,6 @@
       "category": "C",
       "reason": "value-use",
       "key": "T3 Code"
-    },
-    {
-      "file": "apps/web/src/components/settings/ThreadDetailsItemsRow.tsx",
-      "line": 26,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "thread details",
-      "template": "{label} details"
-    },
-    {
-      "file": "apps/web/src/components/settings/ThreadDetailsItemsRow.tsx",
-      "line": 39,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Thread details: {0} of {1} on",
-      "template": "{selected} of {total}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ThreadTitleInstructionsSettings.tsx",
-      "line": 26,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Appended to the prompt for new and regenerated thread titles.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/ThreadTitleInstructionsSettings.tsx",
-      "line": 30,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "thread title instructions",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/ThreadTitleInstructionsSettings.tsx",
-      "line": 39,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Thread title instructions",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/ThreadTitleInstructionsSettings.tsx",
-      "line": 48,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Keep titles to a few words. Lead with the main subject.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/settings/TypographySettings.tsx",
-      "line": 238,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Wrap long lines in code blocks, diffs, and file previews by default.",
-      "template": "{leading}, and {last}"
-    },
-    {
-      "file": "apps/web/src/components/settings/TypographySettings.tsx",
-      "line": 251,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Wrap code, diffs, and file previews by default",
-      "template": "{leading}, and {last}"
-    },
-    {
-      "file": "apps/web/src/components/settings/TypographySettings.tsx",
-      "line": 279,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Set the prompt, code, and terminal fonts separately instead of one monospace font.",
-      "template": "{leading}, and {last}"
-    },
-    {
-      "file": "apps/web/src/components/settings/TypographySettings.tsx",
-      "line": 284,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Separate fonts",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/UpdateTrackSwitchDialog.tsx",
-      "line": 57,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Could not find the latest {0} release in this environment's npm registry.",
-      "template": "{0} in {1}"
-    },
-    {
-      "file": "apps/web/src/components/settings/UpdateTrackSwitchDialog.tsx",
-      "line": 58,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Checking releases…",
-      "template": "Checking {browser}"
-    },
-    {
-      "file": "apps/web/src/components/settings/UpdateTrackSwitchDialog.tsx",
-      "line": 103,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not switch to {0}",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/settings/WorktreesSettings.tsx",
-      "line": 67,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Branches",
-      "template": "{0}s"
     },
     {
       "file": "apps/web/src/components/settings/customModelEditor.logic.ts",
@@ -4174,236 +918,36 @@
       "key": "Available"
     },
     {
-      "file": "apps/web/src/components/settings/scheduledTasksSettings.logic.ts",
-      "line": 113,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Pick a date and time.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/scheduledTasksSettings.logic.ts",
-      "line": 117,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "That time does not exist in your time zone.",
-      "template": "{0} in {1}"
-    },
-    {
       "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 94,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Diffs & pull requests",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 99,
+      "line": 105,
       "category": "C",
       "reason": "value-use",
       "key": "Browser"
     },
     {
       "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 100,
+      "line": 106,
       "category": "C",
       "reason": "value-use",
       "key": "Devices"
     },
     {
       "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 105,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Sharing & access",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 106,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Secrets",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 108,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Labs",
-      "template": "L{0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 195,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} accounts and token",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 283,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Fallback model",
-      "template": "{count} model"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 396,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Separate fonts",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 432,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Snooze options",
-      "template": "{profile} options"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 446,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Resume after usage limits",
-      "template": "Resume {0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 464,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Two-line folder rows",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 470,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Guest links",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 477,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Linked environments",
-      "template": "Linked {0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 499,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Compact idle threads",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 581,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Open pull requests and changes panels proactively",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 698,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Thread title instructions",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 705,
+      "line": 843,
       "category": "C",
       "reason": "value-use",
       "key": "Version"
     },
     {
       "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 853,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Device sources",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 861,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Agents can use devices",
-      "template": "{0}s"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 868,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Use devices",
-      "template": "Use {theme}"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 875,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Local simulators",
-      "template": "L{0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 1109,
+      "line": 1244,
       "category": "C",
       "reason": "value-use",
       "key": "T3 Connect"
     },
     {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 1146,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Linked environments",
-      "template": "Linked {0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 1167,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Pull request sharing",
-      "template": "Pull request {0}"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 1175,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Secret providers",
-      "template": "{0} providers"
-    },
-    {
-      "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 1182,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Add secret provider",
-      "template": "{0} provider"
-    },
-    {
       "file": "apps/web/src/components/settings/simlockDeviceHostsSettings.logic.ts",
-      "line": 14,
+      "line": 15,
       "category": "C",
       "reason": "template-collision",
       "key": "Simlock",
@@ -4417,45 +961,29 @@
       "key": "placeholder"
     },
     {
-      "file": "apps/web/src/components/sidebar/SidebarProjectFolderHeader.tsx",
-      "line": 23,
-      "category": "C",
-      "reason": "template-collision",
-      "key": ", failed",
-      "template": "{0} failed"
-    },
-    {
-      "file": "apps/web/src/components/sidebar/SidebarProjectFolderHeader.tsx",
-      "line": 24,
-      "category": "C",
-      "reason": "template-collision",
-      "key": ", done",
-      "template": "{0} done"
-    },
-    {
       "file": "apps/web/src/components/sidebar/SidebarThreadRow.tsx",
-      "line": 731,
+      "line": 742,
       "category": "C",
       "reason": "value-use",
       "key": "Working"
     },
     {
       "file": "apps/web/src/components/sidebar/SidebarThreadRow.tsx",
-      "line": 737,
+      "line": 748,
       "category": "C",
       "reason": "value-use",
       "key": "Waiting"
     },
     {
       "file": "apps/web/src/components/sidebar/SidebarThreadRow.tsx",
-      "line": 755,
+      "line": 766,
       "category": "C",
       "reason": "value-use",
       "key": "Request"
     },
     {
       "file": "apps/web/src/components/sidebar/SidebarThreadRow.tsx",
-      "line": 779,
+      "line": 790,
       "category": "C",
       "reason": "value-use",
       "key": "Done"
@@ -4468,14 +996,6 @@
       "key": "restarting"
     },
     {
-      "file": "apps/web/src/components/sidebar/SidebarUpdatePill.tsx",
-      "line": 555,
-      "category": "B",
-      "reason": "template-collision",
-      "key": "Update release notes",
-      "template": "Update {0} {1}"
-    },
-    {
       "file": "apps/web/src/components/sidebar/SidebarUpdateReleaseNotes.tsx",
       "line": 31,
       "category": "C",
@@ -4483,35 +1003,11 @@
       "key": "today"
     },
     {
-      "file": "apps/web/src/components/sidebar/SidebarUpdateReleaseNotes.tsx",
-      "line": 31,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0}d ago",
-      "template": "{time} ago"
-    },
-    {
-      "file": "apps/web/src/components/sidebar/UpdateEverythingDialog.tsx",
-      "line": 92,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Desktop app",
-      "template": "{0} app"
-    },
-    {
       "file": "apps/web/src/components/sidebar/UpdateEverythingDialog.tsx",
       "line": 103,
       "category": "C",
       "reason": "value-use",
       "key": "Update"
-    },
-    {
-      "file": "apps/web/src/components/sidebar/UpdateEverythingDialog.tsx",
-      "line": 134,
-      "category": "A",
-      "reason": "template-collision",
-      "key": "Update {0} {1}?",
-      "template": "Update {0} {1}"
     },
     {
       "file": "apps/web/src/components/sidebar/updateEverything.logic.ts",
@@ -4556,35 +1052,11 @@
       "key": "failed"
     },
     {
-      "file": "apps/web/src/components/sourceControlAppAccessToast.ts",
-      "line": 28,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Give {0} access to {1}",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "apps/web/src/components/sourceControlAppAccessToast.ts",
-      "line": 29,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "It isn't installed there, so GitHub requests for {0} use your own login and its lower rate limit.",
-      "template": "{first} and {second}"
-    },
-    {
       "file": "apps/web/src/components/threadActionMenu.logic.ts",
       "line": 53,
       "category": "C",
       "reason": "value-use",
       "key": "Branch"
-    },
-    {
-      "file": "apps/web/src/components/threadActionMenu.logic.ts",
-      "line": 199,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Turn into project",
-      "template": "Turn {0}"
     },
     {
       "file": "apps/web/src/components/threadActionMenu.logic.ts",
@@ -4645,42 +1117,42 @@
     },
     {
       "file": "apps/web/src/components/usage/usageProviders.ts",
-      "line": 13,
+      "line": 15,
       "category": "C",
       "reason": "value-use",
       "key": "Codex"
     },
     {
       "file": "apps/web/src/components/usage/usageProviders.ts",
-      "line": 27,
+      "line": 29,
       "category": "C",
       "reason": "value-use",
       "key": "Cursor"
     },
     {
       "file": "apps/web/src/components/usage/usageProviders.ts",
-      "line": 29,
+      "line": 31,
       "category": "C",
       "reason": "value-use",
       "key": "OpenCode"
     },
     {
       "file": "apps/web/src/components/usage/usageProviders.ts",
-      "line": 34,
+      "line": 36,
       "category": "C",
       "reason": "value-use",
       "key": "Antigravity"
     },
     {
       "file": "apps/web/src/components/usage/usageProviders.ts",
-      "line": 39,
+      "line": 41,
       "category": "C",
       "reason": "value-use",
       "key": "Pi"
     },
     {
       "file": "apps/web/src/components/usage/usageProviders.ts",
-      "line": 44,
+      "line": 46,
       "category": "C",
       "reason": "value-use",
       "key": "Muse Code"
@@ -4714,51 +1186,11 @@
       "key": "R"
     },
     {
-      "file": "apps/web/src/hooks/useStartTriage.ts",
-      "line": 50,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not start triage",
-      "template": "Could not start {0}"
-    },
-    {
-      "file": "apps/web/src/hooks/useStartTriage.ts",
-      "line": 51,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} Run {1} in a terminal on that machine instead.",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "apps/web/src/hooks/useThreadActionMenu.ts",
-      "line": 271,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Project created",
-      "template": "{theme} created"
-    },
-    {
       "file": "apps/web/src/keybindings.ts",
       "line": 217,
       "category": "C",
       "reason": "value-use",
       "key": "Space"
-    },
-    {
-      "file": "apps/web/src/lib/openPullRequestLink.ts",
-      "line": 205,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "This commit is not in the thread's workspace",
-      "template": "{0} {1} is {2}"
-    },
-    {
-      "file": "apps/web/src/lib/openPullRequestLink.ts",
-      "line": 207,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Open link",
-      "template": "Open {0}"
     },
     {
       "file": "apps/web/src/lib/snapShotShortcut.ts",
@@ -4782,14 +1214,6 @@
       "key": "Web"
     },
     {
-      "file": "apps/web/src/state/npmRelease.ts",
-      "line": 29,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not check this environment's npm registry. Check the connection and registry settings.",
-      "template": "{first} and {second}"
-    },
-    {
       "file": "apps/web/src/state/sourceControlActions.ts",
       "line": 250,
       "category": "C",
@@ -4797,12 +1221,18 @@
       "key": "Running source control action"
     },
     {
-      "file": "packages/client-runtime/src/composerThreadItems.ts",
-      "line": 69,
+      "file": "apps/web/src/textGenerators.ts",
+      "line": 39,
       "category": "C",
-      "reason": "template-collision",
-      "key": "Thread on {0}",
-      "template": "{failure} on {environment}"
+      "reason": "value-use",
+      "key": "OpenAI"
+    },
+    {
+      "file": "apps/web/src/textGenerators.ts",
+      "line": 42,
+      "category": "C",
+      "reason": "value-use",
+      "key": "OpenRouter"
     },
     {
       "file": "packages/client-runtime/src/connection/diagnosis.ts",
@@ -4841,49 +1271,25 @@
       "template": "SSH {0}"
     },
     {
-      "file": "packages/client-runtime/src/linkRequest.ts",
-      "line": 227,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Linked {0}{1}",
-      "template": "Linked {0}"
-    },
-    {
       "file": "packages/client-runtime/src/providerClients.ts",
-      "line": 22,
+      "line": 33,
       "category": "C",
       "reason": "value-use",
       "key": "Codex"
     },
     {
       "file": "packages/client-runtime/src/providerClients.ts",
-      "line": 29,
+      "line": 40,
       "category": "C",
       "reason": "value-use",
       "key": "Claude"
     },
     {
       "file": "packages/client-runtime/src/providerClients.ts",
-      "line": 40,
+      "line": 51,
       "category": "C",
       "reason": "value-use",
       "key": "Antigravity"
-    },
-    {
-      "file": "packages/client-runtime/src/relay/errorPresentation.ts",
-      "line": 54,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "This environment is linked only to publish agent activity, so it cannot accept connections. On that computer, open Settings > Sharing & access and turn T3 Connect on.",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "packages/client-runtime/src/relay/errorPresentation.ts",
-      "line": 71,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Relay refused the link: this account already has its maximum of {0} managed tunnels. Unlink an environment, or link a paid T3 Chat account in your T3 Connect account settings on web or desktop. Pro raises the default limit to {1} and Premier to {2}.",
-      "template": "{first} and {second}"
     },
     {
       "file": "packages/client-runtime/src/scheduledTaskWebhook.ts",
@@ -4936,14 +1342,6 @@
     },
     {
       "file": "packages/client-runtime/src/state/gitActions.ts",
-      "line": 150,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Create and checkout a branch before pushing or opening {0}.",
-      "template": "Create {request}"
-    },
-    {
-      "file": "packages/client-runtime/src/state/gitActions.ts",
       "line": 156,
       "category": "C",
       "reason": "value-use",
@@ -4985,22 +1383,6 @@
       "key": "Commit"
     },
     {
-      "file": "packages/client-runtime/src/state/gitActions.ts",
-      "line": 357,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "This action will commit, push, and create {0}{1}",
-      "template": "{leading}, and {last}"
-    },
-    {
-      "file": "packages/client-runtime/src/state/gitActions.ts",
-      "line": 363,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "This action will push local commits and create {0}{1}",
-      "template": "This action will push local commits{0}"
-    },
-    {
       "file": "packages/client-runtime/src/state/projectGrouping.ts",
       "line": 367,
       "category": "C",
@@ -5009,65 +1391,154 @@
     },
     {
       "file": "packages/client-runtime/src/state/subagentDisplay.ts",
-      "line": 102,
+      "line": 104,
       "category": "C",
       "reason": "value-use",
       "key": "Branch"
     },
     {
       "file": "packages/client-runtime/src/state/threadExecution.ts",
-      "line": 186,
+      "line": 259,
       "category": "C",
       "reason": "value-use",
       "key": "Working"
     },
     {
       "file": "packages/client-runtime/src/state/threadExecution.ts",
-      "line": 187,
+      "line": 260,
       "category": "C",
       "reason": "value-use",
       "key": "Working"
     },
     {
       "file": "packages/client-runtime/src/state/threadExecution.ts",
-      "line": 188,
+      "line": 261,
       "category": "C",
       "reason": "value-use",
       "key": "Waiting"
     },
     {
       "file": "packages/client-runtime/src/state/threadExecution.ts",
-      "line": 189,
+      "line": 262,
       "category": "C",
       "reason": "value-use",
       "key": "Completed"
     },
     {
       "file": "packages/client-runtime/src/state/threadSettled.ts",
-      "line": 243,
+      "line": 268,
       "category": "C",
       "reason": "value-use",
       "key": "Next week"
     },
     {
-      "file": "packages/client-runtime/src/threadReference.ts",
-      "line": 40,
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 214,
       "category": "C",
-      "reason": "template-collision",
-      "key": "Thread copied",
-      "template": "{0} copied"
+      "reason": "value-use",
+      "key": "Voice transcription is still finishing. Try again shortly."
     },
     {
-      "file": "packages/client-runtime/src/threadReference.ts",
-      "line": 41,
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 217,
       "category": "C",
-      "reason": "template-collision",
-      "key": "Failed to copy thread",
-      "template": "Failed to copy {0}"
+      "reason": "value-use",
+      "key": "Voice transcription is not available for this language."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 221,
+      "category": "C",
+      "reason": "value-use",
+      "key": "Could not prepare voice transcription."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 226,
+      "category": "C",
+      "reason": "value-use",
+      "key": "Voice transcription is still finishing. Try again shortly."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 228,
+      "category": "C",
+      "reason": "value-use",
+      "key": "Could not transcribe this recording."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 266,
+      "category": "D",
+      "reason": "value-use",
+      "key": "This draft is no longer available."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 284,
+      "category": "D",
+      "reason": "value-use",
+      "key": "Another voice recording is already active."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 305,
+      "category": "D",
+      "reason": "value-use",
+      "key": "Voice transcription is not available."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 313,
+      "category": "D",
+      "reason": "value-use",
+      "key": "Microphone access is required for voice input."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 339,
+      "category": "D",
+      "reason": "value-use",
+      "key": "This draft is no longer available."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 365,
+      "category": "D",
+      "reason": "value-use",
+      "key": "Could not start voice recording."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 499,
+      "category": "D",
+      "reason": "value-use",
+      "key": "Could not finish voice recording."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 578,
+      "category": "D",
+      "reason": "value-use",
+      "key": "The draft changed while voice input was running. The transcript was not added."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 584,
+      "category": "D",
+      "reason": "value-use",
+      "key": "No speech was detected."
+    },
+    {
+      "file": "packages/client-runtime/src/voice-input/controller.ts",
+      "line": 592,
+      "category": "D",
+      "reason": "value-use",
+      "key": "Could not finish voice recording."
     },
     {
       "file": "packages/client-runtime/src/work-log/presentation.ts",
-      "line": 72,
+      "line": 73,
       "category": "C",
       "reason": "template-collision",
       "key": "Context compaction failed",
@@ -5075,7 +1546,7 @@
     },
     {
       "file": "packages/client-runtime/src/work-log/presentation.ts",
-      "line": 74,
+      "line": 75,
       "category": "C",
       "reason": "template-collision",
       "key": "Context compaction stopped",
@@ -5083,14 +1554,14 @@
     },
     {
       "file": "packages/client-runtime/src/work-log/presentation.ts",
-      "line": 79,
+      "line": 80,
       "category": "C",
       "reason": "value-use",
       "key": "Context compacted"
     },
     {
       "file": "packages/contracts/src/device.ts",
-      "line": 689,
+      "line": 693,
       "category": "C",
       "reason": "template-collision",
       "key": "Device to close. None: close all here.",
@@ -5127,46 +1598,14 @@
     },
     {
       "file": "packages/contracts/src/managedPolicy.ts",
-      "line": 179,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "{0} limits threads to {1}.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "packages/contracts/src/managedPolicy.ts",
-      "line": 208,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "connecting from other devices",
-      "template": "{0}m {1}s"
-    },
-    {
-      "file": "packages/contracts/src/managedPolicy.ts",
       "line": 209,
       "category": "C",
       "reason": "value-use",
       "key": "T3 Connect"
     },
     {
-      "file": "packages/contracts/src/managedPolicy.ts",
-      "line": 210,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "webhook tasks",
-      "template": "{0}s"
-    },
-    {
-      "file": "packages/contracts/src/managedPolicy.ts",
-      "line": 211,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "importing browser cookies",
-      "template": "{count} cookies"
-    },
-    {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 56,
+      "line": 57,
       "category": "C",
       "reason": "template-collision",
       "key": "Reuse it to retry the same call. A new call gets a new key.",
@@ -5174,7 +1613,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 117,
+      "line": 118,
       "category": "C",
       "reason": "template-collision",
       "key": "Linked environment to run in. Provider and model default to yours; others come from `orchestrator_capabilities` with this `environmentId`.",
@@ -5182,7 +1621,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 123,
+      "line": 124,
       "category": "C",
       "reason": "template-collision",
       "key": "With `environmentId`: its project to run in. Default: the one with this project's repository.",
@@ -5190,7 +1629,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 176,
+      "line": 177,
       "category": "C",
       "reason": "template-collision",
       "key": "'shared' (default): parent checkout. 'worktree': new prepared checkout from the parent commit, for a separate checkout or PR per child. Uncommitted edits stay out.",
@@ -5198,7 +1637,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 192,
+      "line": 193,
       "category": "C",
       "reason": "template-collision",
       "key": "Omit unless the user asks for a supervised child. Narrow modes pause for human approval, not read-only. Above yours is rejected.",
@@ -5206,7 +1645,15 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 229,
+      "line": 208,
+      "category": "C",
+      "reason": "template-collision",
+      "key": "Model the provider reported running, or null when unavailable. Can differ from the requested `model`.",
+      "template": "Model {0}"
+    },
+    {
+      "file": "packages/contracts/src/orchestratorMcp.ts",
+      "line": 237,
       "category": "C",
       "reason": "template-collision",
       "key": "A question blocks the child and ends a wait. Answer via `t3_pending_request` on `childThreadId`, or the user does.",
@@ -5214,7 +1661,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 237,
+      "line": 245,
       "category": "C",
       "reason": "template-collision",
       "key": "True only on the timed-out wait call. The child keeps running.",
@@ -5222,7 +1669,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 314,
+      "line": 322,
       "category": "C",
       "reason": "template-collision",
       "key": "Project to use. Default: your thread's project. Required outside a thread.",
@@ -5230,7 +1677,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 326,
+      "line": 334,
       "category": "C",
       "reason": "template-collision",
       "key": "Linked environment to act in. Omit for this one. Ids are then that environment's.",
@@ -5238,7 +1685,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 414,
+      "line": 422,
       "category": "C",
       "reason": "template-collision",
       "key": "Max items, 1 to 100.",
@@ -5246,7 +1693,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 417,
+      "line": 425,
       "category": "C",
       "reason": "template-collision",
       "key": "Max recent runs, 1 to 50.",
@@ -5254,7 +1701,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 420,
+      "line": 428,
       "category": "C",
       "reason": "template-collision",
       "key": "Max chars per item, 1 to 50000.",
@@ -5262,7 +1709,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 529,
+      "line": 544,
       "category": "C",
       "reason": "template-collision",
       "key": "Also wait for its delegated and background tasks and their completions to settle. `resultRun` then names the run with its final answer.",
@@ -5270,7 +1717,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 576,
+      "line": 591,
       "category": "C",
       "reason": "template-collision",
       "key": "Match model ids and labels. Replaces the short list.",
@@ -5278,7 +1725,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 661,
+      "line": 676,
       "category": "C",
       "reason": "template-collision",
       "key": "Default true: runs post in this thread. False: new thread per run.",
@@ -5286,7 +1733,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 690,
+      "line": 712,
       "category": "C",
       "reason": "template-collision",
       "key": "Public URL for the sender. Absent: no T3 Connect tunnel. The user must enable T3 Connect remote access.",
@@ -5294,31 +1741,39 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 736,
+      "line": 764,
       "category": "C",
       "reason": "template-collision",
-      "key": "What it is for and where to get it.",
+      "key": "What it is for and where to get it. A link goes in `url`.",
       "template": "{first} and {second}"
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 741,
+      "line": 773,
       "category": "C",
       "reason": "template-collision",
-      "key": "secretRef (default) for a T3 tool. file for a shell CLI: read the path in your command, e.g. TOKEN=\"$(cat <file>)\" wrangler whoami.",
+      "key": "Sign-in or setup page for the value. Shown as a button.",
       "template": "{0} for {1}"
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 747,
+      "line": 777,
       "category": "C",
       "reason": "template-collision",
-      "key": "Retry key for this ask. New key after a timeout or cancel.",
+      "key": "secretRef (default) for a T3 tool; file for a command.",
       "template": "{0} for {1}"
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 756,
+      "line": 780,
+      "category": "C",
+      "reason": "template-collision",
+      "key": "Pasted in this thread; no card.",
+      "template": "{0} in {1}"
+    },
+    {
+      "file": "packages/contracts/src/orchestratorMcp.ts",
+      "line": 796,
       "category": "C",
       "reason": "template-collision",
       "key": "One-use. Pass to a tool that accepts a secretRef. You never see the value.",
@@ -5326,7 +1781,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 763,
+      "line": 803,
       "category": "C",
       "reason": "template-collision",
       "key": "Owner-only file with the value. Read it inside commands and never print it. Deleted after 24 hours.",
@@ -5334,15 +1789,23 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 769,
+      "line": 809,
       "category": "C",
       "reason": "template-collision",
-      "key": "declined: user chose not to. cancelled: ended with the run. timed_out: no answer in time. Ask again with a new `clientRequestId` if still needed.",
+      "key": "declined: user chose not to; don't ask again. cancelled: ended with the run. timed_out: no answer in time. After cancelled or timed_out, ask again with a new `clientRequestId` only if still needed.",
       "template": "{0} in {1}"
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 778,
+      "line": 811,
+      "category": "C",
+      "reason": "template-collision",
+      "key": "What to do next.",
+      "template": "{head} to {base}"
+    },
+    {
+      "file": "packages/contracts/src/orchestratorMcp.ts",
+      "line": 819,
       "category": "C",
       "reason": "template-collision",
       "key": "The machine, when known, e.g. from a mentioned machine. Otherwise the user picks it in the card.",
@@ -5350,7 +1813,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 785,
+      "line": 826,
       "category": "C",
       "reason": "template-collision",
       "key": "The user's words for the machine, e.g. \"vps\". Preselects it in the card.",
@@ -5358,7 +1821,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 788,
+      "line": 829,
       "category": "C",
       "reason": "template-collision",
       "key": "One sentence for the card.",
@@ -5366,7 +1829,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 801,
+      "line": 842,
       "category": "C",
       "reason": "template-collision",
       "key": "The card is waiting for the user. Their answer arrives as a message in this thread.",
@@ -5374,7 +1837,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 808,
+      "line": 849,
       "category": "C",
       "reason": "template-collision",
       "key": "Pass it as environmentId to act there; t3_environment_links lists it.",
@@ -5382,7 +1845,7 @@
     },
     {
       "file": "packages/contracts/src/orchestratorMcp.ts",
-      "line": 830,
+      "line": 871,
       "category": "C",
       "reason": "template-collision",
       "key": "The linked environment to forget, from t3_environment_links.",
@@ -5454,7 +1917,7 @@
     },
     {
       "file": "packages/contracts/src/project.ts",
-      "line": 199,
+      "line": 200,
       "category": "C",
       "reason": "template-collision",
       "key": "Threads and files are kept.",
@@ -5557,83 +2020,73 @@
     },
     {
       "file": "packages/contracts/src/settings.ts",
-      "line": 240,
+      "line": 250,
       "category": "C",
       "reason": "value-use",
       "key": "Shift"
     },
     {
       "file": "packages/contracts/src/settings.ts",
-      "line": 241,
+      "line": 251,
       "category": "C",
       "reason": "value-use",
       "key": "Command"
     },
     {
       "file": "packages/contracts/src/settings.ts",
-      "line": 242,
+      "line": 252,
       "category": "C",
       "reason": "value-use",
       "key": "Control"
     },
     {
       "file": "packages/contracts/src/settings.ts",
-      "line": 243,
+      "line": 253,
       "category": "C",
       "reason": "value-use",
       "key": "Option"
     },
     {
       "file": "packages/contracts/src/settings.ts",
-      "line": 246,
+      "line": 256,
       "category": "C",
       "reason": "value-use",
       "key": "Shift"
     },
     {
       "file": "packages/contracts/src/settings.ts",
-      "line": 249,
+      "line": 259,
       "category": "C",
       "reason": "value-use",
       "key": "Alt"
     },
     {
       "file": "packages/contracts/src/settings.ts",
-      "line": 644,
+      "line": 692,
       "category": "C",
       "reason": "value-use",
       "key": "codex"
     },
     {
       "file": "packages/contracts/src/settings.ts",
-      "line": 703,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Use default",
-      "template": "Use {theme}"
-    },
-    {
-      "file": "packages/contracts/src/settings.ts",
-      "line": 720,
+      "line": 768,
       "category": "C",
       "reason": "value-use",
       "key": "claude"
     },
     {
-      "file": "packages/contracts/src/settings.ts",
-      "line": 764,
+      "file": "packages/contracts/src/speech.ts",
+      "line": 14,
       "category": "C",
-      "reason": "template-collision",
-      "key": "Compact idle threads",
-      "template": "{0}s"
+      "reason": "value-use",
+      "key": "OpenAI"
     },
     {
-      "file": "packages/contracts/src/settings.ts",
-      "line": 766,
+      "file": "packages/contracts/src/speech.ts",
+      "line": 16,
       "category": "C",
-      "reason": "template-collision",
-      "key": "When to compact an idle thread over 200,000 tokens: after you return, just before its prompt cache expires, or never. Overrides the default in Providers > Advanced.",
-      "template": "{head} to {base}"
+      "reason": "value-use",
+      "key": "OpenRouter"
     },
     {
       "file": "packages/contracts/src/t3ProjectFile.ts",
@@ -5642,6 +2095,14 @@
       "reason": "template-collision",
       "key": "When true, the script runs in the thread's worktree each time the thread settles, for example to delete build output. Threads without their own worktree skip it.",
       "template": "{0} for {1}"
+    },
+    {
+      "file": "packages/contracts/src/t3ProjectFile.ts",
+      "line": 52,
+      "category": "C",
+      "reason": "template-collision",
+      "key": "When true, T3 stops this action's terminal and child processes when its thread settles.",
+      "template": "{first} and {second}"
     },
     {
       "file": "packages/contracts/src/worktreeMcp.ts",
@@ -5689,14 +2150,6 @@
     },
     {
       "file": "packages/provider-fx/src/settings.ts",
-      "line": 24,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Path to the fx binary. All fx instances on this machine share its fx login.",
-      "template": "{failure} on {environment}"
-    },
-    {
-      "file": "packages/provider-fx/src/settings.ts",
       "line": 25,
       "category": "C",
       "reason": "value-use",
@@ -5724,22 +2177,6 @@
       "key": "Kiro"
     },
     {
-      "file": "packages/provider-kiro/src/client.ts",
-      "line": 27,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Optional. Signs in without `kiro-cli login` (Kiro Pro and above).",
-      "template": "{first} and {second}"
-    },
-    {
-      "file": "packages/provider-kiro/src/settings.ts",
-      "line": 19,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Path to the Kiro CLI binary.",
-      "template": "{head} to {base}"
-    },
-    {
       "file": "packages/provider-muse/src/client.ts",
       "line": 8,
       "category": "C",
@@ -5762,7 +2199,7 @@
     },
     {
       "file": "packages/provider-opencode/src/settings.ts",
-      "line": 23,
+      "line": 24,
       "category": "C",
       "reason": "value-use",
       "key": "opencode"
@@ -5790,50 +2227,18 @@
       "template": "{0}d"
     },
     {
-      "file": "packages/shared/src/authScopeOptions.ts",
-      "line": 116,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Connect to this environment to view this session’s permissions.",
-      "template": "Connect {0}"
-    },
-    {
-      "file": "packages/shared/src/authScopeOptions.ts",
-      "line": 118,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "This environment did not accept your session. Reconnect to try again.",
-      "template": "{head} to {base}"
-    },
-    {
-      "file": "packages/shared/src/authScopeOptions.ts",
-      "line": 120,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Could not verify your permissions. Retrying automatically.",
-      "template": "Could not verify {provider}. {hint}"
-    },
-    {
       "file": "packages/shared/src/model.ts",
-      "line": 274,
+      "line": 302,
       "category": "C",
       "reason": "value-use",
       "key": "On"
     },
     {
       "file": "packages/shared/src/paletteSearch.ts",
-      "line": 939,
+      "line": 950,
       "category": "C",
       "reason": "value-use",
       "key": "Branch"
-    },
-    {
-      "file": "packages/shared/src/paletteSearch.ts",
-      "line": 1040,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "ID or link",
-      "template": "{0} link"
     },
     {
       "file": "packages/shared/src/thirdPartyLicenses.ts",
@@ -5855,14 +2260,6 @@
       "category": "C",
       "reason": "value-use",
       "key": "Web"
-    },
-    {
-      "file": "packages/shared/src/threadLinks.ts",
-      "line": 171,
-      "category": "C",
-      "reason": "template-collision",
-      "key": "Thread on another machine",
-      "template": "{failure} on {environment}"
     },
     {
       "file": "packages/shared/src/threadTranscript.ts",

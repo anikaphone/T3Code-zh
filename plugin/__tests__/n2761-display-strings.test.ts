@@ -24,8 +24,8 @@ const FILES = [
   "components/chat/ComposerAttachmentStrip.tsx", "components/settings/IntegrationsSettings.tsx",
   "components/ChatView.tsx", "components/projectScriptEditor.tsx", "components/GitActionsControl.tsx",
   "sourceControlPresentation.tsx", "newThreadDisplayStrings.ts", "connectionPermissionDisplayStrings.ts",
-  "components/chat/ComposerPrimaryActions.tsx", "components/chat/ContextWindowMeter.tsx",
-  "components/onboarding/WelcomeWizard.tsx", "hooks/useProjectGroupUpdate.ts",
+  "components/chat/ComposerPrimaryActions.tsx",
+  "components/onboarding/WelcomePage.tsx", "hooks/useProjectGroupUpdate.ts",
   "components/settings/settingsLayout.tsx", "hooks/useSettings.ts", "components/CommandPalette.tsx",
   "components/files/FileBrowserPanel.tsx", "components/search/ProjectContentSearchDialog.tsx", "components/chat/ChatComposer.tsx", "acceptanceDisplayStrings.ts",
 ].map(f => `apps/web/src/${f}`);
@@ -38,7 +38,7 @@ for (const patch of fs.readdirSync(path.join(ROOT, "patches")).filter(p => p.end
 }
 const helper = await import(pathToFileURL(path.join(TEMP, FILES[8])).href);
 const permission = await import(pathToFileURL(path.join(TEMP, FILES[9])).href);
-const acceptancePath = path.join(TEMP, FILES[20]);
+const acceptancePath = path.join(TEMP, FILES[19]);
 fs.writeFileSync(acceptancePath, fs.readFileSync(acceptancePath, "utf8").replace('from "./newThreadDisplayStrings"', 'from "./newThreadDisplayStrings.ts"'));
 const acceptance = await import(pathToFileURL(acceptancePath).href);
 const dict = JSON.parse(fs.readFileSync(path.join(ROOT, "dict/zh-CN.json"), "utf8"));
@@ -82,10 +82,10 @@ test("real JSX display expressions preserve original English and never translate
     { file: FILES[0], text: "The page asks for ", call: 'translateFixed(fileChooser.multiple ? "The page asks', scope: { fileChooser: { multiple: false } }, en: "The page asks for a file.", zh: "网页要求选择一个文件。", calls: ["The page asks for a file."] },
     { file: FILES[0], text: "Choose ", call: 'translateFixed(fileChooser.multiple ? "Choose', scope: { fileChooser: { multiple: true } }, en: "Choose files", zh: "选择文件", calls: ["Choose files"] },
     { file: FILES[0], text: "Choose ", call: 'translateFixed(fileChooser.multiple ? "Choose', scope: { fileChooser: { multiple: false } }, en: "Choose file", zh: "选择文件", calls: ["Choose file"] },
-    { file: FILES[1], text: "The name is chosen by the agent. Approval returns to ", call: 'fillSlot("The name is chosen', scope: { details: { redirectHost: risky } }, en: `The name is chosen by the agent. Approval returns to ${risky} on the computer that opened this page. Only approve a sign-in you just started.`, zh: `该名称由 Agent 自行选择。批准结果将返回打开此页面的设备上的 ${risky}。仅批准你刚刚发起的登录。`, calls: [`The name is chosen by the agent. Approval returns to ${SLOT} on the computer that opened this page. Only approve a sign-in you just started.`] },
     { file: FILES[3], text: "Clear “", call: 'fillSlot("Clear', scope: { profilePendingClear: { name: risky } }, en: `Clear “${risky}”’s cookies and cache?`, zh: `清除“${risky}”的 Cookie 和缓存？`, calls: [`Clear “${SLOT}”’s cookies and cache?`] },
     { file: FILES[3], text: "Clear “", call: 'fillSlot("Clear', scope: { profilePendingClear: null }, en: "Clear “”’s cookies and cache?", zh: "清除“”的 Cookie 和缓存？", calls: [`Clear “${SLOT}”’s cookies and cache?`] },
   ];
+  assert.ok(!read(UPSTREAM, FILES[1]).includes("The name is chosen by the agent."));
   for (const c of cases) {
     const before = one(UPSTREAM, c.file, children => children.every(n => !t.isJSXElement(n) && !t.isJSXFragment(n)) && children.some(n => t.isStringLiteral(n) && n.value === c.text));
     const after = one(TEMP, c.file, children => children.length === 1 && t.isCallExpression(children[0]) && generate(children[0]).code.includes(c.call));
@@ -117,7 +117,7 @@ test("only exact permission messages translate; raw errors and state definitions
   assert.ok(read(TEMP, FILES[5]).includes('setValidationError("This connection cannot change keyboard shortcuts.")'));
   // n2774: upstream removed ChatView's resume-compaction banner, the only ChatView site that showed compactDisabledReason.
   assert.equal(elements(TEMP, FILES[4]).filter(c => c.some(n => t.isIdentifier(n, { name: "compactDisabledReason" }))).length, 0);
-  for (const [file, variable] of [[FILES[10], "submitTooltip"], [FILES[11], "compactDisabledReason"], [FILES[12], "visibleImportError"], [FILES[16], "browseAccessError"]]) {
+  for (const [file, variable] of [[FILES[10], "submitTooltip"], [FILES[11], "visibleImportError"], [FILES[15], "browseAccessError"]]) {
     const expected = variable === "submitTooltip" ? `displayRunningSendTooltip(displayConnectionPermissionError(${variable}), followUpBehavior, alternateAction, alternateShortcutLabel)` : `displayConnectionPermissionError(${variable})`;
     const children = one(TEMP, file, c => c.length === 1 && (variable === "submitTooltip" ? generate(c[0]).code.includes(expected) : t.isCallExpression(c[0]) && generate(c[0]).code === expected));
     for (const value of [...known, risky]) {
@@ -126,8 +126,8 @@ test("only exact permission messages translate; raw errors and state definitions
       finally { r.restore(); }
     }
   }
-  assert.ok(read(TEMP, FILES[12]).includes('const IMPORT_PERMISSION_MESSAGE = "This connection cannot import projects or thread history."'));
-  for (const [file, expr, count] of [[FILES[18], "search.error", 1], [FILES[2], "upload.reason", 3]] as const) {
+  assert.ok(read(TEMP, FILES[11]).includes('const IMPORT_PERMISSION_MESSAGE = "This connection cannot import projects or thread history."'));
+  for (const [file, expr, count] of [[FILES[17], "search.error", 1], [FILES[2], "upload.reason", 3]] as const) {
     const children = elements(TEMP, file).filter(c => c.length === 1 && t.isCallExpression(c[0]) && generate(c[0]).code === `displayConnectionPermissionError(${expr})`);
     assert.equal(children.length, count);
     for (const c of children) {
@@ -138,13 +138,13 @@ test("only exact permission messages translate; raw errors and state definitions
   }
   // n2861 adds environment labels to the permission notice; real slot expressions
   // and the unchanged dynamic values are covered by n2861-display-strings.test.ts.
-  for (const file of [FILES[14], FILES[15]]) assert.ok(read(TEMP, file).includes('fillSlot("This connection lacks permission to change settings on ",'));
+  for (const file of [FILES[13], FILES[14]]) assert.ok(read(TEMP, file).includes('fillSlot("This connection lacks permission to change settings on ",'));
 
 });
 
 test("file retry message keeps raw errors and translates only known permission text and retry suffix", () => {
-  const before = one(UPSTREAM, FILES[17], c => c.some(n => t.isStringLiteral(n) && n.value === " Click to retry."));
-  const after = one(TEMP, FILES[17], c => c.length === 3 && t.isCallExpression(c[0]) && generate(c[0]).code === "displayConnectionPermissionError(error ?? pathSearch.error)");
+  const before = one(UPSTREAM, FILES[16], c => c.some(n => t.isStringLiteral(n) && n.value === " Click to retry."));
+  const after = one(TEMP, FILES[16], c => c.length === 3 && t.isCallExpression(c[0]) && generate(c[0]).code === "displayConnectionPermissionError(error ?? pathSearch.error)");
   for (const error of [risky, "This connection cannot read host files.", null]) {
     const scope = { error, pathSearch: { error: "This connection cannot search host files." } };
     const value = error ?? scope.pathSearch.error;
@@ -158,7 +158,7 @@ test("file retry message keeps raw errors and translates only known permission t
 });
 
 test("project permission toast translates its display skeleton while the Error and environment name stay original", () => {
-  const ast = parse(read(TEMP, FILES[13]), { sourceType: "module", plugins: ["typescript", "jsx"] });
+  const ast = parse(read(TEMP, FILES[12]), { sourceType: "module", plugins: ["typescript", "jsx"] });
   const descriptions: any[] = [];
   traverse(ast, { CallExpression(p: any) { if (t.isIdentifier(p.node.callee, { name: "failWith" }) && p.node.arguments.length === 3) descriptions.push(p.node.arguments[2]); } });
   assert.equal(descriptions.length, 1);
@@ -173,8 +173,8 @@ test("project permission toast translates its display skeleton while the Error a
       } finally { r.restore(); }
     }
   }
-  assert.ok(read(TEMP, FILES[13]).includes('`This connection cannot change projects in ${denied.environmentLabel ?? "this environment"}.`'));
-  assert.ok(read(TEMP, FILES[13]).includes('displayDescription ?? (error instanceof Error ? error.message : "An error occurred.")'));
+  assert.ok(read(TEMP, FILES[12]).includes('`This connection cannot change projects in ${denied.environmentLabel ?? "this environment"}.`'));
+  assert.ok(read(TEMP, FILES[12]).includes('displayDescription ?? (error instanceof Error ? error.message : "An error occurred.")'));
 });
 
 test("Git permission display branch uses a precise dictionary entry; gh account identity stays untouched", () => {

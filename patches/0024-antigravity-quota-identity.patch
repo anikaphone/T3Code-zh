@@ -1,6 +1,6 @@
 # T24: Query measured Antigravity quotas with the Hub compatibility identity.
 # Suppress rolling full-window reset placeholders for untouched buckets.
-# Baseline: v0.1.7 322f6544dfad0a3c8a0c8cbecf2c7f7874b14268.
+# Baseline: v0.1.8 bf469bb19669671d0df2efda74ed73867a7137c0.
 diff --git a/apps/server/src/provider/antigravityUsageLimits.test.ts b/apps/server/src/provider/antigravityUsageLimits.test.ts
 index 612ea11efc..761bea95e8 100644
 --- a/apps/server/src/provider/antigravityUsageLimits.test.ts

@@ -1,10 +1,10 @@
 # Disable product usage telemetry, owner/device tracking, and relay tracing by default.
-# Baseline: v0.1.7 322f6544dfad0a3c8a0c8cbecf2c7f7874b14268.
+# Baseline: v0.1.8 bf469bb19669671d0df2efda74ed73867a7137c0.
 diff --git a/apps/desktop/src/ipc/methods/window.test.ts b/apps/desktop/src/ipc/methods/window.test.ts
-index 2ddc672891..18a3530faf 100644
+index eebabd429..c31c2bf84 100644
 --- a/apps/desktop/src/ipc/methods/window.test.ts
 +++ b/apps/desktop/src/ipc/methods/window.test.ts
-@@ -212,7 +212,8 @@ describe("installRelayTelemetryEnabled", () => {
+@@ -213,7 +213,8 @@ describe("installRelayTelemetryEnabled", () => {
    it.effect("reads the desktop host opt-out before returning the renderer policy", () =>
      Effect.gen(function* () {
        assert.isFalse(yield* relayTelemetryEnabled({ T3CODE_TELEMETRY_ENABLED: "false" }));
@@ -14,7 +14,7 @@ index 2ddc672891..18a3530faf 100644
      }),
    );
  
-@@ -223,12 +224,13 @@ describe("installRelayTelemetryEnabled", () => {
+@@ -224,12 +225,13 @@ describe("installRelayTelemetryEnabled", () => {
          organization: "Example Corp",
          limits,
        });
@@ -32,7 +32,7 @@ index 2ddc672891..18a3530faf 100644
          ),
        );
 diff --git a/apps/server/src/cloud/publicConfig.test.ts b/apps/server/src/cloud/publicConfig.test.ts
-index ca1d86b8dd..0d274e735a 100644
+index ca1d86b8d..0d274e735 100644
 --- a/apps/server/src/cloud/publicConfig.test.ts
 +++ b/apps/server/src/cloud/publicConfig.test.ts
 @@ -61,6 +61,11 @@ it("product opt-out disables relay tracing with either built-in or runtime crede
@@ -48,7 +48,7 @@ index ca1d86b8dd..0d274e735a 100644
      T3CODE_TELEMETRY_ENABLED: "false",
      T3CODE_OTEL_SDK_DISABLED: "false",
 diff --git a/apps/server/src/telemetry/AnalyticsService.test.ts b/apps/server/src/telemetry/AnalyticsService.test.ts
-index 4d3c2d5421..68982c4fe0 100644
+index 4d3c2d542..cbd3978f6 100644
 --- a/apps/server/src/telemetry/AnalyticsService.test.ts
 +++ b/apps/server/src/telemetry/AnalyticsService.test.ts
 @@ -7,6 +7,7 @@ import * as ConfigProvider from "effect/ConfigProvider";
@@ -59,8 +59,11 @@ index 4d3c2d5421..68982c4fe0 100644
  import * as Layer from "effect/Layer";
  import * as Schema from "effect/Schema";
  import * as Scope from "effect/Scope";
-@@ -24,7 +25,7 @@ import type { ManagedPolicyDocument } from "@t3tools/contracts";
+@@ -22,9 +23,10 @@ import * as HostProcess from "@t3tools/shared/HostProcess";
  
+ import type { ManagedPolicyDocument } from "@t3tools/contracts";
+ 
++import * as ServerSecretStore from "../auth/ServerSecretStore.ts";
  import * as ServerConfig from "../config.ts";
  import * as ManagedPolicy from "../policy/ManagedPolicy.ts";
 -import { getTelemetryIdentity } from "./Identify.ts";
@@ -68,7 +71,7 @@ index 4d3c2d5421..68982c4fe0 100644
  import * as AnalyticsService from "./AnalyticsService.ts";
  
  interface RecordedBatchRequest {
-@@ -438,4 +439,48 @@ it.layer(Layer.mergeAll(NodeServices.layer, NodeCrypto.layer))("AnalyticsService
+@@ -438,4 +440,51 @@ it.layer(Layer.mergeAll(NodeServices.layer, NodeCrypto.layer))("AnalyticsService
        assert.deepEqual(capturedPaths, []);
      }),
    );
@@ -78,9 +81,12 @@ index 4d3c2d5421..68982c4fe0 100644
 +    () =>
 +      Effect.gen(function* () {
 +        const capturedPaths: Array<string> = [];
-+        const layerServerConfig = ServerConfig.ServerConfig.layerTest(process.cwd(), {
-+          prefix: "t3-telemetry-default-off-",
-+        });
++        const layerServerConfig = Layer.provideMerge(
++          ServerSecretStore.layer,
++          ServerConfig.ServerConfig.layerTest(process.cwd(), {
++            prefix: "t3-telemetry-default-off-",
++          }),
++        );
 +        const layerTelemetry = AnalyticsService.layer.pipe(Layer.provideMerge(layerServerConfig));
 +        const layerConfig = ConfigProvider.layer(ConfigProvider.fromUnknown({}));
 +        const layerBatchServer = HttpServer.serve(
@@ -118,7 +124,7 @@ index 4d3c2d5421..68982c4fe0 100644
 +  );
  });
 diff --git a/apps/server/src/telemetry/AnalyticsService.ts b/apps/server/src/telemetry/AnalyticsService.ts
-index 384da92b3f..d90c9c1474 100644
+index 384da92b3..d90c9c147 100644
 --- a/apps/server/src/telemetry/AnalyticsService.ts
 +++ b/apps/server/src/telemetry/AnalyticsService.ts
 @@ -65,13 +65,9 @@ function retryDelayMs(failures: number, random: number): number {
@@ -176,7 +182,7 @@ index 384da92b3f..d90c9c1474 100644
    const bufferRef = yield* Ref.make<ReadonlyArray<BufferedAnalyticsEvent>>([]);
    const deliveryRef = yield* Ref.make<DeliveryState>({
 diff --git a/apps/server/src/telemetry/Identify.ts b/apps/server/src/telemetry/Identify.ts
-index 7ea7e9d296..8ca0d468e4 100644
+index 7ea7e9d29..8ca0d468e 100644
 --- a/apps/server/src/telemetry/Identify.ts
 +++ b/apps/server/src/telemetry/Identify.ts
 @@ -1,3 +1,4 @@
@@ -198,7 +204,7 @@ index 7ea7e9d296..8ca0d468e4 100644
 +  return yield* Effect.flatMap(HostProcess.HomeDirectory, getServerOwnersForHome);
 +});
 diff --git a/apps/web/src/cloud/publicConfig.ts b/apps/web/src/cloud/publicConfig.ts
-index f7f53ca2c3..55799c47d6 100644
+index f7f53ca2c..55799c47d 100644
 --- a/apps/web/src/cloud/publicConfig.ts
 +++ b/apps/web/src/cloud/publicConfig.ts
 @@ -63,7 +63,7 @@ export function resolveCloudPublicConfig(): CloudPublicConfig {
@@ -211,7 +217,7 @@ index f7f53ca2c3..55799c47d6 100644
    }
    const { relayTracing } = resolveCloudPublicConfig();
 diff --git a/apps/web/src/connection/platform.ts b/apps/web/src/connection/platform.ts
-index e60ed172e9..e3b0206a88 100644
+index dcd50342f..e3b0206a8 100644
 --- a/apps/web/src/connection/platform.ts
 +++ b/apps/web/src/connection/platform.ts
 @@ -52,7 +52,6 @@ import {
@@ -222,7 +228,7 @@ index e60ed172e9..e3b0206a88 100644
  import { appAtomRegistry } from "../rpc/atomRegistry";
  import { acknowledgeRpcRequest, trackRpcRequestSent } from "../rpc/requestLatencyState";
  import {
-@@ -309,17 +308,8 @@ export const prepareDesktopSshEnvironment = Effect.fn("web.connectionPlatform.ss
+@@ -309,19 +308,8 @@ export const prepareDesktopSshEnvironment = Effect.fn("web.connectionPlatform.ss
    },
  );
  
@@ -230,19 +236,21 @@ index e60ed172e9..e3b0206a88 100644
 -
 -// Lives as long as this browser profile's site data. Storage can be blocked, which only drops the id.
  const analyticsDevice = {
--  id: Effect.try(() => {
--    const existing = window.localStorage.getItem(ANALYTICS_DEVICE_ID_KEY);
--    if (existing) return existing;
--    const created = randomUUID();
--    window.localStorage.setItem(ANALYTICS_DEVICE_ID_KEY, created);
--    return created;
--  }).pipe(Effect.option),
+-  id: Effect.sync(
+-    Option.liftThrowable(() => {
+-      const existing = window.localStorage.getItem(ANALYTICS_DEVICE_ID_KEY);
+-      if (existing) return existing;
+-      const created = randomUUID();
+-      window.localStorage.setItem(ANALYTICS_DEVICE_ID_KEY, created);
+-      return created;
+-    }),
+-  ),
 +  id: Effect.succeedNone,
  };
  
  const layerCapabilities = Layer.effectContext(
 diff --git a/apps/web/src/lib/runtime.test.ts b/apps/web/src/lib/runtime.test.ts
-index 22e362ddd2..7338b35878 100644
+index 22e362ddd..7338b3587 100644
 --- a/apps/web/src/lib/runtime.test.ts
 +++ b/apps/web/src/lib/runtime.test.ts
 @@ -21,9 +21,9 @@ describe("web runtime relay telemetry policy", () => {
@@ -258,7 +266,7 @@ index 22e362ddd2..7338b35878 100644
    ])("applies $surface before the first relay span", async ({ desktopBridge, exports }) => {
      vi.resetModules();
 diff --git a/packages/shared/src/otelEnvironment.test.ts b/packages/shared/src/otelEnvironment.test.ts
-index 21df52609f..97260ad344 100644
+index 21df52609..97260ad34 100644
 --- a/packages/shared/src/otelEnvironment.test.ts
 +++ b/packages/shared/src/otelEnvironment.test.ts
 @@ -387,17 +387,25 @@ describe("OtelEnvironment", () => {
@@ -291,7 +299,7 @@ index 21df52609f..97260ad344 100644
          T3CODE_OTEL_SDK_DISABLED: "true",
        }),
 diff --git a/packages/shared/src/otelEnvironment.ts b/packages/shared/src/otelEnvironment.ts
-index 95392206a8..39fdbd3337 100644
+index 95392206a..39fdbd333 100644
 --- a/packages/shared/src/otelEnvironment.ts
 +++ b/packages/shared/src/otelEnvironment.ts
 @@ -324,7 +324,7 @@ export const isRelayTracingEnabled = (env: Readonly<Record<string, string | unde

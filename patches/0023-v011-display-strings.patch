@@ -1,21 +1,22 @@
 # 0023-v011-display-strings.patch
-# v0.1.7 新增显示位置；复用固定骨架与槽位，不改协议、用户内容或设置数据。
+# v0.1.8 新增显示位置；复用固定骨架与槽位，不改协议、用户内容或设置数据。
 # 依赖0007、0009、0022，按文件名顺序应用。
 
 diff --git a/apps/web/src/acceptanceDisplayStrings.ts b/apps/web/src/acceptanceDisplayStrings.ts
-index 7df343e56d..fc1ce386d8 100644
+index cb288fbe..3637b841 100644
 --- a/apps/web/src/acceptanceDisplayStrings.ts
 +++ b/apps/web/src/acceptanceDisplayStrings.ts
-@@ -17,6 +17,7 @@ export const ACCEPTANCE_DISPLAY_LABELS: string[] = [
+@@ -17,6 +17,8 @@ export const ACCEPTANCE_DISPLAY_LABELS: string[] = [
    "Cloning repository",
    "Repository not cloned",
    "Select at least one model.",
 +  "Copying files",
++  "Setting up",
    "Attachment still uploading",
    "Attachments still uploading",
    "Retry or remove the failed attachment",
 diff --git a/apps/web/src/components/AddProjectToMachineDialog.tsx b/apps/web/src/components/AddProjectToMachineDialog.tsx
-index a1f2c54426..f7411db606 100644
+index 3a5752fc..955bf9e3 100644
 --- a/apps/web/src/components/AddProjectToMachineDialog.tsx
 +++ b/apps/web/src/components/AddProjectToMachineDialog.tsx
 @@ -1,3 +1,5 @@
@@ -24,7 +25,7 @@ index a1f2c54426..f7411db606 100644
  import { useParams } from "@tanstack/react-router";
  import { scopeProjectRef } from "@t3tools/client-runtime/environment";
  import {
-@@ -224,8 +226,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+@@ -227,8 +229,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
            <DialogHeader>
              <DialogTitle>Add to another machine</DialogTitle>
              <DialogDescription>
@@ -34,7 +35,7 @@ index a1f2c54426..f7411db606 100644
              </DialogDescription>
            </DialogHeader>
            <DialogPanel>
-@@ -251,7 +252,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+@@ -254,7 +255,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
                  <span>
                    {selectedFiles.size === 0
                      ? "no files"
@@ -43,7 +44,7 @@ index a1f2c54426..f7411db606 100644
                  </span>
                </div>
                <div className="flex min-w-0 flex-col gap-1">
-@@ -313,7 +314,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+@@ -316,7 +317,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
              </div>
  
              <div className="flex flex-col gap-1.5">
@@ -52,7 +53,7 @@ index a1f2c54426..f7411db606 100644
                <Input
                  id={`${id}-path`}
                  value={destinationPath}
-@@ -332,7 +333,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+@@ -335,7 +336,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
                    {copyable.length > 0 ? (
                      <>
                        <span className="text-muted-foreground text-xs">
@@ -61,7 +62,7 @@ index a1f2c54426..f7411db606 100644
                          {selectedBytes > 0 ? ` · ${formatBytes(selectedBytes)}` : ""}
                        </span>
                        <Button
-@@ -374,7 +375,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+@@ -377,7 +378,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
                  )}
                  {ignoredFiles.data?.truncated ? (
                    <p className="text-muted-foreground text-xs">
@@ -70,7 +71,7 @@ index a1f2c54426..f7411db606 100644
                    </p>
                  ) : null}
                  <p className="text-muted-foreground text-xs">
-@@ -391,7 +392,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+@@ -394,7 +395,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
                Cancel
              </Button>
              <Button type="submit" disabled={unavailable || submitting}>
@@ -80,7 +81,7 @@ index a1f2c54426..f7411db606 100644
            </DialogFooter>
          </form>
 diff --git a/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx b/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx
-index d896efe455..86a9c02535 100644
+index d896efe4..86a9c025 100644
 --- a/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx
 +++ b/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx
 @@ -1,3 +1,4 @@
@@ -98,7 +99,7 @@ index d896efe455..86a9c02535 100644
          <button
            type="button"
 diff --git a/apps/web/src/components/settings/DeviceSourcesSettings.tsx b/apps/web/src/components/settings/DeviceSourcesSettings.tsx
-index 09ccc32fd6..94f7e98e98 100644
+index 9d4e07b0..28556394 100644
 --- a/apps/web/src/components/settings/DeviceSourcesSettings.tsx
 +++ b/apps/web/src/components/settings/DeviceSourcesSettings.tsx
 @@ -1,3 +1,4 @@
@@ -106,7 +107,7 @@ index 09ccc32fd6..94f7e98e98 100644
  import { useAtomValue } from "@effect/atom-react";
  import { Fragment, useState, type ReactNode } from "react";
  import * as Cause from "effect/Cause";
-@@ -32,7 +33,6 @@ import { DeviceHostEditor } from "./DeviceHostEditor";
+@@ -33,7 +34,6 @@ import { DeviceHostEditor } from "./DeviceHostEditor";
  import { updateDeviceHosts, groupDeviceHosts } from "./deviceHostsSettings.logic";
  import { EasDeviceHostEditor } from "./EasDeviceHostEditor";
  import {
@@ -114,7 +115,7 @@ index 09ccc32fd6..94f7e98e98 100644
    newEasDeviceHost,
    updateEasDeviceHosts,
  } from "./easDeviceHostsSettings.logic";
-@@ -458,7 +458,7 @@ export function DeviceSourcesSettings(props: {
+@@ -461,7 +461,7 @@ export function DeviceSourcesSettings(props: {
          shared: true,
          title: host.label,
          kind: "EAS",
@@ -124,7 +125,7 @@ index 09ccc32fd6..94f7e98e98 100644
            const added = (member.settings?.easDeviceHosts ?? []).some(
              (candidate) => candidate.id === host.id,
 diff --git a/apps/web/src/components/settings/EasDeviceHostEditor.tsx b/apps/web/src/components/settings/EasDeviceHostEditor.tsx
-index 1223fe09b7..af39cd7a8e 100644
+index 1223fe09..af39cd7a 100644
 --- a/apps/web/src/components/settings/EasDeviceHostEditor.tsx
 +++ b/apps/web/src/components/settings/EasDeviceHostEditor.tsx
 @@ -1,3 +1,4 @@
@@ -187,7 +188,7 @@ index 1223fe09b7..af39cd7a8e 100644
            </DialogFooter>
          </form>
 diff --git a/apps/web/src/components/settings/IntegrationsSettings.tsx b/apps/web/src/components/settings/IntegrationsSettings.tsx
-index b5ea4553d2..a6d30920d8 100644
+index 6bd65797..dc361b3b 100644
 --- a/apps/web/src/components/settings/IntegrationsSettings.tsx
 +++ b/apps/web/src/components/settings/IntegrationsSettings.tsx
 @@ -1,3 +1,4 @@
@@ -195,7 +196,7 @@ index b5ea4553d2..a6d30920d8 100644
  import { DeviceHostUpdates } from "../device/DeviceHostUpdates";
  import { fillSlot } from "~/newThreadDisplayStrings";
  import { DeviceToolVersions } from "../device/DeviceToolVersions";
-@@ -751,7 +752,7 @@ function BrowserSearchEngineSetting() {
+@@ -757,7 +758,7 @@ function BrowserSearchEngineSetting() {
            status={
              isValidSearchUrlTemplate(customUrl)
                ? undefined
@@ -204,7 +205,7 @@ index b5ea4553d2..a6d30920d8 100644
            }
            control={
              <DraftInput
-@@ -1573,7 +1574,7 @@ function BrowserProfilesSetting({ disabled }: { readonly disabled: boolean }) {
+@@ -1579,7 +1580,7 @@ function BrowserProfilesSetting({ disabled }: { readonly disabled: boolean }) {
  
  export function BrowserSettingsPanel() {
    const desktopOnly = !isElectron;
@@ -214,7 +215,7 @@ index b5ea4553d2..a6d30920d8 100644
    return (
      <SettingsPageContainer>
 diff --git a/apps/web/src/components/settings/MobileAppSettingsRow.tsx b/apps/web/src/components/settings/MobileAppSettingsRow.tsx
-index 62f4332a40..20c76d5390 100644
+index 62f4332a..20c76d53 100644
 --- a/apps/web/src/components/settings/MobileAppSettingsRow.tsx
 +++ b/apps/web/src/components/settings/MobileAppSettingsRow.tsx
 @@ -1,3 +1,4 @@
@@ -232,15 +233,16 @@ index 62f4332a40..20c76d5390 100644
                  </div>
                </PopoverPopup>
 diff --git a/apps/web/src/components/settings/ScheduledTasksSettings.tsx b/apps/web/src/components/settings/ScheduledTasksSettings.tsx
-index ce581e0fd8..acc3e49858 100644
+index 27c3d59a..2bbaa032 100644
 --- a/apps/web/src/components/settings/ScheduledTasksSettings.tsx
 +++ b/apps/web/src/components/settings/ScheduledTasksSettings.tsx
-@@ -1,3 +1,4 @@
+@@ -1,3 +1,5 @@
 +import { displayWebhookFilterError, displayWebhookDeliveryStatus } from "~/v011DisplayStrings";
++import { translateFixed } from "~/newThreadDisplayStrings";
  import { displayKnown } from "~/acceptanceDisplayStrings";
  import { useAtomValue } from "@effect/atom-react";
  import { connectionStatusTitle } from "@t3tools/client-runtime/connection";
-@@ -903,7 +904,7 @@ function WebhookDeliveriesDialog({
+@@ -954,7 +956,7 @@ function WebhookDeliveriesDialog({
                      selected.pendingWindow ? "coalesced" : selected.outcome,
                    )}
                  >
@@ -249,7 +251,7 @@ index ce581e0fd8..acc3e49858 100644
                  </Badge>
                  <span>
                    {selected.method} · <ScheduledRelativeLabel value={selected.receivedAt} />
-@@ -968,7 +969,7 @@ function WebhookDeliveriesDialog({
+@@ -1019,7 +1021,7 @@ function WebhookDeliveriesDialog({
                          delivery.pendingWindow ? "coalesced" : delivery.outcome,
                        )}
                      >
@@ -258,7 +260,16 @@ index ce581e0fd8..acc3e49858 100644
                      </Badge>
                      <span>{delivery.method}</span>
                      <span className="text-muted-foreground">
-@@ -1303,7 +1304,7 @@ function ScheduledTaskEditorForm({
+@@ -1321,7 +1323,7 @@ function ScheduledTaskDestination({
+             className="w-full justify-between"
+           >
+             <MessageSquareIcon className="size-3.5 shrink-0 text-muted-foreground" />
+-            <span className="min-w-0 flex-1 truncate text-left">{currentLabel}</span>
++            <span className="min-w-0 flex-1 truncate text-left">{ref === null ? translateFixed(currentLabel) : currentLabel}</span>
+             <ChevronDownIcon className="size-3.5 shrink-0 text-muted-foreground" />
+           </ComboboxTrigger>
+           <ComboboxPopup align="start" side="bottom" className="w-80">
+@@ -1483,7 +1485,7 @@ function ScheduledTaskEditorForm({
      }
      const parsedFilters = parseWebhookFilterDrafts(draft.filters);
      if (draft.scheduleMode === "webhook" && "error" in parsedFilters) {
@@ -268,7 +279,7 @@ index ce581e0fd8..acc3e49858 100644
      }
      const schedule = scheduleFromDraft(draft);
 diff --git a/apps/web/src/components/usage/UsageLimitsPooled.tsx b/apps/web/src/components/usage/UsageLimitsPooled.tsx
-index 57268017c7..cd86c5f8b1 100644
+index 9e11e7de..82047f2e 100644
 --- a/apps/web/src/components/usage/UsageLimitsPooled.tsx
 +++ b/apps/web/src/components/usage/UsageLimitsPooled.tsx
 @@ -1,3 +1,5 @@
@@ -286,7 +297,7 @@ index 57268017c7..cd86c5f8b1 100644
          {reset && reset.restoresPercent > 0 ? (
            <Row label="Restores">+{reset.restoresPercent}%</Row>
          ) : null}
-@@ -354,7 +356,7 @@ function SegmentTriggers({
+@@ -353,7 +355,7 @@ function SegmentTriggers({
              ref={segmentRef}
              type="button"
              style={paceMark?.gappedTrack}
@@ -296,7 +307,7 @@ index 57268017c7..cd86c5f8b1 100644
            />
          }
 diff --git a/apps/web/src/lib/addProjectToMachine.ts b/apps/web/src/lib/addProjectToMachine.ts
-index 0ef0467b93..675d8c8c58 100644
+index 0ef0467b..675d8c8c 100644
 --- a/apps/web/src/lib/addProjectToMachine.ts
 +++ b/apps/web/src/lib/addProjectToMachine.ts
 @@ -183,7 +183,9 @@ export async function addProjectToMachine(input: AddProjectToMachineInput): Prom
@@ -312,7 +323,7 @@ index 0ef0467b93..675d8c8c58 100644
      );
 diff --git a/apps/web/src/v011DisplayStrings.ts b/apps/web/src/v011DisplayStrings.ts
 new file mode 100644
-index 0000000000..3300a7b2f4
+index 00000000..3300a7b2
 --- /dev/null
 +++ b/apps/web/src/v011DisplayStrings.ts
 @@ -0,0 +1,45 @@

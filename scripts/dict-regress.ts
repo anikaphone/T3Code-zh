@@ -24,16 +24,21 @@ const argv = process.argv.slice(2);
 const root = path.resolve(argv.find((a) => !a.startsWith("--")) ?? path.join(ZH_ROOT, "upstream"));
 const oldRev = argv.find((a) => a.startsWith("--old="))?.slice("--old=".length) ?? "HEAD";
 
+const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "t3zh-dict-regress-"));
 const oldDictText = execFileSync("git", ["-C", ZH_ROOT, "show", `${oldRev}:dict/zh-CN.json`], { encoding: "utf8" });
 const oldDict: T3zhDict = JSON.parse(oldDictText);
-const oldDictPath = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "t3zh-dict-regress-")), "zh-CN.json");
+const oldDictPath = path.join(tmpDir, "zh-CN.json");
 fs.writeFileSync(oldDictPath, oldDictText);
+const oldAllowText = execFileSync("git", ["-C", ZH_ROOT, "show", `${oldRev}:dict/allow-suspicious.json`], { encoding: "utf8" });
+const oldAllowPath = path.join(tmpDir, "allow-suspicious.json");
+fs.writeFileSync(oldAllowPath, oldAllowText);
 const newDict: T3zhDict = JSON.parse(fs.readFileSync(path.join(ZH_ROOT, "dict", "zh-CN.json"), "utf8"));
 const oldT = createTranslator(oldDict);
 const newT = createTranslator(newDict);
 
-// 旧词库下的判定（哪些是 collision）要用旧词库建上下文；当前判定用当前词库。
-const oldCtx = createScanContext({ root, dictPath: oldDictPath });
+// 旧词库下的判定（哪些是 collision）要用旧词库与旧放行表建上下文；当前判定用当前词库与当前放行表。
+const oldCtx = createScanContext({ root, dictPath: oldDictPath, allowSuspiciousPath: oldAllowPath });
+fs.rmSync(tmpDir, { recursive: true, force: true });
 const ctx = createScanContext({ root });
 const rel = (file: string) => path.relative(root, file).split(path.sep).join("/");
 

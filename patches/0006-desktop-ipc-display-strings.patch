@@ -1,7 +1,7 @@
 # 0006-desktop-ipc-display-strings.patch
 #
 # 桌面主进程经 IPC 传给 web 显示的英文，在 web 的显示位置翻译（T07-fix1，对应 T07 已知问题 3）。
-# 基线 v0.1.7；类型上依赖 0004 在 vite-env.d.ts 补的全局 `var __t3zh`（含 t），须在 0004 之后应用。
+# 基线 v0.1.8；类型上依赖 0004 在 vite-env.d.ts 补的全局 `var __t3zh`（含 t），须在 0004 之后应用。
 #
 # 做法：新增 apps/web/src/desktopIpcStrings.ts 的 translateKnownDesktopString(x)。只有名单里的精确文字才交给
 # globalThis.__t3zh?.t?.(x) 查表（CONVENTIONS §5 全局 API），其余原样返回。名单外的文字不能交给 t()：
@@ -23,7 +23,7 @@
 # reports/desktop-main-strings.md 第 4 节和 handoff/T07.md。上游更新后重做方法见 patches/README.md。
 #
 diff --git a/apps/web/src/components/ServerUpdateAction.tsx b/apps/web/src/components/ServerUpdateAction.tsx
-index 32a2811aca..4fbb7d4295 100644
+index 32a2811a..4fbb7d42 100644
 --- a/apps/web/src/components/ServerUpdateAction.tsx
 +++ b/apps/web/src/components/ServerUpdateAction.tsx
 @@ -33,6 +33,7 @@ import { environmentPresentations } from "~/state/presentation";
@@ -59,7 +59,7 @@ index 32a2811aca..4fbb7d4295 100644
        </div>
      );
 diff --git a/apps/web/src/components/desktop/SnapShotCoordinator.tsx b/apps/web/src/components/desktop/SnapShotCoordinator.tsx
-index 3d7dae6e65..2db4f03106 100644
+index 3d7dae6e..2db4f031 100644
 --- a/apps/web/src/components/desktop/SnapShotCoordinator.tsx
 +++ b/apps/web/src/components/desktop/SnapShotCoordinator.tsx
 @@ -35,6 +35,7 @@ import {
@@ -80,18 +80,18 @@ index 3d7dae6e65..2db4f03106 100644
              );
            });
 diff --git a/apps/web/src/components/settings/AuthorizedClientsSettings.tsx b/apps/web/src/components/settings/AuthorizedClientsSettings.tsx
-index 171bdeab60..d7f845e4cb 100644
+index f58bf7b1..f373dcd9 100644
 --- a/apps/web/src/components/settings/AuthorizedClientsSettings.tsx
 +++ b/apps/web/src/components/settings/AuthorizedClientsSettings.tsx
-@@ -58,6 +58,7 @@ import { usePrimaryManagedPolicy } from "~/state/managedPolicy";
- import { ManagedControl } from "../ManagedPolicy";
+@@ -62,6 +62,7 @@ import { ManagedControl } from "../ManagedPolicy";
+ import { openUseInAnotherApp } from "../mcp/UseInAnotherAppDialog";
  import { ConnectionStatusDot } from "../ConnectionStatusDot";
  import { ITEM_ROW_CLASSNAME, ITEM_ROW_INNER_CLASSNAME } from "./itemRows";
 +import { translateKnownDesktopString } from "~/desktopIpcStrings";
  import {
    formatAccessTimestamp,
    selectPairingEndpoint,
-@@ -428,7 +429,7 @@ const PairingLinkListRow = memo(function PairingLinkListRow({
+@@ -435,7 +436,7 @@ const PairingLinkListRow = memo(function PairingLinkListRow({
                            isSelected ? "text-foreground" : "text-muted-foreground",
                          )}
                        >
@@ -100,7 +100,7 @@ index 171bdeab60..d7f845e4cb 100644
                        </span>
                        <span className="min-w-0 truncate text-2xs text-muted-foreground/70">
                          {option.detail}
-@@ -884,7 +885,7 @@ export const AdvertisedEndpointListRow = memo(function AdvertisedEndpointListRow
+@@ -901,7 +902,7 @@ export const AdvertisedEndpointListRow = memo(function AdvertisedEndpointListRow
        <div className="flex min-h-7 min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
          <div className="flex min-h-7 min-w-0 flex-1 items-center gap-3">
            <h3 className="shrink-0 text-sm leading-5 font-medium text-foreground">
@@ -110,7 +110,7 @@ index 171bdeab60..d7f845e4cb 100644
            {shouldShowEndpointUrl ? (
              <Tooltip>
 diff --git a/apps/web/src/components/settings/SnapShotSettings.tsx b/apps/web/src/components/settings/SnapShotSettings.tsx
-index c69f1e7869..58b6ddca5d 100644
+index c69f1e78..58b6ddca 100644
 --- a/apps/web/src/components/settings/SnapShotSettings.tsx
 +++ b/apps/web/src/components/settings/SnapShotSettings.tsx
 @@ -54,6 +54,7 @@ import { SelectButton } from "../ui/select";
@@ -131,7 +131,7 @@ index c69f1e7869..58b6ddca5d 100644
                !state.shortcutLabel &&
                isModifierPairShortcut(displayShortcut)
 diff --git a/apps/web/src/components/settings/SnapShotSetupDialog.tsx b/apps/web/src/components/settings/SnapShotSetupDialog.tsx
-index bf078c74bf..a7a0cb9021 100644
+index bf078c74..a7a0cb90 100644
 --- a/apps/web/src/components/settings/SnapShotSetupDialog.tsx
 +++ b/apps/web/src/components/settings/SnapShotSetupDialog.tsx
 @@ -11,6 +11,7 @@ import { CaptureShortcutConfig } from "./CaptureShortcutConfig";
@@ -153,7 +153,7 @@ index bf078c74bf..a7a0cb9021 100644
                    {step === "access" && (backend === "gnome" || helperBackend) ? (
 diff --git a/apps/web/src/desktopIpcStrings.ts b/apps/web/src/desktopIpcStrings.ts
 new file mode 100644
-index 0000000000..de5660388a
+index 00000000..de566038
 --- /dev/null
 +++ b/apps/web/src/desktopIpcStrings.ts
 @@ -0,0 +1,94 @@

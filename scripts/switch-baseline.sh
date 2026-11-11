@@ -27,9 +27,9 @@ log() { printf '[switch-baseline] %s\n' "$*"; }
 [[ -n "${OLD_COMMIT}" && -n "${OLD_TAG}" ]] || { log "读不到当前基线（build-zh.sh / report.ts）"; exit 1; }
 [[ -z "$(git -C "${ZH_ROOT}/upstream" status --porcelain)" ]] || { log "upstream/ 有改动，停下"; exit 1; }
 
-# 只在 `#` 说明行里替换 tag；diff 内容不动。
+# 只在 `#` 说明行里替换 tag 与 commit；diff 内容不动。
 replace_in_comments() {
-  perl -i -pe "s/\Q${OLD_TAG}\E/${NEW_TAG}/g if /^#/" "$1"
+  perl -i -pe "if (/^#/) { s/\Q${OLD_TAG}\E/${NEW_TAG}/g; s/\Q${OLD_COMMIT}\E/${NEW_COMMIT}/g; }" "$1"
 }
 
 log "${OLD_TAG}（${OLD_COMMIT}）→ ${NEW_TAG}（${NEW_COMMIT}）"

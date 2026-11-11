@@ -36,7 +36,7 @@ import {
 import { createTranslator, type Translator } from "../runtime/t3zh-runtime.ts";
 
 /** 基线 tag（CONVENTIONS §1）。报告目录名用它，可用 --tag= 覆盖。 */
-const BASELINE_TAG = "v0.1.7";
+const BASELINE_TAG = "v0.1.8";
 
 // ---------------------------------------------------------------------------
 // 参数与路径

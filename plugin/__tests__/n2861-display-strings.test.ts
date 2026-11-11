@@ -22,7 +22,6 @@ const UPSTREAM = path.resolve(process.env.T3ZH_UPSTREAM ?? path.join(ROOT, "upst
 const PATCHES = fs.readdirSync(path.join(ROOT, "patches")).filter(p => p.endsWith(".patch")).sort();
 const N2861 = "0020-n2861-display-strings.patch";
 const MCP = "apps/web/src/components/chat/McpAppFrame.tsx";
-const WELCOME = "apps/web/src/components/onboarding/WelcomeWizard.tsx";
 const PREVIEW = "apps/web/src/components/preview/PreviewUnreachable.tsx";
 const HELPER = "apps/web/src/newThreadDisplayStrings.ts";
 const NEW_HELPER = "apps/web/src/n2861DisplayStrings.ts";
@@ -41,7 +40,7 @@ const CODE_LANGUAGES = "apps/web/src/composer-code-languages.ts";
 const CODE_PICKER = "apps/web/src/components/chat/ComposerCodeBlockLanguagePicker.tsx";
 const PR_SUMMARY = "apps/web/src/components/pullRequest/PullRequestSummaryTab.tsx";
 const COMMAND_RESULTS = "apps/web/src/components/CommandPaletteResults.tsx";
-const FILES = ["apps/web/src/n2935DisplayStrings.ts", PR_SUMMARY,CODE_LANGUAGES, CODE_PICKER, COMMAND_RESULTS, MCP, WELCOME, PREVIEW, HELPER, NEW_HELPER, COMPOSER, TIMELINE, WORK_GROUP_ROWS, PERMISSIONS, SETTINGS, PROVIDER, USAGE, FIND, DIFF_HELPER, DIFF_VIEW, CLI, "apps/web/src/acceptanceDisplayStrings.ts", "apps/web/src/connectionPermissionDisplayStrings.ts"];
+const FILES = ["apps/web/src/n2935DisplayStrings.ts", PR_SUMMARY, CODE_LANGUAGES, CODE_PICKER, COMMAND_RESULTS, MCP, PREVIEW, HELPER, NEW_HELPER, COMPOSER, TIMELINE, WORK_GROUP_ROWS, PERMISSIONS, SETTINGS, PROVIDER, USAGE, FIND, DIFF_HELPER, DIFF_VIEW, CLI, "apps/web/src/acceptanceDisplayStrings.ts", "apps/web/src/connectionPermissionDisplayStrings.ts"];
 function tree(patches: readonly string[]) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "t3zh-n2861-"));
   for (const f of FILES) {
@@ -128,18 +127,12 @@ test("0020 MCP states: real JSX, locales and slot-only calls", () => {
     }
   }
 });
-test("0020 setup skipped and download notice: React text and dynamic values stay intact", () => {
-  const original = one(BEFORE, WELCOME, textChild("Not connected, so setup skips "));
-  const patched = one(TEMP, WELCOME, fillSlotCall("Not connected, so setup skips "));
+test("0020 download notice: React text and dynamic values stay intact", () => {
   const downloadOriginal = one(BEFORE, PREVIEW, textChild(" from "));
   const downloadPatched = one(TEMP, PREVIEW, c => c.some(n => t.isIdentifier(n, { name: "beforeFile" })));
-  for (const labels of [[risky], ["weather", risky]]) for (const locale of [null, "en", "zh-CN"] as const) {
+  for (const locale of [null, "en", "zh-CN"] as const) {
     const r = runtime(locale);
     try {
-      const scope = { skippedLabels: labels };
-      assert.equal(render(patched, scope), locale === "zh-CN" ? `未连接，设置将跳过 ${labels.join(", ")}。以后可以在设置中配置。` : render(original, scope));
-      assert.deepEqual(r.calls, locale === null ? [] : [`Not connected, so setup skips ${SLOT}. You can set ${labels.length === 1 ? "it" : "them"} up later from Settings.`]);
-      r.calls.length = 0;
       const host = risky, fileName = "data$&.txt";
       const [beforeFile, afterFile] = download.downloadAroundFile(host);
       assert.equal(render(downloadPatched, { beforeFile, afterFile, fileName }), locale === "zh-CN" ? `来自 ${host} 的 ${fileName} 已改为下载。` : render(downloadOriginal, { host, fileName }));
@@ -246,22 +239,6 @@ test("0020 thread find: real state label render preserves count and unknown text
     } finally { r.restore(); }
   }
 });
-test("0020 onboarding step callbacks translate the actual three labels without changing stage data", () => {
-  assert.equal(initializer(read(TEMP, WELCOME), "ONBOARDING_STAGES"), initializer(read(UPSTREAM, WELCOME), "ONBOARDING_STAGES"));
-  const steps = selected(read(TEMP, WELCOME), n => t.isJSXOpeningElement(n) && t.isJSXIdentifier(n.name, { name: "WizardSteps" }));
-  const displayOnboardingStep = evaluate(initializer(read(TEMP, WELCOME), "displayOnboardingStep"), helper);
-  const callback = (name: string) => evaluate(generate(steps.attributes.find((a: any) => a.name?.name === name).value.expression).code, { ...acceptance, displayOnboardingStep });
-  for (const locale of [null, "en", "zh-CN"] as const) {
-    const r = runtime(locale);
-    try {
-      for (const [index, step] of ["Connect", "Agents", "Projects"].entries()) {
-        const label = locale === "zh-CN" ? dict.messages[step] : step;
-        assert.equal(callback("displayStep")(step), label);
-        assert.equal(callback("displayStepAria")(step, index, null), locale === "zh-CN" ? `${label}，第 ${index + 1} 步` : `${step}, step ${index + 1}`);
-      }
-    } finally { r.restore(); }
-  }
-});
 test("0020 diff result labels: numeric slots only; English observer never touches DOM", () => {
   const examples = [["No results", "无匹配结果"], ["12 results", "共 12 项结果"], ["2 of 12", "2 / 12"], [risky, risky], ["user results", "user results"]];
   for (const locale of [null, "en", "zh-CN"] as const) {
@@ -292,21 +269,31 @@ test("0020 CLI command descriptions: real display expression, all path branches,
   assert.equal(initializer(read(TEMP, CLI), "description"), initializer(read(UPSTREAM, CLI), "description"));
   const description = selected(read(TEMP, CLI), n => t.isJSXAttribute(n) && n.name.name === "description").value.expression;
   const code = stripTypeScriptTypes(`(${generate(description).code})`);
+  const shellProfile = "/Users/u/.zshrc to main $&";
   const states = [
-    { shadowedBy: risky, installedPath: null, onPath: false },
-    { shadowedBy: null, installedPath: null, onPath: false },
-    { shadowedBy: null, installedPath: risky, onPath: true },
-    { shadowedBy: null, installedPath: risky, onPath: false },
+    { shadowedBy: risky, installedPath: null, onPath: false, pathSetup: null },
+    { shadowedBy: null, installedPath: null, onPath: false, pathSetup: null },
+    { shadowedBy: null, installedPath: risky, onPath: true, pathSetup: null },
+    { shadowedBy: null, installedPath: risky, onPath: false, pathSetup: { file: shellProfile, added: true } },
+    { shadowedBy: null, installedPath: risky, onPath: false, pathSetup: { file: shellProfile, added: false } },
+    { shadowedBy: null, installedPath: risky, onPath: false, pathSetup: null },
   ];
   for (const [index, state] of states.entries()) for (const locale of [null, "en", "zh-CN"] as const) {
     const r = runtime(locale);
     try {
       const installed = state.installedPath !== null;
       const original = evaluate(initializer(read(UPSTREAM, CLI), "description"), { state, installed });
-      const actual = evaluate(code, { state, installed, description: original, ...helper });
-      const expected = [`新终端会优先运行 ${risky} 处的其他 t3。移除它后即可使用 T3 Code 提供的命令。`, "在任意终端中使用 `t3` 运行 T3 Code CLI。", `已安装于 ${risky}。打开新终端即可使用。`, `已安装于 ${risky}，其目录尚未加入 PATH。将该目录加入 PATH 后即可运行 \`t3\`。`][index];
+      const actual = evaluate(code, { state, installed, description: original, ...helper, ...download });
+      const expected = [
+        `新终端会优先运行 ${risky} 处的其他 t3。移除它后即可使用 T3 Code 提供的命令。`,
+        "在任意终端中使用 `t3` 运行 T3 Code CLI。",
+        `已安装于 ${risky}。打开新终端即可使用。`,
+        `已安装于 ${risky}，并已在 ${shellProfile} 中加入 PATH。打开新终端即可使用。`,
+        `已安装于 ${risky}，其目录尚未加入 PATH。`,
+        `已安装于 ${risky}，其目录尚未加入 PATH。将该目录加入 PATH 后即可运行 \`t3\`。`,
+      ][index];
       assert.equal(actual, locale === "zh-CN" ? expected : original);
-      assert.ok(r.calls.every(v => !v.includes(risky)));
+      assert.ok(r.calls.every(v => !v.includes(risky) && !v.includes(shellProfile)));
     } finally { r.restore(); }
   }
 });
@@ -322,21 +309,17 @@ test("0020 provider progress translates only the actual finite status labels", (
     } finally { r.restore(); }
   }
 });
-test("0020 removes eleven text skips plus two pronoun branches; new mixed-display helpers do not expand matcher", () => {
+test("0020 removes text skips in MCP and PreviewUnreachable; new mixed-display helpers do not expand matcher", () => {
   const ctx = createScanContext({ root: UPSTREAM });
   const expected: Record<string, string[]> = {
     [MCP]: ["The ", " app was closed", "The ", " app left its page and was stopped", "Unable to load the ", " app"],
-    [WELCOME]: ["Not connected, so setup skips ", ". You can set", " up later from Settings.", "it", "them"],
     [PREVIEW]: [" from ", " was downloaded instead."],
   };
-  for (const file of [MCP, WELCOME, PREVIEW]) {
+  for (const file of [MCP, PREVIEW]) {
     const summary = (root: string) => scanModule(read(root, file), path.join(UPSTREAM, file), ctx).candidates.map(c => `${c.text}|${c.category}|${c.decision}|${c.reason}`);
     const a = summary(BEFORE), b = summary(TEMP);
     assert.deepEqual(b.filter(c => !a.includes(c)), []);
-    // 0021 replaces the pre-existing broad Import template in this same final file.
-    // Its full expression parity/data isolation is covered by n2935-display-strings.test.ts.
-    const laterRemoved = file === WELCOME ? ["Import {0} {1}|A|translate|jsx-expression"] : [];
-    assert.deepEqual(a.filter(c => !b.includes(c)).sort(), [...expected[file].map(s => `${s}|A|skip|mixed-jsx`), ...laterRemoved].sort());
+    assert.deepEqual(a.filter(c => !b.includes(c)).sort(), expected[file].map(s => `${s}|A|skip|mixed-jsx`).sort());
     const collect = (root: string) => { const map = new Map<string, ValueUseInfo>(); collectValueUse(read(root, file), file, file, map); return new Set(map.keys()); };
     const previous = collect(BEFORE);
     assert.deepEqual([...collect(TEMP)].filter(v => !previous.has(v)), []);
@@ -436,16 +419,14 @@ test("T18 M4: actual transformed picker shows context-specific labels without ch
 
 
 test("T18 PR empty description: translate only the fixed Markdown fallback, preserve arbitrary body", () => {
-  const expression = (root: string) => selected(read(root, PR_SUMMARY), n => t.isJSXAttribute(n) && n.name.name === "text" && generate(n).code.includes("detail.body")).value.expression;
+  const expression = (root: string) => selected(read(root, PR_SUMMARY), n => t.isJSXAttribute(n) && n.name.name === "text" && generate(n).code.includes("description.trim()")).value.expression;
   const before = expression(BEFORE), after = expression(TEMP);
   for (const body of ["", "   ", risky, "_No description provided._", "**Projects to start $&**", "中文正文"]) for (const locale of [null, "en", "zh-CN"] as const) {
     const r = runtime(locale);
     try {
-      const detail = { body };
-      const original = evaluate(generate(before).code, { detail });
+      const original = evaluate(generate(before).code, { description: body });
       const expected = locale === "zh-CN" && body.trim().length === 0 ? dict.messages["_No description provided._"] : original;
-      assert.equal(evaluate(generate(after).code, { detail, ...helper }), expected);
-      assert.equal(detail.body, body);
+      assert.equal(evaluate(generate(after).code, { description: body, ...helper }), expected);
       assert.deepEqual(r.calls, locale !== null && body.trim().length === 0 ? ["_No description provided._"] : []);
     } finally { r.restore(); }
   }

@@ -24,8 +24,8 @@ try {
     { name: "exotic", kind: "exotic", args: ["scripts/check-exotic-forms.ts", source] },
     { name: "generated-guard", kind: "tests", args: ["--test", "scripts/lib/upstream-generated.test.ts"] },
     ...["web", "desktop"].map((area) => ({ name: `${area}-typecheck`, kind: "tsc",
-      command: path.join(ROOT, ".build/src/node_modules/.bin/tsc"),
-      args: ["--noEmit", "--incremental", "false", "--composite", "false"], cwd: path.join(ROOT, ".build/src/apps", area) })),
+      command: path.join(ROOT, ".build/src/node_modules/.bin/effect-tsgo"),
+      args: ["tsrs", "--noEmit", "--incremental", "false", "--composite", "false"], cwd: path.join(ROOT, ".build/src/apps", area) })),
   ];
   const rows = [];
   for (const job of jobs) {

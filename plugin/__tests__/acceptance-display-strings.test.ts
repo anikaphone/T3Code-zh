@@ -233,14 +233,14 @@ test("sidebar row accessible names translate every status label at the call site
   const end = threadRow.indexOf("const isWokeStatus", start);
   assert.ok(start > 0 && end > start);
   const labels = new Set<string>();
-  for (const m of threadRow.slice(start, end).matchAll(/label:\s*([^,\n]+),/g)) {
+  for (const m of threadRow.slice(start, end).matchAll(/label:\s*([^,]+),/g)) {
     // Drop comparison operands (`=== "active"`); only the produced labels count.
     for (const s of m[1]!.replace(/[!=]==\s*"[^"]*"/g, "").matchAll(/"([^"]+)"/g)) labels.add(s[1]!);
   }
-  assert.deepEqual([...labels].sort(), ["Approval", "Done", "Failed", "Goal", "Input", "Limited", "Request", "Waiting", "Woke", "Working"]);
+  assert.deepEqual([...labels].sort(), ["Approval", "Done", "Failed", "Goal", "Input", "Limited", "Request", "Setting up", "Waiting", "Woke", "Working"]);
   for (const label of [...labels, "Unsent draft"]) assert.ok(h.ACCEPTANCE_DISPLAY_LABELS.includes(label), label);
   // The status object itself stays English (sorting, icons and comparisons use it).
-  assert.ok(threadRow.slice(start, end).includes('label: thread.goal?.status === "active" ? "Goal" : "Working"'));
+  assert.match(threadRow.slice(start, end), /status === "preparing"\s*\?\s*"Setting up"\s*:\s*thread\.goal\?\.status === "active"\s*\?\s*"Goal"\s*:\s*"Working"/);
 });
 
 test("ProviderInstanceCard keeps its display helper import at the top", () => {

@@ -77,7 +77,7 @@ const PATCHED_FILES = [
   "apps/web/src/components/Sidebar.tsx",
   "apps/web/src/components/ThreadStatusIndicators.tsx",
   "apps/web/src/components/chat/SubagentTooltipContent.tsx",
-  "apps/web/src/components/onboarding/WelcomeWizard.tsx",
+  "apps/web/src/components/onboarding/WelcomePage.tsx",
   "apps/web/src/components/pullRequest/PullRequestStackMenu.tsx",
   "apps/web/src/components/settings/CodexSetupSection.tsx",
   "apps/web/src/components/settings/ProjectDefaultsSettings.tsx",

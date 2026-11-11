@@ -1,0 +1,2120 @@
+[
+  {
+    "text": "t3",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/InstallT3Commands.tsx",
+        "line": 25,
+        "category": "A",
+        "context": "InstallT3Commands"
+      },
+      {
+        "file": "apps/web/src/components/InstallT3Commands.tsx",
+        "line": 26,
+        "category": "A",
+        "context": "InstallT3Commands"
+      },
+      {
+        "file": "apps/web/src/components/onboarding/WelcomePage.tsx",
+        "line": 1869,
+        "category": "A",
+        "context": "CliPathSetup"
+      },
+      {
+        "file": "apps/web/src/components/onboarding/WelcomePage.tsx",
+        "line": 1873,
+        "category": "A",
+        "context": "CliPathSetup"
+      }
+    ]
+  },
+  {
+    "text": "Default true.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 673,
+        "category": "C",
+        "context": "OrchestratorMcpScheduleTaskInput"
+      },
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 465,
+        "category": "C",
+        "context": "PreviewAutomationEvaluateInput"
+      },
+      {
+        "file": "packages/contracts/src/worktreeMcp.ts",
+        "line": 21,
+        "category": "C",
+        "context": "WorktreeMcpHandoffInput"
+      }
+    ]
+  },
+  {
+    "text": "Could not prepare the {0} checkout",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
+        "line": 887,
+        "category": "C",
+        "context": "startHandoff"
+      },
+      {
+        "file": "apps/web/src/components/pullRequest/usePullRequestActions.ts",
+        "line": 364,
+        "category": "C",
+        "context": "startHandoff"
+      }
+    ]
+  },
+  {
+    "text": "Cursor Origin",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/source-control-cursor-origin/src/server/OriginSourceControlProvider.ts",
+        "line": 31,
+        "category": "C",
+        "context": "label"
+      },
+      {
+        "file": "packages/source-control-cursor-origin/src/shared/definition.ts",
+        "line": 40,
+        "category": "C",
+        "context": "definition"
+      }
+    ]
+  },
+  {
+    "text": "EAS Simulator",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DeviceSourcesSettings.tsx",
+        "line": 554,
+        "category": "A",
+        "context": "DeviceSourcesSettings"
+      },
+      {
+        "file": "apps/web/src/components/settings/easDeviceHostsSettings.logic.ts",
+        "line": 12,
+        "category": "C",
+        "context": "newEasDeviceHost"
+      }
+    ]
+  },
+  {
+    "text": "Empty value",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-pi/src/server/adapter.ts",
+        "line": 3593,
+        "category": "C",
+        "context": "piQuestion"
+      },
+      {
+        "file": "packages/provider-pi/src/server/adapter.ts",
+        "line": 3594,
+        "category": "C",
+        "context": "piQuestion"
+      }
+    ]
+  },
+  {
+    "text": "HTML",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/composer-code-languages.ts",
+        "line": 16,
+        "category": "C",
+        "context": "label"
+      },
+      {
+        "file": "packages/shared/src/htmlRender.ts",
+        "line": 66,
+        "category": "C",
+        "context": "readHtmlRenderReference"
+      }
+    ]
+  },
+  {
+    "text": "Next {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/OfficeViewer.tsx",
+        "line": 240,
+        "category": "B",
+        "context": "ExtendedOfficeViewer"
+      },
+      {
+        "file": "packages/client-runtime/src/state/threadSettled.ts",
+        "line": 269,
+        "category": "C",
+        "context": "snoozePresetLabel"
+      }
+    ]
+  },
+  {
+    "text": "Preparing the {0} checkout...",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestDetailPanel.tsx",
+        "line": 858,
+        "category": "C",
+        "context": "toastId"
+      },
+      {
+        "file": "apps/web/src/components/pullRequest/usePullRequestActions.ts",
+        "line": 338,
+        "category": "C",
+        "context": "toastId"
+      }
+    ]
+  },
+  {
+    "text": "Refreshing {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
+        "line": 212,
+        "category": "B",
+        "context": "PullRequestActionsMenu"
+      },
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
+        "line": 230,
+        "category": "A",
+        "context": "PullRequestActionsMenu"
+      }
+    ]
+  },
+  {
+    "text": "Review {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestComposer.tsx",
+        "line": 86,
+        "category": "B",
+        "context": "PullRequestComposer"
+      },
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestComposer.tsx",
+        "line": 127,
+        "category": "A",
+        "context": "PullRequestComposer"
+      }
+    ]
+  },
+  {
+    "text": "T3 Code {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/textGeneration.ts",
+        "line": 215,
+        "category": "C",
+        "context": "runAgainstServer"
+      },
+      {
+        "file": "packages/provider-opencode/src/server/v2/textGeneration.ts",
+        "line": 123,
+        "category": "C",
+        "context": "generate"
+      }
+    ]
+  },
+  {
+    "text": "The MCP server returned an error.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/mcpOverAcpBridge.ts",
+        "line": 56,
+        "category": "C",
+        "context": "errorMessage"
+      },
+      {
+        "file": "packages/provider-acp/src/server/mcpOverAcpBridge.ts",
+        "line": 61,
+        "category": "C",
+        "context": "errorMessage"
+      }
+    ]
+  },
+  {
+    "text": "URL",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/mcp/UseInAnotherAppDialog.tsx",
+        "line": 573,
+        "category": "B",
+        "context": "ConnectStep"
+      },
+      {
+        "file": "apps/web/src/components/mcp/UseInAnotherAppDialog.tsx",
+        "line": 600,
+        "category": "B",
+        "context": "ConnectStep"
+      }
+    ]
+  },
+  {
+    "text": "User input",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/adapter.ts",
+        "line": 1796,
+        "category": "C",
+        "context": "runtimeRequestTurnItem"
+      },
+      {
+        "file": "packages/provider-opencode/src/server/v2/adapter.ts",
+        "line": 1875,
+        "category": "C",
+        "context": "showRequest"
+      }
+    ]
+  },
+  {
+    "text": "project unarchive",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/CommandPalette.tsx",
+        "line": 446,
+        "category": "C",
+        "context": "updateProject"
+      },
+      {
+        "file": "apps/web/src/components/desktop/DesktopAppActivationCoordinator.tsx",
+        "line": 24,
+        "category": "C",
+        "context": "updateProject"
+      }
+    ]
+  },
+  {
+    "text": "1 click, 2 double, 3 triple. Default 1.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 312,
+        "category": "C",
+        "context": "PreviewAutomationClickInput"
+      }
+    ]
+  },
+  {
+    "text": "AGENT_DEVICE_DAEMON_AUTH_TOKEN",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 206,
+        "category": "A",
+        "context": "SimlockDeviceHostEditor"
+      }
+    ]
+  },
+  {
+    "text": "AGENT_DEVICE_DAEMON_BASE_URL",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 207,
+        "category": "A",
+        "context": "SimlockDeviceHostEditor"
+      }
+    ]
+  },
+  {
+    "text": "All must match. Max 16. Omitted: keep stored. [] clears.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 155,
+        "category": "C",
+        "context": "ScheduledTaskWebhookFilters"
+      }
+    ]
+  },
+  {
+    "text": "Also turn it off. Default false.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/device.ts",
+        "line": 699,
+        "category": "C",
+        "context": "DeviceToolCloseInput"
+      }
+    ]
+  },
+  {
+    "text": "Anthropic",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/textGenerators.ts",
+        "line": 48,
+        "category": "C",
+        "context": "label"
+      }
+    ]
+  },
+  {
+    "text": "Assembly",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/composer-code-languages.ts",
+        "line": 3,
+        "category": "C",
+        "context": "label"
+      }
+    ]
+  },
+  {
+    "text": "Bing",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
+        "line": 699,
+        "category": "C",
+        "context": "SEARCH_ENGINE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Button. Default left. Right opens the menu.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 307,
+        "category": "C",
+        "context": "PreviewAutomationClickInput"
+      }
+    ]
+  },
+  {
+    "text": "Card title, such as 'GitHub webhook secret'.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 761,
+        "category": "C",
+        "context": "OrchestratorMcpRequestSecretInput"
+      }
+    ]
+  },
+  {
+    "text": "Case counts.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 479,
+        "category": "C",
+        "context": "PreviewAutomationWaitForInput"
+      }
+    ]
+  },
+  {
+    "text": "Check delegated work.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-pi/src/server/mcpBridge.testkit.ts",
+        "line": 73,
+        "category": "C",
+        "context": "catalog"
+      }
+    ]
+  },
+  {
+    "text": "Closed {0} pull request{1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/usePullRequestActions.ts",
+        "line": 235,
+        "category": "C",
+        "context": "close"
+      }
+    ]
+  },
+  {
+    "text": "Compacting context...",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-pi/src/server/adapter.ts",
+        "line": 340,
+        "category": "C",
+        "context": "compactionTitle"
+      }
+    ]
+  },
+  {
+    "text": "Context compacted after {0} idle",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/MessagesTimeline.logic.ts",
+        "line": 1730,
+        "category": "C",
+        "context": "compactionTitle"
+      }
+    ]
+  },
+  {
+    "text": "Could not link the {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestThreadLinks.tsx",
+        "line": 103,
+        "category": "C",
+        "context": "changeLink"
+      }
+    ]
+  },
+  {
+    "text": "Could not reach the OpenCode server.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/v2/OpenCode2Server.ts",
+        "line": 67,
+        "category": "C",
+        "context": "describeInfoFailure"
+      }
+    ]
+  },
+  {
+    "text": "Could not unlink the {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestThreadLinks.tsx",
+        "line": 103,
+        "category": "C",
+        "context": "changeLink"
+      }
+    ]
+  },
+  {
+    "text": "Cursor API key ({0})",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-cursor/src/server/status.ts",
+        "line": 195,
+        "category": "C",
+        "context": "cursorSdkAuth"
+      }
+    ]
+  },
+  {
+    "text": "Default 'async'. 'wait' only if this turn needs the result. A question or approval ends the wait.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 183,
+        "category": "C",
+        "context": "OrchestratorMcpDelegateTaskInput"
+      }
+    ]
+  },
+  {
+    "text": "Default 15000.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 23,
+        "category": "C",
+        "context": "OptionalTimeoutMs"
+      }
+    ]
+  },
+  {
+    "text": "Default http.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 185,
+        "category": "C",
+        "context": "BrowserNavigationTarget"
+      }
+    ]
+  },
+  {
+    "text": "Default: checked-out branch.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/worktreeMcp.ts",
+        "line": 10,
+        "category": "C",
+        "context": "WorktreeMcpHandoffInput"
+      }
+    ]
+  },
+  {
+    "text": "Default: every day.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 43,
+        "category": "C",
+        "context": "ScheduledTaskFixedTimeSchedule"
+      }
+    ]
+  },
+  {
+    "text": "Default: stored secret.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 175,
+        "category": "C",
+        "context": "ScheduledTaskUpsertWebhookSchedule"
+      }
+    ]
+  },
+  {
+    "text": "Default: your thread's project, or all outside a thread.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 728,
+        "category": "C",
+        "context": "OrchestratorMcpListScheduledTasksInput"
+      }
+    ]
+  },
+  {
+    "text": "Delegated task{0} {1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/notification.ts",
+        "line": 190,
+        "category": "C",
+        "context": "delegatedCompletionNotification"
+      }
+    ]
+  },
+  {
+    "text": "Describe this {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestSummaryTab.tsx",
+        "line": 852,
+        "category": "B",
+        "context": "PullRequestSummaryTab"
+      }
+    ]
+  },
+  {
+    "text": "Dev-server port here.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 182,
+        "category": "C",
+        "context": "BrowserNavigationTarget"
+      }
+    ]
+  },
+  {
+    "text": "Device id from `device_list`. Default: the booted or last used device.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/device.ts",
+        "line": 644,
+        "category": "C",
+        "context": "DeviceToolOpenInput"
+      }
+    ]
+  },
+  {
+    "text": "Device. Default: the last one opened here.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/device.ts",
+        "line": 672,
+        "category": "C",
+        "context": "DeviceToolTargetInput"
+      }
+    ]
+  },
+  {
+    "text": "DuckDuckGo",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
+        "line": 697,
+        "category": "C",
+        "context": "SEARCH_ENGINE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Ecosia",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
+        "line": 702,
+        "category": "C",
+        "context": "SEARCH_ENGINE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Empty clears it.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 327,
+        "category": "C",
+        "context": "PreviewAutomationSelectInput"
+      }
+    ]
+  },
+  {
+    "text": "Explain this {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
+        "line": 262,
+        "category": "A",
+        "context": "PullRequestActionsMenu"
+      }
+    ]
+  },
+  {
+    "text": "False returns a ref. Default true.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 468,
+        "category": "C",
+        "context": "PreviewAutomationEvaluateInput"
+      }
+    ]
+  },
+  {
+    "text": "Forgejo",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/source-control-forgejo/src/shared/definition.ts",
+        "line": 59,
+        "category": "C",
+        "context": "definition"
+      }
+    ]
+  },
+  {
+    "text": "Go · Monthly",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/usageLimits.ts",
+        "line": 174,
+        "category": "C",
+        "context": "readOpenCodeGoUsageLimits"
+      }
+    ]
+  },
+  {
+    "text": "Go · Session",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/usageLimits.ts",
+        "line": 158,
+        "category": "C",
+        "context": "readOpenCodeGoUsageLimits"
+      }
+    ]
+  },
+  {
+    "text": "Go · Weekly",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/usageLimits.ts",
+        "line": 166,
+        "category": "C",
+        "context": "readOpenCodeGoUsageLimits"
+      }
+    ]
+  },
+  {
+    "text": "Google",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
+        "line": 698,
+        "category": "C",
+        "context": "SEARCH_ENGINE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Grok Voice Transcribe",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/speech.ts",
+        "line": 15,
+        "category": "C",
+        "context": "CLOUD_SPEECH_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "Grok account",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-grok/src/server/status.ts",
+        "line": 509,
+        "category": "C",
+        "context": "checkGrokProviderStatus"
+      }
+    ]
+  },
+  {
+    "text": "Header with the signature, such as x-hub-signature-256.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 78,
+        "category": "C",
+        "context": "description"
+      }
+    ]
+  },
+  {
+    "text": "Host from `device_list`. Default local.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/device.ts",
+        "line": 653,
+        "category": "C",
+        "context": "DeviceToolOpenInput"
+      }
+    ]
+  },
+  {
+    "text": "In {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/state/threadSettled.ts",
+        "line": 262,
+        "category": "C",
+        "context": "snoozePresetLabel"
+      }
+    ]
+  },
+  {
+    "text": "Inspect the collaborative browser.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-pi/src/server/mcpBridge.testkit.ts",
+        "line": 76,
+        "category": "C",
+        "context": "catalog"
+      }
+    ]
+  },
+  {
+    "text": "J",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/guide/GuideStop.tsx",
+        "line": 123,
+        "category": "A",
+        "context": "GuideStop"
+      }
+    ]
+  },
+  {
+    "text": "JSON-text schedule. Prefer the object form.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 63,
+        "category": "C",
+        "context": "OrchestratorMcpScheduleFromJsonString"
+      }
+    ]
+  },
+  {
+    "text": "K",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/guide/GuideStop.tsx",
+        "line": 124,
+        "category": "A",
+        "context": "GuideStop"
+      }
+    ]
+  },
+  {
+    "text": "Kagi",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/IntegrationsSettings.tsx",
+        "line": 701,
+        "category": "C",
+        "context": "SEARCH_ENGINE_LABELS"
+      }
+    ]
+  },
+  {
+    "text": "MR",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/source-control-gitlab/src/shared/definition.ts",
+        "line": 32,
+        "category": "C",
+        "context": "definition"
+      }
+    ]
+  },
+  {
+    "text": "Merge stack through #{0} into {1} ({2} {3})",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestStackMenu.tsx",
+        "line": 233,
+        "category": "A",
+        "context": "PullRequestStackMenu"
+      }
+    ]
+  },
+  {
+    "text": "Merge this {0} ({1})",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadDetailsPrRow.tsx",
+        "line": 359,
+        "category": "C",
+        "context": "ThreadDetailsPrRow"
+      }
+    ]
+  },
+  {
+    "text": "Merge {0} {1}?",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestStackMenu.tsx",
+        "line": 247,
+        "category": "A",
+        "context": "PullRequestStackMenu"
+      }
+    ]
+  },
+  {
+    "text": "Min 60000.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 208,
+        "category": "C",
+        "context": "ScheduledTaskUpsertSchedule"
+      }
+    ]
+  },
+  {
+    "text": "Mode 'wait' only. Default 10 min. A timeout does not cancel the child.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 187,
+        "category": "C",
+        "context": "OrchestratorMcpDelegateTaskInput"
+      }
+    ]
+  },
+  {
+    "text": "Monitor: {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-grok/src/server/xaiAcpExtension.ts",
+        "line": 536,
+        "category": "C",
+        "context": "resolveXAiAcpToolTitle"
+      }
+    ]
+  },
+  {
+    "text": "Needed with no `deviceId` when both platforms exist.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/device.ts",
+        "line": 649,
+        "category": "C",
+        "context": "DeviceToolOpenInput"
+      }
+    ]
+  },
+  {
+    "text": "Non-empty, without commas or surrounding whitespace.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/scheduledTask.ts",
+        "line": 131,
+        "category": "C",
+        "context": "WebhookFilterListValue"
+      }
+    ]
+  },
+  {
+    "text": "Oldest pending approval, or null. Ends a wait. Grants no approval rights.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 242,
+        "category": "C",
+        "context": "OrchestratorMcpDelegateTaskResult"
+      }
+    ]
+  },
+  {
+    "text": "Only an address the user gave: https, Tailscale, LAN or loopback. Never guess one.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 823,
+        "category": "C",
+        "context": "OrchestratorMcpEnvironmentLinkInput"
+      }
+    ]
+  },
+  {
+    "text": "OpenCode could not generate the text.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/v2/textGeneration.ts",
+        "line": 96,
+        "category": "C",
+        "context": "runOnServer"
+      }
+    ]
+  },
+  {
+    "text": "OpenCode session failed without an error payload.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/adapter.ts",
+        "line": 858,
+        "category": "C",
+        "context": "openCodeErrorMessage"
+      }
+    ]
+  },
+  {
+    "text": "OpenCode stopped the generation.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/v2/textGeneration.ts",
+        "line": 102,
+        "category": "C",
+        "context": "runOnServer"
+      }
+    ]
+  },
+  {
+    "text": "Opens a thread that knows which {0} you mean.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestActionsMenu.tsx",
+        "line": 254,
+        "category": "A",
+        "context": "PullRequestActionsMenu"
+      }
+    ]
+  },
+  {
+    "text": "Options from `orchestrator_capabilities`, such as {effort:'max'}. Given values override inherited. [] or {} clears.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 112,
+        "category": "C",
+        "context": "OrchestratorMcpTarget"
+      }
+    ]
+  },
+  {
+    "text": "PDF",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/PdfViewer.tsx",
+        "line": 348,
+        "category": "A",
+        "context": "PdfViewer"
+      }
+    ]
+  },
+  {
+    "text": "Prefer `providerInstanceId`.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 105,
+        "category": "C",
+        "context": "OrchestratorMcpTarget"
+      }
+    ]
+  },
+  {
+    "text": "Present when an administrator's policy stops this task from running.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 716,
+        "category": "C",
+        "context": "OrchestratorMcpScheduledTask"
+      }
+    ]
+  },
+  {
+    "text": "Previous {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/files/OfficeViewer.tsx",
+        "line": 188,
+        "category": "B",
+        "context": "ExtendedOfficeViewer"
+      }
+    ]
+  },
+  {
+    "text": "Provider instance id from `orchestrator_capabilities`.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 100,
+        "category": "C",
+        "context": "OrchestratorMcpTarget"
+      }
+    ]
+  },
+  {
+    "text": "Re-add {0} if you want that terminal output included.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/ChatView.logic.ts",
+        "line": 774,
+        "category": "C",
+        "context": "buildExpiredTerminalContextToastCopy"
+      }
+    ]
+  },
+  {
+    "text": "Rebase {0} {1}?",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestStackMenu.tsx",
+        "line": 248,
+        "category": "A",
+        "context": "PullRequestStackMenu"
+      }
+    ]
+  },
+  {
+    "text": "Retry key.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 787,
+        "category": "C",
+        "context": "OrchestratorMcpRequestSecretInput"
+      }
+    ]
+  },
+  {
+    "text": "Reuse `tabId`, or your current tab. Default true. False makes a new tab.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 156,
+        "category": "C",
+        "context": "PreviewAutomationOpenInput"
+      }
+    ]
+  },
+  {
+    "text": "Review {0}, {1} {2} pending",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestComposer.tsx",
+        "line": 84,
+        "category": "B",
+        "context": "PullRequestComposer"
+      }
+    ]
+  },
+  {
+    "text": "Runs share one thread but each starts a fresh session without earlier runs' context. Unbound: the first run makes the thread.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 682,
+        "category": "C",
+        "context": "OrchestratorMcpScheduleTaskInput"
+      }
+    ]
+  },
+  {
+    "text": "Session mode advertised by the ACP agent.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/sessionConfig.ts",
+        "line": 133,
+        "category": "C",
+        "context": "acpProviderOptionDescriptors"
+      }
+    ]
+  },
+  {
+    "text": "Settled {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/useThreadLifecycle.tsx",
+        "line": 629,
+        "category": "B",
+        "context": "useThreadLifecycle"
+      }
+    ]
+  },
+  {
+    "text": "Sign-in failed. Start again.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/providerAuthFlow.ts",
+        "line": 45,
+        "category": "C",
+        "context": "failureMessage"
+      }
+    ]
+  },
+  {
+    "text": "Snoozed, {0} left",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/useThreadLifecycle.tsx",
+        "line": 619,
+        "category": "B",
+        "context": "useThreadLifecycle"
+      }
+    ]
+  },
+  {
+    "text": "Start a new provider session without the thread's earlier context, like /clear. Never steers.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 518,
+        "category": "C",
+        "context": "OrchestratorMcpThreadSendInput"
+      }
+    ]
+  },
+  {
+    "text": "Submit empty value",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-pi/src/server/adapter.ts",
+        "line": 3601,
+        "category": "C",
+        "context": "piQuestion"
+      }
+    ]
+  },
+  {
+    "text": "Subscription",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-grok/src/server/usageLimits.ts",
+        "line": 88,
+        "category": "C",
+        "context": "grokUsageResponseToLimits"
+      }
+    ]
+  },
+  {
+    "text": "Suggested access. The user picks; default approval-required.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 832,
+        "category": "C",
+        "context": "OrchestratorMcpEnvironmentLinkInput"
+      }
+    ]
+  },
+  {
+    "text": "T3 Code removed {0} hidden character{1}. Read the prompt before you send it.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/promptLinks/linkedPrompt.ts",
+        "line": 12,
+        "category": "C",
+        "context": "warnAboutHiddenCharacters"
+      }
+    ]
+  },
+  {
+    "text": "Tailscale",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/connection/routes.ts",
+        "line": 172,
+        "category": "C",
+        "context": "connectionRouteLabel"
+      }
+    ]
+  },
+  {
+    "text": "Task output",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-grok/src/server/xaiAcpExtension.ts",
+        "line": 544,
+        "category": "C",
+        "context": "resolveXAiAcpToolTitle"
+      }
+    ]
+  },
+  {
+    "text": "The OpenCode event stream was lost.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/v2/textGeneration.ts",
+        "line": 113,
+        "category": "C",
+        "context": "runOnServer"
+      }
+    ]
+  },
+  {
+    "text": "The OpenCode server returned HTTP {0}.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/v2/OpenCode2Server.ts",
+        "line": 72,
+        "category": "C",
+        "context": "describeInfoFailure"
+      }
+    ]
+  },
+  {
+    "text": "The access the user chose.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 852,
+        "category": "C",
+        "context": "OrchestratorMcpEnvironmentLinkResult"
+      }
+    ]
+  },
+  {
+    "text": "These databases still hold space freed by history cleanup.{0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/DatabaseStorageNotice.tsx",
+        "line": 74,
+        "category": "B",
+        "context": "DatabaseStorageNotice"
+      }
+    ]
+  },
+  {
+    "text": "This {0} has no file changes.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx",
+        "line": 1460,
+        "category": "A",
+        "context": "PullRequestCodeTab"
+      }
+    ]
+  },
+  {
+    "text": "Todo list",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-opencode/src/server/adapter.ts",
+        "line": 1748,
+        "category": "C",
+        "context": "emitTodo"
+      }
+    ]
+  },
+  {
+    "text": "Trigger: {type:'interval',everyMs}, {type:'fixed_time',timeOfDay,weekdays?}, {type:'once',runAt}, or {type:'webhook'}.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 71,
+        "category": "C",
+        "context": "OrchestratorMcpSchedule"
+      }
+    ]
+  },
+  {
+    "text": "True: fetch, start from the remote ref; check `startedFromOrigin`. Default: server setting.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/worktreeMcp.ts",
+        "line": 16,
+        "category": "C",
+        "context": "WorktreeMcpHandoffInput"
+      }
+    ]
+  },
+  {
+    "text": "Unsupported ACP update: {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/adapter.ts",
+        "line": 5558,
+        "category": "C",
+        "context": "handleSessionUpdate"
+      }
+    ]
+  },
+  {
+    "text": "Webhook URL",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 1119,
+        "category": "B",
+        "context": "WebhookEndpointField"
+      }
+    ]
+  },
+  {
+    "text": "Website URL. {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 175,
+        "category": "C",
+        "context": "BrowserNavigationTarget"
+      }
+    ]
+  },
+  {
+    "text": "Website URL. {0} For public pages.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/previewAutomation.ts",
+        "line": 200,
+        "category": "C",
+        "context": "PreviewAutomationNavigateInput"
+      }
+    ]
+  },
+  {
+    "text": "What should we build in",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/DraftHeroProjectHeading.tsx",
+        "line": 42,
+        "category": "A",
+        "context": "DraftHeroProjectHeading"
+      }
+    ]
+  },
+  {
+    "text": "Why the other environment refused the link, as the user saw it.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 863,
+        "category": "C",
+        "context": "OrchestratorMcpEnvironmentLinkResult"
+      }
+    ]
+  },
+  {
+    "text": "Windows (PowerShell)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/InstallT3Commands.tsx",
+        "line": 20,
+        "category": "A",
+        "context": "InstallT3Commands"
+      }
+    ]
+  },
+  {
+    "text": "Write-only headers JSON, e.g. {\"Authorization\":\"Bearer …\"}",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/AcpSessionManagementSection.tsx",
+        "line": 658,
+        "category": "B",
+        "context": "InstanceSessionManagement"
+      }
+    ]
+  },
+  {
+    "text": "Your unsaved edit{0} was discarded.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/useQueuedRunEdit.ts",
+        "line": 284,
+        "category": "C",
+        "context": "beginEdit"
+      }
+    ]
+  },
+  {
+    "text": "[ACP audio ({0})]",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/runtimeModel.ts",
+        "line": 347,
+        "category": "C",
+        "context": "acpContentBlockDisplayText"
+      }
+    ]
+  },
+  {
+    "text": "[ACP binary resource{0}{1}]",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/runtimeModel.ts",
+        "line": 338,
+        "category": "C",
+        "context": "acpContentBlockDisplayText"
+      }
+    ]
+  },
+  {
+    "text": "[ACP image ({0}){1}]",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/runtimeModel.ts",
+        "line": 343,
+        "category": "C",
+        "context": "acpContentBlockDisplayText"
+      }
+    ]
+  },
+  {
+    "text": "[Historical {0}; {1}; thread={2}; run={3}; item={4}; provider-thread={5}; status={6}{7}]\n{8}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/handoffBudget.ts",
+        "line": 171,
+        "category": "C",
+        "context": "renderHistoricalMessage"
+      }
+    ]
+  },
+  {
+    "text": "[Unsupported ACP content: {0}]",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-acp/src/server/runtimeModel.ts",
+        "line": 350,
+        "category": "C",
+        "context": "acpContentBlockDisplayText"
+      }
+    ]
+  },
+  {
+    "text": "base64",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 2019,
+        "category": "A",
+        "context": "ScheduledTaskEditorForm"
+      }
+    ]
+  },
+  {
+    "text": "declined: the user chose not to. cancelled: the card closed unanswered, when the thread was stopped or archived.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 857,
+        "category": "C",
+        "context": "OrchestratorMcpEnvironmentLinkResult"
+      }
+    ]
+  },
+  {
+    "text": "file holds the value.",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/contracts/src/orchestratorMcp.ts",
+        "line": 800,
+        "category": "C",
+        "context": "OrchestratorMcpRequestSecretResult"
+      }
+    ]
+  },
+  {
+    "text": "git clone",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/AddProjectToMachineDialog.tsx",
+        "line": 249,
+        "category": "A",
+        "context": "AddProjectToMachineDialog"
+      }
+    ]
+  },
+  {
+    "text": "hex",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ScheduledTasksSettings.tsx",
+        "line": 2018,
+        "category": "A",
+        "context": "ScheduledTaskEditorForm"
+      }
+    ]
+  },
+  {
+    "text": "in",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/DraftHeroProjectHeading.tsx",
+        "line": 52,
+        "category": "A",
+        "context": "DraftHeroProjectHeading"
+      }
+    ]
+  },
+  {
+    "text": "kiro-cli",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/provider-kiro/src/settings.ts",
+        "line": 20,
+        "category": "C",
+        "context": "KiroSettings"
+      }
+    ]
+  },
+  {
+    "text": "macOS, Linux",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/InstallT3Commands.tsx",
+        "line": 18,
+        "category": "A",
+        "context": "InstallT3Commands"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.529681 0.01551 326.299)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 398,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.530733 0.01795 323.79)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 533,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.532177 0.019333 325.784)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 803,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.532339 0.017796 331.748)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 668,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.549927 0.090215 323.149)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 263,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.657087 0.028226 307.985)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 327,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.706249 0.014508 306.607)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 867,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.721641 0.010192 281.271)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 597,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.723533 0.008741 4.515)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 732,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "oklch(0.739243 0.002222 223.225)",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "packages/shared/src/themePalettes.ts",
+        "line": 462,
+        "category": "C",
+        "context": "placeholder"
+      }
+    ]
+  },
+  {
+    "text": "opened this {0}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/pullRequestDetail.logic.ts",
+        "line": 710,
+        "category": "C",
+        "context": "buildPullRequestTimeline"
+      }
+    ]
+  },
+  {
+    "text": "resolve guest message",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 232,
+        "category": "C",
+        "context": "resolveGuestMessage"
+      }
+    ]
+  },
+  {
+    "text": "simlock --gateway token create --role agent",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SimlockDeviceHostEditor.tsx",
+        "line": 204,
+        "category": "A",
+        "context": "SimlockDeviceHostEditor"
+      }
+    ]
+  },
+  {
+    "text": "sorry",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/VoiceSettingsPanel.tsx",
+        "line": 1622,
+        "category": "B",
+        "context": "VoiceSettingsPanel"
+      }
+    ]
+  },
+  {
+    "text": "stop guest share",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 180,
+        "category": "C",
+        "context": "closeGuestShare"
+      }
+    ]
+  },
+  {
+    "text": "t3 auth pairing create",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/auth/ConnectAgentSurface.tsx",
+        "line": 227,
+        "category": "A",
+        "context": "ConnectAgentSurface"
+      }
+    ]
+  },
+  {
+    "text": "{\n  \"version\": 1,\n  \"name\": \"Aurora\",\n  \"appearance\": \"light\",\n  \"colors\": { ... }\n}",
+    "kind": "message",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/ThemeImportDialog.tsx",
+        "line": 128,
+        "category": "B",
+        "context": "ThemeJsonEditor"
+      }
+    ]
+  },
+  {
+    "text": "{0} CLI (`{1}`)",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/textGenerationUtils.ts",
+        "line": 90,
+        "category": "C",
+        "context": "cliLabel"
+      }
+    ]
+  },
+  {
+    "text": "{0} Nightly builds are not available{1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/settings/SettingsPanels.tsx",
+        "line": 334,
+        "category": "B",
+        "context": "AboutVersionSection"
+      }
+    ]
+  },
+  {
+    "text": "{0} actions loading",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestGhosts.tsx",
+        "line": 176,
+        "category": "B",
+        "context": "PullRequestDetailGhost"
+      }
+    ]
+  },
+  {
+    "text": "{0} composer",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestComposer.tsx",
+        "line": 107,
+        "category": "B",
+        "context": "PullRequestComposer"
+      }
+    ]
+  },
+  {
+    "text": "{0} delegated tasks {1}{2}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/notification.ts",
+        "line": 201,
+        "category": "C",
+        "context": "delegatedCompletionNotification"
+      }
+    ]
+  },
+  {
+    "text": "{0} description",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestSummaryTab.tsx",
+        "line": 851,
+        "category": "B",
+        "context": "PullRequestSummaryTab"
+      }
+    ]
+  },
+  {
+    "text": "{0} guest message{1} waiting",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/GuestShareControls.tsx",
+        "line": 274,
+        "category": "B",
+        "context": "GuestPendingMessages"
+      }
+    ]
+  },
+  {
+    "text": "{0} more {1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestMoreReplies.tsx",
+        "line": 13,
+        "category": "A",
+        "context": "PullRequestMoreReplies"
+      }
+    ]
+  },
+  {
+    "text": "{0} needs {1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/state/threadShell.ts",
+        "line": 164,
+        "category": "C",
+        "context": "childThreadInputsTitle"
+      }
+    ]
+  },
+  {
+    "text": "{0} provider {1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/sidebar/UpdateEverythingDialog.tsx",
+        "line": 142,
+        "category": "A",
+        "context": "UpdateEverythingDialogContent"
+      }
+    ]
+  },
+  {
+    "text": "{0} subagent {1}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/provider-core/src/server/subagentProjection.ts",
+        "line": 40,
+        "category": "C",
+        "context": "subagentThreadTitle"
+      }
+    ]
+  },
+  {
+    "text": "{0} title",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/PullRequestTitleEditor.tsx",
+        "line": 98,
+        "category": "B",
+        "context": "PullRequestTitleEditor"
+      }
+    ]
+  },
+  {
+    "text": "{0} {1} chained by base branch.",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/pullRequest/ThreadPullRequestsPanel.tsx",
+        "line": 249,
+        "category": "A",
+        "context": "LinkRowImpl"
+      }
+    ]
+  },
+  {
+    "text": "{0} {1} phase, {2}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "apps/web/src/components/chat/ThreadLineageWorkflowRow.tsx",
+        "line": 208,
+        "category": "B",
+        "context": "ThreadLineageWorkflowRow"
+      }
+    ]
+  },
+  {
+    "text": "{0} {1}s need {2}",
+    "kind": "template",
+    "occurrences": [
+      {
+        "file": "packages/client-runtime/src/state/threadShell.ts",
+        "line": 165,
+        "category": "C",
+        "context": "childThreadInputsTitle"
+      }
+    ]
+  }
+]
