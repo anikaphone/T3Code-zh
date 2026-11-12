@@ -712,6 +712,10 @@
     "reason": "发给 AI 的 MCP 工具 / schema 说明（packages/contracts），不是界面文字，保留英文"
   },
   {
+    "key": "Revert \"{0}\"",
+    "reason": "服务端通过 GitLab API 创建还原合并请求（MR）时提交的默认标题载荷，不属于本地界面文字，保持英文。"
+  },
+  {
     "key": "Review {0}",
     "reason": "占位符为 pull/merge/change request；已在主词库及 part2.extra.json 补全精确词条，避免英文残留与宽模板误配。"
   },
@@ -938,6 +942,10 @@
   {
     "key": "These databases still hold space freed by history cleanup.{0}",
     "reason": "占位符为空或固定英文尾句；已在 part2.extra.json 补全两种完整精确词条，避免空占位符失配与英文残留。"
+  },
+  {
+    "key": "This reverts merge request !{0}",
+    "reason": "服务端通过 GitLab API 创建还原合并请求（MR）时提交的默认正文载荷，不属于本地界面文字，保持英文。"
   },
   {
     "key": "This {0} has no file changes.",
@@ -1292,6 +1300,10 @@
     "reason": "占位符为 Pull/Merge/Change request；已在主词库及 part2.extra.json 补全精确词条，避免宽模板误配。"
   },
   {
+    "key": "{0} banked{1}",
+    "reason": "末尾占位符 {1} 为空串或可选后缀“ · expires in {duration}”，直接翻译会失配或残留英文；已由 v0.1.9.extra.json 具体模板覆盖。"
+  },
+  {
     "key": "{0} composer",
     "reason": "占位符为 Pull/Merge/Change request；已在主词库及 part2.extra.json 补全精确词条，避免宽模板误配。"
   },
@@ -1340,6 +1352,10 @@
     "reason": "第二个占位符为 model/models 单复数词形，已由 extra 单复数具体模板覆盖。"
   },
   {
+    "key": "{0} {1} banked{2}",
+    "reason": "占位符含单复数 reset credit/reset credits 及可选后缀“ · next expires in {duration}”；无后缀情形已由主词库覆盖，带过期时间情形已由 v0.1.9.extra.json 具体模板覆盖。"
+  },
+  {
     "key": "{0} {1} chained by base branch.",
     "reason": "第二个占位符为 pull/merge/change requests；已在主词库及 part2.extra.json 补全具体模板，避免英文名词残留。"
   },
@@ -1354,6 +1370,10 @@
   {
     "key": "{0} {1}s need {2}",
     "reason": "带复数词尾 s 的枚举拼接模板（{1} 为 side chat/subagent/thread，{2} 为 input/approval/you）；subagents 分支已存在，其余分支已由 extra 具体模板覆盖。"
+  },
+  {
+    "key": "{0} · {1} left{2}",
+    "reason": "末尾占位符 {2} 为空串或可选后缀“ · expires in {duration}”，直接翻译会失配或残留英文；已由 v0.1.9.extra.json 具体模板覆盖。"
   },
   {
     "key": "{0}{1}, tool call failed",

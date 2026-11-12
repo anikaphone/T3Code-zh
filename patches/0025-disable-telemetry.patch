@@ -1,5 +1,5 @@
 # Disable product usage telemetry, owner/device tracking, and relay tracing by default.
-# Baseline: v0.1.8 bf469bb19669671d0df2efda74ed73867a7137c0.
+# Baseline: v0.1.9 24e77473ecf41bc1f7142529c7911c1c1aae1d76.
 diff --git a/apps/desktop/src/ipc/methods/window.test.ts b/apps/desktop/src/ipc/methods/window.test.ts
 index eebabd429..c31c2bf84 100644
 --- a/apps/desktop/src/ipc/methods/window.test.ts

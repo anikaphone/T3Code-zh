@@ -1,16 +1,16 @@
 # 0021 n2935 display strings
-# 基线 v0.1.8；在 0020 后应用。
+# 基线 v0.1.9；在 0020 后应用。
 # 清理结果、计数及精确理由名单，只在显示处翻译；Automatic 只包固定回退。
 diff --git a/apps/web/src/components/CommandPaletteResults.tsx b/apps/web/src/components/CommandPaletteResults.tsx
-index 8ea86f00..67abd5f2 100644
+index 3458c80fc9..b3590097b8 100644
 --- a/apps/web/src/components/CommandPaletteResults.tsx
 +++ b/apps/web/src/components/CommandPaletteResults.tsx
 @@ -1,3 +1,4 @@
 +import { translateFixed } from "~/newThreadDisplayStrings";
  import { displayKnown, displayRelativeTime } from "~/acceptanceDisplayStrings";
+ import { startPaletteThreadDrag } from "./CommandPalette.drag";
  import { useLegendListRef } from "~/hooks/useLegendListRef";
- import { type ResolvedKeybindingsConfig } from "@t3tools/contracts";
-@@ -165,7 +166,11 @@ function CommandPaletteTitle(props: {
+@@ -174,7 +175,11 @@ function CommandPaletteTitle(props: {
    return (
      <span className="truncate" dir={typeof title === "string" ? textDirection(title) : undefined}>
        {props.item.value.startsWith("action:add-project:")
@@ -23,7 +23,7 @@ index 8ea86f00..67abd5f2 100644
          : props.item.title}
      </span>
    );
-@@ -212,7 +217,11 @@ function DisabledCommandPaletteResultRow(props: {
+@@ -221,7 +226,11 @@ function DisabledCommandPaletteResultRow(props: {
            ) : props.item.description ? (
              <span className="min-w-0 text-muted-foreground/70 text-xs">
                {props.item.value.startsWith("action:add-project:")
@@ -36,7 +36,7 @@ index 8ea86f00..67abd5f2 100644
                  : props.item.description}
              </span>
            ) : null}
-@@ -266,7 +275,11 @@ function CommandPaletteResultRow(props: {
+@@ -285,7 +294,11 @@ function CommandPaletteResultRow(props: {
            ) : props.item.description ? (
              <span className="min-w-0 text-muted-foreground/70 text-xs">
                {props.item.value.startsWith("action:add-project:")
@@ -50,7 +50,7 @@ index 8ea86f00..67abd5f2 100644
              </span>
            ) : null}
 diff --git a/apps/web/src/components/RightPanelTabs.tsx b/apps/web/src/components/RightPanelTabs.tsx
-index fdd1e5e8..d64552c3 100644
+index c368fd6a8a..a623ffca73 100644
 --- a/apps/web/src/components/RightPanelTabs.tsx
 +++ b/apps/web/src/components/RightPanelTabs.tsx
 @@ -1,3 +1,4 @@
@@ -77,7 +77,7 @@ index fdd1e5e8..d64552c3 100644
        sensors={sensors}
        collisionDetection={closestCenter}
        modifiers={TAB_DRAG_MODIFIERS}
-@@ -1355,7 +1361,11 @@ export function RightPanelTabs(props: RightPanelTabsProps) {
+@@ -1360,7 +1366,11 @@ export function RightPanelTabs(props: RightPanelTabsProps) {
            data-right-panel-tab-list
          >
            <div className="flex h-full w-max min-w-full items-center gap-1">
@@ -91,7 +91,7 @@ index fdd1e5e8..d64552c3 100644
                  const previewTabId = previewTabIdOf(surface, props.previewSessions);
                  const favicon = previewFaviconOf(
 diff --git a/apps/web/src/components/onboarding/WelcomePage.tsx b/apps/web/src/components/onboarding/WelcomePage.tsx
-index a7ff5d64..98ce74a4 100644
+index a7ff5d64ec..98ce74a4e6 100644
 --- a/apps/web/src/components/onboarding/WelcomePage.tsx
 +++ b/apps/web/src/components/onboarding/WelcomePage.tsx
 @@ -1,3 +1,4 @@
@@ -113,7 +113,7 @@ index a7ff5d64..98ce74a4 100644
                          ? "Import threads and start"
                          : "Start"}
 diff --git a/apps/web/src/components/settings/ProjectSettingsPanel.tsx b/apps/web/src/components/settings/ProjectSettingsPanel.tsx
-index 379be839..0cc811d8 100644
+index 379be839e2..0cc811d8f1 100644
 --- a/apps/web/src/components/settings/ProjectSettingsPanel.tsx
 +++ b/apps/web/src/components/settings/ProjectSettingsPanel.tsx
 @@ -1,3 +1,4 @@
@@ -131,7 +131,7 @@ index 379be839..0cc811d8 100644
              resetAction={
                group.memberProjects.some((member) => !hasDefaultProjectIcon(member)) ? (
 diff --git a/apps/web/src/components/settings/SettingInheritance.tsx b/apps/web/src/components/settings/SettingInheritance.tsx
-index 8f83f137..9d6efe7a 100644
+index 8f83f13724..9d6efe7a84 100644
 --- a/apps/web/src/components/settings/SettingInheritance.tsx
 +++ b/apps/web/src/components/settings/SettingInheritance.tsx
 @@ -1,3 +1,4 @@
@@ -149,7 +149,7 @@ index 8f83f137..9d6efe7a 100644
              ? "Text generation model"
              : key === "reviewGuideModelSelection"
 diff --git a/apps/web/src/components/settings/StorageSettings.tsx b/apps/web/src/components/settings/StorageSettings.tsx
-index 28f031b5..80924942 100644
+index 28f031b5e6..80924942f3 100644
 --- a/apps/web/src/components/settings/StorageSettings.tsx
 +++ b/apps/web/src/components/settings/StorageSettings.tsx
 @@ -1,3 +1,5 @@
@@ -234,7 +234,7 @@ index 28f031b5..80924942 100644
            }
 diff --git a/apps/web/src/n2935DisplayStrings.ts b/apps/web/src/n2935DisplayStrings.ts
 new file mode 100644
-index 00000000..47907172
+index 0000000000..4790717247
 --- /dev/null
 +++ b/apps/web/src/n2935DisplayStrings.ts
 @@ -0,0 +1,85 @@

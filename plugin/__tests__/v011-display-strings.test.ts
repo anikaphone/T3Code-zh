@@ -146,7 +146,7 @@ for(const locale of [null,"en","zh-CN"] as const){
 
 test("account columns preserve new shared popover, refill and pace behavior",()=>{
  const source=read(DIR,"components/usage/UsageLimitsPooled.tsx");
- for(const needle of ["pool.accounts.map((account)","collectLimitPools([account], now)","repeat(auto-fit, minmax(min(100%, 18rem), 1fr))","h-6 w-full","<SegmentPopoverContext value={segmentPopover}>","<Popover handle={segmentPopover} actionsRef={segmentPopoverActions}>","refillPercent={member.refillPercent}","Math.min(100 - remaining, refillPercent)","usePaceMark(timeLeft)","payload.redeem?.setConfirming(true)","actions.current?.unmount()"]){assert.ok(source.includes(needle),needle);}
+ for(const needle of ["pool.accounts.map((account)","collectLimitPools([account], now)","repeat(auto-fit, minmax(min(100%, 18rem), 1fr))","h-6 w-full","<SegmentPopoverContext value={segmentPopover}>","<Popover handle={segmentPopover} actionsRef={segmentPopoverActions}>","refillPercent={member.refillPercent}","Math.min(100 - remaining, refillPercent)","usePaceMark(timeLeft)","payload.redeem?.confirm(choice)","actions.current?.unmount()"]){assert.ok(source.includes(needle),needle);}
  const before=read(UP,"components/usage/UsageLimitsPooled.tsx");
  for(const name of ["ActiveSegmentPopover","RedeemableSegment"]){const get=(s:string)=>code(one(s,n=>t.isFunctionDeclaration(n)&&n.id.name===name));assert.equal(get(source),get(before),name+" retains upstream behavior");}
 });

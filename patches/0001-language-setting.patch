@@ -1,4 +1,4 @@
-# 基线 v0.1.8 / bf469bb19669671d0df2efda74ed73867a7137c0；按编号顺序普通 apply。
+# 基线 v0.1.9 / 24e77473ecf41bc1f7142529c7911c1c1aae1d76；按编号顺序普通 apply。
 # 0001-language-setting.patch
 #
 # 在设置的「常规 / General」页加一行语言选择（System / English / 简体中文），

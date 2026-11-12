@@ -1,14 +1,14 @@
 {
-  "baseline": "v0.1.8",
+  "baseline": "v0.1.9",
   "dict": {
     "path": "dict/zh-CN.json",
-    "messages": 6595,
-    "templates": 1546
+    "messages": 6641,
+    "templates": 1558
   },
   "allowSuspicious": 80,
   "prescan": {
-    "files": 2948,
-    "valueUseLiterals": 31529
+    "files": 2960,
+    "valueUseLiterals": 31723
   },
   "pluginOrder": [
     "vite:optimized-deps",
@@ -69,36 +69,36 @@
     "vite:import-analysis"
   ],
   "modules": {
-    "scanned": 1801,
-    "transformed": 644,
-    "transformCalls": 1839,
+    "scanned": 1811,
+    "transformed": 647,
+    "transformCalls": 1850,
     "skippedQueries": {
       "worker&url": 1
     }
   },
   "totals": {
-    "candidates": 9741,
-    "translate": 7919,
-    "skip": 1530,
-    "suspicious": 292,
-    "edits": 7919,
-    "translateWithDictMessage": 6817
+    "candidates": 9794,
+    "translate": 7957,
+    "skip": 1543,
+    "suspicious": 294,
+    "edits": 7957,
+    "translateWithDictMessage": 6848
   },
   "byCategory": {
     "A": {
-      "skip": 874,
+      "skip": 886,
       "suspicious": 4,
-      "translate": 2692
+      "translate": 2705
     },
     "B": {
       "skip": 90,
       "suspicious": 1,
-      "translate": 2096
+      "translate": 2109
     },
     "C": {
-      "skip": 563,
-      "suspicious": 271,
-      "translate": 2974
+      "skip": 564,
+      "suspicious": 273,
+      "translate": 2986
     },
     "D": {
       "skip": 3,
@@ -110,45 +110,45 @@
     "translate": {
       "allow-listed": 136,
       "as-const-property": 390,
-      "attribute": 2087,
+      "attribute": 2100,
       "call-arg": 153,
       "destructuring-default": 17,
-      "jsx-expression": 1130,
-      "jsx-text": 1345,
-      "jsx-text-fragment": 210,
-      "label-function-return": 458,
-      "label-map": 215,
-      "property": 1778
+      "jsx-expression": 1135,
+      "jsx-text": 1355,
+      "jsx-text-fragment": 208,
+      "label-function-return": 459,
+      "label-map": 218,
+      "property": 1786
     },
     "skip": {
       "brand-name": 2,
       "data-function": 16,
       "error-constructor": 54,
       "identifier-like": 39,
-      "mixed-jsx": 386,
-      "no-letters": 717,
-      "non-display-call": 314,
+      "mixed-jsx": 392,
+      "no-letters": 722,
+      "non-display-call": 316,
       "rpc-input": 2
     },
     "suspicious": {
       "template-collision": 73,
-      "value-use": 219
+      "value-use": 221
     }
   },
   "byRule": {
     "E1": {
       "skip": 21,
-      "suspicious": 24,
+      "suspicious": 25,
       "translate": 403
     },
     "E2": {
       "suspicious": 33,
-      "translate": 228
+      "translate": 231
     },
     "E3": {
-      "skip": 108,
-      "suspicious": 38,
-      "translate": 485
+      "skip": 109,
+      "suspicious": 39,
+      "translate": 486
     }
   },
   "suspicious": [
@@ -168,21 +168,21 @@
     },
     {
       "file": "apps/web/src/components/CommandPalette.logic.ts",
-      "line": 618,
+      "line": 622,
       "category": "C",
       "reason": "value-use",
       "key": "Settings"
     },
     {
       "file": "apps/web/src/components/CommandPalette.tsx",
-      "line": 879,
+      "line": 882,
       "category": "C",
       "reason": "value-use",
       "key": "No project"
     },
     {
       "file": "apps/web/src/components/DiffPanel.tsx",
-      "line": 1010,
+      "line": 1012,
       "category": "A",
       "reason": "template-collision",
       "key": "vs",
@@ -204,70 +204,70 @@
     },
     {
       "file": "apps/web/src/components/GitActionsControl.logic.ts",
-      "line": 184,
+      "line": 197,
       "category": "C",
       "reason": "value-use",
       "key": "Commit"
     },
     {
       "file": "apps/web/src/components/GitActionsControl.logic.ts",
-      "line": 189,
+      "line": 202,
       "category": "C",
       "reason": "value-use",
       "key": "Commit"
     },
     {
       "file": "apps/web/src/components/GitActionsControl.logic.ts",
-      "line": 207,
+      "line": 220,
       "category": "C",
       "reason": "value-use",
       "key": "Commit"
     },
     {
       "file": "apps/web/src/components/GitActionsControl.logic.ts",
-      "line": 216,
+      "line": 229,
       "category": "C",
       "reason": "value-use",
       "key": "Commit"
     },
     {
       "file": "apps/web/src/components/GitActionsControl.logic.ts",
-      "line": 240,
+      "line": 253,
       "category": "C",
       "reason": "value-use",
       "key": "Commit"
     },
     {
       "file": "apps/web/src/components/GitActionsControl.logic.ts",
-      "line": 247,
+      "line": 260,
       "category": "C",
       "reason": "value-use",
       "key": "Push"
     },
     {
       "file": "apps/web/src/components/GitActionsControl.logic.ts",
-      "line": 255,
+      "line": 268,
       "category": "C",
       "reason": "value-use",
       "key": "Push"
     },
     {
       "file": "apps/web/src/components/GitActionsControl.logic.ts",
-      "line": 289,
+      "line": 302,
       "category": "C",
       "reason": "value-use",
       "key": "Push"
     },
     {
       "file": "apps/web/src/components/GitActionsControl.logic.ts",
-      "line": 305,
+      "line": 318,
       "category": "C",
       "reason": "value-use",
       "key": "Commit"
     },
     {
       "file": "apps/web/src/components/GitActionsControl.logic.ts",
-      "line": 322,
+      "line": 335,
       "category": "C",
       "reason": "value-use",
       "key": "Commit"
@@ -288,7 +288,7 @@
     },
     {
       "file": "apps/web/src/components/RightPanelTabs.tsx",
-      "line": 1106,
+      "line": 1110,
       "category": "C",
       "reason": "value-use",
       "key": "Browser"
@@ -309,63 +309,63 @@
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1098,
+      "line": 1191,
       "category": "C",
       "reason": "value-use",
       "key": "Pending Approval"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1107,
+      "line": 1200,
       "category": "C",
       "reason": "value-use",
       "key": "Awaiting Input"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1116,
+      "line": 1209,
       "category": "C",
       "reason": "value-use",
       "key": "Guest Request"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1128,
+      "line": 1221,
       "category": "C",
       "reason": "value-use",
       "key": "Working"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1141,
+      "line": 1234,
       "category": "C",
       "reason": "value-use",
       "key": "Connecting"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1153,
+      "line": 1246,
       "category": "C",
       "reason": "value-use",
       "key": "Waiting"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1176,
+      "line": 1269,
       "category": "C",
       "reason": "value-use",
       "key": "Plan Ready"
     },
     {
       "file": "apps/web/src/components/Sidebar.logic.ts",
-      "line": 1185,
+      "line": 1278,
       "category": "C",
       "reason": "value-use",
       "key": "Completed"
     },
     {
       "file": "apps/web/src/components/Sidebar.tsx",
-      "line": 1263,
+      "line": 1269,
       "category": "C",
       "reason": "value-use",
       "key": "New thread"
@@ -386,7 +386,7 @@
     },
     {
       "file": "apps/web/src/components/chat/ChatComposer.tsx",
-      "line": 3487,
+      "line": 3499,
       "category": "A",
       "reason": "template-collision",
       "key": "⇥ Tab",
@@ -394,7 +394,7 @@
     },
     {
       "file": "apps/web/src/components/chat/ComposerPrimaryActions.tsx",
-      "line": 69,
+      "line": 74,
       "category": "C",
       "reason": "value-use",
       "key": "Next"
@@ -535,7 +535,7 @@
     },
     {
       "file": "apps/web/src/components/chat/useComposerSend.ts",
-      "line": 899,
+      "line": 888,
       "category": "D",
       "reason": "value-use",
       "key": "This connection cannot change threads."
@@ -564,7 +564,7 @@
     },
     {
       "file": "apps/web/src/components/files/AttachmentFilePreview.tsx",
-      "line": 432,
+      "line": 444,
       "category": "C",
       "reason": "value-use",
       "key": "Wait for the file to finish loading before copying."
@@ -591,6 +591,13 @@
       "key": "This connection cannot change keyboard shortcuts."
     },
     {
+      "file": "apps/web/src/components/pullRequest/PullRequestLinkPreview.tsx",
+      "line": 192,
+      "category": "C",
+      "reason": "value-use",
+      "key": "ghost"
+    },
+    {
       "file": "apps/web/src/components/pullRequest/PullRequestListFilters.tsx",
       "line": 164,
       "category": "C",
@@ -599,14 +606,14 @@
     },
     {
       "file": "apps/web/src/components/pullRequest/pullRequestDetail.logic.ts",
-      "line": 526,
+      "line": 533,
       "category": "C",
       "reason": "value-use",
       "key": "commented"
     },
     {
       "file": "apps/web/src/components/pullRequest/pullRequestPresentation.tsx",
-      "line": 193,
+      "line": 204,
       "category": "C",
       "reason": "value-use",
       "key": "Running"
@@ -648,21 +655,21 @@
     },
     {
       "file": "apps/web/src/components/settings/DiagnosticsSettings.tsx",
-      "line": 242,
+      "line": 247,
       "category": "C",
       "reason": "value-use",
       "key": "Agent"
     },
     {
       "file": "apps/web/src/components/settings/DiagnosticsSettings.tsx",
-      "line": 423,
+      "line": 432,
       "category": "C",
       "reason": "value-use",
       "key": "5m"
     },
     {
       "file": "apps/web/src/components/settings/DiagnosticsSettings.tsx",
-      "line": 426,
+      "line": 435,
       "category": "C",
       "reason": "value-use",
       "key": "1h"
@@ -778,7 +785,7 @@
     },
     {
       "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 145,
+      "line": 147,
       "category": "C",
       "reason": "template-collision",
       "key": "English",
@@ -786,14 +793,14 @@
     },
     {
       "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1085,
+      "line": 1093,
       "category": "C",
       "reason": "value-use",
       "key": "Enter"
     },
     {
       "file": "apps/web/src/components/settings/SettingsPanels.tsx",
-      "line": 1851,
+      "line": 1919,
       "category": "C",
       "reason": "value-use",
       "key": "Mixed"
@@ -849,14 +856,14 @@
     },
     {
       "file": "apps/web/src/components/settings/SourceControlWritingSettings.tsx",
-      "line": 354,
+      "line": 355,
       "category": "C",
       "reason": "value-use",
       "key": "Mixed"
     },
     {
       "file": "apps/web/src/components/settings/SourceControlWritingSettings.tsx",
-      "line": 543,
+      "line": 544,
       "category": "C",
       "reason": "value-use",
       "key": "Mixed"
@@ -877,7 +884,7 @@
     },
     {
       "file": "apps/web/src/components/settings/ThemeEditorPanel.tsx",
-      "line": 162,
+      "line": 167,
       "category": "C",
       "reason": "value-use",
       "key": "Search"
@@ -933,14 +940,14 @@
     },
     {
       "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 843,
+      "line": 851,
       "category": "C",
       "reason": "value-use",
       "key": "Version"
     },
     {
       "file": "apps/web/src/components/settings/settingsSearch.ts",
-      "line": 1244,
+      "line": 1252,
       "category": "C",
       "reason": "value-use",
       "key": "T3 Connect"
@@ -962,28 +969,28 @@
     },
     {
       "file": "apps/web/src/components/sidebar/SidebarThreadRow.tsx",
-      "line": 742,
+      "line": 750,
       "category": "C",
       "reason": "value-use",
       "key": "Working"
     },
     {
       "file": "apps/web/src/components/sidebar/SidebarThreadRow.tsx",
-      "line": 748,
+      "line": 756,
       "category": "C",
       "reason": "value-use",
       "key": "Waiting"
     },
     {
       "file": "apps/web/src/components/sidebar/SidebarThreadRow.tsx",
-      "line": 766,
+      "line": 774,
       "category": "C",
       "reason": "value-use",
       "key": "Request"
     },
     {
       "file": "apps/web/src/components/sidebar/SidebarThreadRow.tsx",
-      "line": 790,
+      "line": 798,
       "category": "C",
       "reason": "value-use",
       "key": "Done"
@@ -1004,7 +1011,7 @@
     },
     {
       "file": "apps/web/src/components/sidebar/UpdateEverythingDialog.tsx",
-      "line": 103,
+      "line": 105,
       "category": "C",
       "reason": "value-use",
       "key": "Update"
@@ -1060,7 +1067,7 @@
     },
     {
       "file": "apps/web/src/components/threadActionMenu.logic.ts",
-      "line": 234,
+      "line": 235,
       "category": "C",
       "reason": "value-use",
       "key": "Branch"
@@ -1583,6 +1590,13 @@
     },
     {
       "file": "packages/contracts/src/editor.ts",
+      "line": 52,
+      "category": "C",
+      "reason": "value-use",
+      "key": "Zed"
+    },
+    {
+      "file": "packages/contracts/src/editor.ts",
       "line": 59,
       "category": "C",
       "reason": "value-use",
@@ -2062,14 +2076,14 @@
     },
     {
       "file": "packages/contracts/src/settings.ts",
-      "line": 692,
+      "line": 699,
       "category": "C",
       "reason": "value-use",
       "key": "codex"
     },
     {
       "file": "packages/contracts/src/settings.ts",
-      "line": 768,
+      "line": 775,
       "category": "C",
       "reason": "value-use",
       "key": "claude"

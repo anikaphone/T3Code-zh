@@ -7,7 +7,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License">
-  <img src="https://img.shields.io/badge/Upstream%20Baseline-v0.1.8-green.svg" alt="Baseline">
+  <img src="https://img.shields.io/badge/Upstream%20Baseline-v0.1.9-green.svg" alt="Baseline">
   <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-orange.svg" alt="Platform">
 </p>
 
@@ -15,7 +15,7 @@
 
 > [!NOTE]
 > 本项目为**非官方**衍生构建项目，与 T3 Tools Inc. 无关。  
-> 汉化基线基于 [T3 Code](https://github.com/pingdotgg/t3code) **官方正式版**（当前基线为 `v0.1.8`，对应汉化版 `0.1.8-zh.1`）。仅跟进官方正式 Release，保证使用稳定性。
+> 汉化基线基于 [T3 Code](https://github.com/pingdotgg/t3code) **官方正式版**（当前基线为 `v0.1.9`，对应汉化版 `0.1.9-zh.1`）。仅跟进官方正式 Release，保证使用稳定性。
 
 ---
 
@@ -118,7 +118,7 @@ npm run report
 
 - **macOS 本地构建**（Bash / Zsh）：
   ```bash
-  ./scripts/build-zh.sh 0.1.8-zh.1
+  ./scripts/build-zh.sh 0.1.9-zh.1
   ```
 
 ---

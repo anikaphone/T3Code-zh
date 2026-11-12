@@ -1,6 +1,6 @@
 # 构建手册（T01 建立，后续任务据此复现）
 
-当前基线：正式版 `v0.1.8` / `bf469bb19669671d0df2efda74ed73867a7137c0`，当前交付 `0.1.8-zh.1`（macOS ARM64 + Windows x64）。已交付的版本号不再覆盖重建，修复一律升 `zh.<N>`。上游产品名为 `T3 Code (Beta)`。
+当前基线：正式版 `v0.1.9` / `24e77473ecf41bc1f7142529c7911c1c1aae1d76`，当前交付 `0.1.9-zh.1`（macOS ARM64 + Windows x64）。已交付的版本号不再覆盖重建，修复一律升 `zh.<N>`。上游产品名为 `T3 Code (Beta)`。
 
 macOS ARM64 沿用 `scripts/build-zh.sh` → `scripts/make-installer.ts` → `scripts/release-hygiene.ts` → `scripts/web-check/run.ts`。只交付 `release/<版本>/installer/` 中完成检查的 DMG，根目录的同名 DMG 是打包中间产物。
 

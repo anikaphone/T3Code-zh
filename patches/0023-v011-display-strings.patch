@@ -1,5 +1,5 @@
 # 0023-v011-display-strings.patch
-# v0.1.8 新增显示位置；复用固定骨架与槽位，不改协议、用户内容或设置数据。
+# v0.1.9 新增显示位置；复用固定骨架与槽位，不改协议、用户内容或设置数据。
 # 依赖0007、0009、0022，按文件名顺序应用。
 
 diff --git a/apps/web/src/acceptanceDisplayStrings.ts b/apps/web/src/acceptanceDisplayStrings.ts

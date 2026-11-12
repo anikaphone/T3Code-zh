@@ -6,10 +6,10 @@
 
 ## 1. 基线与目录
 
-- 基线 tag：`v0.1.8`
-- 基线 commit：`bf469bb19669671d0df2efda74ed73867a7137c0`
+- 基线 tag：`v0.1.9`
+- 基线 commit：`24e77473ecf41bc1f7142529c7911c1c1aae1d76`
 - 上游仓库：`~/Projects/t3code`（远端 `pingdotgg/t3code`，blobless 部分克隆）
-- 版本跟进渠道（2026-10-19 维护者定案）：只跟进官方正式 Release；版本检查、更新说明与汉化升级均以正式版为准，不主动跟进 Nightly / Preview。当前正式版基线为 `v0.1.8`。
+- 版本跟进渠道（2026-10-19 维护者定案）：只跟进官方正式 Release；版本检查、更新说明与汉化升级均以正式版为准，不主动跟进 Nightly / Preview。当前正式版基线为 `v0.1.9`。
 
 ```
 ~/Projects/t3code-zh/          本仓库（git，main 分支）

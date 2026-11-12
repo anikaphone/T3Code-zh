@@ -1,16 +1,16 @@
-# v0.1.8 stable UI display strings; values and protocol identifiers remain unchanged.
+# v0.1.9 stable UI display strings; values and protocol identifiers remain unchanged.
 # New guide, prompt link, workflow, telemetry and update interfaces use fixed skeletons.
 # Also removes a Chinese cleanup spacing artifact and extracts the existing GitCafe predicate.
 diff --git a/apps/web/src/components/CommandPaletteResults.tsx b/apps/web/src/components/CommandPaletteResults.tsx
-index 67abd5f2..4a1f8558 100644
+index b3590097b8..2039f7701e 100644
 --- a/apps/web/src/components/CommandPaletteResults.tsx
 +++ b/apps/web/src/components/CommandPaletteResults.tsx
 @@ -1,3 +1,4 @@
 +import { isGitCafeProjectSource } from "~/n2935DisplayStrings";
  import { translateFixed } from "~/newThreadDisplayStrings";
  import { displayKnown, displayRelativeTime } from "~/acceptanceDisplayStrings";
- import { useLegendListRef } from "~/hooks/useLegendListRef";
-@@ -166,11 +167,7 @@ function CommandPaletteTitle(props: {
+ import { startPaletteThreadDrag } from "./CommandPalette.drag";
+@@ -175,11 +176,7 @@ function CommandPaletteTitle(props: {
    return (
      <span className="truncate" dir={typeof title === "string" ? textDirection(title) : undefined}>
        {props.item.value.startsWith("action:add-project:")
@@ -23,7 +23,7 @@ index 67abd5f2..4a1f8558 100644
          : props.item.title}
      </span>
    );
-@@ -217,11 +214,7 @@ function DisabledCommandPaletteResultRow(props: {
+@@ -226,11 +223,7 @@ function DisabledCommandPaletteResultRow(props: {
            ) : props.item.description ? (
              <span className="min-w-0 text-muted-foreground/70 text-xs">
                {props.item.value.startsWith("action:add-project:")
@@ -36,7 +36,7 @@ index 67abd5f2..4a1f8558 100644
                  : props.item.description}
              </span>
            ) : null}
-@@ -275,11 +268,7 @@ function CommandPaletteResultRow(props: {
+@@ -294,11 +287,7 @@ function CommandPaletteResultRow(props: {
            ) : props.item.description ? (
              <span className="min-w-0 text-muted-foreground/70 text-xs">
                {props.item.value.startsWith("action:add-project:")
@@ -50,7 +50,7 @@ index 67abd5f2..4a1f8558 100644
              </span>
            ) : null}
 diff --git a/apps/web/src/components/chat/ThreadLineageWorkflowRow.tsx b/apps/web/src/components/chat/ThreadLineageWorkflowRow.tsx
-index 4cfb2335..b6f5608a 100644
+index 4cfb23350e..b6f5608a80 100644
 --- a/apps/web/src/components/chat/ThreadLineageWorkflowRow.tsx
 +++ b/apps/web/src/components/chat/ThreadLineageWorkflowRow.tsx
 @@ -1,3 +1,5 @@
@@ -97,7 +97,7 @@ index 4cfb2335..b6f5608a 100644
                        <span className="shrink-0 text-2xs font-normal tabular-nums empty:hidden">
                          <AgentElapsed agent={phaseElapsed(phase)} />
 diff --git a/apps/web/src/components/promptLinks/HostedPromptLinkLanding.tsx b/apps/web/src/components/promptLinks/HostedPromptLinkLanding.tsx
-index ca44345e..549be498 100644
+index ca44345e17..549be498c9 100644
 --- a/apps/web/src/components/promptLinks/HostedPromptLinkLanding.tsx
 +++ b/apps/web/src/components/promptLinks/HostedPromptLinkLanding.tsx
 @@ -1,3 +1,4 @@
@@ -145,7 +145,7 @@ index ca44345e..549be498 100644
          </Alert>
        ) : null}
 diff --git a/apps/web/src/components/promptLinks/NewThreadLinkView.tsx b/apps/web/src/components/promptLinks/NewThreadLinkView.tsx
-index 918e3912..0e51aaea 100644
+index 0cb3c5d5c1..b32fc6746e 100644
 --- a/apps/web/src/components/promptLinks/NewThreadLinkView.tsx
 +++ b/apps/web/src/components/promptLinks/NewThreadLinkView.tsx
 @@ -1,3 +1,5 @@
@@ -175,7 +175,7 @@ index 918e3912..0e51aaea 100644
            <Button size="sm" variant="outline" onClick={openWithoutProject}>
              Use without project
 diff --git a/apps/web/src/components/promptLinks/linkedPrompt.ts b/apps/web/src/components/promptLinks/linkedPrompt.ts
-index 5e6a61ff..7b49ad1c 100644
+index 5e6a61ff3c..7b49ad1c54 100644
 --- a/apps/web/src/components/promptLinks/linkedPrompt.ts
 +++ b/apps/web/src/components/promptLinks/linkedPrompt.ts
 @@ -1,3 +1,4 @@
@@ -193,7 +193,7 @@ index 5e6a61ff..7b49ad1c 100644
    };
    const existing = useComposerDraftStore.getState().getComposerDraft(target)?.prompt ?? "";
 diff --git a/apps/web/src/components/pullRequest/PullRequestStackMenu.tsx b/apps/web/src/components/pullRequest/PullRequestStackMenu.tsx
-index 7f1de5c5..9ab80d15 100644
+index 7f1de5c5de..9ab80d153f 100644
 --- a/apps/web/src/components/pullRequest/PullRequestStackMenu.tsx
 +++ b/apps/web/src/components/pullRequest/PullRequestStackMenu.tsx
 @@ -1,3 +1,4 @@
@@ -211,7 +211,7 @@ index 7f1de5c5..9ab80d15 100644
              </DialogDescription>
            </DialogHeader>
 diff --git a/apps/web/src/components/pullRequest/guide/GuideExcerpt.tsx b/apps/web/src/components/pullRequest/guide/GuideExcerpt.tsx
-index cf1c248a..f2855300 100644
+index cf1c248a3c..f28553003c 100644
 --- a/apps/web/src/components/pullRequest/guide/GuideExcerpt.tsx
 +++ b/apps/web/src/components/pullRequest/guide/GuideExcerpt.tsx
 @@ -1,3 +1,5 @@
@@ -247,7 +247,7 @@ index cf1c248a..f2855300 100644
              <Button
                size="icon-xs"
 diff --git a/apps/web/src/components/pullRequest/guide/GuideRail.tsx b/apps/web/src/components/pullRequest/guide/GuideRail.tsx
-index 7a165140..8bf658e0 100644
+index 7a16514058..8bf658e06e 100644
 --- a/apps/web/src/components/pullRequest/guide/GuideRail.tsx
 +++ b/apps/web/src/components/pullRequest/guide/GuideRail.tsx
 @@ -1,3 +1,4 @@
@@ -274,7 +274,7 @@ index 7a165140..8bf658e0 100644
        <div className="flex flex-col gap-4">
          <ol className="flex flex-col gap-0.5">{stops.map(renderStop)}</ol>
 diff --git a/apps/web/src/components/pullRequest/guide/GuideStop.tsx b/apps/web/src/components/pullRequest/guide/GuideStop.tsx
-index 3599defc..77a94a12 100644
+index 3599defc8f..77a94a127c 100644
 --- a/apps/web/src/components/pullRequest/guide/GuideStop.tsx
 +++ b/apps/web/src/components/pullRequest/guide/GuideStop.tsx
 @@ -1,3 +1,5 @@
@@ -311,7 +311,7 @@ index 3599defc..77a94a12 100644
              </Button>
            ) : onFinish !== null ? (
 diff --git a/apps/web/src/components/pullRequest/guide/GuideTour.tsx b/apps/web/src/components/pullRequest/guide/GuideTour.tsx
-index 81074bef..382e9a11 100644
+index 81074bef9c..382e9a116e 100644
 --- a/apps/web/src/components/pullRequest/guide/GuideTour.tsx
 +++ b/apps/web/src/components/pullRequest/guide/GuideTour.tsx
 @@ -1,3 +1,4 @@
@@ -329,7 +329,7 @@ index 81074bef..382e9a11 100644
            ) : null}
            {stop === null ? (
 diff --git a/apps/web/src/components/settings/TelemetryExportSettings.tsx b/apps/web/src/components/settings/TelemetryExportSettings.tsx
-index 54856b81..5c79fc68 100644
+index 54856b81da..5c79fc685e 100644
 --- a/apps/web/src/components/settings/TelemetryExportSettings.tsx
 +++ b/apps/web/src/components/settings/TelemetryExportSettings.tsx
 @@ -1,3 +1,4 @@
@@ -366,7 +366,7 @@ index 54856b81..5c79fc68 100644
                      <>
                        {" "}
 diff --git a/apps/web/src/components/sidebar/SidebarUpdateCapsule.tsx b/apps/web/src/components/sidebar/SidebarUpdateCapsule.tsx
-index 5b635589..bf257b36 100644
+index 5b63558915..bf257b3675 100644
 --- a/apps/web/src/components/sidebar/SidebarUpdateCapsule.tsx
 +++ b/apps/web/src/components/sidebar/SidebarUpdateCapsule.tsx
 @@ -1,3 +1,5 @@
@@ -412,7 +412,7 @@ index 5b635589..bf257b36 100644
                      ? ` ${formatUpdateElapsed(now - machine.startedAt)}`
                      : ""}
 diff --git a/apps/web/src/components/sidebar/UpdateEverythingDialog.tsx b/apps/web/src/components/sidebar/UpdateEverythingDialog.tsx
-index 9bf101b6..03cd7bb3 100644
+index 86c1fd2841..52137bd707 100644
 --- a/apps/web/src/components/sidebar/UpdateEverythingDialog.tsx
 +++ b/apps/web/src/components/sidebar/UpdateEverythingDialog.tsx
 @@ -1,3 +1,5 @@
@@ -421,7 +421,7 @@ index 9bf101b6..03cd7bb3 100644
  import { useAtomValue } from "@effect/atom-react";
  import { EnvironmentId } from "@t3tools/contracts";
  import { Atom } from "effect/reactivity";
-@@ -120,7 +122,7 @@ function UpdateEverythingDialogContent({
+@@ -123,7 +125,7 @@ function UpdateEverythingDialogContent({
      ),
    );
    const running = stopped + continuing;
@@ -430,7 +430,7 @@ index 9bf101b6..03cd7bb3 100644
    const restarting = new Set(restarts.map((machine) => machine.environmentId));
    const updating = rows.filter((row) => row.app !== null || row.providers.length > 0);
    const skipped = rows.filter((row) => row.skipped !== null);
-@@ -204,7 +206,7 @@ function UpdateEverythingDialogContent({
+@@ -210,7 +212,7 @@ function UpdateEverythingDialogContent({
                        <span className="max-w-32 min-w-0">
                          <MiddleTruncate value={row.label} />
                        </span>
@@ -440,7 +440,7 @@ index 9bf101b6..03cd7bb3 100644
                    ))}
                  </div>
 diff --git a/apps/web/src/components/sidebar/updateEverything.logic.ts b/apps/web/src/components/sidebar/updateEverything.logic.ts
-index cbbd3baa..cdc5e435 100644
+index cbbd3baa7c..cdc5e435af 100644
 --- a/apps/web/src/components/sidebar/updateEverything.logic.ts
 +++ b/apps/web/src/components/sidebar/updateEverything.logic.ts
 @@ -1,3 +1,5 @@
@@ -524,7 +524,7 @@ index cbbd3baa..cdc5e435 100644
    const rows = new Map<EnvironmentId | null, UpdateEverythingRow>();
    const update = (
 diff --git a/apps/web/src/n2935DisplayStrings.ts b/apps/web/src/n2935DisplayStrings.ts
-index 47907172..d50a480e 100644
+index 4790717247..d50a480ee4 100644
 --- a/apps/web/src/n2935DisplayStrings.ts
 +++ b/apps/web/src/n2935DisplayStrings.ts
 @@ -14,8 +14,9 @@ function fillCleanupSlots(skeleton: string, values: readonly string[]): string {
@@ -549,7 +549,7 @@ index 47907172..d50a480e 100644
 +}
 diff --git a/apps/web/src/stableDisplayStrings.ts b/apps/web/src/stableDisplayStrings.ts
 new file mode 100644
-index 00000000..7f362ed4
+index 0000000000..7f362ed46d
 --- /dev/null
 +++ b/apps/web/src/stableDisplayStrings.ts
 @@ -0,0 +1,70 @@

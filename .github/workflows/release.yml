@@ -7,16 +7,16 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Release version (e.g. 0.1.8-zh.1)'
+        description: 'Release version (e.g. 0.1.9-zh.1)'
         required: true
-        default: '0.1.8-zh.1'
+        default: '0.1.9-zh.1'
 
 permissions:
   contents: write
 
 env:
-  UPSTREAM_TAG: 'v0.1.8'
-  UPSTREAM_COMMIT: 'bf469bb19669671d0df2efda74ed73867a7137c0'
+  UPSTREAM_TAG: 'v0.1.9'
+  UPSTREAM_COMMIT: '24e77473ecf41bc1f7142529c7911c1c1aae1d76'
 
 jobs:
   # -------------------------------------------------------------
@@ -49,7 +49,7 @@ jobs:
           if (-not $ver) {
             $ver = "${{ github.ref_name }}".TrimStart('v')
           }
-          if (-not $ver) { $ver = "0.1.8-zh.1" }
+          if (-not $ver) { $ver = "0.1.9-zh.1" }
           Write-Host "Building version: $ver"
           "T3ZH_VERSION=$ver" | Out-File -FilePath $env:GITHUB_ENV -Append
 
@@ -71,6 +71,7 @@ jobs:
         with:
           name: windows-installer
           path: release/${{ env.T3ZH_VERSION }}/T3-Code-*-x64.exe
+          if-no-files-found: error
 
   # -------------------------------------------------------------
   # Job 2: 构建 macOS (Apple Silicon arm64) 安装包
@@ -104,7 +105,7 @@ jobs:
           if [ -z "$VER" ]; then
             VER="${GITHUB_REF_NAME#v}"
           fi
-          if [ -z "$VER" ]; then VER="0.1.8-zh.1"; fi
+          if [ -z "$VER" ]; then VER="0.1.9-zh.1"; fi
           echo "Building version: $VER"
           echo "T3ZH_VERSION=$VER" >> "$GITHUB_ENV"
 
@@ -121,12 +122,14 @@ jobs:
         run: |
           source "$HOME/.config/vite-plus/env"
           bash scripts/build-zh.sh "${{ env.T3ZH_VERSION }}"
+          node scripts/make-installer.ts "${{ env.T3ZH_VERSION }}"
 
       - name: Upload macOS Artifact
         uses: actions/upload-artifact@v4
         with:
           name: macos-installer
           path: release/${{ env.T3ZH_VERSION }}/installer/*.dmg
+          if-no-files-found: error
 
   # -------------------------------------------------------------
   # Job 3: 汇总跨平台产物，发布 GitHub Release
@@ -146,6 +149,7 @@ jobs:
           mkdir -p dist
           find artifacts/ -type f \( -name "*.exe" -o -name "*.dmg" \) -exec cp {} dist/ \;
           cd dist
+          ls *.exe *.dmg >/dev/null
           sha256sum * > SHA256SUMS.txt
           echo "=== Collected Assets ==="
           ls -lh
@@ -157,7 +161,7 @@ jobs:
         run: |
           TAG="${{ github.ref_name }}"
           if [[ ! "$TAG" =~ ^v ]]; then
-            TAG="v${{ github.event.inputs.version || '0.1.8-zh.1' }}"
+            TAG="v${{ github.event.inputs.version || '0.1.9-zh.1' }}"
           fi
           echo "tag_name=$TAG" >> "$GITHUB_OUTPUT"
 

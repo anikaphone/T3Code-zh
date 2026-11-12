@@ -1,0 +1,637 @@
+[
+  {
+    "key": "Could not check provider updates",
+    "section": "messages",
+    "zh": "无法检查服务提供方更新",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/ProviderUpdatesAction.tsx:53（C，check）"
+    ],
+    "collidesWith": "{0} provider updates",
+    "wrongResult": "Could not check 项服务提供方更新"
+  },
+  {
+    "key": "This sign-in link is incomplete",
+    "section": "messages",
+    "zh": "此登录链接不完整",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/auth/ApproveAgentSurface.tsx:106（B，ApproveAgentSurface）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "This sign-in link 的状态为 incomplete"
+  },
+  {
+    "key": "Open this page in its own window",
+    "section": "messages",
+    "zh": "请在独立窗口中打开此页面",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/auth/ApproveAgentSurface.tsx:115（B，ApproveAgentSurface）"
+    ],
+    "collidesWith": "Open {0}",
+    "wrongResult": "打开 this page in its own window"
+  },
+  {
+    "key": "For your safety, agent sign-ins cannot be approved inside another site.",
+    "section": "messages",
+    "zh": "为了你的安全，无法在其他网站内批准 Agent 登录。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/auth/ApproveAgentSurface.tsx:116（B，ApproveAgentSurface）"
+    ]
+  },
+  {
+    "key": "Connecting to T3 Connect",
+    "section": "messages",
+    "zh": "正在连接 T3 Connect",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/auth/ApproveAgentSurface.tsx:126（B，ApproveAgentSurface）"
+    ],
+    "collidesWith": "Connecting to {environment}",
+    "wrongResult": "正在连接到T3 Connect"
+  },
+  {
+    "key": "One moment while your account loads.",
+    "section": "messages",
+    "zh": "正在加载你的账户，请稍候。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/auth/ApproveAgentSurface.tsx:127（B，ApproveAgentSurface）"
+    ]
+  },
+  {
+    "key": "Sign in to approve",
+    "section": "messages",
+    "zh": "登录以批准",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/auth/ApproveAgentSurface.tsx:137（B，ApproveAgentSurface）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Sign in 到 approve"
+  },
+  {
+    "key": "Sign in to T3 Connect with the account this environment is linked to.",
+    "section": "messages",
+    "zh": "请使用此环境所关联的账户登录 T3 Connect。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/auth/ApproveAgentSurface.tsx:138（B，ApproveAgentSurface）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "Sign in to T3 Connect with the account this environment 的状态为 linked to."
+  },
+  {
+    "key": "Use a sign-in code instead",
+    "section": "messages",
+    "zh": "改用登录配对码",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/auth/ApproveAgentSurface.tsx:167（A，ApproveAgentSurface）"
+    ],
+    "collidesWith": "Use {theme}",
+    "wrongResult": "使用a sign-in code instead"
+  },
+  {
+    "key": "Use another account",
+    "section": "messages",
+    "zh": "使用其他账户",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/auth/ApproveAgentSurface.tsx:176（A，ApproveAgentSurface）"
+    ],
+    "collidesWith": "Use {theme}",
+    "wrongResult": "使用another account"
+  },
+  {
+    "key": "· whoever runs it gets this access",
+    "section": "messages",
+    "zh": "· 运行该服务的人都将获得此权限",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/auth/ConnectAgentSurface.tsx:287（A，McpConsent）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "· whoever runs it gets this acces 秒"
+  },
+  {
+    "key": "Choose what it may do",
+    "section": "messages",
+    "zh": "请选择允许的操作",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/auth/ConnectAgentSurface.tsx:367（A，McpConsent）"
+    ]
+  },
+  {
+    "key": "Background work",
+    "section": "messages",
+    "zh": "后台任务",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/BackgroundWorkDetails.tsx:35（A，BackgroundWorkDetails）"
+    ],
+    "collidesWith": "{0}k",
+    "wrongResult": "Background work"
+  },
+  {
+    "key": "Image attachment",
+    "section": "messages",
+    "zh": "图片附件",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ComposerAttachmentStrip.tsx:67（B，ComposerImageFallback）"
+    ]
+  },
+  {
+    "key": "Preparing",
+    "section": "messages",
+    "zh": "正在准备",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ComposerAttachmentStrip.tsx:286（A，ComposerAttachmentMediaRow）"
+    ]
+  },
+  {
+    "key": "Open parent agent on {0}",
+    "section": "templates",
+    "zh": "打开 {0} 上的父 Agent",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/ThreadRelationshipsControl.tsx:388（B，DelegatedFromRow）"
+    ],
+    "collidesWith": "Open {0}",
+    "wrongResult": "打开 parent agent on {0}"
+  },
+  {
+    "key": "Steer · waiting to be read",
+    "section": "messages",
+    "zh": "调整 · 等待读取",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/TimelineUserMessageRow.tsx:1074（A，UserMessageIntentMarker）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Steer · waiting 到 be read"
+  },
+  {
+    "key": "Waiting for the agent to read this. It reads steers between steps, after a running command finishes.",
+    "section": "messages",
+    "zh": "正在等待 Agent 读取此消息。Agent 会在步骤之间、运行中的命令结束后读取调整消息。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/TimelineUserMessageRow.tsx:1078（A，UserMessageIntentMarker）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "the agent to read this. It reads steers between steps, after a running command finishes. 的 Waiting"
+  },
+  {
+    "key": "Click to zoom in or return to fit. Pinch or Ctrl+scroll to zoom, scroll or drag to pan. Use Enter to toggle zoom, plus or minus to zoom, and 0 to fit.",
+    "section": "messages",
+    "zh": "点击可放大或恢复适应窗口。双指捏合或按住 Ctrl 滚动可缩放，滚动或拖动可平移。按 Enter 切换缩放，按加号或减号缩放，按 0 适应窗口。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/ZoomableImage.tsx:163（B，ZoomableImage）"
+    ],
+    "collidesWith": "{leading}, and {last}",
+    "wrongResult": "Click to zoom in or return to fit. Pinch or Ctrl+scroll to zoom, scroll or drag to pan. Use Enter to toggle zoom, plus or minus to zoom 和 0 to fit."
+  },
+  {
+    "key": "Open {0} on the web",
+    "section": "templates",
+    "zh": "在网页端打开 {0}",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/mcp/UseInAnotherAppDialog.tsx:695（C，handOff）"
+    ],
+    "collidesWith": "Open {0}",
+    "wrongResult": "打开 {0} on the web"
+  },
+  {
+    "key": "The linked item is not in the loaded activity.",
+    "section": "messages",
+    "zh": "链接的条目不在已加载的动态中。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/pullRequest/PullRequestTimelineTab.tsx:885（A，PullRequestTimelineTab）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "The linked item 的状态为 not in the loaded activity."
+  },
+  {
+    "key": "Restarts T3 Code there. It will be offline for about {0} min.",
+    "section": "templates",
+    "zh": "将重启该设备上的 T3 Code，期间预计离线约 {0} 分钟。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/DatabaseStorageNotice.tsx:166（B，ReclaimRow）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "about {0} min. 的 Restarts T3 Code there. It will be offline"
+  },
+  {
+    "key": "Check this address",
+    "section": "messages",
+    "zh": "请核对此地址",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/LinkMachineSelect.tsx:20（A，LinkAddressWarning）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "Check this addres 秒"
+  },
+  {
+    "key": "This app cannot confirm it is one of your machines. The pairing code you paste is sent there.",
+    "section": "messages",
+    "zh": "此应用无法确认该地址属于你的设备。你粘贴的配对码将发送到该地址。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/LinkMachineSelect.tsx:22（A，LinkAddressWarning）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "This app cannot confirm it 的状态为 one of your machines. The pairing code you paste is sent there."
+  },
+  {
+    "key": "Status only",
+    "section": "messages",
+    "zh": "仅状态",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1272（C，SCREEN_READER_ANNOUNCEMENTS_LABELS）"
+    ]
+  },
+  {
+    "key": "Status and messages",
+    "section": "messages",
+    "zh": "状态与消息",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1273（C，SCREEN_READER_ANNOUNCEMENTS_LABELS）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Status 和 messages"
+  },
+  {
+    "key": "Everything",
+    "section": "messages",
+    "zh": "全部内容",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1274（C，SCREEN_READER_ANNOUNCEMENTS_LABELS）"
+    ]
+  },
+  {
+    "key": "What a screen reader hears from the open thread: a turn starting, needing you, and ending. Status and messages adds what the agent writes before its last message. Everything adds each step.",
+    "section": "messages",
+    "zh": "屏幕阅读器从当前打开的任务中播报的内容：轮次开始、需要你处理以及轮次结束。“状态与消息”会额外播报 Agent 在最后一条消息前编写的内容；“全部内容”会播报每一个步骤。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1285（B，ScreenReaderAnnouncementsRow）"
+    ],
+    "collidesWith": "{leading}, and {last}",
+    "wrongResult": "What a screen reader hears from the open thread: a turn starting, needing you 和 ending. Status and messages adds what the agent writes before its last message. Everything adds each step."
+  },
+  {
+    "key": "screen reader announcements",
+    "section": "messages",
+    "zh": "屏幕阅读器播报",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1290（B，ScreenReaderAnnouncementsRow）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "screen reader announcement 秒"
+  },
+  {
+    "key": "Screen reader announcements",
+    "section": "messages",
+    "zh": "屏幕阅读器播报",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1311（B，ScreenReaderAnnouncementsRow）",
+      "apps/web/src/components/settings/settingsSearch.ts:488（C，title）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "Screen reader announcement 秒"
+  },
+  {
+    "key": "Commit messages and pull request titles and descriptions match each project's history.",
+    "section": "messages",
+    "zh": "提交信息以及拉取请求的标题和说明遵循各项目的历史记录风格。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:53（C，description）"
+    ],
+    "collidesWith": "Commit {0}",
+    "wrongResult": "提交 messages and pull request titles and descriptions match each project's history."
+  },
+  {
+    "key": "Conventional Commit prefixes, with short pull request titles and descriptions.",
+    "section": "messages",
+    "zh": "使用 Conventional Commit 前缀，并保持拉取请求的标题和说明简短。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:57（C，description）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Conventional Commit prefixes, with short pull request titles 和 descriptions."
+  },
+  {
+    "key": "Your instructions shape commit messages and pull request titles and descriptions.",
+    "section": "messages",
+    "zh": "按你的说明生成提交信息以及拉取请求的标题和说明。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:62（C，description）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Your instructions shape commit messages 和 pull request titles and descriptions."
+  },
+  {
+    "key": "Commits & pull requests",
+    "section": "messages",
+    "zh": "提交与拉取请求",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:197（B，SourceControlWritingSettingsSection）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "Commits & pull request 秒"
+  },
+  {
+    "key": "commit and pull request writing",
+    "section": "messages",
+    "zh": "提交与拉取请求编写",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:207（B，SourceControlWritingSettingsSection）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "commit 和 pull request writing"
+  },
+  {
+    "key": "Commit and pull request writing",
+    "section": "messages",
+    "zh": "提交与拉取请求编写",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:235（B，SourceControlWritingSettingsSection）",
+      "apps/web/src/components/settings/settingsSearch.ts:1144（C，title）"
+    ],
+    "collidesWith": "Commit {0}",
+    "wrongResult": "提交 and pull request writing"
+  },
+  {
+    "key": "Custom commit and pull request instructions for all selected environments",
+    "section": "messages",
+    "zh": "所有所选环境的自定义提交与拉取请求说明",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:261（B，SourceControlWritingSettingsSection）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Custom commit 和 pull request instructions for all selected environments"
+  },
+  {
+    "key": "Keep commit subjects under 60 characters. Keep pull request descriptions short and plain.",
+    "section": "messages",
+    "zh": "提交标题不超过 60 个字符。拉取请求说明保持简短直白。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:308（B，SourceControlWritingSettingsSection）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Keep commit subjects under 60 characters. Keep pull request descriptions short 和 plain."
+  },
+  {
+    "key": "Custom commit and pull request instructions",
+    "section": "messages",
+    "zh": "自定义提交与拉取请求说明",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:309（B，SourceControlWritingSettingsSection）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Custom commit 和 pull request instructions"
+  },
+  {
+    "key": "Use the repository's pull request template when it has one.",
+    "section": "messages",
+    "zh": "仓库提供拉取请求模板时，使用该模板。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:485（B，SourceControlWritingSettingsSection）"
+    ],
+    "collidesWith": "Use {theme}",
+    "wrongResult": "使用the repository's pull request template when it has one."
+  },
+  {
+    "key": "pull request templates",
+    "section": "messages",
+    "zh": "拉取请求模板",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:490（B，SourceControlWritingSettingsSection）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "pull request template 秒"
+  },
+  {
+    "key": "Follow pull request templates",
+    "section": "messages",
+    "zh": "遵循拉取请求模板",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:512（B，SourceControlWritingSettingsSection）",
+      "apps/web/src/components/settings/settingsSearch.ts:1153（C，title）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "Follow pull request template 秒"
+  },
+  {
+    "key": "Model for commit messages, pull request text, and branch or bookmark names. When disabled, use the text generation model configured for this environment.",
+    "section": "messages",
+    "zh": "用于生成提交信息、拉取请求文本以及分支或书签名称的模型。停用时，使用为此环境配置的文本生成模型。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:521（B，SourceControlWritingSettingsSection）"
+    ],
+    "collidesWith": "{leading}, and {last}",
+    "wrongResult": "Model for commit messages, pull request text 和 branch or bookmark names. When disabled, use the text generation model configured for this environment."
+  },
+  {
+    "key": "Stop using your {0} file; the file stays on disk",
+    "section": "templates",
+    "zh": "停止使用你的 {0} 文件；该文件仍保留在磁盘上",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:296（B，ModelCard）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "disk上的Stop using your {0} file; the file stays"
+  },
+  {
+    "key": "Path to a model file or folder already on this environment",
+    "section": "messages",
+    "zh": "此环境中已有模型文件或文件夹的路径",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1018（B，SpeechModelBrowser）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "this environment上的Path to a model file or folder already"
+  },
+  {
+    "key": "Already downloaded elsewhere? Paste the model file or folder path",
+    "section": "messages",
+    "zh": "已在别处下载？粘贴模型文件或文件夹路径",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1019（B，SpeechModelBrowser）"
+    ],
+    "collidesWith": "{0}d {1}h",
+    "wrongResult": "Already downloade 天 elsewhere? Paste the model file or folder pat 小时"
+  },
+  {
+    "key": "Use existing",
+    "section": "messages",
+    "zh": "使用现有模型",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1030（A，SpeechModelBrowser）"
+    ],
+    "collidesWith": "Use {theme}",
+    "wrongResult": "使用existing"
+  },
+  {
+    "key": "{0}Checking for more…",
+    "section": "templates",
+    "zh": "{0}正在检查更多更新…",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/sidebar/UpdateEverythingDialog.tsx:148（A，UpdateEverythingDialogContent）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "more… 的 {0}Checking"
+  },
+  {
+    "key": "Thread actions unavailable",
+    "section": "messages",
+    "zh": "任务操作不可用",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/hooks/useThreadActionMenu.ts:125（D，openMenu）"
+    ]
+  },
+  {
+    "key": "Image generation ({0})",
+    "section": "templates",
+    "zh": "图片生成（{0}）",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "packages/provider-opencode/src/server/v2/adapter.ts:1526（C，imageTasks）"
+    ]
+  },
+  {
+    "key": "{0} · {1} left{2}",
+    "section": "templates",
+    "zh": "",
+    "skip": "末尾占位符 {2} 为空串或可选后缀“ · expires in {duration}”，直接翻译会失配或残留英文；已由 v0.1.9.extra.json 具体模板覆盖。",
+    "why": "untranslated",
+    "where": [
+      "packages/shared/src/usageLimits.ts:701（C，resetCreditChoices）"
+    ]
+  },
+  {
+    "key": "{0} banked{1}",
+    "section": "templates",
+    "zh": "",
+    "skip": "末尾占位符 {1} 为空串或可选后缀“ · expires in {duration}”，直接翻译会失配或残留英文；已由 v0.1.9.extra.json 具体模板覆盖。",
+    "why": "untranslated",
+    "where": [
+      "packages/shared/src/usageLimits.ts:718（C，resetCreditChoices）"
+    ]
+  },
+  {
+    "key": "{0} {1} banked{2}",
+    "section": "templates",
+    "zh": "",
+    "skip": "占位符含单复数 reset credit/reset credits 及可选后缀“ · next expires in {duration}”；无后缀情形已由主词库覆盖，带过期时间情形已由 v0.1.9.extra.json 具体模板覆盖。",
+    "why": "untranslated",
+    "where": [
+      "packages/shared/src/usageLimits.ts:719（C，resetCreditChoices）"
+    ]
+  },
+  {
+    "key": "Revert \"{0}\"",
+    "section": "templates",
+    "zh": "",
+    "skip": "服务端通过 GitLab API 创建还原合并请求（MR）时提交的默认标题载荷，不属于本地界面文字，保持英文。",
+    "why": "untranslated",
+    "where": [
+      "packages/source-control-gitlab/src/server/GitLabPullRequestCli.ts:1453（C，revertMergeRequest）"
+    ]
+  },
+  {
+    "key": "This reverts merge request !{0}",
+    "section": "templates",
+    "zh": "",
+    "skip": "服务端通过 GitLab API 创建还原合并请求（MR）时提交的默认正文载荷，不属于本地界面文字，保持英文。",
+    "why": "untranslated",
+    "where": [
+      "packages/source-control-gitlab/src/server/GitLabPullRequestCli.ts:1454（C，revertMergeRequest）"
+    ]
+  }
+]

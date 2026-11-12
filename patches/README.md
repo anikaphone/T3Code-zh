@@ -2,7 +2,7 @@
 
 上游源码保持原样是本项目的路线，只有少数「必须改上游文件」的地方才做成补丁。补丁按文件名里的编号顺序，由 `scripts/build-zh.sh` 在干净的基线工作树里逐个 `git apply`。补丁打不上时构建会立即报错，不会悄悄产出半成品。
 
-所有补丁都在基线 tag `v0.1.8`（commit `bf469bb19669671d0df2efda74ed73867a7137c0`）上验证过。
+所有补丁都在基线 tag `v0.1.9`（commit `24e77473ecf41bc1f7142529c7911c1c1aae1d76`）上验证过。
 
 每个补丁文件开头有若干行 `#` 说明用途——`git apply` 会忽略 diff 之前的文字，所以那些行不会进源码。
 
@@ -136,7 +136,7 @@
    ```
    （0003 用上表列的九个 `apps/desktop/src/…` 文件。重做 0003 后跑 `node --test plugin/__tests__/desktop.test.ts`；0005 用 `scripts/build-desktop-artifact.ts`；0006 用上表列的五个组件文件，新文件 `apps/web/src/desktopIpcStrings.ts` 用 `git diff --no-index /dev/null <文件>` 导出，重做后跑 `node --test plugin/__tests__/desktop-ipc-strings.test.ts`；0008 用上表列的四个文件，重做后跑 `node --test plugin/__tests__/inline-value-display-strings.test.ts`。）
    导出的是纯 diff，把它接回对应补丁开头那段 `#` 说明文字之后即可。
-5. **把补丁开头说明里的基线 tag 也一起更新**（现在是 v0.1.8），并同步 CONVENTIONS.md 的基线和 `dict/zh-CN.json` 的 `baseline`。
+5. **把补丁开头说明里的基线 tag 也一起更新**（现在是 v0.1.9），并同步 CONVENTIONS.md 的基线和 `dict/zh-CN.json` 的 `baseline`。
 6. 在**全新的**干净临时工作树里按顺序把整组补丁重新 `apply` 一遍，确认都能打上、改动的文件就是清单里的那些，再跑 `scripts/build-zh.sh` 验证；把重做经过写进当次的 handoff。
 
 `/tmp/t3zh-patchcheck` 用完记得删：
@@ -288,3 +288,13 @@ git -C ~/Projects/t3code worktree remove /tmp/t3zh-patchcheck
 - `0020` 适配 `CliCommandSettingsRow.tsx` 新增的 `state.pathSetup` 分支，新增 `displayCliAddedToPath` 双槽位 helper（U+E000 / U+E001）隔离安装路径与 shell 配置文件路径，所有路径均不送入 `t()`。
 - `0011` / `0023`：`SidebarThreadRow` 新增 `Setting up` 行状态，纳入 `acceptanceDisplayStrings.ts` 精确名单；`ScheduledTasksSettings` 目标分支触发器仅在 `ref === null`（固定回退文案）时调用 `translateFixed(currentLabel)`，真实分支引用保持原样。
 - `0025`：适配 `apps/web/src/connection/platform.ts` 的 `Effect` 管道改写（`readOrCreateClientTelemetryDeviceId` 直接返回 `Effect.succeedNone` 并移除未用导入），并为 `apps/server/src/telemetry/AnalyticsService.test.ts` 补齐 `ServerSecretStore.layer` 上下文以适配 `Identify.ts` 新增依赖。
+
+
+## v0.1.9 正式版迁移
+
+- 23 份活动共享补丁与 Windows 专属打包补丁在 `v0.1.9`（`24e77473ecf41bc1f7142529c7911c1c1aae1d76`）上完成对齐与全序验证：9 份原样直接适用，14 份（`0003`、`0004`、`0007`、`0009`、`0010`、`0011`、`0013`、`0016`、`0017`、`0018`、`0020`、`0021`、`0022`、`0024`）重新导出，普通顺序 `git apply` 零报错通过。
+- `0003`：补充 `DesktopWindow.ts` 新增 `mailto:` 链接原生右键菜单项 `"Copy Email Address"`（→「复制电子邮件地址」）的 `__t3zh_t` 翻译包裹与 `dict/zh-CN.desktop.json` 词条。
+- `0004`、`0007`、`0009`、`0010`、`0011`、`0013`、`0016`、`0017`、`0020`、`0021`、`0022`：仅对齐上游上下文变化（`contextMenuFallback` 新增 `item.detail` 分支、`ChatHeader` 标题按钮属性精简、`MorphIcon` 退场改用条件图标、命令面板拖动与侧栏启动状态导入变化等），各补丁新增翻译逻辑与 `+` 行逐字不变，`0012`、`0023`、`0025` 及 Windows `0001` 在前置补丁落位后均原样干净适用。
+- `0018`：保留按账号分列、24px 点击条、单账号恢复百分比与共享弹层，同时完整保留上游 `v0.1.9` 新增的 `resetCreditChoices` 多选额度重置能力（`choices`、`payload.redeem?.confirm(choice)`、`useResetCredit(redeemAt.environmentId)` 与 `choice={redeem.choice}`）。
+- `0024`：上游将客户端标识提取为导出的 `antigravityUserAgent(platform, architecture)`，并供本地 `makeAntigravityUsageProbe` 与新增的 CLIProxyAPI 用量轮询（`apps/server/src/usage/cliproxyApi.ts`）共用。补丁直接在 `antigravityUserAgent` 返回 Hub 兼容标识 `antigravity/hub/2.9.1 <os>/<arch>`，保留 `!bucket.description?.trim()` 占位倒计时过滤，并同步对齐 `antigravityUsageLimits.test.ts`（含 `oauth-business` 类型、`empty-description` 预期及多平台用例）与 `cliproxyApi.test.ts` 的 User-Agent 断言。
+

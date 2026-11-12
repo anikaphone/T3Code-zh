@@ -1,0 +1,42 @@
+[
+  {
+    "key": "Checking for more…",
+    "section": "messages",
+    "zh": "正在检查更多更新…"
+  },
+  {
+    "key": "· Checking for more…",
+    "section": "messages",
+    "zh": "· 正在检查更多更新…"
+  },
+  {
+    "key": "{0} · {1} left",
+    "section": "templates",
+    "zh": "{0} · 剩余 {1} 个"
+  },
+  {
+    "key": "{0} · {1} left · expires in {2}",
+    "section": "templates",
+    "zh": "{0} · 剩余 {1} 个 · {2} 后过期"
+  },
+  {
+    "key": "{0} banked",
+    "section": "templates",
+    "zh": "已储备 {0} 个"
+  },
+  {
+    "key": "{0} banked · expires in {1}",
+    "section": "templates",
+    "zh": "已储备 {0} 个 · {1} 后过期"
+  },
+  {
+    "key": "{0} reset credit banked · next expires in {1}",
+    "section": "templates",
+    "zh": "已储备 {0} 个重置额度 · 下一个额度将在 {1} 后过期"
+  },
+  {
+    "key": "{0} reset credits banked · next expires in {1}",
+    "section": "templates",
+    "zh": "已储备 {0} 个重置额度 · 下一个额度将在 {1} 后过期"
+  }
+]

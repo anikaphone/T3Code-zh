@@ -1,9 +1,9 @@
-# 基线 v0.1.8 / bf469bb19669671d0df2efda74ed73867a7137c0；按编号顺序普通 apply。
+# 基线 v0.1.9 / 24e77473ecf41bc1f7142529c7911c1c1aae1d76；按编号顺序普通 apply。
 diff --git a/apps/web/src/components/usage/UsageLimitsPooled.tsx b/apps/web/src/components/usage/UsageLimitsPooled.tsx
-index f54fcdcd23..57268017c7 100644
+index d05ebbd166..b51c255457 100644
 --- a/apps/web/src/components/usage/UsageLimitsPooled.tsx
 +++ b/apps/web/src/components/usage/UsageLimitsPooled.tsx
-@@ -194,7 +194,7 @@ function SegmentPopover({
+@@ -191,7 +191,7 @@ function SegmentPopover({
          ) : null}
          {timeLeft !== null ? <Row label="Even pace">{timeLeft}% left by now</Row> : null}
          {reset && reset.restoresPercent > 0 ? (
@@ -11,8 +11,8 @@ index f54fcdcd23..57268017c7 100644
 +          <Row label="Restores">+{reset.restoresPercent}%</Row>
          ) : null}
        </div>
-       {credits && redeem ? (
-@@ -288,8 +288,6 @@ function PoolSegment({
+       {choices.length > 0 && redeem ? (
+@@ -289,8 +289,6 @@ function PoolSegment({
    readonly refillPercent: number;
    readonly color: string;
    readonly now: number;
@@ -21,7 +21,7 @@ index f54fcdcd23..57268017c7 100644
  }) {
    return account.redeem ? (
      <RedeemableSegment account={account} redeemAt={account.redeem} {...props} />
-@@ -333,50 +331,45 @@ function SegmentTriggers({
+@@ -335,14 +333,10 @@ function SegmentTriggers({
    refillPercent,
    color,
    now,
@@ -36,13 +36,7 @@ index f54fcdcd23..57268017c7 100644
  }) {
    const popover = use(SegmentPopoverContext) ?? undefined;
    const payload: SegmentPayload = { account, window, reset, redeem };
-   const remaining = remainingPercent(window);
-   const timeLeft = paceRemainingPercent(window, now);
-   const [segmentRef, paceMark] = usePaceMark(timeLeft);
-   const resetsIn = formatResetsIn(window, now);
-   const credits = account.limits.resetCredits?.availableCount ?? 0;
-   return (
-     <>
+@@ -356,29 +350,28 @@ function SegmentTriggers({
        <PopoverTrigger
          handle={popover}
          payload={payload}
@@ -77,7 +71,7 @@ index f54fcdcd23..57268017c7 100644
                  style={{
                    width: `${Math.min(100 - remaining, refillPercent)}%`,
                    backgroundImage: `repeating-linear-gradient(135deg, ${color} 0 1px, transparent 1px 5px)`,
-@@ -388,147 +381,16 @@ function SegmentTriggers({
+@@ -390,147 +383,16 @@ function SegmentTriggers({
          {paceMark ? (
            <span
              aria-hidden
@@ -227,7 +221,7 @@ index f54fcdcd23..57268017c7 100644
  function PoolWindowCard({
    pool,
    color,
-@@ -542,63 +405,95 @@ function PoolWindowCard({
+@@ -544,63 +406,95 @@ function PoolWindowCard({
    readonly label?: string | undefined;
    readonly description?: string | undefined;
  }) {

@@ -1,8 +1,8 @@
 # T24: Query measured Antigravity quotas with the Hub compatibility identity.
 # Suppress rolling full-window reset placeholders for untouched buckets.
-# Baseline: v0.1.8 bf469bb19669671d0df2efda74ed73867a7137c0.
+# Baseline: v0.1.9 24e77473ecf41bc1f7142529c7911c1c1aae1d76.
 diff --git a/apps/server/src/provider/antigravityUsageLimits.test.ts b/apps/server/src/provider/antigravityUsageLimits.test.ts
-index 612ea11efc..761bea95e8 100644
+index 9defd9df90..c84bcc1423 100644
 --- a/apps/server/src/provider/antigravityUsageLimits.test.ts
 +++ b/apps/server/src/provider/antigravityUsageLimits.test.ts
 @@ -1,5 +1,6 @@
@@ -15,7 +15,7 @@ index 612ea11efc..761bea95e8 100644
 @@ -66,6 +67,9 @@ const fixture = Effect.fn("AntigravityUsageTest.fixture")(function* (
      userInfoAt?: number;
      missingToken?: boolean;
-     authMethod?: "oauth-personal" | "gemini-api-key";
+     authMethod?: "oauth-personal" | "oauth-business" | "gemini-api-key";
 +    platform?: NodeJS.Platform;
 +    architecture?: NodeJS.Architecture;
 +    expectedUserAgent?: string;
@@ -72,11 +72,32 @@ index 612ea11efc..761bea95e8 100644
    // Oracle: the 10:16 UTC payload and its narrow Workaround rule.
    it.effect("omits rolling resets for untouched summary buckets and keeps used Gemini resets", () =>
      Effect.gen(function* () {
+@@ -265,7 +297,7 @@ describe("Antigravity subscription limits", () => {
+       });
+       expect((yield* probe).windows.map(({ id, resetsAt }) => ({ id, resetsAt }))).toEqual([
+         { id: "described", resetsAt: "2026-10-21T15:16:04.000Z" },
+-        { id: "empty-description", resetsAt: "2026-10-21T15:16:04.000Z" },
++        { id: "empty-description", resetsAt: undefined },
+         { id: "overfull", resetsAt: "2026-10-21T15:16:04.000Z" },
+         { id: "spent", resetsAt: "2026-10-21T15:16:04.000Z" },
+         { id: "distant", resetsAt: "2026-10-28T12:16:04.000Z" },
 diff --git a/apps/server/src/provider/antigravityUsageLimits.ts b/apps/server/src/provider/antigravityUsageLimits.ts
-index 5445c01432..1f30720508 100644
+index ede0e5c47d..28bcfd4730 100644
 --- a/apps/server/src/provider/antigravityUsageLimits.ts
 +++ b/apps/server/src/provider/antigravityUsageLimits.ts
-@@ -109,7 +109,7 @@ function summaryResetTime(
+@@ -15,8 +15,10 @@ import {
+   makeUsageLimits,
+ } from "@t3tools/provider-core/server/usageLimits";
+ 
++// Google routes the legacy aidev_client identity to incomplete/unmetered
++// quotas. Use the Hub compatibility identity for the account's real limits.
+ export function antigravityUserAgent(platform: NodeJS.Platform, architecture: NodeJS.Architecture) {
+-  return `antigravity/hub/2.24.0 (aidev_client; os_type=${platform}; arch=${architecture}; cl=963137146)`;
++  return `antigravity/hub/2.9.1 ${platform === "win32" ? "windows" : platform}/${architecture === "x64" ? "amd64" : architecture}`;
+ }
+ 
+ const DAILY_ENDPOINT = "https://daily-cloudcode-pa.googleapis.com";
+@@ -117,7 +119,7 @@ function summaryResetTime(
    // Untouched summary buckets report a rolling full-window reset.
    const untouched =
      bucket.remainingFraction === 1 &&
@@ -85,22 +106,17 @@ index 5445c01432..1f30720508 100644
      windowDurationMins !== undefined &&
      Math.abs(Date.parse(bucket.resetTime ?? "") - requestedAt - windowDurationMins * 60_000) <=
        60_000;
-@@ -191,6 +191,9 @@ export const makeAntigravityUsageProbe = Effect.fn("makeAntigravityUsageProbe")(
-   const crypto = yield* Digest.Digest;
-   const platform = yield* HostProcess.Platform;
-   const architecture = yield* HostProcess.Architecture;
-+  // Google routes the legacy aidev_client identity to incomplete/unmetered
-+  // quotas. Use the Hub compatibility identity for the account's real limits.
-+  const userAgent = `antigravity/hub/2.9.1 ${platform === "win32" ? "windows" : platform}/${architecture === "x64" ? "amd64" : architecture}`;
-   const tokenPath = path.join(input.profileDirectory, "antigravity-acp", "acp_token.json");
-   let cached:
-     | { fingerprint: string; account: string; accessToken: string; expiresAt: number }
-@@ -287,7 +290,7 @@ export const makeAntigravityUsageProbe = Effect.fn("makeAntigravityUsageProbe")(
-               HttpClientRequest.post(`${endpoint}/v1internal:${operation}`).pipe(
-                 HttpClientRequest.setHeaders({
-                   Authorization: `Bearer ${accessToken}`,
--                  "User-Agent": `antigravity/hub/2.24.0 (aidev_client; os_type=${platform}; arch=${architecture}; cl=963137146)`,
-+                  "User-Agent": userAgent,
-                 }),
-                 HttpClientRequest.bodyJsonUnsafe(
-                   token.project_id ? { project: token.project_id } : {},
+diff --git a/apps/server/src/usage/cliproxyApi.test.ts b/apps/server/src/usage/cliproxyApi.test.ts
+index 431af7b597..d27fd2e6d6 100644
+--- a/apps/server/src/usage/cliproxyApi.test.ts
++++ b/apps/server/src/usage/cliproxyApi.test.ts
+@@ -516,8 +516,7 @@ describe("CLIProxyAPI built-in management API", () => {
+         header: {
+           Authorization: "Bearer $TOKEN$",
+           "Content-Type": "application/json",
+-          "User-Agent":
+-            "antigravity/hub/2.24.0 (aidev_client; os_type=linux; arch=x64; cl=963137146)",
++          "User-Agent": "antigravity/hub/2.9.1 linux/amd64",
+         },
+       });
+       const identityCalls = test.requests.filter((request) =>

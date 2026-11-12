@@ -8,7 +8,7 @@
 
 | 类别 | 含义 | 条数 |
 |---|---|---:|
-| N1 | 原生界面，已翻译（patches/0003，dict/zh-CN.desktop.json） | 41 |
+| N1 | 原生界面，已翻译（patches/0003，dict/zh-CN.desktop.json） | 42 |
 | N0 | 原生窗口标题，但窗口不可见 | 2 |
 | N2 | 原生界面，只在 Windows / Linux 出现（未翻译） | 1 |
 | I1 | 经 IPC 在 web 显示，已在 web 显示处翻译（patches/0006，dict/zh-CN.json） | 30 |
@@ -17,13 +17,13 @@
 | W | 经 IPC 在 web 显示，只在 Windows / Linux 出现（未翻译） | 90 |
 | C | 命令行输出：经控制 socket 回给 `t3` 命令行，不在图形界面 | 12 |
 | P | 预览注释工具（注入被预览页面，报告第 5 节，未翻译） | 44 |
-| E | 错误消息：Error / TaggedError 的 message 及其参数（§4「从不转换」位置） | 309 |
-| L | 日志与观测 | 158 |
+| E | 错误消息：Error / TaggedError 的 message 及其参数（§4「从不转换」位置） | 310 |
+| L | 日志与观测 | 161 |
 | S | 脚本、命令、SQL、HTML/CSS 模板、样式类名、SVG | 228 |
 | D | 数据：路径片段、应用 / 浏览器名、给 AI 或 MCP 的内容、协议载荷等 | 29 |
-| 合计 | | 989 |
+| 合计 | | 994 |
 
-## N1：原生界面，已翻译（patches/0003，dict/zh-CN.desktop.json）（41）
+## N1：原生界面，已翻译（patches/0003，dict/zh-CN.desktop.json）（42）
 
 | file:line | 文字 | 说明 |
 |---|---|---|
@@ -39,10 +39,10 @@
 | `preview/Manager.ts:2848` | "Browser preview" | 窗口标题 |
 | `preview/Passkeys.ts:56` | "Unnamed passkey" |  |
 | `snapShot/SnapShotTransition.ts:142` | "<!doctype html><style>\nhtml,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}\n#card{position:absolute;left:{0}px;…" | 截图动画遮罩的 HTML；回退标题 Captured window 已翻译（报告 1.7，fix2） |
-| `updates/DesktopUpdates.ts:346` | "Automatic updates are not available because no update feed is configured." | 原生对话框 detail（0003）；也进远程更新失败原因（0006） |
-| `updates/DesktopUpdates.ts:349` | "Automatic updates are only available in packaged production builds." | 同上 |
-| `updates/DesktopUpdates.ts:352` | "Automatic updates are disabled by the T3CODE_DISABLE_AUTO_UPDATE setting." | 同上 |
-| `updates/DesktopUpdates.ts:355` | "Automatic updates on Linux require the AppImage or the .deb package." | 同上 |
+| `updates/DesktopUpdates.ts:350` | "Automatic updates are not available because no update feed is configured." | 原生对话框 detail（0003）；也进远程更新失败原因（0006） |
+| `updates/DesktopUpdates.ts:353` | "Automatic updates are only available in packaged production builds." | 同上 |
+| `updates/DesktopUpdates.ts:356` | "Automatic updates are disabled by the T3CODE_DISABLE_AUTO_UPDATE setting." | 同上 |
+| `updates/DesktopUpdates.ts:359` | "Automatic updates on Linux require the AppImage or the .deb package." | 同上 |
 | `window/DesktopApplicationMenu.ts:76` | "You're up to date!" |  |
 | `window/DesktopApplicationMenu.ts:77` | "T3 Code {0} is currently the newest version available." |  |
 | `window/DesktopApplicationMenu.ts:83` | "Update check failed" |  |
@@ -64,10 +64,11 @@
 | `window/DesktopApplicationMenu.ts:291` | "Zoom In" |  |
 | `window/DesktopApplicationMenu.ts:297` | "Zoom Out" |  |
 | `window/DesktopApplicationMenu.ts:321` | "Check for Updates..." |  |
-| `window/DesktopWindow.ts:197` | "<!doctype html><html><head><meta charset=\"utf-8\"><meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; style-src 'unsafe-i…" | Windows WSL 启动画面；0003 仅翻固定标签，HTML/CSS 与运行时颜色保持原样 |
-| `window/DesktopWindow.ts:576` | "No suggestions" |  |
-| `window/DesktopWindow.ts:584` | "Copy Link" |  |
-| `window/DesktopWindow.ts:595` | "Copy Image" |  |
+| `window/DesktopWindow.ts:212` | "<!doctype html><html><head><meta charset=\"utf-8\"><meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; style-src 'unsafe-i…" | Windows WSL 启动画面；0003 仅翻固定标签，HTML/CSS 与运行时颜色保持原样 |
+| `window/DesktopWindow.ts:591` | "No suggestions" |  |
+| `window/DesktopWindow.ts:599` | "Copy Link" |  |
+| `window/DesktopWindow.ts:612` | "Copy Email Address" |  |
+| `window/DesktopWindow.ts:623` | "Copy Image" |  |
 
 ## N0：原生窗口标题，但窗口不可见（2）
 
@@ -121,7 +122,7 @@
 
 | file:line | 文字 | 说明 |
 |---|---|---|
-| `app/DesktopClerk.ts:185` | "Could not receive hosted web ChatGPT sign-in. Retry or use the redirect URL in the web app." | 登录错误：经 IPC 抛错（Electron 加前缀）后以 failure.message 通用显示，见报告 4.2 |
+| `app/DesktopClerk.ts:190` | "Could not receive hosted web ChatGPT sign-in. Retry or use the redirect URL in the web app." | 登录错误：经 IPC 抛错（Electron 加前缀）后以 failure.message 通用显示，见报告 4.2 |
 | `app/DesktopCliCommand.ts:146` | "powershell exited with {0}" | t3 命令安装错误，经 IPC 任意错误通道显示，不交给 t() |
 | `app/DesktopCliCommand.ts:153` | "Could not read your PATH, so it was left unchanged." | t3 命令安装错误，经 IPC 任意错误通道显示，不交给 t() |
 | `app/DesktopCliCommand.ts:158` | "Could not update your PATH." | t3 命令安装错误，经 IPC 任意错误通道显示，不交给 t() |
@@ -153,9 +154,9 @@
 | `ssh/DesktopSshEnvironment.ts:115` | "SSH password prompt service stopped." | SSH 错误，同上 |
 | `updates/DesktopRemoteUpdates.ts:324` | "The desktop app found no build of {0}." | 含动态版本号的远程更新失败原因，经错误通道显示，保持原文 |
 | `updates/DesktopUpdatePolicy.ts:79` | "Updates are off because T3 Code cannot use the managed policy at {0}. Contact your administrator." | 含动态策略文件路径的托管策略错误说明，保持原文 |
-| `updates/DesktopUpdates.ts:343` | "Updates are turned off on this machine." | 托管策略禁用更新时的原因说明，保持原文 |
-| `updates/DesktopUpdates.ts:483` | "{0} Switch to the stable channel to keep getting updates." | 托管策略禁用每夜版更新通道时的原因说明，保持原文 |
-| `updates/DesktopUpdates.ts:483` | "Nightly updates are turned off on this machine." | 托管策略禁用每夜版更新通道时的原因说明，保持原文 |
+| `updates/DesktopUpdates.ts:347` | "Updates are turned off on this machine." | 托管策略禁用更新时的原因说明，保持原文 |
+| `updates/DesktopUpdates.ts:487` | "{0} Switch to the stable channel to keep getting updates." | 托管策略禁用每夜版更新通道时的原因说明，保持原文 |
+| `updates/DesktopUpdates.ts:487` | "Nightly updates are turned off on this machine." | 托管策略禁用每夜版更新通道时的原因说明，保持原文 |
 | `updates/remoteUpdateFlow.ts:52` | "Update {0} did not apply on this machine. Retry it from the desktop app there." | 含版本号的动态远程更新失败原因，经任意错误通道显示，保持原文 |
 
 ## I3：经 IPC 传给 web，但 web 不显示，或是数据（9）
@@ -333,7 +334,7 @@
 | `preview/PickPreload.ts:1332` | "Expand annotation editor" |  |
 | `preview/PickPreload.ts:1540` | "color-mix(in srgb, var(--t3-primary) 6%, transparent)" |  |
 
-## E：错误消息：Error / TaggedError 的 message 及其参数（§4「从不转换」位置）（309）
+## E：错误消息：Error / TaggedError 的 message 及其参数（§4「从不转换」位置）（310）
 
 | file:line | 文字 | 说明 |
 |---|---|---|
@@ -400,8 +401,8 @@
 | `backend/DesktopBackendManager.ts:153` | "Failed to read {0} from desktop backend process {1}." |  |
 | `backend/DesktopBackendManager.ts:168` | "Failed to handle {0} bytes from {1} of desktop backend process {2}." |  |
 | `backend/DesktopBackendManager.ts:185` | "Failed to read the exit status of desktop backend process {0}." |  |
-| `backend/DesktopBackendManager.ts:967` | "The server started but did not become ready in time." | 后端启动超时诊断消息，保持原文 |
-| `backend/DesktopBackendManager.ts:1026` | "The server could not start ({0})." | 后端启动失败诊断消息，保持原文 |
+| `backend/DesktopBackendManager.ts:980` | "The server started but did not become ready in time." | 后端启动超时诊断消息，保持原文 |
+| `backend/DesktopBackendManager.ts:1039` | "The server could not start ({0})." | 后端启动失败诊断消息，保持原文 |
 | `backend/DesktopBackendPool.ts:44` | "Backend instance \"{0}\" is already registered in the pool." |  |
 | `backend/DesktopBackendPool.ts:53` | "Refusing to unregister the primary backend from the pool." |  |
 | `backend/DesktopLocalEnvironmentAuth.ts:41` | "Local backend is not configured." |  |
@@ -437,8 +438,9 @@
 | `electron/ElectronWindow.ts:106` | "Electron window operation {0} failed{1}{2} on {3}." |  |
 | `electron/WindowsForeground.ts:31` | "Unsupported Windows window handle size: {0} bytes." |  |
 | `electron/WindowsForeground.ts:218` | "Windows refused to activate the T3 Code window." |  |
-| `ipc/DesktopIpc.ts:38` | "Failed to register the {0} IPC handler for {1}." |  |
-| `ipc/DesktopIpc.ts:51` | "Failed to unregister the {0} IPC handler for {1}." |  |
+| `ipc/DesktopIpc.ts:44` | "Failed to register the {0} IPC handler for {1}." |  |
+| `ipc/DesktopIpc.ts:57` | "Failed to unregister the {0} IPC handler for {1}." |  |
+| `ipc/DesktopIpc.ts:66` | "Rejected {0} from a sender that is not the app window." |  |
 | `ipc/methods/snapShot.ts:30` | "Snapshot request was rejected." |  |
 | `ipc/methods/sshEnvironment.ts:88` | "[ssh_http:{0}] " |  |
 | `ipc/methods/sshEnvironment.ts:89` | "{0}SSH remote API request failed during {1}." |  |
@@ -462,8 +464,8 @@
 | `preview/CdpRelay.ts:91` | "CDP payload too large" | CDP 协议载荷过大错误消息，保持原文 |
 | `preview/CdpRelay.ts:164` | "Only this preview tab's page can be attached." | CDP 命令协议校验错误，Error 消息保持原文 |
 | `preview/CdpRelay.ts:187` | "Not supported for a desktop preview tab: {0}" | 不受支持的 CDP 命令错误，Error 消息保持原文 |
-| `preview/DesktopBrowserHost.ts:153` | "The preview connection that asked for this screenshot closed." |  |
-| `preview/DesktopBrowserHost.ts:336` | "The page this screenshot was for has moved on." |  |
+| `preview/DesktopBrowserHost.ts:159` | "The preview connection that asked for this screenshot closed." |  |
+| `preview/DesktopBrowserHost.ts:342` | "The page this screenshot was for has moved on." |  |
 | `preview/GuestInput.ts:24` | "The page's focus is inside a cross-site frame, which takes typed input only while the preview has focus. Click the field first." | 跨站iframe输入失败的 Error 消息，非原生界面标签 |
 | `preview/GuestInput.ts:211` | "{0} needs the preview to have focus." |  |
 | `preview/Manager.ts:1043` | "WebContents was destroyed" |  |
@@ -624,14 +626,14 @@
 | `ssh/DesktopSshPasswordPrompts.ts:128` | "SSH password prompt service stopped." |  |
 | `ssh/DesktopSshPasswordPrompts.ts:139` | "Invalid SSH password prompt id." |  |
 | `ssh/DesktopSshPasswordPrompts.ts:150` | "SSH password prompt expired. Try connecting again." |  |
-| `updates/DesktopUpdates.ts:102` | "Cannot change the desktop update channel to {0} while an update {1} action is in progress." |  |
-| `updates/DesktopUpdates.ts:114` | "Failed to persist the {0} desktop update channel." |  |
-| `updates/DesktopUpdates.ts:126` | "Desktop update {0} poller failed." |  |
-| `updates/DesktopUpdates.ts:138` | "Failed to handle desktop update {0} event." |  |
-| `updates/DesktopUpdates.ts:150` | "Desktop updater {0} operation reported an error." |  |
-| `updates/DesktopUpdates.ts:162` | "Desktop update {0} action failed unexpectedly." |  |
-| `updates/DesktopUpdates.ts:174` | "{0} The {1} channel is not available." |  |
-| `updates/DesktopUpdates.ts:1206` | "Your administrator manages T3 Code updates." |  |
+| `updates/DesktopUpdates.ts:106` | "Cannot change the desktop update channel to {0} while an update {1} action is in progress." |  |
+| `updates/DesktopUpdates.ts:118` | "Failed to persist the {0} desktop update channel." |  |
+| `updates/DesktopUpdates.ts:130` | "Desktop update {0} poller failed." |  |
+| `updates/DesktopUpdates.ts:142` | "Failed to handle desktop update {0} event." |  |
+| `updates/DesktopUpdates.ts:154` | "Desktop updater {0} operation reported an error." |  |
+| `updates/DesktopUpdates.ts:166` | "Desktop update {0} action failed unexpectedly." |  |
+| `updates/DesktopUpdates.ts:178` | "{0} The {1} channel is not available." |  |
+| `updates/DesktopUpdates.ts:1210` | "Your administrator manages T3 Code updates." |  |
 | `window/ContextMenuImage.ts:24` | "Unsupported image URL" |  |
 | `window/ContextMenuImage.ts:34` | "Image request failed or exceeded the size limit" |  |
 | `window/ContextMenuImage.ts:36` | "Image response has no body" |  |
@@ -647,7 +649,7 @@
 | `wsl/DesktopWslEnvironment.ts:903` | "wsl.exe --list --verbose timed out" |  |
 | `wsl/DesktopWslServerTree.ts:32` | "Failed to extract the WSL server tree to {0}." |  |
 
-## L：日志与观测（158）
+## L：日志与观测（161）
 
 | file:line | 文字 | 说明 |
 |---|---|---|
@@ -673,8 +675,8 @@
 | `app/DesktopAppActivation.ts:320` | "failed to focus the desktop window" |  |
 | `app/DesktopAppActivation.ts:344` | "failed to restore the desktop app control socket" |  |
 | `app/DesktopAppActivation.ts:352` | "failed to close the desktop app control socket" |  |
-| `app/DesktopClerk.ts:189` | "Could not complete ChatGPT desktop handoff." |  |
-| `app/DesktopClerk.ts:206` | "Could not return to provider setup" |  |
+| `app/DesktopClerk.ts:194` | "Could not complete ChatGPT desktop handoff." |  |
+| `app/DesktopClerk.ts:211` | "Could not return to provider setup" |  |
 | `app/DesktopCliCommand.ts:425` | "left the t3 command to Settings on an existing install" |  |
 | `app/DesktopCliCommand.ts:432` | "left another T3 Code app's t3 command in place" |  |
 | `app/DesktopCliCommand.ts:445` | "left the t3 command to Settings beside another t3" |  |
@@ -708,19 +710,21 @@
 | `app/DesktopStartupRecovery.ts:329` | "could not record the started version" |  |
 | `app/DesktopStartupRecovery.ts:353` | "primary backend failing to start" |  |
 | `app/DesktopStartupRecovery.ts:361` | "startup recovery stopped" |  |
-| `backend/DesktopBackendManager.ts:489` | "ignored invalid desktop telemetry control message" |  |
-| `backend/DesktopBackendManager.ts:497` | "desktop telemetry control stream stopped" |  |
-| `backend/DesktopBackendManager.ts:524` | "desktop browser command stream stopped" | 浏览器控制流结束后的后台告警，不在界面显示 |
-| `backend/DesktopBackendManager.ts:593` | "killed by {0}" | 后台进程退出原因，交给重启诊断记录 |
-| `backend/DesktopBackendManager.ts:713` | "failed to generate desktop backend configuration" | scheduleRestart 的原因，只进日志 |
-| `backend/DesktopBackendManager.ts:721` | "failed to generate desktop backend configuration" | scheduleRestart 的原因，只进日志 |
-| `backend/DesktopBackendManager.ts:758` | "backend preflight still failing after fallback; stopping" |  |
-| `backend/DesktopBackendManager.ts:771` | "backend preflight failed repeatedly; surfacing and falling back" |  |
-| `backend/DesktopBackendManager.ts:796` | "missing server entry at {0}" | scheduleRestart 的原因，只进日志 |
-| `backend/DesktopBackendManager.ts:920` | "pid={0} port={1} cwd={2}" |  |
-| `backend/DesktopBackendManager.ts:961` | "backend readiness check failed during bootstrap" |  |
-| `backend/DesktopBackendManager.ts:1019` | "backend exited unexpectedly; restart scheduled" |  |
-| `backend/DesktopBackendManager.ts:1044` | "desktop backend restart fiber failed" |  |
+| `app/DesktopUserData.ts:130` | "could not clear stale GPU caches" |  |
+| `backend/DesktopBackendManager.ts:332` | "backend shutdown exceeded timeout; waiting for exit" |  |
+| `backend/DesktopBackendManager.ts:502` | "ignored invalid desktop telemetry control message" |  |
+| `backend/DesktopBackendManager.ts:510` | "desktop telemetry control stream stopped" |  |
+| `backend/DesktopBackendManager.ts:537` | "desktop browser command stream stopped" | 浏览器控制流结束后的后台告警，不在界面显示 |
+| `backend/DesktopBackendManager.ts:606` | "killed by {0}" | 后台进程退出原因，交给重启诊断记录 |
+| `backend/DesktopBackendManager.ts:726` | "failed to generate desktop backend configuration" |  |
+| `backend/DesktopBackendManager.ts:734` | "failed to generate desktop backend configuration" | scheduleRestart 的原因，只进日志 |
+| `backend/DesktopBackendManager.ts:771` | "backend preflight still failing after fallback; stopping" |  |
+| `backend/DesktopBackendManager.ts:784` | "backend preflight failed repeatedly; surfacing and falling back" |  |
+| `backend/DesktopBackendManager.ts:809` | "missing server entry at {0}" | scheduleRestart 的原因，只进日志 |
+| `backend/DesktopBackendManager.ts:933` | "pid={0} port={1} cwd={2}" |  |
+| `backend/DesktopBackendManager.ts:974` | "backend readiness check failed during bootstrap" |  |
+| `backend/DesktopBackendManager.ts:1032` | "backend exited unexpectedly; restart scheduled" |  |
+| `backend/DesktopBackendManager.ts:1057` | "desktop backend restart fiber failed" |  |
 | `backend/DesktopBackendPool.ts:122` | "primary WSL preflight retry window exhausted; using Windows for this launch" |  |
 | `backend/DesktopBackendPool.ts:126` | "WSL backend is still unavailable" |  |
 | `backend/DesktopBackendPool.ts:127` | "{0}\n\nT3 Code will use the Windows backend for this launch and retry WSL the next time the app starts." |  |
@@ -734,6 +738,7 @@
 | `backend/DesktopBackendPool.ts:330` | "DesktopBackendPool.layerTest requires at least one instance" |  |
 | `backend/DesktopBackendPool.ts:343` | "DesktopBackendPool.layerTest does not support register" |  |
 | `backend/DesktopBackendPool.ts:346` | "DesktopBackendPool.layerTest does not support unregister" |  |
+| `ipc/DesktopIpc.ts:158` | "Rejected sync IPC from an untrusted sender." |  |
 | `ipc/methods/notificationBadge.ts:40` | "Could not update notification badge" |  |
 | `permissions/MacPermissions.ts:52` | "Could not show permission helper" |  |
 | `preview/BrowserImport/BrowserImport.ts:200` | "Imported cookies could not be flushed to disk" |  |
@@ -763,40 +768,40 @@
 | `updates/DesktopRemoteUpdates.ts:510` | "remote update commit failed unexpectedly" |  |
 | `updates/DesktopUpdatePolicy.ts:61` | "managed policy restricts updates" |  |
 | `updates/DesktopUpdatePolicy.ts:71` | "updates are off because the managed policy cannot be used" |  |
-| `updates/DesktopUpdates.ts:228` | "[redacted URL]" |  |
-| `updates/DesktopUpdates.ts:229` | "[redacted credential]" |  |
-| `updates/DesktopUpdates.ts:232` | "[redacted header]" |  |
-| `updates/DesktopUpdates.ts:236` | "[redacted credential]" |  |
-| `updates/DesktopUpdates.ts:242` | "[truncated cause]" | 更新错误详情的诊断截断标记 |
-| `updates/DesktopUpdates.ts:269` | "; caused by {0}" | 拼接动态诊断原因，不送入翻译器 |
-| `updates/DesktopUpdates.ts:524` | "using update channel" |  |
-| `updates/DesktopUpdates.ts:544` | "skipping update check while update is active" |  |
-| `updates/DesktopUpdates.ts:556` | "checking for updates" |  |
-| `updates/DesktopUpdates.ts:606` | "downloading update" |  |
-| `updates/DesktopUpdates.ts:661` | "Could not write the update restart marker." |  |
-| `updates/DesktopUpdates.ts:678` | "Could not record the update install." |  |
-| `updates/DesktopUpdates.ts:749` | "Desktop update install recovery could not restart every backend." |  |
-| `updates/DesktopUpdates.ts:753` | "Desktop update install recovery failed unexpectedly." |  |
-| `updates/DesktopUpdates.ts:930` | "ignoring update outside the selected channel or its floor" |  |
-| `updates/DesktopUpdates.ts:957` | "update available" |  |
-| `updates/DesktopUpdates.ts:983` | "no updates available" |  |
-| `updates/DesktopUpdates.ts:1042` | "download progress" |  |
-| `updates/DesktopUpdates.ts:1069` | "ignoring download outside the selected channel or its floor" |  |
-| `updates/DesktopUpdates.ts:1082` | "update downloaded" |  |
-| `updates/DesktopUpdates.ts:1128` | "the last update install did not apply" |  |
-| `updates/DesktopUpdates.ts:1169` | "Apple Silicon host detected while running Intel build; updates will switch to arm64 packages" |  |
-| `updates/DesktopUpdates.ts:1175` | "looking for updates" |  |
+| `updates/DesktopUpdates.ts:232` | "[redacted URL]" |  |
+| `updates/DesktopUpdates.ts:233` | "[redacted credential]" |  |
+| `updates/DesktopUpdates.ts:236` | "[redacted header]" |  |
+| `updates/DesktopUpdates.ts:240` | "[redacted credential]" |  |
+| `updates/DesktopUpdates.ts:246` | "[truncated cause]" | 更新错误详情的诊断截断标记 |
+| `updates/DesktopUpdates.ts:273` | "; caused by {0}" | 拼接动态诊断原因，不送入翻译器 |
+| `updates/DesktopUpdates.ts:528` | "using update channel" |  |
+| `updates/DesktopUpdates.ts:548` | "skipping update check while update is active" |  |
+| `updates/DesktopUpdates.ts:560` | "checking for updates" |  |
+| `updates/DesktopUpdates.ts:610` | "downloading update" |  |
+| `updates/DesktopUpdates.ts:665` | "Could not write the update restart marker." |  |
+| `updates/DesktopUpdates.ts:682` | "Could not record the update install." |  |
+| `updates/DesktopUpdates.ts:753` | "Desktop update install recovery could not restart every backend." |  |
+| `updates/DesktopUpdates.ts:757` | "Desktop update install recovery failed unexpectedly." |  |
+| `updates/DesktopUpdates.ts:934` | "ignoring update outside the selected channel or its floor" |  |
+| `updates/DesktopUpdates.ts:961` | "update available" |  |
+| `updates/DesktopUpdates.ts:987` | "no updates available" |  |
+| `updates/DesktopUpdates.ts:1046` | "download progress" |  |
+| `updates/DesktopUpdates.ts:1073` | "ignoring download outside the selected channel or its floor" |  |
+| `updates/DesktopUpdates.ts:1086` | "update downloaded" |  |
+| `updates/DesktopUpdates.ts:1132` | "the last update install did not apply" |  |
+| `updates/DesktopUpdates.ts:1173` | "Apple Silicon host detected while running Intel build; updates will switch to arm64 packages" |  |
+| `updates/DesktopUpdates.ts:1179` | "looking for updates" |  |
 | `window/DesktopApplicationMenu.ts:96` | "manual update check requested, but updates are disabled" |  |
-| `window/DesktopWindow.ts:395` | "failed to read connected displays; using defaults" |  |
-| `window/DesktopWindow.ts:401` | "saved main window bounds could not be restored; using defaults" |  |
-| `window/DesktopWindow.ts:470` | "failed to persist main window bounds" |  |
-| `window/DesktopWindow.ts:601` | "failed to copy context-menu image" |  |
-| `window/DesktopWindow.ts:810` | "main window failed to load" |  |
-| `window/DesktopWindow.ts:836` | "main window render process gone" |  |
-| `window/DesktopWindow.ts:900` | "main window created" |  |
-| `window/DesktopWindow.ts:980` | "connecting splash shown" |  |
-| `window/DesktopWindow.ts:983` | "failed to show connecting splash" |  |
-| `window/DesktopWindow.ts:1049` | "backend ready" |  |
+| `window/DesktopWindow.ts:410` | "failed to read connected displays; using defaults" |  |
+| `window/DesktopWindow.ts:416` | "saved main window bounds could not be restored; using defaults" |  |
+| `window/DesktopWindow.ts:485` | "failed to persist main window bounds" |  |
+| `window/DesktopWindow.ts:629` | "failed to copy context-menu image" |  |
+| `window/DesktopWindow.ts:840` | "main window failed to load" |  |
+| `window/DesktopWindow.ts:866` | "main window render process gone" |  |
+| `window/DesktopWindow.ts:931` | "main window created" |  |
+| `window/DesktopWindow.ts:1011` | "connecting splash shown" |  |
+| `window/DesktopWindow.ts:1014` | "failed to show connecting splash" |  |
+| `window/DesktopWindow.ts:1080` | "backend ready" |  |
 | `wsl/DesktopWslBackend.ts:85` | "refusing to unregister primary as wsl instance" |  |
 | `wsl/DesktopWslBackend.ts:100` | "could not allocate port for WSL backend" |  |
 | `wsl/DesktopWslBackend.ts:112` | "registering WSL backend with pool" |  |

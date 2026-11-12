@@ -40,8 +40,11 @@ try {
     fs.mkdirSync(unpack);
     await command("unzip", "ditto", ["-x", "-k", zip, unpack]);
     const app = findApp(unpack);
+    const baselineLicense = fs.existsSync(path.join(ROOT, "upstream/LICENSE"))
+      ? path.join(ROOT, "upstream/LICENSE")
+      : path.join(ROOT, ".build/src/LICENSE");
     assert.ok(fs.readFileSync(path.join(app, "Contents/Resources/T3-Code-LICENSE.txt"))
-      .equals(fs.readFileSync(path.join(ROOT, "upstream/LICENSE"))), "App 许可证与基线不同");
+      .equals(fs.readFileSync(baselineLicense)), "App 许可证与基线不同");
     const asar = path.join(app, "Contents/Resources/app.asar");
     asarBefore = await shaFile(asar);
     await command("sign", "codesign", ["--force", "--deep", "--sign", "-", app]);
