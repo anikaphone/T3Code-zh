@@ -121,14 +121,15 @@ jobs:
           T3ZH_SKIP_REPORT: '1'
         run: |
           source "$HOME/.config/vite-plus/env"
+          unset GITHUB_REPOSITORY GITHUB_REPOSITORY_OWNER T3CODE_DESKTOP_UPDATE_REPOSITORY T3CODE_DESKTOP_MOCK_UPDATES T3CODE_DESKTOP_MOCK_UPDATE_SERVER_PORT T3CODE_DESKTOP_SIGNED GH_TOKEN GITHUB_TOKEN ELECTRON_RUN_AS_NODE
           bash scripts/build-zh.sh "${{ env.T3ZH_VERSION }}"
-          node scripts/make-installer.ts "${{ env.T3ZH_VERSION }}"
+          hdiutil verify "release/${{ env.T3ZH_VERSION }}/T3-Code-${{ env.T3ZH_VERSION }}-arm64.dmg"
 
       - name: Upload macOS Artifact
         uses: actions/upload-artifact@v4
         with:
           name: macos-installer
-          path: release/${{ env.T3ZH_VERSION }}/installer/*.dmg
+          path: release/${{ env.T3ZH_VERSION }}/T3-Code-*-arm64.dmg
           if-no-files-found: error
 
   # -------------------------------------------------------------
