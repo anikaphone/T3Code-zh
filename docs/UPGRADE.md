@@ -15,7 +15,7 @@ T21 从 `v0.0.46-nightly.20261010.2935` 迁移到正式版 `v0.1.0`，macOS ARM6
 | 步 | 做什么 | 命令 / 产物 | 谁做 |
 |---|---|---|---|
 | 1 体检 | 拉新 tag、建 `.build/next`、补丁试打、构建链守卫、覆盖率报告、待译清单、异形调用扫描、测试对新源码 | `scripts/upgrade-check.sh <新 tag>` → `reports/upgrade/<新 tag>.md` | 主会话（脚本，约 20 秒） |
-| 2 补丁 | 体检里 ❌ 的补丁移植到新源码，只移植、不增删汉化内容；自检「+」行与旧补丁相同、全序 apply 通过 | `patches/README.md`「上游变化后怎么重做」 | 执行模型，A 段（在 `/tmp` 里做，产出补丁文件） |
+| 2 补丁 | 体检里 ❌ 的补丁移植到新源码，只移植、不增删汉化内容；**同步按 [docs/ANTIGRAVITY-ASK-QUESTION-FIX.md](./ANTIGRAVITY-ASK-QUESTION-FIX.md) 核查上游是否已修复 Antigravity `ask_question` 多题 bug（未修复则保留并重导 `0026`）**；自检「+」行与旧补丁相同、全序 apply 通过 | `patches/README.md`「上游变化后怎么重做」 | 执行模型，A 段（在 `/tmp` 里做，产出补丁文件） |
 | 3 翻译 | 填待译清单：界面文字填 `zh`；刻意不译的填 `skip` 写理由（以后不再列出）；复数后缀模板的单 / 复数两条、其他手加词条写进 `.extra.json` | `dict/todo/<新 tag>.json`（`scripts/dict-todo.ts` 生成，增量保留已填） → `node scripts/dict-merge.ts dict/todo/<新 tag>.json dict/todo/<新 tag>.extra.json`（先校验再写入，失败时词库不动）→ `node scripts/dict-regress.ts .build/next`（对比合并前词库：原本译好的文字有没有被新模板截走，「回归」必须为 0） | 执行模型，A 段 |
 | 4 切换基线 | 改写基线标识（build-zh.sh、report.ts、CONVENTIONS §1、两份词库、补丁头），`upstream/`、`.build/src` 切到新 commit；重新生成桌面字符串附录、处理新增条目的归类 | `scripts/switch-baseline.sh <新 tag>`；`node plugin/desktop/survey-strings.ts > s.tsv && node plugin/desktop/classify-strings.ts s.tsv > reports/desktop-main-strings-appendix.md`；全套测试 | 执行模型，A 段 |
 | 5 构建与网页检查 | 交付构建、installer、发布卫生扫描（B 段）；网页沙盒中英文检查（C 段） | 正式版用 `scripts/build-zh.sh 0.1.0-zh.1`；随后运行 `scripts/make-installer.ts`、`scripts/release-hygiene.ts`、`scripts/web-check/run.ts`。Windows 入口为 `.github/workflows/build-windows.yml`，使用相同版本及冻结的汉化输入 | 执行模型，B / C 段 |

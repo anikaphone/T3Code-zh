@@ -31,6 +31,7 @@
 | 0023 | `0023-v011-display-strings.patch` | v0.1.1 跨设备克隆、EAS 主机、额度时间进度读屏名、Webhook 过滤错误与新状态、设备重试和商店按钮 | 8 个组件 / helper 与跨设备复制标题；新增 `apps/web/src/v011DisplayStrings.ts` |
 | 0024 | `0024-antigravity-quota-identity.patch` | T24 修复 Antigravity 旧客户端标识读取到不完整/全 100% 额度；隐藏未使用额度的滚动占位倒计时 | `apps/server/src/provider/antigravityUsageLimits.ts` 及对应测试 |
 | 0025 | `0025-disable-telemetry.patch` | 默认关闭产品用量遥测（PostHog / `ingest.t3.codes`）、启动时本机账号归属探测、客户端设备 ID 持久化与中继链路追踪 | `apps/server/src/telemetry/AnalyticsService.ts`、`apps/server/src/telemetry/Identify.ts`、`apps/web/src/cloud/publicConfig.ts`、`apps/web/src/connection/platform.ts`、`packages/shared/src/otelEnvironment.ts` 及对应测试 |
+| 0026 | `0026-antigravity-multi-question.patch` | 修复 Antigravity（`agy`）一次 `ask_question` 提 ≥ 2 个问题时因 `qN_other` 未折叠导致第 2 步起不显示选项的问题（**每次升级上游必查**，详见 `docs/ANTIGRAVITY-ASK-QUESTION-FIX.md`） | `apps/server/src/provider/acp/AntigravityProtocol.ts`、`apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.ts` 及对应测试 |
 
 ## 0011 minor-display-fixes
 
@@ -297,4 +298,5 @@ git -C ~/Projects/t3code worktree remove /tmp/t3zh-patchcheck
 - `0004`、`0007`、`0009`、`0010`、`0011`、`0013`、`0016`、`0017`、`0020`、`0021`、`0022`：仅对齐上游上下文变化（`contextMenuFallback` 新增 `item.detail` 分支、`ChatHeader` 标题按钮属性精简、`MorphIcon` 退场改用条件图标、命令面板拖动与侧栏启动状态导入变化等），各补丁新增翻译逻辑与 `+` 行逐字不变，`0012`、`0023`、`0025` 及 Windows `0001` 在前置补丁落位后均原样干净适用。
 - `0018`：保留按账号分列、24px 点击条、单账号恢复百分比与共享弹层，同时完整保留上游 `v0.1.9` 新增的 `resetCreditChoices` 多选额度重置能力（`choices`、`payload.redeem?.confirm(choice)`、`useResetCredit(redeemAt.environmentId)` 与 `choice={redeem.choice}`）。
 - `0024`：上游将客户端标识提取为导出的 `antigravityUserAgent(platform, architecture)`，并供本地 `makeAntigravityUsageProbe` 与新增的 CLIProxyAPI 用量轮询（`apps/server/src/usage/cliproxyApi.ts`）共用。补丁直接在 `antigravityUserAgent` 返回 Hub 兼容标识 `antigravity/hub/2.9.1 <os>/<arch>`，保留 `!bucket.description?.trim()` 占位倒计时过滤，并同步对齐 `antigravityUsageLimits.test.ts`（含 `oauth-business` 类型、`empty-description` 预期及多平台用例）与 `cliproxyApi.test.ts` 的 User-Agent 断言。
+- `0026`：新增 Antigravity 多问题 `elicitation/create` 表单折叠补丁，在 `AntigravityProtocol.ts` 导出 `extractAntigravityElicitationForm` 并挂载到 `AntigravityAdapterV2.ts` 的 `makeAntigravityAcpAdapterFlavor`，折叠 `qN` + `qN_other`（详见 `docs/ANTIGRAVITY-ASK-QUESTION-FIX.md`）。后续每次升级上游前须核查上游是否已原生修复；若尚未修复，则继续保留并按新基线对齐导出。
 

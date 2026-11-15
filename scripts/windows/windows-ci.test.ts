@@ -334,6 +334,51 @@ test("0025 遥测关闭补丁：可打到基线源码，默认停用 PostHog、�
   }
 });
 
+test("0026 Antigravity 多问题补丁：可打到基线源码并挂载 extractAntigravityElicitationForm", async (t) => {
+  const upstream = upstreamGitDir();
+  if (!upstream) return t.skip(`找不到 ${UPSTREAM_TAG} = ${UPSTREAM_COMMIT} 的上游 git 对象`);
+  const patchPath = path.join(ZH_ROOT, "patches/0026-antigravity-multi-question.patch");
+  const patchText = fs.readFileSync(patchPath, "utf8");
+  const files = [...patchText.matchAll(/^diff --git a\/(.+) b\//gm)].map((m) => m[1]!);
+  assert.equal(files.length, 4, "0026 补丁应仅包含协议、适配器及对应测试 4 个文件");
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "t3zh-ag-multi-q-"));
+  const git = (...args: string[]) =>
+    execFileSync("git", ["-C", dir, "-c", "core.autocrlf=false", ...args], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+  try {
+    git("init", "-q");
+    for (const file of files) {
+      const target = path.join(dir, file);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.writeFileSync(target, execFileSync("git", ["-C", upstream, "show", `${UPSTREAM_TAG}:${file}`]));
+    }
+    git("apply", "--check", patchPath);
+    git("apply", patchPath);
+
+    const babel = path.join(ZH_ROOT, "node_modules/@babel/parser/lib/index.js");
+    const { parse } = (await import(pathToFileURL(babel).href)) as typeof import("@babel/parser");
+    for (const file of files) {
+      parse(fs.readFileSync(path.join(dir, file), "utf8"), {
+        sourceType: "module",
+        plugins: ["typescript", "jsx"],
+      });
+    }
+
+    const protocol = fs.readFileSync(path.join(dir, "apps/server/src/provider/acp/AntigravityProtocol.ts"), "utf8");
+    assert.match(protocol, /export const extractAntigravityElicitationForm/);
+
+    const adapter = fs.readFileSync(
+      path.join(dir, "apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.ts"),
+      "utf8",
+    );
+    assert.match(adapter, /extractElicitationForm:\s*extractAntigravityElicitationForm/);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 // ---------------------------------------------------------------------------
 // fetch-upstream.sh 与 workflow
 

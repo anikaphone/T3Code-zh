@@ -43,6 +43,7 @@ TypeScript 脚本直接用 `node scripts/xxx.ts` 运行（验证环境 Node v24.
 7. **只提交自己任务范围内的文件。** 用 `git add <具体路径>`，禁止 `git add -A`、`git add .`。不改写历史（不用 rebase、amend、force push）。
 8. **遇到说明书没覆盖的情况，或需要越过以上规则时，停下来问维护者。**
 9. **handoff 里只写实际跑过的结果。** 没跑的写"未验证"，并说明原因。
+10. **每次跟进/拉取上游新版本时，必须额外复核上游缺陷修复状态**（详见 `docs/ANTIGRAVITY-ASK-QUESTION-FIX.md`）：检查新版本上游是否已彻底修复 Antigravity（`agy`）调用 `ask_question` 一次提 2 题及以上时 `qN` / `qN_other` 导致第 2 步起不显示选项的 bug（检查 `AntigravityAdapterV2.ts` 的 `extractElicitationForm` 与对应 `qN`/`qN_other` 折叠逻辑）；若上游尚未修复或仅部分修复，必须在当轮将 `patches/0026-antigravity-multi-question.patch` 迁移/重新打到新基线构建链，严禁遗漏丢失。
 
 ## 3. 词库格式 `dict/zh-CN.json`
 

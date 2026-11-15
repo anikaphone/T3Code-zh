@@ -1,0 +1,555 @@
+# Collapse paired qN and qN_other fields in Antigravity ACP elicitation/create question forms.
+# Fixes missing options on question 2+ when ask_question asks multiple questions.
+# Baseline: v0.1.9 24e77473ecf41bc1f7142529c7911c1c1aae1d76.
+diff --git a/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.test.ts b/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.test.ts
+index 0945a282..b40d19cc 100644
+--- a/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.test.ts
++++ b/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.test.ts
+@@ -133,6 +133,59 @@ describe("AntigravityAdapterV2 flavor", () => {
+       outcome: { outcome: "selected", optionId: "opt-dev" },
+     });
+   });
++
++  it("extracts multi-question Antigravity elicitation forms without empty *_other steps", () => {
++    const form = flavor.extractElicitationForm?.({
++      sessionId: "session-1",
++      mode: "form",
++      message: "The agent has 2 questions.",
++      requestedSchema: {
++        type: "object",
++        properties: {
++          q1: {
++            type: "string",
++            title: "First choice",
++            oneOf: [
++              { const: "a", title: "Alpha" },
++              { const: "b", title: "Beta" },
++            ],
++          },
++          q1_other: {
++            type: "string",
++            title: "other",
++            description: "Optional free-form answer to: First choice",
++          },
++          q2: {
++            type: "string",
++            title: "Second choice",
++            oneOf: [
++              { const: "x", title: "X-Ray" },
++              { const: "y", title: "Yankee" },
++            ],
++          },
++          q2_other: {
++            type: "string",
++            title: "other",
++            description: "Optional free-form answer to: Second choice",
++          },
++        },
++      },
++    });
++    assert.deepEqual(
++      form?.questions.map((question) => ({
++        id: question.id,
++        options: question.options.map((option) => option.value),
++      })),
++      [
++        { id: "q1", options: ["a", "b"] },
++        { id: "q2", options: ["x", "y"] },
++      ],
++    );
++    assert.deepEqual(form?.respond({ q1: "b", q2: "custom second" }), {
++      action: "accept",
++      content: { q1: "b", q2_other: "custom second" },
++    });
++  });
+ });
+ 
+ const layerSession = Layer.mergeAll(
+diff --git a/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.ts b/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.ts
+index 1490140c..a52e9fa6 100644
+--- a/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.ts
++++ b/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.ts
+@@ -38,6 +38,7 @@ import {
+   antigravityApprovalOptions,
+   antigravitySubagentOutput,
+   classifyAntigravitySubagentToolCall,
++  extractAntigravityElicitationForm,
+   extractAntigravityUserInputQuestion,
+   makeAntigravityReadRepair,
+   makeAntigravityUserInputResponse,
+@@ -259,6 +260,7 @@ export function makeAntigravityAcpAdapterFlavor(
+         }),
+     },
+     approvalOptions: antigravityApprovalOptions,
++    extractElicitationForm: extractAntigravityElicitationForm,
+     extractPermissionQuestion: (request) => {
+       const question = extractAntigravityUserInputQuestion(request);
+       if (question === undefined) return undefined;
+diff --git a/apps/server/src/provider/acp/AntigravityProtocol.test.ts b/apps/server/src/provider/acp/AntigravityProtocol.test.ts
+index a2d7c86f..4f505cab 100644
+--- a/apps/server/src/provider/acp/AntigravityProtocol.test.ts
++++ b/apps/server/src/provider/acp/AntigravityProtocol.test.ts
+@@ -4,6 +4,7 @@ import type * as EffectAcpSchema from "effect-acp/compat";
+ import * as AcpWireSchema from "effect-acp/schema-v1";
+ 
+ import {
++  extractAntigravityElicitationForm,
+   extractAntigravityUserInputQuestion,
+   antigravityApprovalOptions,
+   antigravitySubagentOutput,
+@@ -623,3 +624,165 @@ describe("Antigravity served reads", () => {
+     });
+   });
+ });
++
++describe("extractAntigravityElicitationForm", () => {
++  it("collapses paired qN and qN_other fields across multi-question elicitation forms", () => {
++    const request = {
++      sessionId: "session-1",
++      mode: "form" as const,
++      message: "The agent has 2 questions.",
++      requestedSchema: {
++        type: "object",
++        properties: {
++          q1: {
++            type: "string",
++            title: "Which package manager should we use?",
++            oneOf: [
++              { const: "1", title: "pnpm", description: "Workspace default" },
++              { const: "2", title: "bun" },
++            ],
++          },
++          q1_other: {
++            type: "string",
++            title: "other",
++            description: "Optional free-form answer to: Which package manager should we use?",
++          },
++          q2: {
++            type: "array",
++            title: "Which targets should we verify?",
++            items: {
++              anyOf: [
++                { const: "web", title: "Web" },
++                { const: "desktop", title: "Desktop" },
++              ],
++            },
++          },
++          q2_other: {
++            type: "string",
++            title: "other",
++            description: "Optional free-form answer to: Which targets should we verify?",
++          },
++        },
++      },
++    } satisfies EffectAcpSchema.CreateElicitationRequest;
++
++    const extracted = extractAntigravityElicitationForm(request);
++    expect(extracted?.questions).toEqual([
++      {
++        id: "q1",
++        header: "Question 1",
++        question: "Which package manager should we use?",
++        multiSelect: false,
++        options: [
++          { value: "1", label: "pnpm", description: "Workspace default" },
++          { value: "2", label: "bun", description: "bun" },
++        ],
++      },
++      {
++        id: "q2",
++        header: "Question 2",
++        question: "Which targets should we verify?",
++        multiSelect: true,
++        options: [
++          { value: "web", label: "Web", description: "Web" },
++          { value: "desktop", label: "Desktop", description: "Desktop" },
++        ],
++      },
++    ]);
++
++    expect(
++      extracted?.respond({
++        q1: "1",
++        q2: ["web", "desktop"],
++      }),
++    ).toEqual({
++      action: "accept",
++      content: {
++        q1: "1",
++        q2: ["web", "desktop"],
++      },
++    });
++
++    expect(
++      extracted?.respond({
++        q1: "npm",
++        q2: "server only",
++      }),
++    ).toEqual({
++      action: "accept",
++      content: {
++        q1_other: "npm",
++        q2_other: "server only",
++      },
++    });
++  });
++
++  it("orders 10+ questions numerically and supports open-ended qN_other fields", () => {
++    const properties: Record<string, unknown> = {
++      q1: { type: "string", title: "First", oneOf: [{ const: "a", title: "A" }] },
++      q10: { type: "string", title: "Tenth", oneOf: [{ const: "j", title: "J" }] },
++      q10_other: { type: "string", title: "other" },
++      q1_other: { type: "string", title: "other" },
++      q2_other: { type: "string", title: "Explain why" },
++    };
++    const extracted = extractAntigravityElicitationForm({
++      sessionId: "session-1",
++      mode: "form",
++      message: "The agent has 3 questions.",
++      requestedSchema: { type: "object", properties },
++    });
++
++    expect(extracted?.questions.map((q) => [q.id, q.header, q.question])).toEqual([
++      ["q1", "Question 1", "First"],
++      ["q2_other", "Question 2", "Explain why"],
++      ["q10", "Question 3", "Tenth"],
++    ]);
++    expect(
++      extracted?.respond({
++        q1: 'a\n\nAttached file "notes.txt": "/tmp/notes.txt"',
++        q2_other: "Because reasons",
++        q10: "j",
++      }),
++    ).toEqual({
++      action: "accept",
++      content: {
++        q1: "a",
++        q1_other: 'A\n\nAttached file "notes.txt": "/tmp/notes.txt"',
++        q2_other: "Because reasons",
++        q10: "j",
++      },
++    });
++  });
++
++  it("cancels on empty answers and ignores non-Antigravity forms", () => {
++    const extracted = extractAntigravityElicitationForm({
++      sessionId: "session-1",
++      mode: "form",
++      message: "The agent has a question.",
++      requestedSchema: {
++        type: "object",
++        properties: {
++          q1: { type: "string", title: "Pick one", oneOf: [{ const: "1", title: "One" }] },
++          q1_other: { type: "string", title: "other" },
++        },
++        required: ["q1"],
++      },
++    });
++    expect(extracted?.respond({})).toEqual({ action: "cancel" });
++    expect(extracted?.respond({ q1: "   " })).toEqual({ action: "cancel" });
++
++    expect(
++      extractAntigravityElicitationForm({
++        sessionId: "session-1",
++        mode: "form",
++        message: "Select branch",
++        requestedSchema: {
++          type: "object",
++          properties: {
++            branch: { type: "string", title: "Branch", enum: ["main", "dev"] },
++          },
++        },
++      }),
++    ).toBeUndefined();
++  });
++});
+diff --git a/apps/server/src/provider/acp/AntigravityProtocol.ts b/apps/server/src/provider/acp/AntigravityProtocol.ts
+index 5b74756a..e444dfe2 100644
+--- a/apps/server/src/provider/acp/AntigravityProtocol.ts
++++ b/apps/server/src/provider/acp/AntigravityProtocol.ts
+@@ -1,8 +1,10 @@
+ import type {
++  OrchestrationV2UserInputQuestion,
+   ProviderApprovalOption,
+   ProviderUserInputAnswers,
+   UserInputQuestion,
+ } from "@t3tools/contracts";
++import type { AcpAdapterV2Flavor } from "@t3tools/provider-acp/server/adapter";
+ import { isWorkspaceImagePreviewPath } from "@t3tools/shared/filePreview";
+ import * as Option from "effect/Option";
+ import * as Predicate from "effect/Predicate";
+@@ -164,6 +166,274 @@ export function makeAntigravityUserInputResponse(
+   return option ? { outcome: { outcome: "selected", optionId: option.optionId } } : undefined;
+ }
+ 
++const ATTACHMENT_SUFFIX_RE = /^\n\nAttached (?:image|file) "(?:\\.|[^"\\\r\n])*": "/;
++const ANTIGRAVITY_QUESTION_KEY_RE = /^q([1-9]\d*)(_other)?$/;
++
++interface AntigravityQuestionOption {
++  readonly label: string;
++  readonly description: string;
++  readonly value: string;
++}
++
++interface AntigravityQuestionSpec {
++  readonly kind: "choice" | "otherOnly";
++  readonly otherId: string;
++  readonly required: boolean;
++  readonly question: OrchestrationV2UserInputQuestion & {
++    readonly options: ReadonlyArray<AntigravityQuestionOption>;
++  };
++}
++
++function isPlainRecord(value: unknown): value is Record<string, unknown> {
++  return Predicate.isObject(value) && !Array.isArray(value);
++}
++
++function trimNonEmptyText(value: unknown): string | undefined {
++  if (typeof value !== "string") return undefined;
++  const trimmed = value.trim();
++  return trimmed.length > 0 ? trimmed : undefined;
++}
++
++function boundQuestionText(text: string): string {
++  return text.length > TOOL_TEXT_LIMIT
++    ? copyBoundedText(`${text.slice(0, TOOL_TEXT_LIMIT - 3)}...`)
++    : text;
++}
++
++function isPlainAntigravityOtherField(value: unknown): value is Record<string, unknown> {
++  return (
++    isPlainRecord(value) &&
++    value.type === "string" &&
++    value.enum === undefined &&
++    value.oneOf === undefined &&
++    value.anyOf === undefined &&
++    value.const === undefined
++  );
++}
++
++function parseAntigravityElicitationOptions(
++  field: Record<string, unknown>,
++  multiSelect: boolean,
++): ReadonlyArray<AntigravityQuestionOption> | undefined {
++  const source = multiSelect ? (isPlainRecord(field.items) ? field.items : undefined) : field;
++  if (!source) return undefined;
++
++  const options: Array<AntigravityQuestionOption> = [];
++  const rawChoices = multiSelect ? source.anyOf : source.oneOf;
++  if (Array.isArray(rawChoices)) {
++    for (const choice of rawChoices) {
++      if (!isPlainRecord(choice)) return undefined;
++      if (typeof choice.const !== "string" || choice.const.trim().length === 0) return undefined;
++      const label = trimNonEmptyText(choice.title) ?? choice.const.trim();
++      const description = trimNonEmptyText(choice.description) ?? label;
++      options.push({ label, description, value: choice.const });
++    }
++  } else if (
++    Array.isArray(source.enum) &&
++    (!multiSelect || source.type === undefined || source.type === "string")
++  ) {
++    const enumNames = Array.isArray(source.enumNames) ? source.enumNames : undefined;
++    for (let index = 0; index < source.enum.length; index++) {
++      const rawValue = source.enum[index];
++      if (typeof rawValue !== "string" || rawValue.trim().length === 0) return undefined;
++      const label = trimNonEmptyText(enumNames?.[index]) ?? rawValue.trim();
++      options.push({ label, description: label, value: rawValue });
++    }
++  } else {
++    return undefined;
++  }
++
++  if (options.length === 0) return undefined;
++  const seenValues = new Set<string>();
++  for (const option of options) {
++    if (seenValues.has(option.value)) return undefined;
++    seenValues.add(option.value);
++  }
++  return options;
++}
++
++function matchAntigravityAttachmentOption(
++  options: ReadonlyArray<AntigravityQuestionOption>,
++  answer: string,
++) {
++  const attachmentStart = answer.indexOf("\n\n");
++  if (attachmentStart < 0) return undefined;
++  const suffix = answer.slice(attachmentStart);
++  if (!ATTACHMENT_SUFFIX_RE.test(suffix)) return undefined;
++  const prefix = answer.slice(0, attachmentStart);
++  const option = options.find((candidate) => candidate.value === prefix);
++  return option ? { option, suffix } : undefined;
++}
++
++function resolveSingleAntigravityAnswer(
++  spec: AntigravityQuestionSpec,
++  rawAnswer: unknown,
++  contentEntries: Array<[string, string | Array<string>]>,
++): boolean {
++  const decoded = Option.getOrUndefined(decodeSingleAnswer(rawAnswer));
++  const value = typeof decoded === "string" ? decoded : decoded?.[0];
++  if (!Predicate.isString(value) || value.trim().length === 0) return false;
++  if (spec.kind === "otherOnly") {
++    contentEntries.push([spec.otherId, value]);
++    return true;
++  }
++  const exact = spec.question.options.find((option) => option.value === value);
++  if (exact) {
++    contentEntries.push([spec.question.id, exact.value]);
++    return true;
++  }
++  const attached = matchAntigravityAttachmentOption(spec.question.options, value);
++  if (attached) {
++    contentEntries.push(
++      [spec.question.id, attached.option.value],
++      [spec.otherId, `${attached.option.label}${attached.suffix}`],
++    );
++    return true;
++  }
++  contentEntries.push([spec.otherId, value]);
++  return true;
++}
++
++function resolveMultiAntigravityAnswer(
++  spec: AntigravityQuestionSpec,
++  rawAnswer: unknown,
++  contentEntries: Array<[string, string | Array<string>]>,
++): boolean {
++  const items = Array.isArray(rawAnswer)
++    ? rawAnswer
++    : Predicate.isString(rawAnswer)
++      ? [rawAnswer]
++      : undefined;
++  if (!items || items.length === 0) return false;
++
++  const selectedValues: Array<string> = [];
++  const customTexts: Array<string> = [];
++  for (const item of items) {
++    if (!Predicate.isString(item) || item.trim().length === 0) return false;
++    const exact = spec.question.options.find((option) => option.value === item);
++    if (exact) {
++      selectedValues.push(exact.value);
++      continue;
++    }
++    const attached = matchAntigravityAttachmentOption(spec.question.options, item);
++    if (attached) {
++      selectedValues.push(attached.option.value);
++      customTexts.push(`${attached.option.label}${attached.suffix}`);
++      continue;
++    }
++    customTexts.push(item);
++  }
++  if (selectedValues.length === 0 && customTexts.length === 0) return false;
++  if (selectedValues.length > 0) contentEntries.push([spec.question.id, selectedValues]);
++  if (customTexts.length > 0) contentEntries.push([spec.otherId, customTexts.join("\n")]);
++  return true;
++}
++
++/**
++ * Normalizes Antigravity's `elicitation/create` question forms (`q1`, `q1_other`, ...).
++ * Antigravity emits a separate `qN_other` free-form string companion alongside each choice question;
++ * collapsing each pair prevents the extra step with empty options from blocking multi-question flows.
++ */
++export const extractAntigravityElicitationForm: NonNullable<
++  AcpAdapterV2Flavor["extractElicitationForm"]
++> = (request) => {
++  if (request.mode !== "form" || !isPlainRecord(request.requestedSchema)) return undefined;
++  const properties = request.requestedSchema.properties;
++  if (!isPlainRecord(properties)) return undefined;
++  const rawEntries = Object.entries(properties);
++  if (rawEntries.length === 0) return undefined;
++
++  const groups = new Map<number, { readonly index: number; q?: unknown; other?: unknown }>();
++  for (const [key, field] of rawEntries) {
++    const match = ANTIGRAVITY_QUESTION_KEY_RE.exec(key);
++    if (!match) return undefined;
++    const index = Number(match[1]);
++    const group = groups.get(index) ?? { index };
++    if (match[2] === "_other") {
++      group.other = field;
++    } else {
++      group.q = field;
++    }
++    groups.set(index, group);
++  }
++
++  const requiredIds = new Set(
++    Array.isArray(request.requestedSchema.required)
++      ? request.requestedSchema.required.filter((key): key is string => typeof key === "string")
++      : [],
++  );
++  const sortedGroups = [...groups.values()].sort((a, b) => a.index - b.index);
++  const specs: Array<AntigravityQuestionSpec> = [];
++
++  for (const group of sortedGroups) {
++    const qKey = `q${group.index}`;
++    const otherKey = `${qKey}_other`;
++    if (group.q !== undefined) {
++      if (!isPlainRecord(group.q) || !isPlainAntigravityOtherField(group.other)) {
++        return undefined;
++      }
++      if (group.q.type !== "string" && group.q.type !== "array") return undefined;
++      const multiSelect = group.q.type === "array";
++      const options = parseAntigravityElicitationOptions(group.q, multiSelect);
++      if (!options) return undefined;
++
++      const title = trimNonEmptyText(group.q.title);
++      const description = trimNonEmptyText(group.q.description);
++      const stepLabel = `Question ${specs.length + 1}`;
++      const header = boundQuestionText(description !== undefined ? (title ?? stepLabel) : stepLabel);
++      const question = boundQuestionText(
++        description ?? title ?? trimNonEmptyText(request.message) ?? "Choose an option.",
++      );
++      specs.push({
++        kind: "choice",
++        otherId: otherKey,
++        required: requiredIds.has(qKey),
++        question: { id: qKey, header, question, options, multiSelect },
++      });
++    } else {
++      if (!isPlainAntigravityOtherField(group.other)) return undefined;
++      const title = trimNonEmptyText(group.other.title);
++      const description = trimNonEmptyText(group.other.description);
++      const stepLabel = `Question ${specs.length + 1}`;
++      const header = boundQuestionText(description !== undefined ? (title ?? stepLabel) : stepLabel);
++      const question = boundQuestionText(
++        description ?? title ?? trimNonEmptyText(request.message) ?? "Enter an answer.",
++      );
++      specs.push({
++        kind: "otherOnly",
++        otherId: otherKey,
++        required: requiredIds.has(otherKey),
++        question: { id: otherKey, header, question, options: [], multiSelect: false },
++      });
++    }
++  }
++
++  if (specs.length === 0) return undefined;
++
++  return {
++    questions: specs.map((spec) => spec.question),
++    respond: (answers) => {
++      const contentEntries: Array<[string, string | Array<string>]> = [];
++      for (const spec of specs) {
++        const answer = Object.hasOwn(answers, spec.question.id)
++          ? answers[spec.question.id]
++          : undefined;
++        if (answer === undefined) {
++          if (spec.required) return { action: "cancel" };
++          continue;
++        }
++        const ok = spec.question.multiSelect
++          ? resolveMultiAntigravityAnswer(spec, answer, contentEntries)
++          : resolveSingleAntigravityAnswer(spec, answer, contentEntries);
++        if (!ok) return { action: "cancel" };
++      }
++
++      if (contentEntries.length === 0) return { action: "cancel" };
++      return { action: "accept", content: Object.fromEntries(contentEntries) };
++    },
++  };
++};
++
+ function boundText(text: string, limit = TOOL_TEXT_LIMIT): string {
+   return text.length <= limit
+     ? text
