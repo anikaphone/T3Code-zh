@@ -417,7 +417,8 @@ test("T17 C: real menu and external-dialog expressions preserve English, routes 
     }
     assert.ok(calls.every(value => !value.includes(environment.displayName)), "app name never reaches translator");
     const dialog = "apps/desktop/src/preview/BrowserSession.ts", raw = COPIES.before.get(dialog)!, patched = COPIES.after.get(dialog)!;
-    const original = properties(raw, ["message", "detail", "buttons"]).slice(3), changed = properties(patched, ["message", "detail", "buttons"]).slice(3);
+    const dialogProps = (source: string) => { const all = properties(source, ["message", "detail", "buttons"]); return [...all.slice(3, 6), ...all.slice(-2)]; };
+    const original = dialogProps(raw), changed = dialogProps(patched);
     assert.equal(original.length, 5); assert.equal(changed.length, 5);
     const url = "custom://path/to/main?x=$&", origin = "https://site.example.invalid:3000", truncateForPrompt = (s: string) => s;
     const dialogValue = (source: string, node: Node) => new Function("url", "origin", "truncateForPrompt", "__t3zh_t", `return (${source.slice(node.start, node.end)});`)(url, origin, truncateForPrompt, __t3zh_t);

@@ -108,7 +108,7 @@ const UPSTREAM_ONLY_FILES = [
 /** 0001 改到、且 0004 也需要的文件（vite-env.d.ts 的类型声明）。 */
 const PATCH_0001_FILES = [
   "apps/web/src/components/settings/SettingsPanels.tsx",
-  "apps/web/src/components/settings/settingsSearch.ts",
+  "apps/web/src/i18n/runtime.ts",
   "apps/web/src/vite-env.d.ts",
 ];
 

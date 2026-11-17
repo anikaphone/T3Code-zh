@@ -43,7 +43,9 @@ if [[ -e "${NEXT}" ]]; then
     git -C "${NEXT}" checkout --quiet --detach "${NEW_COMMIT}"
   fi
 else
-  git -C "${ORIGIN_REPO}" worktree add --detach "${NEXT}" "${NEW_COMMIT}" >&2
+  git -C "${ORIGIN_REPO}" worktree add --no-checkout --detach "${NEXT}" "${NEW_COMMIT}" >&2
+  git -C "${NEXT}" sparse-checkout set --no-cone '/*' '!/.repos/'
+  git -C "${NEXT}" checkout --quiet --detach "${NEW_COMMIT}"
 fi
 
 md "# 升级体检：${OLD_TAG} → ${NEW_TAG}"
@@ -69,21 +71,21 @@ md ""
 log "3/8 补丁试打"
 md "## 2. 补丁试打（新源码副本，按编号顺序）"
 md ""
-git -C "${NEXT}" archive "${NEW_COMMIT}" | tar -x -C "${SCRATCH}"
+git -C "${NEXT}" archive "${NEW_COMMIT}" -- . ':!.repos' | tar -x -C "${SCRATCH}"
 git -C "${SCRATCH}" init --quiet
 PATCH_FAILED=0
-for patch in $(find "${ZH_ROOT}/patches" -maxdepth 1 -name '*.patch' | LC_ALL=C sort); do
+while IFS= read -r patch; do
   name="$(basename "${patch}")"
   if git -C "${SCRATCH}" apply "${patch}" 2>/dev/null; then
     md "- ✅ \`${name}\`"
   else
     PATCH_FAILED=1
     md "- ❌ \`${name}\`：打不上的文件 ——"
-    while read -r file; do
+    while IFS= read -r file; do
       git -C "${SCRATCH}" apply --check --include="${file}" "${patch}" 2>/dev/null || md "  - \`${file}\`"
     done < <(git apply --numstat "${patch}" | awk '{print $3}')
   fi
-done
+done < <(find "${ZH_ROOT}/patches" -maxdepth 1 -name '*.patch' | LC_ALL=C sort)
 md ""
 
 log "4/8 构建链守卫"

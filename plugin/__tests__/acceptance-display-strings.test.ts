@@ -138,7 +138,7 @@ function jsxExpression(file: string, contains: string): string {
     if (!node || typeof node !== "object") return;
     if (node.type === "JSXExpressionContainer") {
       const expression = source.slice(node.expression.start, node.expression.end);
-      if (expression.includes(contains)) matches.push(expression);
+      if (expression.includes(contains) && !expression.includes("\n")) matches.push(expression);
     }
     for (const [key, child] of Object.entries(node)) {
       if (key === "loc" || key === "extra") continue;
@@ -147,12 +147,12 @@ function jsxExpression(file: string, contains: string): string {
     }
   }
   visit(ast);
-  assert.equal(matches.length, 1, `${file}: ${contains}`);
+  assert.ok(matches.length >= 1 && new Set(matches).size === 1, `${file}: ${contains}`);
   return matches[0]!;
 }
 
 test("pooled usage render translates built-in periods and preserves override/custom labels", () => {
-  const expression = jsxExpression("components/usage/UsageLimitsPooled.tsx", "pool.label");
+  const expression = jsxExpression("components/usage/UsageLimitsPooled.tsx", "displayKnown(pool.label)");
   const render = new Function("displayKnown", "pool", "label", `return (${expression});`);
   for (const locale of ["en", "zh-CN", null] as const) {
     const r = runtime(locale);

@@ -1,0 +1,2578 @@
+[
+  {
+    "key": "Search ignored files",
+    "section": "messages",
+    "zh": "搜索已忽略的文件",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/AddProjectToMachineDialog.tsx:380（B，AddProjectToMachineDialog）",
+      "apps/web/src/components/AddProjectToMachineDialog.tsx:381（B，AddProjectToMachineDialog）"
+    ],
+    "collidesWith": "Search {0} files",
+    "wrongResult": "搜索 ignored 文件"
+  },
+  {
+    "key": "No ignored files match.",
+    "section": "messages",
+    "zh": "没有匹配的已忽略文件。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/AddProjectToMachineDialog.tsx:400（A，AddProjectToMachineDialog）"
+    ]
+  },
+  {
+    "key": "Branch: {0}",
+    "section": "templates",
+    "zh": "分支：{0}",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/BranchToolbarBranchSelector.tsx:860（B，BranchToolbarBranchSelector）"
+    ]
+  },
+  {
+    "key": "Insight",
+    "section": "messages",
+    "zh": "洞察",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/ChatMarkdown.tsx:362（C，label）"
+    ]
+  },
+  {
+    "key": "Try replying after the connection or pending input is resolved.",
+    "section": "messages",
+    "zh": "请等待连接或待处理的输入完成后再回复。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/ChatView.tsx:671（C，replyToResponseStable）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "Try replying after the connection or pending input 的状态为 resolved."
+  },
+  {
+    "key": "Find on page in browser",
+    "section": "messages",
+    "zh": "在浏览器页面中查找",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/CommandPalette.tsx:1382（C，OpenCommandPaletteDialog）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "page in browser上的Find"
+  },
+  {
+    "key": "Choose a folder in the environment the repository is cloned into.",
+    "section": "messages",
+    "zh": "在克隆该仓库的环境中选择一个文件夹。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/CommandPalette.tsx:2840（C，handleOpenProjectFromFileManager）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "Choose a folder in the environment the repository 的状态为 cloned into."
+  },
+  {
+    "key": "A device wants to connect to {0}",
+    "section": "templates",
+    "zh": "有设备请求连接到 {0}",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/ConnectDeviceApprovalCoordinator.tsx:118（C，options）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "A device wants 到 connect to {0}"
+  },
+  {
+    "key": "{0}. Approve only if it shows code {1}.",
+    "section": "templates",
+    "zh": "{0}。仅当对方显示验证码 {1} 时才批准。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/ConnectDeviceApprovalCoordinator.tsx:119（C，options）"
+    ]
+  },
+  {
+    "key": "Could not approve the device",
+    "section": "messages",
+    "zh": "无法批准该设备",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/ConnectDeviceApprovalCoordinator.tsx:127（D，options）",
+      "apps/web/src/components/settings/ConnectDeviceApprovalSettings.tsx:100（D，ConnectDeviceApprovalSettings）"
+    ]
+  },
+  {
+    "key": "Could not deny the device",
+    "section": "messages",
+    "zh": "无法拒绝该设备",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/ConnectDeviceApprovalCoordinator.tsx:141（D，options）",
+      "apps/web/src/components/settings/ConnectDeviceApprovalSettings.tsx:86（D，ConnectDeviceApprovalSettings）"
+    ]
+  },
+  {
+    "key": "Workspace panel",
+    "section": "messages",
+    "zh": "工作区面板",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/RightPanelSheet.tsx:28（A，RightPanelSheet）"
+    ]
+  },
+  {
+    "key": "No {0} in {1}{2}",
+    "section": "templates",
+    "zh": "",
+    "skip": "条件拼接句，已在 v0.1.10.extra.json 拆分为四条具体词条/模板",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/Sidebar.tsx:3307（A，Sidebar）"
+    ],
+    "collidesWith": "{0} in {1}",
+    "wrongResult": "No {0}，用时 {1}{2}"
+  },
+  {
+    "key": "Could not load sign-in",
+    "section": "messages",
+    "zh": "无法加载登录界面",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/auth/ApproveAgentSurface.tsx:126（B，ApproveAgentSurface）"
+    ]
+  },
+  {
+    "key": "T3 Connect sign-in did not load. Check your connection, then try again.",
+    "section": "messages",
+    "zh": "T3 Connect 登录界面未能加载。请检查网络连接后重试。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/auth/ApproveAgentSurface.tsx:127（B，ApproveAgentSurface）"
+    ]
+  },
+  {
+    "key": "Go to quoted response: {0}",
+    "section": "templates",
+    "zh": "前往引用的回复：{0}",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/AssistantCitationChip.tsx:132（B，AssistantCitationEmbed）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Go 到 quoted response: {0}"
+  },
+  {
+    "key": "Go to the response this replies to: {0}",
+    "section": "templates",
+    "zh": "前往此消息回复的原回复：{0}",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/AssistantCitationChip.tsx:169（B，ResponseReplyCard）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Go 到 the response this replies to: {0}"
+  },
+  {
+    "key": "Replying to {0}",
+    "section": "templates",
+    "zh": "正在回复 {0}",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/ChatComposer.tsx:2515（C，ChatComposer）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Replying 到 {0}"
+  },
+  {
+    "key": "Replying to",
+    "section": "messages",
+    "zh": "正在回复",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ChatComposer.tsx:2516（C，ChatComposer）"
+    ]
+  },
+  {
+    "key": "Cancel reply",
+    "section": "messages",
+    "zh": "取消回复",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ChatComposer.tsx:2532（C，ChatComposer）"
+    ]
+  },
+  {
+    "key": "Terminal output can't be added to a question answer.",
+    "section": "messages",
+    "zh": "无法将终端输出添加到问题回答中。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/ChatComposer.tsx:3165（C，ChatComposer）"
+    ],
+    "collidesWith": "Terminal {0}",
+    "wrongResult": "终端 output can't be added to a question answer."
+  },
+  {
+    "key": "Answer or dismiss the question first, then add it to chat.",
+    "section": "messages",
+    "zh": "请先回答或关闭当前问题，然后再添加到聊天。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/ChatComposer.tsx:3166（C，ChatComposer）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Answer or dismiss the question first, then add it 到 chat."
+  },
+  {
+    "key": "Type your answer",
+    "section": "messages",
+    "zh": "输入你的回答",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ChatComposer.tsx:3652（B，ChatComposer）"
+    ]
+  },
+  {
+    "key": "Stopping…",
+    "section": "messages",
+    "zh": "正在停止…",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ComposerPrimaryActions.tsx:173（A，StopGenerationButton）"
+    ]
+  },
+  {
+    "key": "Cancel voice input",
+    "section": "messages",
+    "zh": "取消语音输入",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ComposerSpeechButton.tsx:159（B，ComposerSpeechRecordingPill）",
+      "apps/web/src/components/chat/ComposerSpeechButton.tsx:164（B，ComposerSpeechRecordingPill）"
+    ]
+  },
+  {
+    "key": "Finish voice input",
+    "section": "messages",
+    "zh": "完成语音输入",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ComposerSpeechButton.tsx:207（B，ComposerSpeechRecordingPill）",
+      "apps/web/src/components/chat/ComposerSpeechButton.tsx:211（B，ComposerSpeechRecordingPill）"
+    ]
+  },
+  {
+    "key": "Back, close {0} preview",
+    "section": "templates",
+    "zh": "返回，关闭 {0} 预览",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ExpandedImageDialog.tsx:202（B，ExpandedImageDialog）"
+    ]
+  },
+  {
+    "key": "Agents here can then launch, message and wait on threads there. Revoke it in that machine's Sharing & access.",
+    "section": "messages",
+    "zh": "之后此处的智能体即可在该设备上启动、发送消息并等待任务。可在该设备的“共享与访问”中撤销。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/LinkRequestCard.tsx:300（B，LinkRequestDialog）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Agents here can then launch, message 和 wait on threads there. Revoke it in that machine's Sharing & access."
+  },
+  {
+    "key": "Searching project models...",
+    "section": "messages",
+    "zh": "正在搜索项目模型...",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ModelPickerContent.tsx:1078（B，ModelPickerContent）"
+    ]
+  },
+  {
+    "key": "Goal objective",
+    "section": "messages",
+    "zh": "目标内容",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ThreadActivityBanners.tsx:108（B，goalNowItem）"
+    ]
+  },
+  {
+    "key": "Resolve the conflicts in this thread",
+    "section": "messages",
+    "zh": "解决此任务中的冲突",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/ThreadDetailsPrRow.tsx:359（C，ThreadDetailsPrRow）"
+    ],
+    "collidesWith": "{0} in {1}",
+    "wrongResult": "Resolve the conflicts，用时 this thread"
+  },
+  {
+    "key": "Preparing fix",
+    "section": "messages",
+    "zh": "正在准备修复",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/ThreadDetailsPrRow.tsx:380（B，ThreadDetailsPrRow）"
+    ]
+  },
+  {
+    "key": "Fix the failing checks in this thread",
+    "section": "messages",
+    "zh": "修复此任务中失败的检查",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/ThreadDetailsPrRow.tsx:387（C，ThreadDetailsPrRow）"
+    ],
+    "collidesWith": "{0} in {1}",
+    "wrongResult": "Fix the failing checks，用时 this thread"
+  },
+  {
+    "key": "Could not open the parent thread",
+    "section": "messages",
+    "zh": "无法打开父任务",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/ThreadRelationshipsControl.tsx:370（C，openParent）"
+    ],
+    "collidesWith": "{0}d",
+    "wrongResult": "Could not open the parent threa 天"
+  },
+  {
+    "key": "The parent thread was deleted",
+    "section": "messages",
+    "zh": "父任务已被删除",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/ThreadRelationshipsControl.tsx:375（C，openParent）"
+    ],
+    "collidesWith": "{0}d",
+    "wrongResult": "The parent thread was delete 天"
+  },
+  {
+    "key": "Reply to this response",
+    "section": "messages",
+    "zh": "回复此消息",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/TimelineAssistantRows.tsx:302（B，AssistantReplyButton）",
+      "apps/web/src/components/chat/TimelineAssistantRows.tsx:308（A，AssistantReplyButton）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Reply 到 this response"
+  },
+  {
+    "key": "Mic blocked",
+    "section": "messages",
+    "zh": "麦克风权限被阻止",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:10（C，VOICE_ERROR_LABELS）",
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:11（C，VOICE_ERROR_LABELS）"
+    ],
+    "collidesWith": "{0}d",
+    "wrongResult": "Mic blocke 天"
+  },
+  {
+    "key": "Already recording",
+    "section": "messages",
+    "zh": "正在录音中",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:13（C，VOICE_ERROR_LABELS）"
+    ]
+  },
+  {
+    "key": "Still transcribing",
+    "section": "messages",
+    "zh": "仍在转写中",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:15（C，VOICE_ERROR_LABELS）"
+    ]
+  },
+  {
+    "key": "Couldn’t start",
+    "section": "messages",
+    "zh": "无法启动",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:17（C，VOICE_ERROR_LABELS）",
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:18（C，VOICE_ERROR_LABELS）"
+    ]
+  },
+  {
+    "key": "Couldn’t finish",
+    "section": "messages",
+    "zh": "无法完成",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:20（C，VOICE_ERROR_LABELS）"
+    ],
+    "collidesWith": "{0}h",
+    "wrongResult": "Couldn’t finis 小时"
+  },
+  {
+    "key": "No speech heard",
+    "section": "messages",
+    "zh": "未检测到语音",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:24（C，VOICE_ERROR_LABELS）"
+    ],
+    "collidesWith": "{0}d",
+    "wrongResult": "No speech hear 天"
+  },
+  {
+    "key": "Mic failed",
+    "section": "messages",
+    "zh": "麦克风故障",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:25（C，VOICE_ERROR_LABELS）"
+    ],
+    "collidesWith": "{0} failed",
+    "wrongResult": "Mic 项失败"
+  },
+  {
+    "key": "Mic disconnected",
+    "section": "messages",
+    "zh": "麦克风已断开",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:26（C，VOICE_ERROR_LABELS）"
+    ],
+    "collidesWith": "{0}d",
+    "wrongResult": "Mic disconnecte 天"
+  },
+  {
+    "key": "Open voice settings",
+    "section": "messages",
+    "zh": "打开语音设置",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:48（C，VoiceInputErrorPill）"
+    ],
+    "collidesWith": "Open {0}",
+    "wrongResult": "打开 voice settings"
+  },
+  {
+    "key": "Retry transcription",
+    "section": "messages",
+    "zh": "重试转写",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputErrorPill.tsx:50（C，VoiceInputErrorPill）"
+    ]
+  },
+  {
+    "key": "Voice input is ready",
+    "section": "messages",
+    "zh": "语音输入已就绪",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputSetup.tsx:97（B，VoiceInputSetup）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "Voice input 的状态为 ready"
+  },
+  {
+    "key": "Download a speech model once. Your audio is transcribed on {0}.",
+    "section": "templates",
+    "zh": "只需下载一次语音模型。你的音频将在 {0} 上进行转写。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputSetup.tsx:100（B，VoiceInputSetup）"
+    ],
+    "collidesWith": "Download {name}",
+    "wrongResult": "下载a speech model once. Your audio is transcribed on {0}."
+  },
+  {
+    "key": "Pick a microphone, then start talking.",
+    "section": "messages",
+    "zh": "选择一个麦克风，然后开始说话。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputSetup.tsx:101（B，VoiceInputSetup）"
+    ]
+  },
+  {
+    "key": "Verifying…",
+    "section": "messages",
+    "zh": "正在验证…",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputSetup.tsx:138（A，VoiceInputSetup）"
+    ]
+  },
+  {
+    "key": "That microphone is unplugged. Pick another one.",
+    "section": "messages",
+    "zh": "该麦克风已拔出，请选择另一个麦克风。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputSetup.tsx:218（A，VoiceInputSetup）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "That microphone 的状态为 unplugged. Pick another one."
+  },
+  {
+    "key": "Other models",
+    "section": "messages",
+    "zh": "其他模型",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputSetup.tsx:233（A，VoiceInputSetup）"
+    ],
+    "collidesWith": "{count} models",
+    "wrongResult": "Other 个模型"
+  },
+  {
+    "key": "Choose a model",
+    "section": "messages",
+    "zh": "选择模型",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputSetup.tsx:233（A，VoiceInputSetup）"
+    ],
+    "collidesWith": "{count} model",
+    "wrongResult": "Choose a 个模型"
+  },
+  {
+    "key": "Needs an admin to download",
+    "section": "messages",
+    "zh": "需要管理员权限才能下载",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputSetup.tsx:256（A，VoiceInputSetup）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Needs an admin 到 download"
+  },
+  {
+    "key": "Voice settings",
+    "section": "messages",
+    "zh": "语音设置",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/VoiceInputSetup.tsx:264（A，VoiceInputSetup）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "Voice setting 秒"
+  },
+  {
+    "key": "Still sending your previous message.",
+    "section": "messages",
+    "zh": "上一条消息仍在发送中。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/useComposerSend.ts:457（C，onSend）"
+    ]
+  },
+  {
+    "key": "Send again once it goes through or fails.",
+    "section": "messages",
+    "zh": "请等待其发送完成或失败后再重试。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/useComposerSend.ts:458（C，onSend）"
+    ],
+    "collidesWith": "Send {signal}",
+    "wrongResult": "发送 again once it goes through or fails."
+  },
+  {
+    "key": "Queued message not updated",
+    "section": "messages",
+    "zh": "排队消息未更新",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/useComposerSend.ts:641（C，onSend）"
+    ],
+    "collidesWith": "{0} not updated",
+    "wrongResult": "Queued message 未更新"
+  },
+  {
+    "key": "A queued message can't move to a side chat. Remove /side or /btw to save it.",
+    "section": "messages",
+    "zh": "排队消息不能移至旁路对话。请移除 /side 或 /btw 后再保存。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/useComposerSend.ts:643（C，onSend）"
+    ],
+    "collidesWith": "{0} queued message{1}",
+    "wrongResult": "A 条排队消息 can't move to a side chat. Remove /side or /btw to save it."
+  },
+  {
+    "key": "Message may not have been sent",
+    "section": "messages",
+    "zh": "消息可能尚未发送",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/useComposerSend.ts:1472（C，onSend）"
+    ],
+    "collidesWith": "Message {0}",
+    "wrongResult": "向 may not have been sent 发送消息"
+  },
+  {
+    "key": "Message not sent",
+    "section": "messages",
+    "zh": "消息未发送",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/useComposerSend.ts:1473（C，onSend）"
+    ],
+    "collidesWith": "Message {0}",
+    "wrongResult": "向 not sent 发送消息"
+  },
+  {
+    "key": "Your new draft was kept. Copy the failed message to send it again.",
+    "section": "messages",
+    "zh": "已保留你的新草稿。可复制发送失败的消息重试。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/useComposerSend.ts:1475（C，onSend）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Your new draft was kept. Copy the failed message 到 send it again."
+  },
+  {
+    "key": "Your new draft was kept.",
+    "section": "messages",
+    "zh": "已保留你的新草稿。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/useComposerSend.ts:1476（C，onSend）"
+    ]
+  },
+  {
+    "key": "Stashed machines can't go in an answer",
+    "section": "messages",
+    "zh": "暂存的设备引用不能放入问题回答中",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/useComposerStash.ts:176（C，refuseMachinesInAnswer）"
+    ],
+    "collidesWith": "{0} in {1}",
+    "wrongResult": "Stashed machines can't go，用时 an answer"
+  },
+  {
+    "key": "Restore this prompt after the agent's question is answered.",
+    "section": "messages",
+    "zh": "请先回答智能体的问题，再恢复此提示词。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/useComposerStash.ts:177（C，refuseMachinesInAnswer）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "Restore this prompt after the agent's question 的状态为 answered."
+  },
+  {
+    "key": "Stash again once it finishes compressing.",
+    "section": "messages",
+    "zh": "请等待压缩完成后再暂存。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/useComposerStash.ts:529（C，stashCurrentPrompt）"
+    ]
+  },
+  {
+    "key": "Could not switch machine",
+    "section": "messages",
+    "zh": "无法切换设备",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/chat/useDraftEnvironmentRouting.ts:369（C，prepareTriagePrompt）"
+    ]
+  },
+  {
+    "key": "Answer changed while preparing attachments. Review it and send again.",
+    "section": "messages",
+    "zh": "准备附件期间回答内容已更改。请确认后重新发送。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/usePendingThreadRequests.ts:439（D，prepareAndRespond）",
+      "apps/web/src/components/chat/usePendingThreadRequests.ts:466（D，prepareAndRespond）"
+    ],
+    "collidesWith": "{0} changed {1}",
+    "wrongResult": "已更改 Answer while preparing attachments. Review it and send again."
+  },
+  {
+    "key": "The earlier edit was saved. Review your newer changes and save again.",
+    "section": "messages",
+    "zh": "较早的编辑已保存。请查看最新更改后再次保存。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/useQueuedRunEdit.ts:425（D，saveEdit）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "The earlier edit was saved. Review your newer changes 和 save again."
+  },
+  {
+    "key": "{0} is waiting to approve this device",
+    "section": "templates",
+    "zh": "{0} 正在等待批准此设备",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/chat/useSystemComposerBanners.tsx:196（C，useSystemComposerBanners）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "{0} is waiting 到 approve this device"
+  },
+  {
+    "key": "Retry T3 Connect",
+    "section": "messages",
+    "zh": "重试 T3 Connect",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/clerk/T3ConnectSidebarSignIn.tsx:62（A，ConfiguredT3ConnectSidebarSignIn）"
+    ]
+  },
+  {
+    "key": "Require approval for new devices",
+    "section": "messages",
+    "zh": "新设备需要批准",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/cloud/ConnectOnboardingDialog.tsx:386（B，PublishStep）",
+      "apps/web/src/components/settings/RevokeConnectDeviceDialog.tsx:95（A，RevokeConnectDeviceDialogPopup）",
+      "apps/web/src/components/settings/settingsSearch.ts:1293（C，title）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "new devices 的 Require approval"
+  },
+  {
+    "key": "Devices that sign in to your T3 Connect account wait until someone already connected here approves them.",
+    "section": "messages",
+    "zh": "登录到你 T3 Connect 账户的新设备需要等待此处已连接的设备批准后方可使用。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/cloud/ConnectOnboardingDialog.tsx:387（B，PublishStep）",
+      "apps/web/src/components/settings/SavedEnvironmentRows.tsx:749（B，ConfiguredCloudLinkRow）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Devices that sign in 到 your T3 Connect account wait until someone already connected here approves them."
+  },
+  {
+    "key": "Waiting for approval…",
+    "section": "messages",
+    "zh": "等待批准…",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/cloud/cloudEnvironmentConnectionPresentation.ts:30（C，presentSavedCloudEnvironmentConnection）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "approval… 的 Waiting"
+  },
+  {
+    "key": "… columns",
+    "section": "messages",
+    "zh": "… 列",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/files/BinaryViewer.tsx:270（A，BinaryViewer）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "… column 秒"
+  },
+  {
+    "key": "File contents",
+    "section": "messages",
+    "zh": "文件内容",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/files/FilePreviewPanel.tsx:1583（B，FilePreviewPanel）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "File content 秒"
+  },
+  {
+    "key": "cell",
+    "section": "messages",
+    "zh": "个单元格",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/files/NotebookPreview.tsx:102（A，NotebookPreview）"
+    ]
+  },
+  {
+    "key": "cells",
+    "section": "messages",
+    "zh": "个单元格",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/files/NotebookPreview.tsx:102（A，NotebookPreview）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "cell 秒"
+  },
+  {
+    "key": "{0} / {1} page{2}",
+    "section": "templates",
+    "zh": "",
+    "skip": "复数后缀，已在 v0.1.10.extra.json 拆分为单复数具体模板",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/files/PdfViewer.tsx:354（A，PdfViewer）"
+    ]
+  },
+  {
+    "key": "Get {0}",
+    "section": "templates",
+    "zh": "获取 {0}",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/mcp/UseInAnotherAppDialog.tsx:695（C，handOff）"
+    ]
+  },
+  {
+    "key": "Find in page",
+    "section": "messages",
+    "zh": "在页面中查找",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/preview/PreviewFindBar.tsx:88（B，PreviewFindBar）",
+      "apps/web/src/components/preview/PreviewFindBar.tsx:96（B，PreviewFindBar）",
+      "apps/web/src/components/preview/PreviewFindBar.tsx:97（B，PreviewFindBar）"
+    ],
+    "collidesWith": "{0} in {1}",
+    "wrongResult": "Find，用时 page"
+  },
+  {
+    "key": "Find on page isn't available for this page",
+    "section": "messages",
+    "zh": "此页面不支持页内查找",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/preview/PreviewView.tsx:389（C，handleFind）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "this page 的 Find on page isn't available"
+  },
+  {
+    "key": "checks",
+    "section": "messages",
+    "zh": "项检查",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/pullRequest/PullRequestChecksPopover.tsx:190（A，PullRequestChecksPopover）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "check 秒"
+  },
+  {
+    "key": "Couldn't load this diff.",
+    "section": "messages",
+    "zh": "无法加载此差异。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx:1954（A，WithheldFileNotice）"
+    ]
+  },
+  {
+    "key": "No text diff for this file.",
+    "section": "messages",
+    "zh": "此文件没有文本差异。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx:1956（A，WithheldFileNotice）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "this file. 的 No text diff"
+  },
+  {
+    "key": "Diff too large to display.",
+    "section": "messages",
+    "zh": "差异内容过大，无法显示。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx:1957（A，WithheldFileNotice）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Diff too large 到 display."
+  },
+  {
+    "key": "Load diff",
+    "section": "messages",
+    "zh": "加载差异",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/pullRequest/PullRequestCodeTab.tsx:1966（A，WithheldFileNotice）"
+    ],
+    "collidesWith": "L{0}",
+    "wrongResult": "Load diff"
+  },
+  {
+    "key": "Overview",
+    "section": "messages",
+    "zh": "概览",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/pullRequest/PullRequestTimelineTab.tsx:487（A，ReviewThreadEvent）"
+    ]
+  },
+  {
+    "key": "Fast-forward merge",
+    "section": "messages",
+    "zh": "快进合并",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/pullRequest/pullRequestDetail.logic.ts:57（C，PULL_REQUEST_MERGE_METHOD_LABELS）"
+    ]
+  },
+  {
+    "key": "Could not finish sign-in on this computer. Try again.",
+    "section": "messages",
+    "zh": "无法在此设备上完成登录，请重试。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/CodexSetupSection.tsx:486（D，openPage）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "this computer. Try again.上的Could not finish sign-in"
+  },
+  {
+    "key": "Update Codex",
+    "section": "messages",
+    "zh": "更新 Codex",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/CodexSetupSection.tsx:993（A，ManagedCodexSetup）"
+    ]
+  },
+  {
+    "key": "T3 Connect devices",
+    "section": "messages",
+    "zh": "T3 Connect 设备",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ConnectDeviceApprovalSettings.tsx:60（B，ConnectDeviceApprovalSettings）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "T3 Connect device 秒"
+  },
+  {
+    "key": "Waiting for approval ·",
+    "section": "messages",
+    "zh": "等待批准 ·",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ConnectDeviceApprovalSettings.tsx:70（A，ConnectDeviceApprovalSettings）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "approval · 的 Waiting"
+  },
+  {
+    "key": "Could not revoke the device",
+    "section": "messages",
+    "zh": "无法撤销该设备",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/ConnectDeviceApprovalSettings.tsx:137（D，ConnectDeviceApprovalSettings）"
+    ]
+  },
+  {
+    "key": "No device has connected through T3 Connect yet.",
+    "section": "messages",
+    "zh": "尚无设备通过 T3 Connect 连接。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/ConnectDeviceApprovalSettings.tsx:157（A，ConnectDeviceApprovalSettings）"
+    ]
+  },
+  {
+    "key": "Unknown device",
+    "section": "messages",
+    "zh": "未知设备",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/ConnectionsSettings.logic.ts:490（C，describeConnectDeviceClient）"
+    ]
+  },
+  {
+    "key": "Expo Simulators",
+    "section": "messages",
+    "zh": "Expo 模拟器",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/DeviceSourcesSettings.tsx:554（A，DeviceSourcesSettings）",
+      "apps/web/src/components/settings/easDeviceHostsSettings.logic.ts:12（C，newEasDeviceHost）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "Expo Simulator 秒"
+  },
+  {
+    "key": "Add Expo host",
+    "section": "messages",
+    "zh": "添加 Expo 主机",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/EasDeviceHostEditor.tsx:177（A，EasDeviceHostEditor）"
+    ]
+  },
+  {
+    "key": "Edit Expo host",
+    "section": "messages",
+    "zh": "编辑 Expo 主机",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/EasDeviceHostEditor.tsx:177（A，EasDeviceHostEditor）"
+    ],
+    "collidesWith": "Edit {theme}",
+    "wrongResult": "编辑Expo host"
+  },
+  {
+    "key": "Expo project",
+    "section": "messages",
+    "zh": "Expo 项目",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/EasDeviceHostEditor.tsx:280（A，EasDeviceHostEditor）",
+      "apps/web/src/components/settings/EasDeviceHostEditor.tsx:292（B，EasDeviceHostEditor）"
+    ]
+  },
+  {
+    "key": "Preview: Find on Page",
+    "section": "messages",
+    "zh": "预览：在页面中查找",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/KeybindingsSettings.logic.ts:387（C，commandLabel）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "Page上的Preview: Find"
+  },
+  {
+    "key": "Forget {0}? Agents here stop working there. Revoke \"T3 Code · …\" in {1}'s Sharing & access to end the session there too.",
+    "section": "templates",
+    "zh": "要忘记 {0} 吗？此处的智能体将停止在该环境运行。如需同时结束那边的会话，请在 {1} 的“共享与访问”中撤销“T3 Code · …”。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx:120（D，forget）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Forget {0}? Agents here stop working there. Revoke \"T3 Code · …\" in {1}'s Sharing & access 到 end the session there too."
+  },
+  {
+    "key": "Agents here can then launch, message and wait on threads there. It appears under Authorized clients in that environment's Sharing & access, where it can be revoked.",
+    "section": "messages",
+    "zh": "之后此处的智能体即可在该环境中启动、发送消息并等待任务。它也会显示在该环境“共享与访问”下的已授权客户端列表中，可随时撤销。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx:290（A，LinkEnvironmentAction）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Agents here can then launch, message 和 wait on threads there. It appears under Authorized clients in that environment's Sharing & access, where it can be revoked."
+  },
+  {
+    "key": "From Sharing & access there, or t3 pair",
+    "section": "messages",
+    "zh": "来自该处的“共享与访问”，或通过 t3 pair",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/LinkedEnvironmentsSettings.tsx:349（B，LinkEnvironmentAction）"
+    ],
+    "collidesWith": "From {0}",
+    "wrongResult": "基于 Sharing & access there, or t3 pair"
+  },
+  {
+    "key": "Microphones, preferred first",
+    "section": "messages",
+    "zh": "麦克风列表（优先使用靠前项）",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/MicrophoneOrderList.tsx:54（B，MicrophoneOrderList）"
+    ]
+  },
+  {
+    "key": "Forget {0}",
+    "section": "templates",
+    "zh": "忘记 {0}",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/MicrophoneOrderList.tsx:161（B，MicrophoneRow）"
+    ]
+  },
+  {
+    "key": "No microphone found.",
+    "section": "messages",
+    "zh": "未找到麦克风。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/MicrophoneTest.tsx:180（D，start）"
+    ]
+  },
+  {
+    "key": "Record",
+    "section": "messages",
+    "zh": "录音",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/MicrophoneTest.tsx:211（A，MicrophoneTest）"
+    ],
+    "collidesWith": "{0}d",
+    "wrongResult": "Recor 天"
+  },
+  {
+    "key": "Record ten seconds and play it back. The audio stays on this device.",
+    "section": "messages",
+    "zh": "录制十秒钟音频并回放。音频仅保存在本设备中。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/MicrophoneTest.tsx:250（B，MicrophoneTest）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Record ten seconds 和 play it back. The audio stays on this device."
+  },
+  {
+    "key": "Discard recording",
+    "section": "messages",
+    "zh": "丢弃录音",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/MicrophoneTest.tsx:264（B，MicrophoneTest）"
+    ]
+  },
+  {
+    "key": "Different actions across checkouts",
+    "section": "messages",
+    "zh": "各检出目录的动作不一致",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ProjectActionsSettings.tsx:176（B，ProjectActionsSettings）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "Different actions across checkout 秒"
+  },
+  {
+    "key": "Narrow the selection above to one checkout to edit its list. Adding an action here adds it to every selected checkout.",
+    "section": "messages",
+    "zh": "请在上方将选择范围缩小到单个检出目录以编辑其列表。在此处添加动作会应用到所有选中的检出目录。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ProjectActionsSettings.tsx:177（B，ProjectActionsSettings）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Narrow the selection above 到 one checkout to edit its list. Adding an action here adds it to every selected checkout."
+  },
+  {
+    "key": "This sign-in link is not a web address, so it was not opened.",
+    "section": "messages",
+    "zh": "此登录链接不是网页地址，因此未打开。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ProviderAuthenticationSection.tsx:146（D，openBrowser）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "This sign-in link 的状态为 not a web address, so it was not opened."
+  },
+  {
+    "key": "Enter a valid value. It was not saved.",
+    "section": "messages",
+    "zh": "请输入有效值，此次未保存。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/ProviderSettingsForm.tsx:486（A，ProviderSettingsTextInput）"
+    ]
+  },
+  {
+    "key": "Sampling on demand",
+    "section": "messages",
+    "zh": "按需采样",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ResourceTelemetryDiagnostics.logic.ts:76（C，formatSamplingStatus）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "demand上的Sampling"
+  },
+  {
+    "key": "Sampling every {0} ms",
+    "section": "templates",
+    "zh": "每 {0} 毫秒采样一次",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ResourceTelemetryDiagnostics.logic.ts:77（C，formatSamplingStatus）"
+    ],
+    "collidesWith": "Sampling every {interval}",
+    "wrongResult": "每 {0} ms 采样一次"
+  },
+  {
+    "key": "Sampling every {0} {1}",
+    "section": "templates",
+    "zh": "",
+    "skip": "复数单位模板，已在 v0.1.10.extra.json 拆分为 second/seconds 具体模板",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ResourceTelemetryDiagnostics.logic.ts:79（C，formatSamplingStatus）"
+    ],
+    "collidesWith": "Sampling every {interval}",
+    "wrongResult": "每 {0} {1} 采样一次"
+  },
+  {
+    "key": "Sampling every ...",
+    "section": "messages",
+    "zh": "每 … 采样一次",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ResourceTelemetryDiagnostics.tsx:1005（A，ResourceTelemetryDiagnosticsBody）"
+    ],
+    "collidesWith": "Sampling every {interval}",
+    "wrongResult": "每 ... 采样一次"
+  },
+  {
+    "key": "Approval for new devices is off, so a revoked device signed in to your T3 Connect account can connect again on its own.",
+    "section": "messages",
+    "zh": "新设备批准已关闭，因此已登录你 T3 Connect 账户的被撤销设备仍可自行重新连接。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/RevokeConnectDeviceDialog.tsx:83（A，RevokeConnectDeviceDialogPopup）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "Approval for new devices 的状态为 off, so a revoked device signed in to your T3 Connect account can connect again on its own."
+  },
+  {
+    "key": "The device has to be approved here before it can connect again.",
+    "section": "messages",
+    "zh": "该设备必须先在此处获得批准，才能重新连接。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/RevokeConnectDeviceDialog.tsx:98（A，RevokeConnectDeviceDialogPopup）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "The device has 到 be approved here before it can connect again."
+  },
+  {
+    "key": "Require approval for new T3 Connect devices",
+    "section": "messages",
+    "zh": "新 T3 Connect 设备需要批准",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SavedEnvironmentRows.tsx:753（B，ConfiguredCloudLinkRow）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "new T3 Connect devices 的 Require approval"
+  },
+  {
+    "key": "Your session does not have permission to manage access.",
+    "section": "messages",
+    "zh": "你的会话没有权限管理访问权限。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SavedEnvironmentRows.tsx:759（B，ConfiguredCloudLinkRow）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Your session does not have permission 到 manage access."
+  },
+  {
+    "key": "Could not reach the server",
+    "section": "messages",
+    "zh": "无法连接到服务器",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SecretSourceInput.tsx:149（C，run）"
+    ],
+    "collidesWith": "{0} server",
+    "wrongResult": "Could not reach the 服务器"
+  },
+  {
+    "key": "{0} failed: {1}",
+    "section": "templates",
+    "zh": "{0} 失败：{1}",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SecretSourceInput.tsx:181（B，SecretCheckButton）"
+    ]
+  },
+  {
+    "key": "{0} resolved",
+    "section": "templates",
+    "zh": "{0} 已解析",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SecretSourceInput.tsx:183（B，SecretCheckButton）"
+    ],
+    "collidesWith": "{0}d",
+    "wrongResult": "{0} resolve 天"
+  },
+  {
+    "key": "Check {0}",
+    "section": "templates",
+    "zh": "检查 {0}",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SecretSourceInput.tsx:306（B，SecretSourceInput）"
+    ]
+  },
+  {
+    "key": "System default follows your browser or OS language.",
+    "section": "messages",
+    "zh": "系统默认跟随浏览器或操作系统的语言。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1061（A，GeneralSettingsPanel）"
+    ]
+  },
+  {
+    "key": "language",
+    "section": "messages",
+    "zh": "语言",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1065（B，GeneralSettingsPanel）"
+    ]
+  },
+  {
+    "key": "Screen reader",
+    "section": "messages",
+    "zh": "读屏器",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1315（B，ChatSettingsPanel）"
+    ]
+  },
+  {
+    "key": "Start the window title with the thread's status, like Needs approval, and its name, so screen readers read them first when you switch apps. Taskbars, shared screens, and time trackers see it too.",
+    "section": "messages",
+    "zh": "将任务状态（如“等待批准”）和名称置于窗口标题开头，以便切换应用时读屏器优先朗读。任务栏、共享屏幕和计时工具也会看到该标题。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1437（B，ScreenReaderWindowTitleRow）"
+    ],
+    "collidesWith": "{leading}, and {last}",
+    "wrongResult": "Start the window title with the thread's status, like Needs approval 和 its name, so screen readers read them first when you switch apps. Taskbars, shared screens, and time trackers see it too."
+  },
+  {
+    "key": "screen reader window title",
+    "section": "messages",
+    "zh": "读屏窗口标题",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1441（B，ScreenReaderWindowTitleRow）"
+    ]
+  },
+  {
+    "key": "Screen reader window title",
+    "section": "messages",
+    "zh": "读屏窗口标题",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:1454（B，ScreenReaderWindowTitleRow）",
+      "apps/web/src/components/settings/settingsSearch.ts:500（C，title）"
+    ]
+  },
+  {
+    "key": "Stop the computer from going to sleep while agents are working, and let it sleep once they finish. Closing a laptop lid still puts it to sleep.",
+    "section": "messages",
+    "zh": "在智能体工作时阻止设备休眠，并在完成后恢复休眠。合上笔记本电脑盖子仍会进入休眠。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:2236（B，MaintenanceSettingsPanel）"
+    ],
+    "collidesWith": "{leading}, and {last}",
+    "wrongResult": "Stop the computer from going to sleep while agents are working 和 let it sleep once they finish. Closing a laptop lid still puts it to sleep."
+  },
+  {
+    "key": "keep awake while agents work",
+    "section": "messages",
+    "zh": "智能体工作时保持唤醒",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:2241（B，MaintenanceSettingsPanel）"
+    ],
+    "collidesWith": "{0}k",
+    "wrongResult": "keep awake while agents work"
+  },
+  {
+    "key": "Keep awake while agents work",
+    "section": "messages",
+    "zh": "智能体工作时保持唤醒",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SettingsPanels.tsx:2257（B，MaintenanceSettingsPanel）",
+      "apps/web/src/components/settings/settingsSearch.ts:788（C，title）"
+    ],
+    "collidesWith": "{0}k",
+    "wrongResult": "Keep awake while agents work"
+  },
+  {
+    "key": "Checkout scope",
+    "section": "messages",
+    "zh": "检出目录范围",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SettingsScopeSentence.tsx:321（B，CheckoutScopeMenu）"
+    ],
+    "collidesWith": "Checkout {request}",
+    "wrongResult": "检出scope"
+  },
+  {
+    "key": "Unavailable checkout",
+    "section": "messages",
+    "zh": "不可用的检出目录",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SettingsScopeSentence.tsx:327（B，CheckoutScopeMenu）"
+    ]
+  },
+  {
+    "key": "All checkouts",
+    "section": "messages",
+    "zh": "全部检出目录",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SettingsScopeSentence.tsx:328（B，CheckoutScopeMenu）",
+      "apps/web/src/components/settings/SettingsScopeSentence.tsx:340（C，CheckoutScopeMenu）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "All checkout 秒"
+  },
+  {
+    "key": "Search checkouts",
+    "section": "messages",
+    "zh": "搜索检出目录",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SettingsScopeSentence.tsx:339（B，CheckoutScopeMenu）"
+    ],
+    "collidesWith": "{0}h {1}s",
+    "wrongResult": "Searc 小时 checkout 秒"
+  },
+  {
+    "key": "Offer {0} when adding or publishing a project",
+    "section": "templates",
+    "zh": "添加或发布项目时提供 {0}",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SourceControlSettings.tsx:292（B，DiscoveryItemRow）"
+    ]
+  },
+  {
+    "key": "Offer when adding or publishing a project",
+    "section": "messages",
+    "zh": "添加或发布项目时提供",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/SourceControlSettings.tsx:296（A，DiscoveryItemRow）"
+    ]
+  },
+  {
+    "key": "Writer model not saved",
+    "section": "messages",
+    "zh": "撰写模型未保存",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/SourceControlWritingSettings.tsx:615（C，SourceControlWritingSettingsSection）"
+    ],
+    "collidesWith": "{theme} saved",
+    "wrongResult": "已保存主题“Writer model not”"
+  },
+  {
+    "key": "Custom CSS",
+    "section": "messages",
+    "zh": "自定义 CSS",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/ThemeCssEditor.tsx:80（B，ThemeCssEditor）"
+    ]
+  },
+  {
+    "key": "Tab indents. Shift+Tab unindents. Press Escape, then Tab to leave.",
+    "section": "messages",
+    "zh": "Tab 缩进，Shift+Tab 取消缩进。先按 Escape 再按 Tab 键移出。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ThemeCssEditor.tsx:107（A，ThemeCssEditor）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Tab indents. Shift+Tab unindents. Press Escape, then Tab 到 leave."
+  },
+  {
+    "key": "Tab moves to the next control.",
+    "section": "messages",
+    "zh": "按 Tab 移动到下一个控件。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ThemeCssEditor.tsx:108（A，ThemeCssEditor）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Tab moves 到 the next control."
+  },
+  {
+    "key": "Clear CSS",
+    "section": "messages",
+    "zh": "清除 CSS",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ThemeCssEditor.tsx:119（A，ThemeCssEditor）"
+    ],
+    "collidesWith": "Clear {0}",
+    "wrongResult": "清除 CSS"
+  },
+  {
+    "key": "“{0}” has different custom CSS. Use the same CSS or pick another name.",
+    "section": "templates",
+    "zh": "“{0}”存在不同的自定义 CSS。请使用相同的 CSS 或换用其他名称。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/ThemeEditorPanel.tsx:772（D，handleSubmit）"
+    ]
+  },
+  {
+    "key": "Saved with this theme and included when you export it. Web and desktop only. Rules that load remote files are ignored.",
+    "section": "messages",
+    "zh": "随此主题一起保存，并在导出时一并包含。仅限网页端与桌面端。加载远程文件的规则会被忽略。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/ThemeEditorPanel.tsx:1251（A，ThemeEditorPanel）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Saved with this theme 和 included when you export it. Web and desktop only. Rules that load remote files are ignored."
+  },
+  {
+    "key": "Tap to toggle, hold to talk",
+    "section": "messages",
+    "zh": "轻按切换，长按说话",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:155（C，hint）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Tap 到 toggle, hold to talk"
+  },
+  {
+    "key": "Record while held",
+    "section": "messages",
+    "zh": "按住录音",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:156（C，hint）"
+    ],
+    "collidesWith": "{0}d",
+    "wrongResult": "Record while hel 天"
+  },
+  {
+    "key": "Tap to start, tap to stop",
+    "section": "messages",
+    "zh": "轻按开始，再次轻按停止",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:157（C，hint）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Tap 到 start, tap to stop"
+  },
+  {
+    "key": "Add words, separated by commas",
+    "section": "messages",
+    "zh": "添加词汇，以逗号分隔",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:390（B，DictionaryEditor）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "Add words, separated by comma 秒"
+  },
+  {
+    "key": "Used by everyone who dictates in {0}.",
+    "section": "templates",
+    "zh": "在 {0} 中使用语音听写的所有人都会用到此词库。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:484（B，ProjectDictionaryRow）"
+    ],
+    "collidesWith": "Used {0} {1}",
+    "wrongResult": "已使用 by everyone who dictates in {0}."
+  },
+  {
+    "key": "Used by everyone who dictates on this environment.",
+    "section": "messages",
+    "zh": "在此环境中使用语音听写的所有人都会用到此词库。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:485（B，ProjectDictionaryRow）"
+    ],
+    "collidesWith": "Used {0} {1}",
+    "wrongResult": "已使用 by everyone who dictates on this environment."
+  },
+  {
+    "key": "Streaming transcription",
+    "section": "messages",
+    "zh": "流式转写",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:744（B，AdvancedSpeechSettings）",
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:752（B，AdvancedSpeechSettings）",
+      "apps/web/src/components/settings/settingsSearch.ts:630（C，title）"
+    ]
+  },
+  {
+    "key": "Transcribe while recording. Turn off to transcribe after stopping, which may help when live transcription falls behind.",
+    "section": "messages",
+    "zh": "边录音边转写。若实时转写跟不上进度，可关闭以在停止后统一转写。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:747（B，AdvancedSpeechSettings）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Transcribe while recording. Turn off 到 transcribe after stopping, which may help when live transcription falls behind."
+  },
+  {
+    "key": "This model doesn’t support native streaming.",
+    "section": "messages",
+    "zh": "此模型不支持原生流式转写。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:748（B，AdvancedSpeechSettings）"
+    ]
+  },
+  {
+    "key": "Smallest",
+    "section": "messages",
+    "zh": "最小体积",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:866（C，SpeechModelBrowser）"
+    ]
+  },
+  {
+    "key": "Most accurate",
+    "section": "messages",
+    "zh": "最高准确度",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:867（C，SpeechModelBrowser）"
+    ]
+  },
+  {
+    "key": "Fastest",
+    "section": "messages",
+    "zh": "最快速度",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:868（C，SpeechModelBrowser）"
+    ]
+  },
+  {
+    "key": "This environment can’t transcribe audio: {0}.",
+    "section": "templates",
+    "zh": "此环境无法转写音频：{0}。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:894（B，SpeechModelBrowser）"
+    ]
+  },
+  {
+    "key": "Grades are error rates and speed is seconds per 30 s of audio, from Handy’s benchmark {0}.",
+    "section": "templates",
+    "zh": "等级表示错误率，速度表示每 30 秒音频所需秒数，数据来自 Handy 基准测试 {0}。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:901（B，SpeechModelBrowser）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Grades are error rates 和 speed is seconds per 30 s of audio, from Handy’s benchmark {0}."
+  },
+  {
+    "key": "Filter by language: {0}",
+    "section": "templates",
+    "zh": "按语言筛选：{0}",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:920（B，SpeechModelBrowser）"
+    ],
+    "collidesWith": "Filter by {project}",
+    "wrongResult": "按 language: {0} 筛选"
+  },
+  {
+    "key": "Most accurate in {0}",
+    "section": "templates",
+    "zh": "{0}中最准确",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:988（A，SpeechModelBrowser）"
+    ],
+    "collidesWith": "{0} in {1}",
+    "wrongResult": "Most accurate，用时 {0}"
+  },
+  {
+    "key": "Say a sentence. Cleanup is skipped, so you see exactly what the model heard.",
+    "section": "messages",
+    "zh": "说一句话测试。此处会跳过整理，直接显示模型听到的原始内容。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1161（A，TranscriptionTest）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "Say a sentence. Cleanup 的状态为 skipped, so you see exactly what the model heard."
+  },
+  {
+    "key": "Voice input uses the first connected microphone in this list.",
+    "section": "messages",
+    "zh": "语音输入将优先使用此列表中第一个已连接的麦克风。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1317（B，VoiceSettingsPanel）"
+    ],
+    "collidesWith": "{0} in {1}",
+    "wrongResult": "Voice input uses the first connected microphone，用时 this list."
+  },
+  {
+    "key": "{0} can’t transcribe audio locally. Choose another destination.",
+    "section": "templates",
+    "zh": "{0} 无法在本地转写音频，请选择其他目标位置。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1384（B，VoiceSettingsPanel）"
+    ]
+  },
+  {
+    "key": "Where your speech is turned into text.",
+    "section": "messages",
+    "zh": "将你的语音转换为文字的位置。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1385（B，VoiceSettingsPanel）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "Where your speech 的状态为 turned into text."
+  },
+  {
+    "key": "The provider detects your language automatically.",
+    "section": "messages",
+    "zh": "该服务提供方会自动检测你的语言。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1535（B，VoiceSettingsPanel）"
+    ]
+  },
+  {
+    "key": "{0} detects the language automatically.",
+    "section": "templates",
+    "zh": "{0} 会自动检测语言。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1537（B，VoiceSettingsPanel）"
+    ]
+  },
+  {
+    "key": "{0} uses one fixed language.",
+    "section": "templates",
+    "zh": "{0} 使用固定单一语言。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1538（B，VoiceSettingsPanel）"
+    ]
+  },
+  {
+    "key": "OpenAI handles silence itself.",
+    "section": "messages",
+    "zh": "OpenAI 会自行处理静音片段。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1567（B，VoiceSettingsPanel）"
+    ]
+  },
+  {
+    "key": "Skip silence and background noise before transcribing.",
+    "section": "messages",
+    "zh": "转写前跳过静音和背景噪音。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1568（B，VoiceSettingsPanel）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Skip silence 和 background noise before transcribing."
+  },
+  {
+    "key": "Drop “um” and “uh” from transcripts.",
+    "section": "messages",
+    "zh": "从转写结果中去除“呃”“嗯”等语气词。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1584（B，VoiceSettingsPanel）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Drop “um” 和 “uh” from transcripts."
+  },
+  {
+    "key": "Your dictionary",
+    "section": "messages",
+    "zh": "你的词典",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1613（B，VoiceSettingsPanel）"
+    ]
+  },
+  {
+    "key": "Names and terms to spell your way, saved on this device.",
+    "section": "messages",
+    "zh": "按你的拼写习惯保存的名称和术语，存储在当前设备上。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1614（B，VoiceSettingsPanel）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Names 和 terms to spell your way, saved on this device."
+  },
+  {
+    "key": "Off by default. Sends the transcript and nearby draft text, never audio, to the cleanup model.",
+    "section": "messages",
+    "zh": "默认关闭。仅向整理模型发送转写文本和邻近草稿内容，绝不发送音频。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1630（B，VoiceSettingsPanel）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Off by default. Sends the transcript 和 nearby draft text, never audio, to the cleanup model."
+  },
+  {
+    "key": "Instructions",
+    "section": "messages",
+    "zh": "指令",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1641（B，VoiceSettingsPanel）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "Instruction 秒"
+  },
+  {
+    "key": "Your own instructions for cleanup.",
+    "section": "messages",
+    "zh": "自定义的文本整理指令。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1644（B，VoiceSettingsPanel）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "cleanup. 的 Your own instructions"
+  },
+  {
+    "key": "Fix punctuation, numbers, lists, and spoken corrections.",
+    "section": "messages",
+    "zh": "修正标点、数字、列表和口语纠错。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1645（B，VoiceSettingsPanel）"
+    ],
+    "collidesWith": "{leading}, and {last}",
+    "wrongResult": "Fix punctuation, numbers, lists 和 spoken corrections."
+  },
+  {
+    "key": "The phrase you say to fix a mistake, like “scratch that”.",
+    "section": "messages",
+    "zh": "用于纠正口误的口令，例如“划掉重来”。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/VoiceSettingsPanel.tsx:1700（B，VoiceSettingsPanel）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "The phrase you say 到 fix a mistake, like “scratch that”."
+  },
+  {
+    "key": "{0} at {1}{2}",
+    "section": "templates",
+    "zh": "",
+    "skip": "可选时区后缀，实际渲染已由词库既有 {0} at {1} 模板覆盖",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/settings/scheduledTasksSettings.logic.ts:64（C，scheduleLabel）"
+    ],
+    "collidesWith": "{0} at {1}",
+    "wrongResult": "{0} {1}{2}"
+  },
+  {
+    "key": "Pick a time.",
+    "section": "messages",
+    "zh": "请选择时间。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/settings/scheduledTasksSettings.logic.ts:160（C，scheduleDraftErrors）"
+    ]
+  },
+  {
+    "key": "Dropping folders needs the desktop app",
+    "section": "messages",
+    "zh": "拖拽文件夹需要使用桌面应用",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/sidebar/SidebarFolderDrop.tsx:40（C，addFolders）",
+      "apps/web/src/components/sidebar/SidebarFolderDrop.tsx:128（A，SidebarFolderDrop）"
+    ],
+    "collidesWith": "{0} app",
+    "wrongResult": "Dropping folders needs the desktop 应用"
+  },
+  {
+    "key": "Browsers do not share folder paths. Use Add project to choose a folder.",
+    "section": "messages",
+    "zh": "浏览器无法获取文件夹路径。请使用“添加项目”来选择文件夹。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/sidebar/SidebarFolderDrop.tsx:41（C，addFolders）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Browsers do not share folder paths. Use Add project 到 choose a folder."
+  },
+  {
+    "key": "This computer's server is not connected yet",
+    "section": "messages",
+    "zh": "此设备的服务器尚未连接",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/sidebar/SidebarFolderDrop.tsx:51（C，addFolders）"
+    ],
+    "collidesWith": "{0} {1} is {2}",
+    "wrongResult": "This computer's server 的状态为 not connected yet"
+  },
+  {
+    "key": "Try again when it connects.",
+    "section": "messages",
+    "zh": "连接建立后再试。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/sidebar/SidebarFolderDrop.tsx:52（C，addFolders）"
+    ]
+  },
+  {
+    "key": "Could not add \"{0}\"",
+    "section": "templates",
+    "zh": "无法添加“{0}”",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/sidebar/SidebarFolderDrop.tsx:74（C，addFolders）"
+    ]
+  },
+  {
+    "key": "T3 Code could not read the folder's path.",
+    "section": "messages",
+    "zh": "T3 Code 无法读取该文件夹的路径。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/sidebar/SidebarFolderDrop.tsx:75（C，addFolders）"
+    ]
+  },
+  {
+    "key": "Only folders can be added as projects",
+    "section": "messages",
+    "zh": "只能将文件夹添加为项目",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/sidebar/SidebarFolderDrop.tsx:113（C，SidebarFolderDrop）"
+    ],
+    "collidesWith": "{0}s",
+    "wrongResult": "Only folders can be added as project 秒"
+  },
+  {
+    "key": "Drop files on a thread to attach them.",
+    "section": "messages",
+    "zh": "将文件拖放到任务上即可添加附件。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/sidebar/SidebarFolderDrop.tsx:114（C，SidebarFolderDrop）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "a thread to attach them.上的Drop files"
+  },
+  {
+    "key": "Drop folders to add projects",
+    "section": "messages",
+    "zh": "拖放文件夹以添加项目",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/sidebar/SidebarFolderDrop.tsx:129（A，SidebarFolderDrop）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Drop folders 到 add projects"
+  },
+  {
+    "key": "Title generation failed.",
+    "section": "messages",
+    "zh": "标题生成失败。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/threadTitleRegenerationToast.ts:19（C，failureMessage）"
+    ]
+  },
+  {
+    "key": "Failed to regenerate {0} of {1} thread titles",
+    "section": "templates",
+    "zh": "共 {1} 个任务标题，其中 {0} 个重新生成失败",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/threadTitleRegenerationToast.ts:38（C，titleRegenerationToast）"
+    ],
+    "collidesWith": "{selected} of {total}",
+    "wrongResult": "已选 Failed to regenerate {0} 个，共 {1} thread titles 个"
+  },
+  {
+    "key": "Title kept",
+    "section": "messages",
+    "zh": "已保留原标题",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/threadTitleRegenerationToast.ts:47（C，titleRegenerationToast）"
+    ]
+  },
+  {
+    "key": "The current title already fits this thread.",
+    "section": "messages",
+    "zh": "当前标题已足够贴合此任务。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/threadTitleRegenerationToast.ts:48（C，titleRegenerationToast）"
+    ]
+  },
+  {
+    "key": "Titles kept",
+    "section": "messages",
+    "zh": "已保留原标题",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/threadTitleRegenerationToast.ts:53（C，titleRegenerationToast）"
+    ]
+  },
+  {
+    "key": "Kept {0} of {1} titles",
+    "section": "templates",
+    "zh": "已保留 {0} / {1} 个标题",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "apps/web/src/components/threadTitleRegenerationToast.ts:53（C，titleRegenerationToast）"
+    ],
+    "collidesWith": "{selected} of {total}",
+    "wrongResult": "已选 Kept {0} 个，共 {1} titles 个"
+  },
+  {
+    "key": "The current titles already fit these threads.",
+    "section": "messages",
+    "zh": "当前标题已足够贴合这些任务。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/threadTitleRegenerationToast.ts:56（C，titleRegenerationToast）"
+    ]
+  },
+  {
+    "key": "Those titles already fit their threads.",
+    "section": "messages",
+    "zh": "这些标题已足够贴合各自的任务。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/threadTitleRegenerationToast.ts:57（C，titleRegenerationToast）"
+    ]
+  },
+  {
+    "key": "$0 cap",
+    "section": "messages",
+    "zh": "$0 上限",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "apps/web/src/components/usage/UsageLimitsPooled.tsx:536（A，PoolBar）"
+    ]
+  },
+  {
+    "key": "Waiting for approval on the host",
+    "section": "messages",
+    "zh": "等待主机批准",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "packages/client-runtime/src/connection/presentation.ts:93（C，connectionStatusText）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "approval on the host 的 Waiting"
+  },
+  {
+    "key": "Waiting on a subagent",
+    "section": "messages",
+    "zh": "正在等待子智能体",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "packages/client-runtime/src/state/subagentRuntime.ts:101（C，waitingOnSubagentsLabel）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "a subagent上的Waiting"
+  },
+  {
+    "key": "Waiting on {0} subagents",
+    "section": "templates",
+    "zh": "正在等待 {0} 个子智能体",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "packages/client-runtime/src/state/subagentRuntime.ts:101（C，waitingOnSubagentsLabel）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "{0} subagents上的Waiting"
+  },
+  {
+    "key": "Starting {0}",
+    "section": "templates",
+    "zh": "正在启动 {0}",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "packages/client-runtime/src/state/threadExecution.ts:117（C，providerStartingLabel）"
+    ]
+  },
+  {
+    "key": "Mode 'wait' only. At most 45 s. A timeout does not cancel the child.",
+    "section": "messages",
+    "zh": "",
+    "skip": "发给 AI 的 MCP 工具参数说明（orchestratorMcp），不译",
+    "why": "untranslated",
+    "where": [
+      "packages/contracts/src/orchestratorMcp.ts:189（C，OrchestratorMcpDelegateTaskInput）"
+    ]
+  },
+  {
+    "key": "starting means the child's provider has not started its turn yet, so no work has begun.",
+    "section": "messages",
+    "zh": "",
+    "skip": "发给 AI 的 MCP 工具结果说明（orchestratorMcp），不译",
+    "why": "untranslated",
+    "where": [
+      "packages/contracts/src/orchestratorMcp.ts:227（C，OrchestratorMcpDelegateTaskResult）"
+    ]
+  },
+  {
+    "key": "Max 100.",
+    "section": "messages",
+    "zh": "",
+    "skip": "发给 AI 的 MCP 工具参数说明（orchestratorMcp），不译",
+    "why": "untranslated",
+    "where": [
+      "packages/contracts/src/orchestratorMcp.ts:451（C，OrchestratorMcpThreadReadInput）"
+    ]
+  },
+  {
+    "key": "Max 50.",
+    "section": "messages",
+    "zh": "",
+    "skip": "发给 AI 的 MCP 工具参数说明（orchestratorMcp），不译",
+    "why": "untranslated",
+    "where": [
+      "packages/contracts/src/orchestratorMcp.ts:452（C，OrchestratorMcpThreadReadInput）"
+    ]
+  },
+  {
+    "key": "Max 20000.",
+    "section": "messages",
+    "zh": "",
+    "skip": "发给 AI 的 MCP 工具参数说明（orchestratorMcp），不译",
+    "why": "untranslated",
+    "where": [
+      "packages/contracts/src/orchestratorMcp.ts:454（C，OrchestratorMcpThreadReadInput）"
+    ]
+  },
+  {
+    "key": "Post here, else new thread per run. Unset: true in own project, else false; updates keep it.",
+    "section": "messages",
+    "zh": "",
+    "skip": "发给 AI 的 MCP 工具参数说明（orchestratorMcp），不译",
+    "why": "collision",
+    "where": [
+      "packages/contracts/src/orchestratorMcp.ts:717（C，OrchestratorMcpScheduleTaskInput）"
+    ],
+    "collidesWith": "{0} in {1}",
+    "wrongResult": "Post here, else new thread per run. Unset: true，用时 own project, else false; updates keep it."
+  },
+  {
+    "key": "Runs share one thread but each starts a fresh session. Unbound: the first run makes the thread.",
+    "section": "messages",
+    "zh": "",
+    "skip": "发给 AI 的 MCP 工具参数说明（orchestratorMcp），不译",
+    "why": "untranslated",
+    "where": [
+      "packages/contracts/src/orchestratorMcp.ts:723（C，OrchestratorMcpScheduleTaskInput）"
+    ]
+  },
+  {
+    "key": "Webhook bearer URL, returned only on task creation to callers allowed to run it. Lists and updates omit it; the user can copy it from Settings. Creation may omit it without T3 Connect remote access or run permission.",
+    "section": "messages",
+    "zh": "",
+    "skip": "发给 AI 的 MCP 工具字段说明（orchestratorMcp），不译",
+    "why": "collision",
+    "where": [
+      "packages/contracts/src/orchestratorMcp.ts:753（C，OrchestratorMcpScheduledTask）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Webhook bearer URL, returned only on task creation to callers allowed to run it. Lists 和 updates omit it; the user can copy it from Settings. Creation may omit it without T3 Connect remote access or run permission."
+  },
+  {
+    "key": "Viewport size after the resize. Omitted when it could not be measured.",
+    "section": "messages",
+    "zh": "",
+    "skip": "发给 AI 的 MCP 工具字段说明（previewAutomation），不译",
+    "why": "untranslated",
+    "where": [
+      "packages/contracts/src/previewAutomation.ts:266（C，PreviewAutomationResizeResult）"
+    ]
+  },
+  {
+    "key": "The agent refused this request. The agent's next turn won't include this message or its reply.",
+    "section": "messages",
+    "zh": "智能体拒绝了此请求。下一轮对话将不包含该消息及其回复。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "packages/provider-acp/src/server/adapter.ts:1040（C，acpUnfinishedStopMessage）"
+    ]
+  },
+  {
+    "key": "The agent stopped because its reply reached the output token limit.",
+    "section": "messages",
+    "zh": "智能体已停止，因为回复达到了输出 Token 上限。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "packages/provider-acp/src/server/adapter.ts:1042（C，acpUnfinishedStopMessage）"
+    ]
+  },
+  {
+    "key": "The agent stopped because it reached its request limit for this turn.",
+    "section": "messages",
+    "zh": "智能体已停止，因为达到了本轮请求次数上限。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "packages/provider-acp/src/server/adapter.ts:1044（C，acpUnfinishedStopMessage）"
+    ],
+    "collidesWith": "{0} for {1}",
+    "wrongResult": "this turn. 的 The agent stopped because it reached its request limit"
+  },
+  {
+    "key": "Go · {0}",
+    "section": "templates",
+    "zh": "",
+    "skip": "OpenCode Go 订阅计划产品名保留英文",
+    "why": "untranslated",
+    "where": [
+      "packages/provider-opencode/src/server/v2/usageLimits.ts:135（C，readServerUsageLimits）"
+    ]
+  },
+  {
+    "key": "Console · {0} · {1}",
+    "section": "templates",
+    "zh": "",
+    "skip": "OpenCode Console 订阅计划产品名保留英文",
+    "why": "untranslated",
+    "where": [
+      "packages/provider-opencode/src/server/v2/usageLimits.ts:158（C，readServerUsageLimits）"
+    ]
+  },
+  {
+    "key": "Console · {0} · {1}{2}",
+    "section": "templates",
+    "zh": "",
+    "skip": "条件后缀模板，已在 v0.1.10.extra.json 补充具体模板，其余产品名保留英文",
+    "why": "untranslated",
+    "where": [
+      "packages/provider-opencode/src/server/v2/usageLimits.ts:168（C，readServerUsageLimits）"
+    ]
+  },
+  {
+    "key": "All usage on your plan this billing cycle.",
+    "section": "messages",
+    "zh": "本计费周期内方案的全部用量。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "packages/shared/src/usageLimits.ts:137（C，description）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "your plan this billing cycle.上的All usage"
+  },
+  {
+    "key": "Grok, Composer, and Auto use this allowance.",
+    "section": "messages",
+    "zh": "Grok、Composer 和 Auto 使用此额度。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "packages/shared/src/usageLimits.ts:142（C，description）"
+    ],
+    "collidesWith": "{leading}, and {last}",
+    "wrongResult": "Grok, Composer 和 Auto use this allowance."
+  },
+  {
+    "key": "Usage allowance for third-party models such as Claude, GPT, and Gemini.",
+    "section": "messages",
+    "zh": "Claude、GPT 和 Gemini 等第三方模型的用量额度。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "packages/shared/src/usageLimits.ts:147（C，description）"
+    ],
+    "collidesWith": "{leading}, and {last}",
+    "wrongResult": "Usage allowance for third-party models such as Claude, GPT 和 Gemini."
+  },
+  {
+    "key": "Expired. Queue it again on Azure DevOps.",
+    "section": "messages",
+    "zh": "已过期，请在 Azure DevOps 上重新排队。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "packages/source-control-azure-devops/src/server/azureDevOpsPullRequestJson.ts:397（C，toPolicyCheckProgress）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "Azure DevOps.上的Expired. Queue it again"
+  },
+  {
+    "key": "Queue it on Azure DevOps.",
+    "section": "messages",
+    "zh": "在 Azure DevOps 上排队。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "packages/source-control-azure-devops/src/server/azureDevOpsPullRequestJson.ts:397（C，toPolicyCheckProgress）"
+    ],
+    "collidesWith": "{failure} on {environment}",
+    "wrongResult": "Azure DevOps.上的Queue it"
+  },
+  {
+    "key": "Reaches every repository your Atlassian account can. Give it read and write access to repositories and pull requests, plus read:user:bitbucket and read:workspace:bitbucket.",
+    "section": "messages",
+    "zh": "可访问你 Atlassian 账户有权访问的所有仓库。请授予其仓库与拉取请求的读写权限，以及 read:user:bitbucket 和 read:workspace:bitbucket。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "packages/source-control-bitbucket/src/shared/definition.ts:68（C，settings）"
+    ],
+    "collidesWith": "{first} and {second}",
+    "wrongResult": "Reaches every repository your Atlassian account can. Give it read 和 write access to repositories and pull requests, plus read:user:bitbucket and read:workspace:bitbucket."
+  },
+  {
+    "key": "Could not reach {0} to verify the fj login.",
+    "section": "templates",
+    "zh": "无法连接到 {0} 以验证 fj 登录。",
+    "skip": "",
+    "why": "collision",
+    "where": [
+      "packages/source-control-forgejo/src/server/ForgejoSourceControlProvider.ts:126（C，makeDiscovery）"
+    ],
+    "collidesWith": "{head} to {base}",
+    "wrongResult": "Could not reach {0} 到 verify the fj login."
+  },
+  {
+    "key": "Authenticate this server with `fj --host <server-url> auth add-token`. For a server under a URL subpath, such as `https://example.com/forgejo`, use `tea login add` instead.",
+    "section": "messages",
+    "zh": "请使用 `fj --host <server-url> auth add-token` 验证此服务器。若服务器位于 URL 子路径（如 `https://example.com/forgejo`），请改用 `tea login add`。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "packages/source-control-forgejo/src/server/ForgejoSourceControlProvider.ts:132（C，makeDiscovery）"
+    ]
+  },
+  {
+    "key": "This workflow run has not finished.",
+    "section": "messages",
+    "zh": "此工作流运行尚未结束。",
+    "skip": "",
+    "why": "untranslated",
+    "where": [
+      "packages/source-control-github/src/server/GitHubPullRequestProvider.ts:222（C，withUnfinishedWorkflowRuns）"
+    ]
+  }
+]

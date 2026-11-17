@@ -1,5 +1,5 @@
 # 0010-desktop-recheck-display.patch
-# Baseline v0.1.9, after 0009. Fix zh.3 desktop recheck display call sites.
+# Baseline v0.1.10, after 0009. Fix zh.3 desktop recheck display call sites.
 # Payloads, provider/custom labels, command text and default webhook prompts remain unchanged.
 diff --git a/apps/web/src/acceptanceDisplayStrings.ts b/apps/web/src/acceptanceDisplayStrings.ts
 index 4825f4271b..912668e33b 100644
@@ -51,10 +51,10 @@ index 4825f4271b..912668e33b 100644
    return fillSlot("", String(count), ` ${count === 1 ? singular : plural}`);
  }
 diff --git a/apps/web/src/components/chat/MessagesTimeline.logic.ts b/apps/web/src/components/chat/MessagesTimeline.logic.ts
-index 9e9d82a11f..e12ab2dece 100644
+index 5c4f99d76d..bedeca2311 100644
 --- a/apps/web/src/components/chat/MessagesTimeline.logic.ts
 +++ b/apps/web/src/components/chat/MessagesTimeline.logic.ts
-@@ -239,6 +239,7 @@ export function liveWorkEntryLabel(
+@@ -240,6 +240,7 @@ export function liveWorkEntryLabel(
    entry: WorkLogEntry,
    workspaceRoot: string | undefined,
    active: boolean,
@@ -62,7 +62,7 @@ index 9e9d82a11f..e12ab2dece 100644
  ) {
    const status = liveActivityToolStatus(entry.toolLifecycleStatus, active);
    if (entry.itemType === "reasoning") {
-@@ -264,7 +265,7 @@ export function liveWorkEntryLabel(
+@@ -265,7 +266,7 @@ export function liveWorkEntryLabel(
              : status === "stopped"
                ? "Stopped"
                : "Ran";
@@ -72,7 +72,7 @@ index 9e9d82a11f..e12ab2dece 100644
    return workEntryDisplayLabel(entry, workspaceRoot);
  }
 diff --git a/apps/web/src/components/chat/ProviderStatusBanner.tsx b/apps/web/src/components/chat/ProviderStatusBanner.tsx
-index 64afa55ed0..ba4b99f028 100644
+index 04f8a8a853..f1aa4507bf 100644
 --- a/apps/web/src/components/chat/ProviderStatusBanner.tsx
 +++ b/apps/web/src/components/chat/ProviderStatusBanner.tsx
 @@ -1,3 +1,4 @@
@@ -80,7 +80,7 @@ index 64afa55ed0..ba4b99f028 100644
  import {
    type EnvironmentId,
    type ProviderInstanceId,
-@@ -134,7 +135,7 @@ export const ProviderStatusBanner = memo(function ProviderStatusBanner({
+@@ -167,7 +168,7 @@ export const ProviderStatusBanner = memo(function ProviderStatusBanner({
      ? `${providerName} is unauthenticated`
      : incompatible
        ? `${providerName} ${status.version ?? ""} is ${incompatible.status === "broken" ? "known to be broken" : "unsupported"}`
@@ -89,7 +89,7 @@ index 64afa55ed0..ba4b99f028 100644
    const message = incompatible?.message ?? getProviderStatusMessage(status);
    const isWarning =
      incompatible?.status !== "broken" && (status.status === "warning" || incompatible !== null);
-@@ -152,9 +153,9 @@ export const ProviderStatusBanner = memo(function ProviderStatusBanner({
+@@ -185,9 +186,9 @@ export const ProviderStatusBanner = memo(function ProviderStatusBanner({
          <AlertDescription>
            <div className="flex flex-col gap-2">
              <Tooltip>
@@ -138,7 +138,7 @@ index 3a32ec2040..348b60c42a 100644
  
    return (
 diff --git a/apps/web/src/components/chat/TimelineWorkGroupRows.tsx b/apps/web/src/components/chat/TimelineWorkGroupRows.tsx
-index a0f1d196bb..2cb0eaa7c1 100644
+index 0bf9288e8a..8819d7c748 100644
 --- a/apps/web/src/components/chat/TimelineWorkGroupRows.tsx
 +++ b/apps/web/src/components/chat/TimelineWorkGroupRows.tsx
 @@ -1,4 +1,4 @@
@@ -147,7 +147,7 @@ index a0f1d196bb..2cb0eaa7c1 100644
  import { TimelinePendingApprovalRow } from "./TimelinePendingApprovalRow";
  import { WorkLogButton, WorkLogList, WorkLogRow } from "./WorkLog";
  import type { WorktreeSetupSnapshot } from "@t3tools/contracts";
-@@ -498,7 +498,7 @@ export function LiveWorkEntryTimelineRow({
+@@ -568,7 +568,7 @@ export function LiveWorkEntryTimelineRow({
  }) {
    const ctx = use(TimelineRowCtx);
    const threadTarget = useThreadReadTarget(row.entry, ctx.activeThreadEnvironmentId);
@@ -157,7 +157,7 @@ index a0f1d196bb..2cb0eaa7c1 100644
  
    const item = row.entry.projectedItem?.item;
 diff --git a/apps/web/src/components/settings/ProviderInstanceCard.tsx b/apps/web/src/components/settings/ProviderInstanceCard.tsx
-index e8d75a26b8..7adf5742ad 100644
+index 23b0e6135f..775057f995 100644
 --- a/apps/web/src/components/settings/ProviderInstanceCard.tsx
 +++ b/apps/web/src/components/settings/ProviderInstanceCard.tsx
 @@ -1,3 +1,4 @@
@@ -165,7 +165,7 @@ index e8d75a26b8..7adf5742ad 100644
  import { Spinner } from "~/components/ui/spinner";
  
  import {
-@@ -1003,14 +1004,14 @@ export function ProviderInstanceCard({
+@@ -1043,14 +1044,14 @@ export function ProviderInstanceCard({
            }
          />
          <TooltipPopup side="top">
@@ -184,7 +184,7 @@ index e8d75a26b8..7adf5742ad 100644
              <p
                className={cn(
 diff --git a/apps/web/src/components/settings/ScheduledTasksSettings.tsx b/apps/web/src/components/settings/ScheduledTasksSettings.tsx
-index 5b657a8b0e..27c3d59ab8 100644
+index 0b1f8a4699..e25aeaf8ec 100644
 --- a/apps/web/src/components/settings/ScheduledTasksSettings.tsx
 +++ b/apps/web/src/components/settings/ScheduledTasksSettings.tsx
 @@ -1,3 +1,4 @@
@@ -192,7 +192,7 @@ index 5b657a8b0e..27c3d59ab8 100644
  import { useAtomValue } from "@effect/atom-react";
  import { connectionStatusTitle } from "@t3tools/client-runtime/connection";
  import { AsyncResult } from "effect/reactivity";
-@@ -2093,7 +2094,7 @@ function ScheduledTaskEditorForm({
+@@ -2108,7 +2109,7 @@ function ScheduledTaskEditorForm({
                    }}
                  >
                    {WEEKDAY_ORDER.map((day) => (
@@ -202,7 +202,7 @@ index 5b657a8b0e..27c3d59ab8 100644
                      </Toggle>
                    ))}
 diff --git a/apps/web/src/components/sidebar/SidebarThreadRow.tsx b/apps/web/src/components/sidebar/SidebarThreadRow.tsx
-index d38778702b..91db6c9ede 100644
+index 06a3aabe5c..6c2ef02d37 100644
 --- a/apps/web/src/components/sidebar/SidebarThreadRow.tsx
 +++ b/apps/web/src/components/sidebar/SidebarThreadRow.tsx
 @@ -1,3 +1,4 @@
@@ -210,7 +210,7 @@ index d38778702b..91db6c9ede 100644
  import { useAtomMount } from "@effect/atom-react";
  import { asLaunchingThread } from "@t3tools/client-runtime/state/thread-inbox";
  import { ThreadHoverCard, ThreadHoverCardPopup } from "../ThreadHoverCard";
-@@ -137,8 +138,8 @@ export type SidebarProviderEntry = Pick<
+@@ -141,8 +142,8 @@ export type SidebarProviderEntry = Pick<
    | "models"
  >;
  function compactSidebarTimeLabel(label: string): string {
@@ -222,7 +222,7 @@ index d38778702b..91db6c9ede 100644
  
  // Subscribes to the minute tick itself, so only the label re-renders each
 diff --git a/apps/web/src/components/usage/UsageLimitsPooled.tsx b/apps/web/src/components/usage/UsageLimitsPooled.tsx
-index f2d5790ece..d05ebbd166 100644
+index 8ec1c7a02a..ce537459a1 100644
 --- a/apps/web/src/components/usage/UsageLimitsPooled.tsx
 +++ b/apps/web/src/components/usage/UsageLimitsPooled.tsx
 @@ -1,3 +1,4 @@
@@ -230,12 +230,14 @@ index f2d5790ece..d05ebbd166 100644
  import {
    CHATGPT_USAGE_URL,
    collectLimitAccounts,
-@@ -547,7 +548,7 @@ function PoolWindowCard({
-   return (
+@@ -560,7 +561,9 @@ function PoolWindowCard({
      <div className="grid items-center gap-x-6 gap-y-3 rounded-lg border border-border/60 p-4 md:grid-cols-[11rem_minmax(0,1fr)]">
        <div className="flex flex-col gap-1">
--        <span className="text-sm font-medium text-foreground">{label ?? pool.label}</span>
-+        <span className="text-sm font-medium text-foreground">{label !== undefined ? label : displayKnown(pool.label)}</span>
+         {label !== null ? (
+-          <span className="text-sm font-medium text-foreground">{label ?? pool.label}</span>
++          <span className="text-sm font-medium text-foreground">
++            {label !== undefined ? label : displayKnown(pool.label)}
++          </span>
+         ) : null}
          <span className="flex items-baseline gap-2">
            <span className="text-3xl font-semibold text-foreground tabular-nums">
-             {pool.remainingPercent}%

@@ -2,13 +2,13 @@
 
 上游源码保持原样是本项目的路线，只有少数「必须改上游文件」的地方才做成补丁。补丁按文件名里的编号顺序，由 `scripts/build-zh.sh` 在干净的基线工作树里逐个 `git apply`。补丁打不上时构建会立即报错，不会悄悄产出半成品。
 
-所有补丁都在基线 tag `v0.1.9`（commit `24e77473ecf41bc1f7142529c7911c1c1aae1d76`）上验证过。
+所有补丁都在基线 tag `v0.1.10`（commit `7d32075e3757ded707914e2450c3e392a9665765`）上验证过。
 
 每个补丁文件开头有若干行 `#` 说明用途——`git apply` 会忽略 diff 之前的文字，所以那些行不会进源码。
 
 | 编号 | 文件 | 用途 | 涉及的上游文件 |
 |---|---|---|---|
-| 0001 | `0001-language-setting.patch` | 在设置「常规」页加一行语言选择（System / English / 简体中文） | `apps/web/src/components/settings/SettingsPanels.tsx`、`apps/web/src/components/settings/settingsSearch.ts`、`apps/web/src/vite-env.d.ts` |
+| 0001 | `0001-language-setting.patch` | 桥接上游原生「常规 / 语言」设置入口与 `window.__t3zh`，并在 `system` 模式下透传 `__t3zhSystemLanguages` | `apps/web/src/components/settings/SettingsPanels.tsx`、`apps/web/src/i18n/runtime.ts`、`apps/web/src/vite-env.d.ts` |
 | 0003 | `0003-desktop-main-zh.patch` | 桌面主进程的界面文字（菜单栏、右键菜单、原生对话框、通行密钥选择等）；把系统语言暴露给 web 运行时（T07 / T18） | `apps/desktop/src/window/DesktopApplicationMenu.ts`、`apps/desktop/src/window/DesktopWindow.ts`、`apps/desktop/src/preload.ts`、`apps/desktop/src/app/DesktopApp.ts`、`apps/desktop/src/permissions/MacPermissionHelper.ts`、`apps/desktop/src/preview/Manager.ts`、`apps/desktop/src/preview/BrowserSession.ts`、`apps/desktop/src/snapShot/SnapShotTransition.ts`、`apps/desktop/src/preview/Passkeys.ts`、`apps/desktop/src/ipc/methods/notificationBadge.ts` |
 | 0004 | `0004-display-site-translation.patch` | 显示位置补译：同时被代码当作值比较的界面文字，只在渲染处翻译（T06，说明见补丁头和 `handoff/T06.md`「追加任务：0004」） | 19 个 `apps/web/src/…` 文件，见补丁头 |
 | 0005 | `0005-desktop-zh-hans-localization.patch` | 给 app 声明简体中文本地化，macOS 自动插入的菜单项跟随简体中文系统（T07-fix1） | `scripts/build-desktop-artifact.ts` |
@@ -20,7 +20,6 @@
 | 0011 | `0011-minor-display-fixes.patch` | zh.5 小修：侧栏任务行读屏名称里的状态、提供方提示关闭按钮的读屏名称、「运行命令 + 更改文件」汇总句 | `apps/web/src/acceptanceDisplayStrings.ts`、`apps/web/src/components/Sidebar.tsx`、`apps/web/src/components/chat/ProviderStatusBanner.tsx` |
 | 0012 | `0012-file-reveal-menu-labels.patch` | zh.6：文件芯片与工作区文件菜单中动态平台标签 `Reveal in Finder` 等补译；原生菜单和浏览器入口共用精确名单 | `apps/desktop/src/electron/ElectronMenu.ts`、`apps/web/src/contextMenuFallback.ts` |
 | 0013 | `0013-n2761-display-strings.patch` | n2761 新增混排与权限提示的显示翻译 | 17 个 web 显示组件 / hooks 和 1 个精确名单 helper，见补丁 |
-| 0015 | `0015-connect-auth-recovery.patch` | 维护者授权的 T3 Connect 加载 / 失败 / 超时入口和手动重载 | `apps/web/src/components/clerk/T3ConnectSidebarSignIn.tsx` 及其行为测试 |
 | 0016 | `0016-n2774-display-strings.patch` | n2774 新增的混排显示文字：「压缩并发送」提示与菜单项、拉取请求检查失败计数、项目动作菜单名的角色后缀、移动端收起输入框的压缩发送读屏名 | `apps/web/src/components/chat/ComposerPrimaryActions.tsx`、`apps/web/src/components/pullRequest/PullRequestChecksPopover.tsx`、`apps/web/src/components/ProjectScriptsControl.tsx`、`apps/web/src/components/chat/ChatComposer.tsx` |
 | 0017 | `0017-native-residual-display-strings.patch` | T14 原生检查的旧残留：推理档位、分页、Clerk 读屏名、连接计数、设置选值与说明、发送状态、Agent 失败数 | 13 个 web 文件；见补丁和 T14 交接 |
 | 0018 | `0018-usage-account-columns.patch` | T15 额度面板按账号分列 | `apps/web/src/components/usage/UsageLimitsPooled.tsx` |
@@ -137,7 +136,7 @@
    ```
    （0003 用上表列的九个 `apps/desktop/src/…` 文件。重做 0003 后跑 `node --test plugin/__tests__/desktop.test.ts`；0005 用 `scripts/build-desktop-artifact.ts`；0006 用上表列的五个组件文件，新文件 `apps/web/src/desktopIpcStrings.ts` 用 `git diff --no-index /dev/null <文件>` 导出，重做后跑 `node --test plugin/__tests__/desktop-ipc-strings.test.ts`；0008 用上表列的四个文件，重做后跑 `node --test plugin/__tests__/inline-value-display-strings.test.ts`。）
    导出的是纯 diff，把它接回对应补丁开头那段 `#` 说明文字之后即可。
-5. **把补丁开头说明里的基线 tag 也一起更新**（现在是 v0.1.9），并同步 CONVENTIONS.md 的基线和 `dict/zh-CN.json` 的 `baseline`。
+5. **把补丁开头说明里的基线 tag 也一起更新**（现在是 v0.1.10），并同步 CONVENTIONS.md 的基线和 `dict/zh-CN.json` 的 `baseline`。
 6. 在**全新的**干净临时工作树里按顺序把整组补丁重新 `apply` 一遍，确认都能打上、改动的文件就是清单里的那些，再跑 `scripts/build-zh.sh` 验证；把重做经过写进当次的 handoff。
 
 `/tmp/t3zh-patchcheck` 用完记得删：
@@ -299,4 +298,14 @@ git -C ~/Projects/t3code worktree remove /tmp/t3zh-patchcheck
 - `0018`：保留按账号分列、24px 点击条、单账号恢复百分比与共享弹层，同时完整保留上游 `v0.1.9` 新增的 `resetCreditChoices` 多选额度重置能力（`choices`、`payload.redeem?.confirm(choice)`、`useResetCredit(redeemAt.environmentId)` 与 `choice={redeem.choice}`）。
 - `0024`：上游将客户端标识提取为导出的 `antigravityUserAgent(platform, architecture)`，并供本地 `makeAntigravityUsageProbe` 与新增的 CLIProxyAPI 用量轮询（`apps/server/src/usage/cliproxyApi.ts`）共用。补丁直接在 `antigravityUserAgent` 返回 Hub 兼容标识 `antigravity/hub/2.9.1 <os>/<arch>`，保留 `!bucket.description?.trim()` 占位倒计时过滤，并同步对齐 `antigravityUsageLimits.test.ts`（含 `oauth-business` 类型、`empty-description` 预期及多平台用例）与 `cliproxyApi.test.ts` 的 User-Agent 断言。
 - `0026`：新增 Antigravity 多问题 `elicitation/create` 表单折叠补丁，在 `AntigravityProtocol.ts` 导出 `extractAntigravityElicitationForm` 并挂载到 `AntigravityAdapterV2.ts` 的 `makeAntigravityAcpAdapterFlavor`，折叠 `qN` + `qN_other`（详见 `docs/ANTIGRAVITY-ASK-QUESTION-FIX.md`）。后续每次升级上游前须核查上游是否已原生修复；若尚未修复，则继续保留并按新基线对齐导出。
+
+
+## v0.1.10 正式版迁移
+
+- 23 份活动共享补丁（22 份原保留 + 停用 `0015`，以及 Windows 专属打包补丁）在 `v0.1.10`（`7d32075e3757ded707914e2450c3e392a9665765`）上完成对齐与全序验证：7 份原样直接适用，16 份重新导出，普通顺序 `git apply` 零冲突通过。
+- `0001`：上游 `#31313` 已在「常规 / 显示」原生提供 `Language` 选择器与 `gt-react` 多语言框架（目前仅覆盖通用设置与搜索目录）。本补丁不再新增重复的下拉框，改为桥接上游原生选择器，在持久化 `settings.language` 并 `whenLocaleReady()` 后同步写入 `t3code-zh.locale`（仅在 `zh-CN` ↔ `en` 实际切换时重载），并让 `apps/web/src/i18n/runtime.ts` 优先读取主进程暴露的 `__t3zhSystemLanguages`。
+- `0015`（已停用归档至 `patches/disabled/`）：上游 `#23620` 已在 `T3ConnectSidebarSignIn.tsx` 与 `clerkLoadFailure.ts` 原生实现 Clerk 加载失败后显示「Retry T3 Connect」并重载恢复，补丁退役。
+- `0003` / `0004` / `0006` / `0007` / `0009`–`0013` / `0016` / `0017` / `0020` / `0023`：对齐上游上下文变化，其中 `0003` 补充 `DesktopApplicationMenu.ts` 检查更新新增 `available` / `downloading` / `downloaded` 对话框及 `"A new version of T3 Code"` 的 `__t3zh_t` 包裹并更新桌面词库与归类附录。
+- `0018`：保留按账号分列展示，同时完整保留上游 `v0.1.10` 新增的 `$0 cap` 无窗口占位渲染（`#35341`）与 `cursorUsageWindowDetails(window.id, window)` / `label !== null` 判断（`#34421`）。
+- `0024` / `0025` / `0026`：已复核上游 `v0.1.10` 仍未修复 Antigravity `ask_question` 多题 `qN_other` 折叠（通用 `elicitationForm.ts` 仅匹配双下划线 `__other`）、仍使用 `aidev_client` 请求 Antigravity 额度且默认启用遥测；三份补丁在 `v0.1.10` 上均原样干净适用，继续保留。
 

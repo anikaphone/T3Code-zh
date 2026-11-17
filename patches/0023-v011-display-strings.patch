@@ -1,326 +1,7 @@
 # 0023-v011-display-strings.patch
-# v0.1.9 新增显示位置；复用固定骨架与槽位，不改协议、用户内容或设置数据。
+# v0.1.10 新增显示位置；复用固定骨架与槽位，不改协议、用户内容或设置数据。
 # 依赖0007、0009、0022，按文件名顺序应用。
 
-diff --git a/apps/web/src/acceptanceDisplayStrings.ts b/apps/web/src/acceptanceDisplayStrings.ts
-index cb288fbe..3637b841 100644
---- a/apps/web/src/acceptanceDisplayStrings.ts
-+++ b/apps/web/src/acceptanceDisplayStrings.ts
-@@ -17,6 +17,8 @@ export const ACCEPTANCE_DISPLAY_LABELS: string[] = [
-   "Cloning repository",
-   "Repository not cloned",
-   "Select at least one model.",
-+  "Copying files",
-+  "Setting up",
-   "Attachment still uploading",
-   "Attachments still uploading",
-   "Retry or remove the failed attachment",
-diff --git a/apps/web/src/components/AddProjectToMachineDialog.tsx b/apps/web/src/components/AddProjectToMachineDialog.tsx
-index 3a5752fc..955bf9e3 100644
---- a/apps/web/src/components/AddProjectToMachineDialog.tsx
-+++ b/apps/web/src/components/AddProjectToMachineDialog.tsx
-@@ -1,3 +1,5 @@
-+import { fillSlot, translateFixed } from "~/newThreadDisplayStrings";
-+import { fillDisplaySlots } from "~/stableDisplayStrings";
- import { useParams } from "@tanstack/react-router";
- import { scopeProjectRef } from "@t3tools/client-runtime/environment";
- import {
-@@ -227,8 +229,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
-           <DialogHeader>
-             <DialogTitle>Add to another machine</DialogTitle>
-             <DialogDescription>
--              Clone {project?.repositoryIdentity?.displayName ?? project?.title} and bring the local
--              files git does not track.
-+              {fillSlot("Clone ", project?.repositoryIdentity?.displayName ?? project?.title ?? "", " and bring the local files git does not track.")}
-             </DialogDescription>
-           </DialogHeader>
-           <DialogPanel>
-@@ -254,7 +255,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
-                 <span>
-                   {selectedFiles.size === 0
-                     ? "no files"
--                    : `+ ${selectedFiles.size} ${selectedFiles.size === 1 ? "file" : "files"}`}
-+                    : fillSlot("+ ", String(selectedFiles.size), selectedFiles.size === 1 ? " file" : " files")}
-                 </span>
-               </div>
-               <div className="flex min-w-0 flex-col gap-1">
-@@ -316,7 +317,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
-             </div>
- 
-             <div className="flex flex-col gap-1.5">
--              <Label htmlFor={`${id}-path`}>Folder on {target?.label ?? "the other machine"}</Label>
-+              <Label htmlFor={`${id}-path`}>{fillSlot("Folder on ", target?.label ?? translateFixed("the other machine"), "")}</Label>
-               <Input
-                 id={`${id}-path`}
-                 value={destinationPath}
-@@ -335,7 +336,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
-                   {copyable.length > 0 ? (
-                     <>
-                       <span className="text-muted-foreground text-xs">
--                        {selectedFiles.size} of {files.length}
-+                        {fillDisplaySlots("\uE000 of \uE001", [selectedFiles.size, files.length])}
-                         {selectedBytes > 0 ? ` · ${formatBytes(selectedBytes)}` : ""}
-                       </span>
-                       <Button
-@@ -377,7 +378,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
-                 )}
-                 {ignoredFiles.data?.truncated ? (
-                   <p className="text-muted-foreground text-xs">
--                    Showing the first {files.length} files.
-+                    {fillSlot("Showing the first ", String(files.length), " files.")}
-                   </p>
-                 ) : null}
-                 <p className="text-muted-foreground text-xs">
-@@ -394,7 +395,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
-               Cancel
-             </Button>
-             <Button type="submit" disabled={unavailable || submitting}>
--              {submitting ? "Starting…" : `Clone to ${target?.label ?? "machine"}`}
-+              {submitting ? "Starting…" : fillSlot("Clone to ", target?.label ?? translateFixed("machine"), "")}
-             </Button>
-           </DialogFooter>
-         </form>
-diff --git a/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx b/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx
-index d896efe4..86a9c025 100644
---- a/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx
-+++ b/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx
-@@ -1,3 +1,4 @@
-+import { fillSlot } from "~/newThreadDisplayStrings";
- import { useAtomValue } from "@effect/atom-react";
- import {
-   AVAILABLE_CONNECTION_STATE,
-@@ -93,7 +94,7 @@ export function ConnectionDiagnosisSummary({
-       <p className="flex flex-wrap items-center gap-1 text-muted-foreground">
-         {retryAt !== null ? <RetryCountdown retryAt={retryAt} /> : null}
-         {retryAt !== null && attempt > 0 ? <span aria-hidden>·</span> : null}
--        {attempt > 0 ? <span>attempt {attempt}</span> : null}
-+        {attempt > 0 ? <span>{fillSlot("attempt ", String(attempt), "")}</span> : null}
-         {retryAt !== null || attempt > 0 ? <span aria-hidden>·</span> : null}
-         <button
-           type="button"
-diff --git a/apps/web/src/components/settings/DeviceSourcesSettings.tsx b/apps/web/src/components/settings/DeviceSourcesSettings.tsx
-index 9d4e07b0..28556394 100644
---- a/apps/web/src/components/settings/DeviceSourcesSettings.tsx
-+++ b/apps/web/src/components/settings/DeviceSourcesSettings.tsx
-@@ -1,3 +1,4 @@
-+import { displayEasSessionLimits } from "~/v011DisplayStrings";
- import { useAtomValue } from "@effect/atom-react";
- import { Fragment, useState, type ReactNode } from "react";
- import * as Cause from "effect/Cause";
-@@ -33,7 +34,6 @@ import { DeviceHostEditor } from "./DeviceHostEditor";
- import { updateDeviceHosts, groupDeviceHosts } from "./deviceHostsSettings.logic";
- import { EasDeviceHostEditor } from "./EasDeviceHostEditor";
- import {
--  easSessionLimits,
-   newEasDeviceHost,
-   updateEasDeviceHosts,
- } from "./easDeviceHostsSettings.logic";
-@@ -461,7 +461,7 @@ export function DeviceSourcesSettings(props: {
-         shared: true,
-         title: host.label,
-         kind: "EAS",
--        description: easSessionLimits(host),
-+        description: displayEasSessionLimits(host.maxConcurrentSessions, host.maxSessionMinutes, host.idleMinutes),
-         environments: active.map((member) => {
-           const added = (member.settings?.easDeviceHosts ?? []).some(
-             (candidate) => candidate.id === host.id,
-diff --git a/apps/web/src/components/settings/EasDeviceHostEditor.tsx b/apps/web/src/components/settings/EasDeviceHostEditor.tsx
-index 1223fe09..af39cd7a 100644
---- a/apps/web/src/components/settings/EasDeviceHostEditor.tsx
-+++ b/apps/web/src/components/settings/EasDeviceHostEditor.tsx
-@@ -1,3 +1,4 @@
-+import { translateFixed } from "~/newThreadDisplayStrings";
- import { useAtomValue } from "@effect/atom-react";
- import { useId, useRef, useState } from "react";
- import * as Cause from "effect/Cause";
-@@ -143,7 +144,7 @@ export function EasDeviceHostEditor(props: {
-     max: number,
-   ) => (
-     <label className="block space-y-1.5">
--      <span>{label}</span>
-+      <span>{translateFixed(label)}</span>
-       <Input
-         type="number"
-         min={1}
-@@ -258,7 +259,7 @@ export function EasDeviceHostEditor(props: {
-             <div className="flex items-center justify-between gap-3 rounded-lg border border-border/60 px-3 py-2.5">
-               <p role="status" className="min-w-0 text-xs text-muted-foreground">
-                 {account.status === "signed-in"
--                  ? `Signed in as ${account.account.signedInAs} with ${CREDENTIAL_SOURCES[account.account.credentialSource]}.`
-+                  ? `Signed in as ${account.account.signedInAs} with ${translateFixed(CREDENTIAL_SOURCES[account.account.credentialSource])}.`
-                   : account.status === "failed"
-                     ? account.error
-                     : account.status === "checking"
-@@ -272,7 +273,7 @@ export function EasDeviceHostEditor(props: {
-                 disabled={props.busy || !tokenValid || account.status === "checking"}
-                 onClick={() => void checkAccount()}
-               >
--                {account.status === "checking" ? <Spinner size="xs" /> : null} Check account
-+                {account.status === "checking" ? <Spinner size="xs" /> : null} {translateFixed("Check account")}
-               </Button>
-             </div>
-             <div className="space-y-1.5 text-sm">
-@@ -320,14 +321,12 @@ export function EasDeviceHostEditor(props: {
-               {limit("idleMinutes", "Idle minutes", 60)}
-             </div>
-             <p className="text-xs text-muted-foreground">
--              Expo allows sessions of up to 40 minutes on free accounts and 115 on paid ones, and
--              ends one after the idle minutes without activity, so idle minutes must be smaller than
--              session minutes.
--              {props.isNew ? null : " Saving restarts this host, which stops its running sessions."}
-+              {translateFixed("Expo allows sessions of up to 40 minutes on free accounts and 115 on paid ones, and ends one after the idle minutes without activity, so idle minutes must be smaller than session minutes.")}
-+              {props.isNew ? null : translateFixed(" Saving restarts this host, which stops its running sessions.")}
-             </p>
-             {problem === null ? null : (
-               <p className="text-xs text-destructive" role="alert">
--                {problem}
-+                {translateFixed(problem)}
-               </p>
-             )}
-           </DialogPanel>
-@@ -336,7 +335,7 @@ export function EasDeviceHostEditor(props: {
-               Cancel
-             </Button>
-             <Button type="submit" disabled={props.busy || !valid}>
--              {props.busy ? <Spinner size="xs" /> : null} Save host
-+              {props.busy ? <Spinner size="xs" /> : null} {translateFixed("Save host")}
-             </Button>
-           </DialogFooter>
-         </form>
-diff --git a/apps/web/src/components/settings/IntegrationsSettings.tsx b/apps/web/src/components/settings/IntegrationsSettings.tsx
-index 6bd65797..dc361b3b 100644
---- a/apps/web/src/components/settings/IntegrationsSettings.tsx
-+++ b/apps/web/src/components/settings/IntegrationsSettings.tsx
-@@ -1,3 +1,4 @@
-+import { translateFixed } from "~/newThreadDisplayStrings";
- import { DeviceHostUpdates } from "../device/DeviceHostUpdates";
- import { fillSlot } from "~/newThreadDisplayStrings";
- import { DeviceToolVersions } from "../device/DeviceToolVersions";
-@@ -757,7 +758,7 @@ function BrowserSearchEngineSetting() {
-           status={
-             isValidSearchUrlTemplate(customUrl)
-               ? undefined
--              : "Enter an http or https URL containing %s. Searches use DuckDuckGo until then."
-+              : translateFixed("Enter an http or https URL containing %s. Searches use DuckDuckGo until then.")
-           }
-           control={
-             <DraftInput
-@@ -1579,7 +1580,7 @@ function BrowserProfilesSetting({ disabled }: { readonly disabled: boolean }) {
- 
- export function BrowserSettingsPanel() {
-   const desktopOnly = !isElectron;
--  const desktopOnlyMessage = desktopOnly ? "Only available in the desktop app." : undefined;
-+  const desktopOnlyMessage = desktopOnly ? translateFixed("Only available in the desktop app.") : undefined;
- 
-   return (
-     <SettingsPageContainer>
-diff --git a/apps/web/src/components/settings/MobileAppSettingsRow.tsx b/apps/web/src/components/settings/MobileAppSettingsRow.tsx
-index 62f4332a..20c76d53 100644
---- a/apps/web/src/components/settings/MobileAppSettingsRow.tsx
-+++ b/apps/web/src/components/settings/MobileAppSettingsRow.tsx
-@@ -1,3 +1,4 @@
-+import { fillSlot } from "~/newThreadDisplayStrings";
- import { AndroidIcon, AppleIcon } from "../Icons";
- import { Button } from "../ui/button";
- import { Popover, PopoverPopup, PopoverTitle, PopoverTrigger } from "../ui/popover";
-@@ -51,7 +52,7 @@ export function MobileAppSettingsRow() {
-                     variant="outline"
-                     render={<a href={url} target="_blank" rel="noreferrer noopener" />}
-                   >
--                    Open {store}
-+                    {fillSlot("Open ", store, "")}
-                   </Button>
-                 </div>
-               </PopoverPopup>
-diff --git a/apps/web/src/components/settings/ScheduledTasksSettings.tsx b/apps/web/src/components/settings/ScheduledTasksSettings.tsx
-index 27c3d59a..2bbaa032 100644
---- a/apps/web/src/components/settings/ScheduledTasksSettings.tsx
-+++ b/apps/web/src/components/settings/ScheduledTasksSettings.tsx
-@@ -1,3 +1,5 @@
-+import { displayWebhookFilterError, displayWebhookDeliveryStatus } from "~/v011DisplayStrings";
-+import { translateFixed } from "~/newThreadDisplayStrings";
- import { displayKnown } from "~/acceptanceDisplayStrings";
- import { useAtomValue } from "@effect/atom-react";
- import { connectionStatusTitle } from "@t3tools/client-runtime/connection";
-@@ -954,7 +956,7 @@ function WebhookDeliveriesDialog({
-                     selected.pendingWindow ? "coalesced" : selected.outcome,
-                   )}
-                 >
--                  {webhookDeliveryLabel(selected)}
-+                  {displayWebhookDeliveryStatus(selected.outcome, webhookDeliveryLabel(selected))}
-                 </Badge>
-                 <span>
-                   {selected.method} · <ScheduledRelativeLabel value={selected.receivedAt} />
-@@ -1019,7 +1021,7 @@ function WebhookDeliveriesDialog({
-                         delivery.pendingWindow ? "coalesced" : delivery.outcome,
-                       )}
-                     >
--                      {webhookDeliveryLabel(delivery)}
-+                      {displayWebhookDeliveryStatus(delivery.outcome, webhookDeliveryLabel(delivery))}
-                     </Badge>
-                     <span>{delivery.method}</span>
-                     <span className="text-muted-foreground">
-@@ -1321,7 +1323,7 @@ function ScheduledTaskDestination({
-             className="w-full justify-between"
-           >
-             <MessageSquareIcon className="size-3.5 shrink-0 text-muted-foreground" />
--            <span className="min-w-0 flex-1 truncate text-left">{currentLabel}</span>
-+            <span className="min-w-0 flex-1 truncate text-left">{ref === null ? translateFixed(currentLabel) : currentLabel}</span>
-             <ChevronDownIcon className="size-3.5 shrink-0 text-muted-foreground" />
-           </ComboboxTrigger>
-           <ComboboxPopup align="start" side="bottom" className="w-80">
-@@ -1483,7 +1485,7 @@ function ScheduledTaskEditorForm({
-     }
-     const parsedFilters = parseWebhookFilterDrafts(draft.filters);
-     if (draft.scheduleMode === "webhook" && "error" in parsedFilters) {
--      reportFailure("Invalid filter", parsedFilters.error);
-+      reportFailure("Invalid filter", displayWebhookFilterError(parsedFilters.error));
-       return;
-     }
-     const schedule = scheduleFromDraft(draft);
-diff --git a/apps/web/src/components/usage/UsageLimitsPooled.tsx b/apps/web/src/components/usage/UsageLimitsPooled.tsx
-index 9e11e7de..82047f2e 100644
---- a/apps/web/src/components/usage/UsageLimitsPooled.tsx
-+++ b/apps/web/src/components/usage/UsageLimitsPooled.tsx
-@@ -1,3 +1,5 @@
-+import { fillSlot } from "~/newThreadDisplayStrings";
-+import { displayUsageAccountSummary } from "~/v011DisplayStrings";
- import { displayKnown } from "~/acceptanceDisplayStrings";
- import {
-   CHATGPT_USAGE_URL,
-@@ -192,7 +194,7 @@ function SegmentPopover({
-             {resetsIn ? ` · ${resetsIn.replace("resets in ", "in ")}` : ""}
-           </Row>
-         ) : null}
--        {timeLeft !== null ? <Row label="Even pace">{timeLeft}% left by now</Row> : null}
-+        {timeLeft !== null ? <Row label="Even pace">{fillSlot("", String(timeLeft), "% left by now")}</Row> : null}
-         {reset && reset.restoresPercent > 0 ? (
-           <Row label="Restores">+{reset.restoresPercent}%</Row>
-         ) : null}
-@@ -353,7 +355,7 @@ function SegmentTriggers({
-             ref={segmentRef}
-             type="button"
-             style={paceMark?.gappedTrack}
--            aria-label={`${account.displayName ?? (account.email ? accountInitials(account.email) : account.driver)}: ${remaining}% left${resetsIn ? `, ${resetsIn}` : ""}${timeLeft === null ? "" : `, ${timeLeft}% of the window left`}${credits ? `, ${credits} reset ${credits === 1 ? "credit" : "credits"} banked` : ""}`}
-+            aria-label={displayUsageAccountSummary(account.displayName ?? (account.email ? accountInitials(account.email) : account.driver), remaining, resetsIn, timeLeft, credits)}
-             className="relative h-6 w-full min-w-0 cursor-pointer text-start outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[popup-open]:ring-1 data-[popup-open]:ring-inset data-[popup-open]:ring-border"
-           />
-         }
-diff --git a/apps/web/src/lib/addProjectToMachine.ts b/apps/web/src/lib/addProjectToMachine.ts
-index 0ef0467b..675d8c8c 100644
---- a/apps/web/src/lib/addProjectToMachine.ts
-+++ b/apps/web/src/lib/addProjectToMachine.ts
-@@ -183,7 +183,9 @@ export async function addProjectToMachine(input: AddProjectToMachineInput): Prom
-         ? null
-         : {
-             phase: "failed",
--            title: `Could not copy ${failed.length} ${failed.length === 1 ? "file" : "files"} to ${input.target.label}`,
-+            title: failed.length === 1
-+              ? `Could not copy ${failed.length} file to ${input.target.label}`
-+              : `Could not copy ${failed.length} files to ${input.target.label}`,
-             failures: failed,
-           },
-     );
 diff --git a/apps/web/src/v011DisplayStrings.ts b/apps/web/src/v011DisplayStrings.ts
 new file mode 100644
 index 00000000..3300a7b2
@@ -372,3 +53,324 @@ index 00000000..3300a7b2
 +    ([knownOutcome, knownLabel]) => outcome === knownOutcome && label === knownLabel,
 +  ) ? translateFixed(label) : label;
 +}
+diff --git a/apps/web/src/acceptanceDisplayStrings.ts b/apps/web/src/acceptanceDisplayStrings.ts
+index cb288fbe33..3637b841d1 100644
+--- a/apps/web/src/acceptanceDisplayStrings.ts
++++ b/apps/web/src/acceptanceDisplayStrings.ts
+@@ -17,6 +17,8 @@ export const ACCEPTANCE_DISPLAY_LABELS: string[] = [
+   "Cloning repository",
+   "Repository not cloned",
+   "Select at least one model.",
++  "Copying files",
++  "Setting up",
+   "Attachment still uploading",
+   "Attachments still uploading",
+   "Retry or remove the failed attachment",
+diff --git a/apps/web/src/components/AddProjectToMachineDialog.tsx b/apps/web/src/components/AddProjectToMachineDialog.tsx
+index a6f2a2fa54..a68b783d8b 100644
+--- a/apps/web/src/components/AddProjectToMachineDialog.tsx
++++ b/apps/web/src/components/AddProjectToMachineDialog.tsx
+@@ -1,3 +1,5 @@
++import { fillSlot, translateFixed } from "~/newThreadDisplayStrings";
++import { fillDisplaySlots } from "~/stableDisplayStrings";
+ import { useParams } from "@tanstack/react-router";
+ import { scopeProjectRef } from "@t3tools/client-runtime/environment";
+ import {
+@@ -256,8 +258,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+           <DialogHeader>
+             <DialogTitle>Add to another machine</DialogTitle>
+             <DialogDescription>
+-              Clone {project?.repositoryIdentity?.displayName ?? project?.title} and bring the local
+-              files git does not track.
++              {fillSlot("Clone ", project?.repositoryIdentity?.displayName ?? project?.title ?? "", " and bring the local files git does not track.")}
+             </DialogDescription>
+           </DialogHeader>
+           <DialogPanel>
+@@ -283,7 +284,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+                 <span>
+                   {selectedFiles.size === 0
+                     ? "no files"
+-                    : `+ ${selectedFiles.size} ${selectedFiles.size === 1 ? "file" : "files"}`}
++                    : fillSlot("+ ", String(selectedFiles.size), selectedFiles.size === 1 ? " file" : " files")}
+                 </span>
+               </div>
+               <div className="flex min-w-0 flex-col gap-1">
+@@ -345,7 +346,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+             </div>
+ 
+             <div className="flex flex-col gap-1.5">
+-              <Label htmlFor={`${id}-path`}>Folder on {target?.label ?? "the other machine"}</Label>
++              <Label htmlFor={`${id}-path`}>{fillSlot("Folder on ", target?.label ?? translateFixed("the other machine"), "")}</Label>
+               <Input
+                 id={`${id}-path`}
+                 value={destinationPath}
+@@ -364,7 +365,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+                   {copyable.length > 0 ? (
+                     <>
+                       <span className="text-muted-foreground text-xs">
+-                        {selectedFiles.size} of {allIgnoredFiles.data?.files.length ?? 0}
++                        {fillDisplaySlots("\uE000 of \uE001", [selectedFiles.size, allIgnoredFiles.data?.files.length ?? 0])}
+                         {selectedBytes > 0 ? ` · ${formatBytes(selectedBytes)}` : ""}
+                       </span>
+                       <Button type="button" variant="ghost" size="xs" onClick={toggleShownFiles}>
+@@ -415,8 +416,8 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+                 )}
+                 {ignoredFiles.data?.truncated ? (
+                   <p className="text-muted-foreground text-xs">
+-                    Showing the first {files.length} files.
+-                    {canSearchFiles ? " Search to find the rest." : ""}
++                    {fillSlot("Showing the first ", String(files.length), " files.")}
++                    {canSearchFiles ? translateFixed(" Search to find the rest.") : ""}
+                   </p>
+                 ) : null}
+                 <p className="text-muted-foreground text-xs">
+@@ -433,7 +434,7 @@ function AddProjectToMachineDialog({ request }: { request: AddProjectToMachineRe
+               Cancel
+             </Button>
+             <Button type="submit" disabled={unavailable || submitting}>
+-              {submitting ? "Starting…" : `Clone to ${target?.label ?? "machine"}`}
++              {submitting ? "Starting…" : fillSlot("Clone to ", target?.label ?? translateFixed("machine"), "")}
+             </Button>
+           </DialogFooter>
+         </form>
+diff --git a/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx b/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx
+index df88b12e64..d48e96aa21 100644
+--- a/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx
++++ b/apps/web/src/components/settings/ConnectionDiagnosisDetails.tsx
+@@ -1,3 +1,4 @@
++import { fillSlot } from "~/newThreadDisplayStrings";
+ import { useAtomValue } from "@effect/atom-react";
+ import {
+   AVAILABLE_CONNECTION_STATE,
+@@ -93,7 +94,7 @@ export function ConnectionDiagnosisSummary({
+       <p className="flex flex-wrap items-center gap-1 text-muted-foreground">
+         {retryAt !== null ? <RetryCountdown retryAt={retryAt} /> : null}
+         {retryAt !== null && attempt > 0 ? <span aria-hidden>·</span> : null}
+-        {attempt > 0 ? <span>attempt {attempt}</span> : null}
++        {attempt > 0 ? <span>{fillSlot("attempt ", String(attempt), "")}</span> : null}
+         {retryAt !== null || attempt > 0 ? <span aria-hidden>·</span> : null}
+         <button
+           type="button"
+diff --git a/apps/web/src/components/settings/DeviceSourcesSettings.tsx b/apps/web/src/components/settings/DeviceSourcesSettings.tsx
+index 2b8ce2ae0f..4b1b535785 100644
+--- a/apps/web/src/components/settings/DeviceSourcesSettings.tsx
++++ b/apps/web/src/components/settings/DeviceSourcesSettings.tsx
+@@ -1,3 +1,4 @@
++import { displayEasSessionLimits } from "~/v011DisplayStrings";
+ import { useAtomValue } from "@effect/atom-react";
+ import { Fragment, useState, type ReactNode } from "react";
+ import * as Cause from "effect/Cause";
+@@ -33,7 +34,6 @@ import { DeviceHostEditor } from "./DeviceHostEditor";
+ import { updateDeviceHosts, groupDeviceHosts } from "./deviceHostsSettings.logic";
+ import { EasDeviceHostEditor } from "./EasDeviceHostEditor";
+ import {
+-  easSessionLimits,
+   newEasDeviceHost,
+   updateEasDeviceHosts,
+ } from "./easDeviceHostsSettings.logic";
+@@ -461,7 +461,7 @@ export function DeviceSourcesSettings(props: {
+         shared: true,
+         title: host.label,
+         kind: "Expo",
+-        description: easSessionLimits(host),
++        description: displayEasSessionLimits(host.maxConcurrentSessions, host.maxSessionMinutes, host.idleMinutes),
+         environments: active.map((member) => {
+           const added = (member.settings?.easDeviceHosts ?? []).some(
+             (candidate) => candidate.id === host.id,
+diff --git a/apps/web/src/components/settings/EasDeviceHostEditor.tsx b/apps/web/src/components/settings/EasDeviceHostEditor.tsx
+index 3207887133..bdbcc95787 100644
+--- a/apps/web/src/components/settings/EasDeviceHostEditor.tsx
++++ b/apps/web/src/components/settings/EasDeviceHostEditor.tsx
+@@ -1,3 +1,4 @@
++import { translateFixed } from "~/newThreadDisplayStrings";
+ import { useAtomValue } from "@effect/atom-react";
+ import { useId, useRef, useState } from "react";
+ import * as Cause from "effect/Cause";
+@@ -143,7 +144,7 @@ export function EasDeviceHostEditor(props: {
+     max: number,
+   ) => (
+     <label className="block space-y-1.5">
+-      <span>{label}</span>
++      <span>{translateFixed(label)}</span>
+       <Input
+         type="number"
+         min={1}
+@@ -259,7 +260,7 @@ export function EasDeviceHostEditor(props: {
+             <div className="flex items-center justify-between gap-3 rounded-lg border border-border/60 px-3 py-2.5">
+               <p role="status" className="min-w-0 text-xs text-muted-foreground">
+                 {account.status === "signed-in"
+-                  ? `Signed in as ${account.account.signedInAs} with ${CREDENTIAL_SOURCES[account.account.credentialSource]}.`
++                  ? `Signed in as ${account.account.signedInAs} with ${translateFixed(CREDENTIAL_SOURCES[account.account.credentialSource])}.`
+                   : account.status === "failed"
+                     ? account.error
+                     : account.status === "checking"
+@@ -273,7 +274,7 @@ export function EasDeviceHostEditor(props: {
+                 disabled={props.busy || !tokenValid || account.status === "checking"}
+                 onClick={() => void checkAccount()}
+               >
+-                {account.status === "checking" ? <Spinner size="xs" /> : null} Check account
++                {account.status === "checking" ? <Spinner size="xs" /> : null} {translateFixed("Check account")}
+               </Button>
+             </div>
+             <div className="space-y-1.5 text-sm">
+@@ -321,14 +322,12 @@ export function EasDeviceHostEditor(props: {
+               {limit("idleMinutes", "Idle minutes", 60)}
+             </div>
+             <p className="text-xs text-muted-foreground">
+-              Expo Simulators needs a paid Expo account. A session runs for up to 115 minutes and
+-              stops early when it is idle for the idle minutes, so idle minutes must be less than
+-              session minutes.
+-              {props.isNew ? null : " Saving restarts this host and stops its running sessions."}
++              {translateFixed("Expo Simulators needs a paid Expo account. A session runs for up to 115 minutes and stops early when it is idle for the idle minutes, so idle minutes must be less than session minutes.")}
++              {props.isNew ? null : translateFixed(" Saving restarts this host and stops its running sessions.")}
+             </p>
+             {problem === null ? null : (
+               <p className="text-xs text-destructive" role="alert">
+-                {problem}
++                {translateFixed(problem)}
+               </p>
+             )}
+           </DialogPanel>
+@@ -337,7 +336,7 @@ export function EasDeviceHostEditor(props: {
+               Cancel
+             </Button>
+             <Button type="submit" disabled={props.busy || !valid}>
+-              {props.busy ? <Spinner size="xs" /> : null} Save host
++              {props.busy ? <Spinner size="xs" /> : null} {translateFixed("Save host")}
+             </Button>
+           </DialogFooter>
+         </form>
+diff --git a/apps/web/src/components/settings/IntegrationsSettings.tsx b/apps/web/src/components/settings/IntegrationsSettings.tsx
+index fd6918036b..d7724323b6 100644
+--- a/apps/web/src/components/settings/IntegrationsSettings.tsx
++++ b/apps/web/src/components/settings/IntegrationsSettings.tsx
+@@ -1,3 +1,4 @@
++import { translateFixed } from "~/newThreadDisplayStrings";
+ import { DeviceHostUpdates } from "../device/DeviceHostUpdates";
+ import { fillSlot } from "~/newThreadDisplayStrings";
+ import { DeviceToolVersions } from "../device/DeviceToolVersions";
+@@ -766,7 +767,7 @@ function BrowserSearchEngineSetting() {
+           status={
+             isValidSearchUrlTemplate(customUrl)
+               ? undefined
+-              : "Enter an http or https URL containing %s. Searches use DuckDuckGo until then."
++              : translateFixed("Enter an http or https URL containing %s. Searches use DuckDuckGo until then.")
+           }
+           control={
+             <DraftInput
+@@ -1594,7 +1595,7 @@ function BrowserProfilesSetting({ disabled }: { readonly disabled: boolean }) {
+ 
+ export function BrowserSettingsPanel() {
+   const desktopOnly = !isElectron;
+-  const desktopOnlyMessage = desktopOnly ? "Only available in the desktop app." : undefined;
++  const desktopOnlyMessage = desktopOnly ? translateFixed("Only available in the desktop app.") : undefined;
+ 
+   return (
+     <SettingsPageContainer>
+diff --git a/apps/web/src/components/settings/MobileAppSettingsRow.tsx b/apps/web/src/components/settings/MobileAppSettingsRow.tsx
+index 62f4332a40..20c76d5390 100644
+--- a/apps/web/src/components/settings/MobileAppSettingsRow.tsx
++++ b/apps/web/src/components/settings/MobileAppSettingsRow.tsx
+@@ -1,3 +1,4 @@
++import { fillSlot } from "~/newThreadDisplayStrings";
+ import { AndroidIcon, AppleIcon } from "../Icons";
+ import { Button } from "../ui/button";
+ import { Popover, PopoverPopup, PopoverTitle, PopoverTrigger } from "../ui/popover";
+@@ -51,7 +52,7 @@ export function MobileAppSettingsRow() {
+                     variant="outline"
+                     render={<a href={url} target="_blank" rel="noreferrer noopener" />}
+                   >
+-                    Open {store}
++                    {fillSlot("Open ", store, "")}
+                   </Button>
+                 </div>
+               </PopoverPopup>
+diff --git a/apps/web/src/components/settings/ScheduledTasksSettings.tsx b/apps/web/src/components/settings/ScheduledTasksSettings.tsx
+index e25aeaf8ec..12dac641b8 100644
+--- a/apps/web/src/components/settings/ScheduledTasksSettings.tsx
++++ b/apps/web/src/components/settings/ScheduledTasksSettings.tsx
+@@ -1,3 +1,5 @@
++import { displayWebhookFilterError, displayWebhookDeliveryStatus } from "~/v011DisplayStrings";
++import { translateFixed } from "~/newThreadDisplayStrings";
+ import { displayKnown } from "~/acceptanceDisplayStrings";
+ import { useAtomValue } from "@effect/atom-react";
+ import { connectionStatusTitle } from "@t3tools/client-runtime/connection";
+@@ -944,7 +946,7 @@ function WebhookDeliveriesDialog({
+                     selected.pendingWindow ? "coalesced" : selected.outcome,
+                   )}
+                 >
+-                  {webhookDeliveryLabel(selected)}
++                  {displayWebhookDeliveryStatus(selected.outcome, webhookDeliveryLabel(selected))}
+                 </Badge>
+                 <span>
+                   {selected.method} · <ScheduledRelativeLabel value={selected.receivedAt} />
+@@ -1009,7 +1011,7 @@ function WebhookDeliveriesDialog({
+                         delivery.pendingWindow ? "coalesced" : delivery.outcome,
+                       )}
+                     >
+-                      {webhookDeliveryLabel(delivery)}
++                      {displayWebhookDeliveryStatus(delivery.outcome, webhookDeliveryLabel(delivery))}
+                     </Badge>
+                     <span>{delivery.method}</span>
+                     <span className="text-muted-foreground">
+@@ -1316,7 +1318,7 @@ function ScheduledTaskDestination({
+             className="w-full justify-between"
+           >
+             <MessageSquareIcon className="size-3.5 shrink-0 text-muted-foreground" />
+-            <span className="min-w-0 flex-1 truncate text-left">{currentLabel}</span>
++            <span className="min-w-0 flex-1 truncate text-left">{ref === null ? translateFixed(currentLabel) : currentLabel}</span>
+             <ChevronDownIcon className="size-3.5 shrink-0 text-muted-foreground" />
+           </ComboboxTrigger>
+           <ComboboxPopup align="start" side="bottom" className="w-80">
+@@ -1489,7 +1491,7 @@ function ScheduledTaskEditorForm({
+     }
+     const parsedFilters = parseWebhookFilterDrafts(draft.filters);
+     if (draft.scheduleMode === "webhook" && "error" in parsedFilters) {
+-      reportFailure("Invalid filter", parsedFilters.error);
++      reportFailure("Invalid filter", displayWebhookFilterError(parsedFilters.error));
+       return;
+     }
+     const schedule = scheduleFromDraft(draft);
+diff --git a/apps/web/src/components/usage/UsageLimitsPooled.tsx b/apps/web/src/components/usage/UsageLimitsPooled.tsx
+index 0ed583afb9..baedfd4052 100644
+--- a/apps/web/src/components/usage/UsageLimitsPooled.tsx
++++ b/apps/web/src/components/usage/UsageLimitsPooled.tsx
+@@ -1,3 +1,5 @@
++import { fillSlot } from "~/newThreadDisplayStrings";
++import { displayUsageAccountSummary } from "~/v011DisplayStrings";
+ import { displayKnown } from "~/acceptanceDisplayStrings";
+ import {
+   CHATGPT_USAGE_URL,
+@@ -189,7 +191,7 @@ function SegmentPopover({
+             {resetsIn ? ` · ${resetsIn.replace("resets in ", "in ")}` : ""}
+           </Row>
+         ) : null}
+-        {timeLeft !== null ? <Row label="Even pace">{timeLeft}% left by now</Row> : null}
++        {timeLeft !== null ? <Row label="Even pace">{fillSlot("", String(timeLeft), "% left by now")}</Row> : null}
+         {reset && reset.restoresPercent > 0 ? (
+           <Row label="Restores">+{reset.restoresPercent}%</Row>
+         ) : null}
+@@ -355,7 +357,7 @@ function SegmentTriggers({
+             ref={segmentRef}
+             type="button"
+             style={paceMark?.gappedTrack}
+-            aria-label={`${account.displayName ?? (account.email ? accountInitials(account.email) : account.driver)}: ${remaining}% left${resetsIn ? `, ${resetsIn}` : ""}${timeLeft === null ? "" : `, ${timeLeft}% of the window left`}${credits ? `, ${credits} reset ${credits === 1 ? "credit" : "credits"} banked` : ""}`}
++            aria-label={displayUsageAccountSummary(account.displayName ?? (account.email ? accountInitials(account.email) : account.driver), remaining, resetsIn, timeLeft, credits)}
+             className="relative h-6 w-full min-w-0 cursor-pointer text-start outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[popup-open]:ring-1 data-[popup-open]:ring-inset data-[popup-open]:ring-border"
+           />
+         }
+diff --git a/apps/web/src/lib/addProjectToMachine.ts b/apps/web/src/lib/addProjectToMachine.ts
+index 4143498832..8b5013c127 100644
+--- a/apps/web/src/lib/addProjectToMachine.ts
++++ b/apps/web/src/lib/addProjectToMachine.ts
+@@ -196,7 +196,9 @@ export async function addProjectToMachine(input: AddProjectToMachineInput): Prom
+         ? null
+         : {
+             phase: "failed",
+-            title: `Could not copy ${failed.length} ${failed.length === 1 ? "file" : "files"} to ${input.target.label}`,
++            title: failed.length === 1
++              ? `Could not copy ${failed.length} file to ${input.target.label}`
++              : `Could not copy ${failed.length} files to ${input.target.label}`,
+             failures: failed,
+           },
+     );

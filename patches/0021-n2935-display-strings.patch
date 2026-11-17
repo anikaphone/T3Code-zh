@@ -1,5 +1,5 @@
 # 0021 n2935 display strings
-# 基线 v0.1.9；在 0020 后应用。
+# 基线 v0.1.10；在 0020 后应用。
 # 清理结果、计数及精确理由名单，只在显示处翻译；Automatic 只包固定回退。
 diff --git a/apps/web/src/components/CommandPaletteResults.tsx b/apps/web/src/components/CommandPaletteResults.tsx
 index 3458c80fc9..b3590097b8 100644

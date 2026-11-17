@@ -1,4 +1,4 @@
-# v0.1.9 stable UI display strings; values and protocol identifiers remain unchanged.
+# v0.1.10 stable UI display strings; values and protocol identifiers remain unchanged.
 # New guide, prompt link, workflow, telemetry and update interfaces use fixed skeletons.
 # Also removes a Chinese cleanup spacing artifact and extracts the existing GitCafe predicate.
 diff --git a/apps/web/src/components/CommandPaletteResults.tsx b/apps/web/src/components/CommandPaletteResults.tsx

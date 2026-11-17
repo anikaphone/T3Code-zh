@@ -52,7 +52,7 @@ for(const locale of [null,"en","zh-CN"] as const){
  });
  test(`cross-machine clone: real final slot calls preserve names, counts and fallback (${locale})`,()=>{
   const f="components/AddProjectToMachineDialog.tsx",s=converted(f),r=runtime(locale);try{
-   const scope={project:{title:risk},target:{label:risk},files:Array(4),selectedFiles:new Set(["a"]),...r.scope};
+   const scope={project:{title:risk},target:{label:risk},files:Array(4),allIgnoredFiles:{data:{files:Array(4)}},selectedFiles:new Set(["a"]),...r.scope};
    assert.equal(evaluate(call(s,"fillSlot",'"Clone "'),scope),locale==="zh-CN"?`克隆 ${risk}，并复制 Git 未跟踪的本地文件。`:`Clone ${risk} and bring the local files git does not track.`);
    for(const size of [1,2])assert.equal(evaluate(call(s,"fillSlot",'"+ "'),{...scope,selectedFiles:new Set(Array.from({length:size},(_,i)=>i))}),locale==="zh-CN"?`+ ${size} 个文件`:`+ ${size} ${size===1?"file":"files"}`);
    assert.equal(evaluate(call(s,"fillSlot",'"Folder on "'),scope),locale==="zh-CN"?`${risk} 上的文件夹`:`Folder on ${risk}`);

@@ -1,6 +1,6 @@
-param(
+﻿param(
   [Parameter(Mandatory = $false, Position = 0)]
-  [string]$Version = "0.1.9-zh.1",
+  [string]$Version = "0.1.10-zh.1",
   [Parameter(Mandatory = $false)]
   [string]$WslRuntime = "",
   [Parameter(Mandatory = $false)]

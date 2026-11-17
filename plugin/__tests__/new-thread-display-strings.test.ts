@@ -481,7 +481,6 @@ test("调用点：组件与任务菜单 hook 里默认名的每个显示处都�
         "thread.title",
         "thread.title",
         "thread.title",
-        "thread.title",
       ].sort(),
       allowedRaw: [],
     },
@@ -529,7 +528,7 @@ test("调用点：组件与任务菜单 hook 里默认名的每个显示处都�
   // 数据路径：重命名、提交改名、拖放等仍用原值。
   const threadRow = read(PATCHED, "apps/web/src/components/sidebar/SidebarThreadRow.tsx");
   assert.ok(threadRow.includes("onStartRename(threadRef, thread.title)"));
-  assert.ok(threadRow.includes("onCommitRename(threadRef, renamingTitle, thread.title)"));
+  assert.ok(threadRow.includes("onCommitRename(threadRef, renamingTitle)"));
   const header = read(PATCHED, HEADER);
   assert.ok(header.includes("title: activeThreadTitle,"), "开始改名时存的是原标题");
   assert.ok(header.includes("originalTitle: renamingTitle ?? activeThreadTitle"), "改名比较用原标题");
