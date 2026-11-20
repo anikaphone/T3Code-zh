@@ -384,4 +384,3 @@ printf '%s' "${STEP_LOG}"
 printf '  总耗时 %ss\n' "$(perl -e "printf '%.1f', ${TOTAL_END} - ${TOTAL_START}")"
 log "产物："
 find "${RELEASE_DIR}" -maxdepth 1 -type f \( -name '*.dmg' -o -name '*.zip' \) | LC_ALL=C sort | sed 's/^/  /'
-log "转换统计：${STATS_FILE}"
