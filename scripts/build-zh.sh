@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
-# t3code-zh 一键构建（T03；桌面主进程部分 T07）。
+# t3code-zh 一键构建（macOS 交付包）。
 #
-# 从干净的基线源码出发：应用 patches/ → 用包装配置构建 web（构建时转换插件）→ 构建 server、desktop →
-# 打 dmg。除了 patches/ 里的补丁、复制进去的 apps/web/vite.zh.config.ts 和 apps/desktop/src/t3zh/
-# （桌面主进程汉化用的三个文件，patches/0003 引用它们）及构建工作树的 server 版本字段，
-# 不改任何上游文件。T3 Connect 的四个公开标识从基线 .env.example 写入构建树 .env。
+# 从干净的上游基线源码出发：应用 patches/ → 写入 T3 Connect 公开配置 → 直接用上游原生构建链构建
+# web（含上游原生中文翻译）、server、desktop → 打 dmg。除了 patches/ 里的补丁与构建工作树的
+# server 版本字段外，不改任何上游文件。T3 Connect 的四个公开标识从基线 .env.example 写入构建树 .env。
 #
-# 用法：scripts/build-zh.sh <版本号> [--prepare-only]        例：scripts/build-zh.sh 0.0.46-n2644.zh.0
+# 用法：scripts/build-zh.sh <版本号> [--prepare-only]        例：scripts/build-zh.sh 0.1.11-zh.1
 #
 # --prepare-only 只执行步骤 1–6，供迁移后的类型检查使用；不构建或打包产物。
 #
 # 环境变量：
 #   T3ZH_PATCH_DIR   覆盖补丁目录（默认 <仓库>/patches）。只用于排查补丁问题，交付构建不要设。
-#   T3ZH_SKIP_REPORT=1  跳过第 12 步覆盖率报告（报告在审核中、不能改动 reports/ 时用）。
 #   RUSTFLAGS / CARGO_ENCODED_RUSTFLAGS  保留外部参数，追加 Cargo 与构建源码的路径映射。
 #
 # 任何一步失败都立即退出，并说明是哪一步。各步骤耗时和产物路径在最后打印。
@@ -21,27 +19,14 @@ set -Eeuo pipefail
 
 ZH_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SRC="${ZH_ROOT}/.build/src"
-BASELINE_COMMIT="7d32075e3757ded707914e2450c3e392a9665765"
-STATS_FILE="${ZH_ROOT}/reports/transform-stats.json"
-WRAPPER_NAME="vite.zh.config.ts"
+BASELINE_TAG="v0.1.11"
+BASELINE_COMMIT="59651c1761f6c63e9b6056839067066968e6a406"
 
-# ---- 桌面主进程汉化（T07）----
-# 第 5 步把这三个文件复制到 apps/desktop/src/t3zh/（写法：<仓库内路径>:<复制后的文件名>），
-# patches/0003 从那里 import __t3zh_t；第 13 步放行这三个文件。
-DESKTOP_I18N_DIR="apps/desktop/src/t3zh"
-DESKTOP_I18N_FILES=(
-  "plugin/desktop/t3zh-desktop.ts:t3zh-desktop.ts"
-  "runtime/t3zh-runtime.ts:t3zh-runtime.ts"
-  "dict/zh-CN.desktop.json:zh-CN.desktop.json"
-)
-# 第 10 步的桌面产物守卫：主进程包里要有词库的中文（证明 dict/zh-CN.desktop.json 打包进去了）和
-# 传系统语言的参数前缀；preload 包里要有暴露系统语言的代码（证明 patches/0003 的 preload 部分生效）。
-DESKTOP_MAIN_GUARD_TEXT='检查更新...'
-DESKTOP_ARGUMENT_GUARD_TEXT='--t3zh-system-languages='
-DESKTOP_PRELOAD_GUARD_TEXT='__t3zhSystemLanguages'
+# 第 10 步的桌面产物守卫：上游 apps/desktop/src/i18n/translations/zh.json 已打包进 dist-electron。
+DESKTOP_MAIN_GUARD_TEXT='检查更新…'
 APP_LICENSE_NAME='T3-Code-LICENSE.txt'
 
-# T18 主会话决定 §2：上游生成文件名单；不并入通用 allowed。
+# 上游生成文件名单；不并入通用 allowed。
 # 每次出现改动，都须验证输入 / 生成器未改、干净基线独立重生成与构建文件字节一致。
 UPSTREAM_GENERATED_FILES=(
   "apps/desktop/src/preview/AnnotationStyles.generated.ts"
@@ -56,15 +41,8 @@ EXPECTED_WEB_BUILD_SCRIPT='vp build'
 EXPECTED_ROOT_BUILD_DESKTOP_SCRIPT='vp run --filter @t3tools/desktop --filter t3 build'
 
 # ---- 产物守卫（第 8 步）----
-# 转换总数（reports/transform-stats.json 的 totals.translate）不得低于阈值。阈值 = 首次实测值的 90%（向下取整）。
-# 实测：T03-fix4，2026-10-05，基线 v0.0.46-nightly.20261004.2644 + patches 0001/0002，含 §4 位置扩充 E1–E3、
-# 受保护语法形式的统一解析，词库为当时 T05 尚未提交的工作区版本（4698 messages + 1021 templates），转换 6176 处。
-# 同一份代码用已提交的词库（447fe55：3465 + 668）构建为 5613 处，仍高于阈值。
-# （此前：T03-fix3 为 5613 / 阈值 5051；T03-fix1/fix2 为 5642 / 5077；T03 首版不含 E1–E3 时为 4869 / 4382。）
-MEASURED_TRANSLATE=6176
-MIN_TRANSLATE=5558
-# 词库里一条已确认在基线源码中出现的条目的中文（源码 apps/web/src/components/settings/SettingInheritance.tsx 的 "Inherit defaults"）。
-GUARD_TEXT='继承默认设置'
+# 上游 apps/web/src/i18n/translations/zh.json 中的固定中文词条（"New thread"）。
+GUARD_TEXT='新建会话'
 
 # ---------------------------------------------------------------------------
 
@@ -188,25 +166,9 @@ apply_patches() {
 }
 
 # ---- 第 5 步 ----
-copy_wrapper() {
+prepare_connect_config() {
   node "${ZH_ROOT}/scripts/lib/t3-connect-config.ts" prepare "${SRC}"
   node "${ZH_ROOT}/scripts/lib/t3-connect-config.ts" check-source "${SRC}"
-  cp "${ZH_ROOT}/build/${WRAPPER_NAME}" "${SRC}/apps/web/${WRAPPER_NAME}"
-  log "已复制 build/${WRAPPER_NAME} → apps/web/${WRAPPER_NAME}"
-  copy_desktop_i18n
-}
-
-# 桌面主进程汉化文件（T07）。先校验桌面词库；目标目录若已在上游源码里出现，说明上游占用了这个路径，停下来改名。
-copy_desktop_i18n() {
-  node "${ZH_ROOT}/scripts/check-dict.ts" "${ZH_ROOT}/dict/zh-CN.desktop.json" ||
-    die "dict/zh-CN.desktop.json 校验不通过"
-  [[ ! -e "${SRC}/${DESKTOP_I18N_DIR}" ]] || die "上游源码里已有 ${DESKTOP_I18N_DIR}，与桌面汉化文件的目录冲突"
-  mkdir -p "${SRC}/${DESKTOP_I18N_DIR}"
-  local entry
-  for entry in "${DESKTOP_I18N_FILES[@]}"; do
-    cp "${ZH_ROOT}/${entry%%:*}" "${SRC}/${DESKTOP_I18N_DIR}/${entry##*:}"
-    log "已复制 ${entry%%:*} → ${DESKTOP_I18N_DIR}/${entry##*:}"
-  done
 }
 
 # ---- 第 6 步 ----
@@ -242,26 +204,16 @@ guard_build_chain() {
 
 # ---- 第 7 步 ----
 build_web() {
-  rm -f "${STATS_FILE}"
-  (cd "${SRC}/apps/web" && APP_VERSION="${VERSION}" T3ZH_ROOT="${ZH_ROOT}" vp build -c "${WRAPPER_NAME}")
+  (cd "${SRC}/apps/web" && APP_VERSION="${VERSION}" vp build)
 }
 
 # ---- 第 8 步 ----
 guard_web_output() {
   [[ -f "${SRC}/apps/web/dist/index.html" ]] || die "apps/web/dist/index.html 不存在"
-  [[ -f "${STATS_FILE}" ]] || die "没有生成 ${STATS_FILE}（插件没运行？）"
-  local translated
-  translated="$(node -e 'const s = JSON.parse(require("fs").readFileSync(process.argv[1], "utf8")); console.log(s.totals.translate)' "${STATS_FILE}")"
-  log "转换总数 ${translated}（阈值 ${MIN_TRANSLATE}，首次实测 ${MEASURED_TRANSLATE}）"
-  if (( translated < MIN_TRANSLATE )); then
-    die "转换总数 ${translated} 低于阈值 ${MIN_TRANSLATE}：插件可能没生效，或上游改了文字的写法"
-  fi
   local hit
   hit="$(grep -rlF -- "${GUARD_TEXT}" "${SRC}/apps/web/dist" | head -n 1 || true)"
-  [[ -n "${hit}" ]] || die "apps/web/dist 里找不到固定中文「${GUARD_TEXT}」：词库没有打包进去"
-  log "固定中文「${GUARD_TEXT}」见于 ${hit#"${SRC}/"}"
-  # 常规设置读取 web 的 APP_VERSION，不是 serverVersion 或桌面 plist。
-  # 包装配置已核对实际 Vite define；这里再确认对应版本进入编译产物。
+  [[ -n "${hit}" ]] || die "apps/web/dist 里找不到上游原生中文「${GUARD_TEXT}」：中文词库没有打包进去"
+  log "原生中文「${GUARD_TEXT}」见于 ${hit#"${SRC}/"}"
   hit="$(grep -rlF -- "${VERSION}" "${SRC}/apps/web/dist/assets" | head -n 1 || true)"
   [[ -n "${hit}" ]] || die "web 产物未包含交付版本 ${VERSION}"
   log "web APP_VERSION = ${VERSION}"
@@ -278,7 +230,7 @@ const pkg = JSON.parse(fs.readFileSync(file, "utf8"));
 pkg.version = version;
 fs.writeFileSync(file, JSON.stringify(pkg, null, 2) + "\n");
 NODE
-  # 不能用 vp run --filter t3 build：dependsOn 会用上游配置重新构建 web，覆盖中文产物。
+  # 直接调用 server 构建脚本，复用第 7 步带上交付版本 APP_VERSION 的 web 产物。
   (cd "${SRC}/apps/server" && node scripts/cli.ts build)
   local version_home actual_version
   version_home="$(mktemp -d /tmp/t3zh-build-version.XXXXXX)"
@@ -301,17 +253,14 @@ build_desktop() {
   node "${ZH_ROOT}/scripts/lib/t3-connect-config.ts" check-artifacts "${SRC}"
 }
 
-# 桌面产物守卫（T07）：确认 patches/0003 和复制进去的汉化文件确实进了打包用的 dist-electron。
+# 桌面产物守卫：确认 dist-electron 包含 main.cjs、preload.cjs 与上游原生桌面中文词库。
 guard_desktop_output() {
   local dist="${SRC}/apps/desktop/dist-electron"
   [[ -f "${dist}/main.cjs" && -f "${dist}/preload.cjs" ]] || die "apps/desktop/dist-electron 里缺 main.cjs 或 preload.cjs"
-  grep -qF -- "${DESKTOP_MAIN_GUARD_TEXT}" "${dist}/main.cjs" ||
-    die "main.cjs 里找不到「${DESKTOP_MAIN_GUARD_TEXT}」：桌面词库没有打包进去"
-  grep -qF -- "${DESKTOP_ARGUMENT_GUARD_TEXT}" "${dist}/main.cjs" ||
-    die "main.cjs 里找不到 ${DESKTOP_ARGUMENT_GUARD_TEXT}：主窗口没有传系统语言"
-  grep -qF -- "${DESKTOP_PRELOAD_GUARD_TEXT}" "${dist}/preload.cjs" ||
-    die "preload.cjs 里找不到 ${DESKTOP_PRELOAD_GUARD_TEXT}：preload 没有暴露系统语言"
-  log "桌面产物含「${DESKTOP_MAIN_GUARD_TEXT}」、${DESKTOP_ARGUMENT_GUARD_TEXT} 和 ${DESKTOP_PRELOAD_GUARD_TEXT}"
+  local hit
+  hit="$(grep -rlF -- "${DESKTOP_MAIN_GUARD_TEXT}" "${dist}" | head -n 1 || true)"
+  [[ -n "${hit}" ]] || die "apps/desktop/dist-electron 里找不到「${DESKTOP_MAIN_GUARD_TEXT}」：上游原生桌面中文词库没有打包进去"
+  log "桌面产物含原生中文「${DESKTOP_MAIN_GUARD_TEXT}」（${hit#"${SRC}/"}）"
 }
 
 # ---- 第 11 步 ----
@@ -355,19 +304,6 @@ guard_mac_localization() {
 }
 
 # ---- 第 12 步 ----
-run_report() {
-  if [[ "${T3ZH_SKIP_REPORT:-}" == "1" ]]; then
-    log "T3ZH_SKIP_REPORT=1，跳过覆盖率报告"
-    return 0
-  fi
-  if [[ -f "${ZH_ROOT}/scripts/report.ts" ]]; then
-    (cd "${ZH_ROOT}" && node scripts/report.ts)
-  else
-    log "scripts/report.ts 不存在（T04 交付），跳过"
-  fi
-}
-
-# ---- 第 13 步 ----
 check_tree_status() {
   # 从实际 App 包读取许可证，不能只检查源码或 staging 文件。
   local zip license_path
@@ -381,11 +317,8 @@ check_tree_status() {
   node "${ZH_ROOT}/scripts/lib/t3-connect-config.ts" check-source "${SRC}"
   log "git -C .build/src status --porcelain："
   git -C "${SRC}" status --porcelain
-  local allowed unexpected="" line path entry desktop_files="" upstream_generated
-  for entry in "${DESKTOP_I18N_FILES[@]}"; do
-    desktop_files="${desktop_files}${DESKTOP_I18N_DIR}/${entry##*:}"$'\n'
-  done
-  allowed="$(printf '%s\n%s\n%s\n%s\n' "${PATCH_TOUCHED}" "apps/web/${WRAPPER_NAME}" "${desktop_files}" "apps/server/package.json" | sed '/^$/d' | LC_ALL=C sort -u)"
+  local allowed unexpected="" line path entry upstream_generated
+  allowed="$(printf '%s\n%s\n' "${PATCH_TOUCHED}" "apps/server/package.json" | sed '/^$/d' | LC_ALL=C sort -u)"
   # package.json 只允许版本字段变化，避免扩大构建工作树放行范围。
   node --input-type=module - "${SRC}" "${VERSION}" <<'NODE'
 import fs from "node:fs";
@@ -408,7 +341,7 @@ NODE
       if [[ "${path}" == "${entry}" ]]; then
         node "${ZH_ROOT}/scripts/lib/upstream-generated.ts" "${SRC}" "${BASELINE_COMMIT}" "${path}" </dev/null ||
           die "上游生成文件 ${path} 不满足 T18 主会话决定 §2 的限定条件"
-        log "放行上游生成文件 ${path}：依据 T18 主会话决定 §2；输入与生成器相对基线 HEAD 未改动，干净基线输入在输出目录外使用同一 tailwindcss 独立生成，与构建文件逐字节一致"
+        log "放行上游生成文件 ${path}：输入与生成器相对基线 HEAD 未改动，干净基线输入在输出目录外使用同一 tailwindcss 独立生成，与构建文件逐字节一致"
         upstream_generated=1
         break
       fi
@@ -420,31 +353,30 @@ NODE
   done < <(git -C "${SRC}" status --porcelain --untracked-files=all)
   if [[ -n "${unexpected}" ]]; then
     printf '%s' "${unexpected}" >&2
-    die ".build/src 出现了补丁、包装配置、桌面汉化文件和 server 版本字段以外的改动"
+    die ".build/src 出现了补丁与 server 版本字段以外的改动"
   fi
-  log "工作树改动守卫通过：补丁文件、包装配置、${DESKTOP_I18N_DIR}/ 的 ${#DESKTOP_I18N_FILES[@]} 个文件、server 版本字段，以及逐项验证的上游生成文件"
+  log "工作树改动守卫通过：补丁文件、server 版本字段，以及逐项验证的上游生成文件"
 }
 
 step 1 "校验基线 commit" check_baseline
 step 2 "还原工作树" reset_tree
 step 3 "安装依赖" install_deps
 step 4 "应用补丁" apply_patches
-step 5 "准备 T3 Connect 与汉化配置" copy_wrapper
+step 5 "准备 T3 Connect 配置" prepare_connect_config
 step 6 "构建链守卫" guard_build_chain
 if [[ "${PREPARE_ONLY}" == 1 ]]; then
   log "准备完成：${VERSION}；仅执行步骤 1–6，未构建或打包产物"
   printf '%s' "${STEP_LOG}"
   exit 0
 fi
-step 7 "构建 web（中文转换）" build_web
+step 7 "构建 web" build_web
 step 8 "产物守卫" guard_web_output
 step 9 "构建 server" build_server
 step 10 "构建 desktop" build_desktop
 step 11 "打包 dmg" package_dmg
-step 12 "覆盖率报告" run_report
-step 13 "检查许可证与工作树改动" check_tree_status
+step 12 "检查许可证与工作树改动" check_tree_status
 
-STEP_NO=14
+STEP_NO=13
 STEP_NAME="汇总"
 TOTAL_END="$(now)"
 log "==== 完成：${VERSION} ===="

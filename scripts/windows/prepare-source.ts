@@ -70,12 +70,10 @@ function patchTouchedFiles(src: string, patch: string): string[] {
     .filter(Boolean);
 }
 
-/** 由 build-zh.sh 常量算出的、允许出现在工作树改动里的路径（不含上游生成文件，单独验证）。 */
-export function allowedTreeChanges(src: string, constants: BuildZhConstants, platform: Platform): Set<string> {
+/** 允许出现在工作树改动里的路径（不含上游生成文件，单独验证）。 */
+export function allowedTreeChanges(src: string, _constants: BuildZhConstants, platform: Platform): Set<string> {
   const allowed = new Set<string>();
   for (const patch of patchesForPlatform(platform)) for (const file of patchTouchedFiles(src, patch)) allowed.add(file);
-  allowed.add(`apps/web/${constants.wrapperName}`);
-  for (const [, name] of constants.desktopI18nFiles) allowed.add(`${constants.desktopI18nDir}/${name}`);
   allowed.add(SERVER_PACKAGE_JSON);
   return allowed;
 }
@@ -144,19 +142,9 @@ function commandPrepare(argv: string[]): void {
   }
   check(applied.length > 0, "没有任何补丁：patches/ 目录不对？");
 
-  // build-zh.sh 第 5 步。
+  // build-zh.sh 第 5 步：写入并核对 T3 Connect 公开配置。
   connectConfig("prepare", src);
   connectConfig("check-source", src);
-  fs.copyFileSync(path.join(ZH_ROOT, "build", constants.wrapperName), path.join(src, "apps/web", constants.wrapperName));
-  log(`已复制 build/${constants.wrapperName} → apps/web/${constants.wrapperName}`);
-  run(process.execPath, [path.join(ZH_ROOT, "scripts/check-dict.ts"), path.join(ZH_ROOT, "dict/zh-CN.desktop.json")]);
-  const i18nDir = path.join(src, constants.desktopI18nDir);
-  check(!fs.existsSync(i18nDir), `上游源码里已有 ${constants.desktopI18nDir}，与桌面汉化文件的目录冲突`);
-  fs.mkdirSync(i18nDir, { recursive: true });
-  for (const [from, to] of constants.desktopI18nFiles) {
-    fs.copyFileSync(path.join(ZH_ROOT, from), path.join(i18nDir, to));
-    log(`已复制 ${from} → ${constants.desktopI18nDir}/${to}`);
-  }
 
   // build-zh.sh 第 9 步的版本字段：serverVersion、CLI --version、桌面主进程读的 server 版本都来自它。
   writeServerVersion(src, version);
@@ -171,9 +159,6 @@ function commandPrepare(argv: string[]): void {
       upstreamCommit: head,
       zhCommit: zhCommit || null,
       patches: applied,
-      wrapper: { file: `build/${constants.wrapperName}`, sha256: sha256File(path.join(ZH_ROOT, "build", constants.wrapperName)) },
-      desktopI18nFiles: constants.desktopI18nFiles.map(([from]) => ({ file: from, sha256: sha256File(path.join(ZH_ROOT, from)) })),
-      dict: { file: "dict/zh-CN.json", sha256: sha256File(path.join(ZH_ROOT, "dict/zh-CN.json")) },
     });
   }
   log(`源码准备完成（${platform}，${applied.length} 个补丁）`);
@@ -203,7 +188,7 @@ function commandVerifyTree(argv: string[]): void {
     }
     unexpected.push(line);
   }
-  check(unexpected.length === 0, `源码树出现了补丁、包装配置、桌面汉化文件和 server 版本字段以外的改动：\n${unexpected.join("\n")}`);
+  check(unexpected.length === 0, `源码树出现了补丁与 server 版本字段以外的改动：\n${unexpected.join("\n")}`);
   log(`工作树改动守卫通过（${platform}，放行 ${allowed.size} 个路径）`);
 }
 

@@ -1,20 +1,17 @@
 {
   "name": "t3code-zh",
-  "version": "0.1.10-zh.1",
+  "version": "0.1.11-zh.1",
   "private": true,
   "type": "module",
-  "description": "T3 Code 中文界面汉化层（非官方）：词库提取、构建时转换、运行时查表",
+  "description": "T3 Code 增强补丁与跨平台打包工程（非官方）：默认关闭遥测、Antigravity 多问题修复、macOS 中文系统菜单与多端安装包构建",
   "license": "MIT",
   "engines": {
     "node": ">=24"
   },
   "scripts": {
-    "extract-dict": "node scripts/extract-dict.ts",
-    "gen-glossary": "node scripts/gen-glossary.ts",
-    "check-dict": "node scripts/check-dict.ts dict/zh-CN.json",
-    "test:check-dict": "node scripts/check-dict.test.ts",
-    "report": "node scripts/report.ts",
-    "test:plugin": "node --test \"plugin/__tests__/*.test.ts\"",
+    "test": "node --test scripts/windows/windows-ci.test.ts scripts/lib/t3-connect-config.test.ts scripts/lib/release-hygiene.test.ts",
+    "test:mac": "node --test scripts/lib/upstream-generated.test.ts scripts/lib/iteration-tooling.test.ts",
+    "test:windows": "node --test scripts/windows/windows-ci.test.ts",
     "build:win": "pwsh -NoProfile -File scripts/build-zh-win.ps1"
   },
   "devDependencies": {

@@ -12,14 +12,9 @@
 import fs from "node:fs";
 
 export interface BuildZhConstants {
+  readonly baselineTag: string;
   readonly baselineCommit: string;
-  readonly wrapperName: string;
-  readonly desktopI18nDir: string;
-  /** [仓库内源路径, 复制后的文件名] */
-  readonly desktopI18nFiles: ReadonlyArray<readonly [string, string]>;
   readonly desktopMainGuardText: string;
-  readonly desktopArgumentGuardText: string;
-  readonly desktopPreloadGuardText: string;
   readonly appLicenseName: string;
   readonly upstreamGeneratedFiles: ReadonlyArray<string>;
   readonly expectedServerBuildCommand: string;
@@ -28,7 +23,6 @@ export interface BuildZhConstants {
   readonly expectedDesktopBuildDependsOn: string;
   readonly expectedWebBuildScript: string;
   readonly expectedRootBuildDesktopScript: string;
-  readonly minTranslate: number;
   readonly guardText: string;
 }
 
@@ -116,29 +110,14 @@ export function buildZhConstantsFromText(text: string): BuildZhConstants {
   };
   const array = (name: string): string[] => get(name, "array") as string[];
 
+  const baselineTag = scalar("BASELINE_TAG");
+  if (!/^v\d+\.\d+\.\d+/.test(baselineTag)) throw new Error(`BASELINE_TAG 格式异常：${baselineTag}`);
   const baselineCommit = scalar("BASELINE_COMMIT");
   if (!/^[0-9a-f]{40}$/.test(baselineCommit)) throw new Error(`BASELINE_COMMIT 不是 40 位 commit：${baselineCommit}`);
-  const minTranslate = Number(scalar("MIN_TRANSLATE"));
-  if (!Number.isSafeInteger(minTranslate) || minTranslate <= 0) throw new Error("MIN_TRANSLATE 不是正整数");
-  const desktopI18nFiles = array("DESKTOP_I18N_FILES").map((entry) => {
-    const colon = entry.lastIndexOf(":");
-    if (colon <= 0 || colon === entry.length - 1) throw new Error(`DESKTOP_I18N_FILES 元素应为 <源路径>:<文件名>：${entry}`);
-    const from = entry.slice(0, colon);
-    const to = entry.slice(colon + 1);
-    if (from.startsWith("/") || from.split("/").includes("..") || /[/\\]/.test(to)) {
-      throw new Error(`DESKTOP_I18N_FILES 元素路径异常：${entry}`);
-    }
-    return [from, to] as const;
-  });
-  if (desktopI18nFiles.length === 0) throw new Error("DESKTOP_I18N_FILES 为空");
   return {
+    baselineTag,
     baselineCommit,
-    wrapperName: scalar("WRAPPER_NAME"),
-    desktopI18nDir: scalar("DESKTOP_I18N_DIR"),
-    desktopI18nFiles,
     desktopMainGuardText: scalar("DESKTOP_MAIN_GUARD_TEXT"),
-    desktopArgumentGuardText: scalar("DESKTOP_ARGUMENT_GUARD_TEXT"),
-    desktopPreloadGuardText: scalar("DESKTOP_PRELOAD_GUARD_TEXT"),
     appLicenseName: scalar("APP_LICENSE_NAME"),
     upstreamGeneratedFiles: array("UPSTREAM_GENERATED_FILES"),
     expectedServerBuildCommand: scalar("EXPECTED_SERVER_BUILD_COMMAND"),
@@ -147,7 +126,6 @@ export function buildZhConstantsFromText(text: string): BuildZhConstants {
     expectedDesktopBuildDependsOn: scalar("EXPECTED_DESKTOP_BUILD_DEPENDS_ON"),
     expectedWebBuildScript: scalar("EXPECTED_WEB_BUILD_SCRIPT"),
     expectedRootBuildDesktopScript: scalar("EXPECTED_ROOT_BUILD_DESKTOP_SCRIPT"),
-    minTranslate,
     guardText: scalar("GUARD_TEXT"),
   };
 }

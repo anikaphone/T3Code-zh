@@ -1,11 +1,11 @@
 # Collapse paired qN and qN_other fields in Antigravity ACP elicitation/create question forms.
 # Fixes missing options on question 2+ when ask_question asks multiple questions.
-# Baseline: v0.1.10 7d32075e3757ded707914e2450c3e392a9665765.
+# Baseline: v0.1.11 59651c1761f6c63e9b6056839067066968e6a406.
 diff --git a/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.test.ts b/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.test.ts
-index 0945a282..b40d19cc 100644
+index c1f3b72..dbbd01e 100644
 --- a/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.test.ts
 +++ b/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.test.ts
-@@ -133,6 +133,59 @@ describe("AntigravityAdapterV2 flavor", () => {
+@@ -154,6 +154,59 @@ describe("AntigravityAdapterV2 flavor", () => {
        outcome: { outcome: "selected", optionId: "opt-dev" },
      });
    });
@@ -66,27 +66,27 @@ index 0945a282..b40d19cc 100644
  
  const layerSession = Layer.mergeAll(
 diff --git a/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.ts b/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.ts
-index 1490140c..a52e9fa6 100644
+index 37a859f..e545f04 100644
 --- a/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.ts
 +++ b/apps/server/src/orchestration-v2/Adapters/AntigravityAdapterV2.ts
-@@ -38,6 +38,7 @@ import {
-   antigravityApprovalOptions,
+@@ -42,6 +42,7 @@ import {
+   antigravityCommandOutlivesPrompt,
    antigravitySubagentOutput,
    classifyAntigravitySubagentToolCall,
 +  extractAntigravityElicitationForm,
    extractAntigravityUserInputQuestion,
    makeAntigravityReadRepair,
    makeAntigravityUserInputResponse,
-@@ -259,6 +260,7 @@ export function makeAntigravityAcpAdapterFlavor(
-         }),
+@@ -275,6 +276,7 @@ export function makeAntigravityAcpAdapterFlavor(
      },
+     permissionDisposition: antigravityPermissionDisposition,
      approvalOptions: antigravityApprovalOptions,
 +    extractElicitationForm: extractAntigravityElicitationForm,
      extractPermissionQuestion: (request) => {
        const question = extractAntigravityUserInputQuestion(request);
        if (question === undefined) return undefined;
 diff --git a/apps/server/src/provider/acp/AntigravityProtocol.test.ts b/apps/server/src/provider/acp/AntigravityProtocol.test.ts
-index a2d7c86f..4f505cab 100644
+index de31bcc..2945715 100644
 --- a/apps/server/src/provider/acp/AntigravityProtocol.test.ts
 +++ b/apps/server/src/provider/acp/AntigravityProtocol.test.ts
 @@ -4,6 +4,7 @@ import type * as EffectAcpSchema from "effect-acp/compat";
@@ -97,7 +97,7 @@ index a2d7c86f..4f505cab 100644
    extractAntigravityUserInputQuestion,
    antigravityApprovalOptions,
    antigravitySubagentOutput,
-@@ -623,3 +624,165 @@ describe("Antigravity served reads", () => {
+@@ -651,3 +652,165 @@ describe("Antigravity served reads", () => {
      });
    });
  });
@@ -264,7 +264,7 @@ index a2d7c86f..4f505cab 100644
 +  });
 +});
 diff --git a/apps/server/src/provider/acp/AntigravityProtocol.ts b/apps/server/src/provider/acp/AntigravityProtocol.ts
-index 5b74756a..e444dfe2 100644
+index ce4daef..068e7ea 100644
 --- a/apps/server/src/provider/acp/AntigravityProtocol.ts
 +++ b/apps/server/src/provider/acp/AntigravityProtocol.ts
 @@ -1,8 +1,10 @@
@@ -278,7 +278,7 @@ index 5b74756a..e444dfe2 100644
  import { isWorkspaceImagePreviewPath } from "@t3tools/shared/filePreview";
  import * as Option from "effect/Option";
  import * as Predicate from "effect/Predicate";
-@@ -164,6 +166,274 @@ export function makeAntigravityUserInputResponse(
+@@ -173,6 +175,274 @@ export function makeAntigravityUserInputResponse(
    return option ? { outcome: { outcome: "selected", optionId: option.optionId } } : undefined;
  }
  

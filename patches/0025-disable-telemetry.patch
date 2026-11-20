@@ -1,38 +1,49 @@
 # Disable product usage telemetry, owner/device tracking, and relay tracing by default.
-# Baseline: v0.1.10 7d32075e3757ded707914e2450c3e392a9665765.
+# Baseline: v0.1.11 59651c1761f6c63e9b6056839067066968e6a406.
 diff --git a/apps/desktop/src/ipc/methods/window.test.ts b/apps/desktop/src/ipc/methods/window.test.ts
-index eebabd429..c31c2bf84 100644
+index b256025..b1adb12 100644
 --- a/apps/desktop/src/ipc/methods/window.test.ts
 +++ b/apps/desktop/src/ipc/methods/window.test.ts
-@@ -213,7 +213,8 @@ describe("installRelayTelemetryEnabled", () => {
-   it.effect("reads the desktop host opt-out before returning the renderer policy", () =>
-     Effect.gen(function* () {
-       assert.isFalse(yield* relayTelemetryEnabled({ T3CODE_TELEMETRY_ENABLED: "false" }));
--      assert.isTrue(yield* relayTelemetryEnabled({}));
-+      assert.isFalse(yield* relayTelemetryEnabled({}));
-+      assert.isTrue(yield* relayTelemetryEnabled({ T3CODE_TELEMETRY_ENABLED: "true" }));
-     }),
-   );
- 
-@@ -224,12 +225,13 @@ describe("installRelayTelemetryEnabled", () => {
-         organization: "Example Corp",
-         limits,
+@@ -279,13 +279,19 @@ describe("installRelayTelemetryEnabled", () => {
+         beforeDiscovery: false,
+         afterDiscovery: false,
        });
--      assert.isFalse(yield* relayTelemetryEnabled({}, policy({ telemetry: false })));
--      assert.isTrue(yield* relayTelemetryEnabled({}, policy({ webhookTasks: false })));
+-      // Undecided until the login shell is read, so the renderer asks again instead of opting out.
+       assert.deepEqual(yield* relayTelemetryEnabled({}), {
++        beforeDiscovery: false,
++        afterDiscovery: false,
++      });
++      // Undecided until the login shell is read when explicitly opted in, so the renderer asks again.
++      assert.deepEqual(yield* relayTelemetryEnabled({ T3CODE_TELEMETRY_ENABLED: "true" }), {
+         beforeDiscovery: null,
+         afterDiscovery: true,
+       });
+       assert.deepEqual(
+-        yield* relayTelemetryEnabled({}, undefined, { T3CODE_TELEMETRY_ENABLED: "false" }),
++        yield* relayTelemetryEnabled({ T3CODE_TELEMETRY_ENABLED: "true" }, undefined, {
++          T3CODE_TELEMETRY_ENABLED: "false",
++        }),
+         { beforeDiscovery: null, afterDiscovery: false },
+       );
+     }),
+@@ -301,11 +307,12 @@ describe("installRelayTelemetryEnabled", () => {
+       const after = function* (...args: Parameters<typeof relayTelemetryEnabled>) {
+         return (yield* relayTelemetryEnabled(...args)).afterDiscovery;
+       };
+-      assert.isFalse(yield* after({}, policy({ telemetry: false })));
+-      assert.isTrue(yield* after({}, policy({ webhookTasks: false })));
 +      const enabledEnv = { T3CODE_TELEMETRY_ENABLED: "true" };
-+      assert.isFalse(yield* relayTelemetryEnabled(enabledEnv, policy({ telemetry: false })));
-+      assert.isTrue(yield* relayTelemetryEnabled(enabledEnv, policy({ webhookTasks: false })));
++      assert.isFalse(yield* after(enabledEnv, policy({ telemetry: false })));
++      assert.isTrue(yield* after(enabledEnv, policy({ webhookTasks: false })));
        // A policy that cannot be read fails closed.
        assert.isFalse(
-         yield* relayTelemetryEnabled(
--          {},
-+          enabledEnv,
-           new ManagedPolicyFileError({ path: "/test", reason: "bad JSON" }),
-         ),
+-        yield* after({}, new ManagedPolicyFileError({ path: "/test", reason: "bad JSON" })),
++        yield* after(enabledEnv, new ManagedPolicyFileError({ path: "/test", reason: "bad JSON" })),
        );
+     }),
+   );
 diff --git a/apps/server/src/cloud/publicConfig.test.ts b/apps/server/src/cloud/publicConfig.test.ts
-index ca1d86b8d..0d274e735 100644
+index ca1d86b..0d274e7 100644
 --- a/apps/server/src/cloud/publicConfig.test.ts
 +++ b/apps/server/src/cloud/publicConfig.test.ts
 @@ -61,6 +61,11 @@ it("product opt-out disables relay tracing with either built-in or runtime crede
@@ -48,7 +59,7 @@ index ca1d86b8d..0d274e735 100644
      T3CODE_TELEMETRY_ENABLED: "false",
      T3CODE_OTEL_SDK_DISABLED: "false",
 diff --git a/apps/server/src/telemetry/AnalyticsService.test.ts b/apps/server/src/telemetry/AnalyticsService.test.ts
-index 4d3c2d542..cbd3978f6 100644
+index 4d3c2d5..cbd3978 100644
 --- a/apps/server/src/telemetry/AnalyticsService.test.ts
 +++ b/apps/server/src/telemetry/AnalyticsService.test.ts
 @@ -7,6 +7,7 @@ import * as ConfigProvider from "effect/ConfigProvider";
@@ -124,7 +135,7 @@ index 4d3c2d542..cbd3978f6 100644
 +  );
  });
 diff --git a/apps/server/src/telemetry/AnalyticsService.ts b/apps/server/src/telemetry/AnalyticsService.ts
-index 384da92b3..d90c9c147 100644
+index 384da92..d90c9c1 100644
 --- a/apps/server/src/telemetry/AnalyticsService.ts
 +++ b/apps/server/src/telemetry/AnalyticsService.ts
 @@ -65,13 +65,9 @@ function retryDelayMs(failures: number, random: number): number {
@@ -182,7 +193,7 @@ index 384da92b3..d90c9c147 100644
    const bufferRef = yield* Ref.make<ReadonlyArray<BufferedAnalyticsEvent>>([]);
    const deliveryRef = yield* Ref.make<DeliveryState>({
 diff --git a/apps/server/src/telemetry/Identify.ts b/apps/server/src/telemetry/Identify.ts
-index 7ea7e9d29..8ca0d468e 100644
+index 7ea7e9d..8ca0d46 100644
 --- a/apps/server/src/telemetry/Identify.ts
 +++ b/apps/server/src/telemetry/Identify.ts
 @@ -1,3 +1,4 @@
@@ -204,23 +215,23 @@ index 7ea7e9d29..8ca0d468e 100644
 +  return yield* Effect.flatMap(HostProcess.HomeDirectory, getServerOwnersForHome);
 +});
 diff --git a/apps/web/src/cloud/publicConfig.ts b/apps/web/src/cloud/publicConfig.ts
-index f7f53ca2c..55799c47d 100644
+index ec9cf15..98858ca 100644
 --- a/apps/web/src/cloud/publicConfig.ts
 +++ b/apps/web/src/cloud/publicConfig.ts
-@@ -63,7 +63,7 @@ export function resolveCloudPublicConfig(): CloudPublicConfig {
+@@ -65,7 +65,7 @@ let desktopRelayTelemetry: boolean | null = null;
  
- export function resolveRelayTracingConfig() {
-   // The relay exporter is created during module initialization, so this must be synchronous.
--  if (typeof window !== "undefined" && window.desktopBridge?.getRelayTelemetryEnabled() === false) {
-+  if (typeof window === "undefined" || window.desktopBridge?.getRelayTelemetryEnabled() !== true) {
-     return null;
-   }
-   const { relayTracing } = resolveCloudPublicConfig();
+ /** Whether relay spans may be exported now; the desktop host may not know yet at startup. */
+ export function relayTelemetryEnabled(): boolean | null {
+-  if (typeof window === "undefined" || !window.desktopBridge) return true;
++  if (typeof window === "undefined" || !window.desktopBridge) return false;
+   desktopRelayTelemetry ??= window.desktopBridge.getRelayTelemetryEnabled();
+   return desktopRelayTelemetry;
+ }
 diff --git a/apps/web/src/connection/platform.ts b/apps/web/src/connection/platform.ts
-index dcd50342f..e3b0206a8 100644
+index ee28ca3..249e7dd 100644
 --- a/apps/web/src/connection/platform.ts
 +++ b/apps/web/src/connection/platform.ts
-@@ -52,7 +52,6 @@ import {
+@@ -53,7 +53,6 @@ import {
  import { clearComposerDraftsEnvironment } from "../composerDraftStore";
  import { isHostedStaticApp } from "../hostedPairing";
  import { isLocalEnvironmentDisabled } from "../localEnvironment";
@@ -228,7 +239,7 @@ index dcd50342f..e3b0206a8 100644
  import { appAtomRegistry } from "../rpc/atomRegistry";
  import { acknowledgeRpcRequest, trackRpcRequestSent } from "../rpc/requestLatencyState";
  import {
-@@ -309,19 +308,8 @@ export const prepareDesktopSshEnvironment = Effect.fn("web.connectionPlatform.ss
+@@ -348,19 +347,8 @@ export const prepareDesktopSshEnvironment = Effect.fn("web.connectionPlatform.ss
    },
  );
  
@@ -250,11 +261,11 @@ index dcd50342f..e3b0206a8 100644
  
  const layerCapabilities = Layer.effectContext(
 diff --git a/apps/web/src/lib/runtime.test.ts b/apps/web/src/lib/runtime.test.ts
-index 22e362ddd..7338b3587 100644
+index 9509336..1cb81c3 100644
 --- a/apps/web/src/lib/runtime.test.ts
 +++ b/apps/web/src/lib/runtime.test.ts
-@@ -21,9 +21,9 @@ describe("web runtime relay telemetry policy", () => {
-       exports: true,
+@@ -40,9 +40,9 @@ describe("web runtime relay telemetry policy", () => {
+       exports: false,
      },
      {
 -      surface: "ordinary browser ignores host opt-out",
@@ -266,7 +277,7 @@ index 22e362ddd..7338b3587 100644
    ])("applies $surface before the first relay span", async ({ desktopBridge, exports }) => {
      vi.resetModules();
 diff --git a/packages/shared/src/otelEnvironment.test.ts b/packages/shared/src/otelEnvironment.test.ts
-index 21df52609..97260ad34 100644
+index 21df526..97260ad 100644
 --- a/packages/shared/src/otelEnvironment.test.ts
 +++ b/packages/shared/src/otelEnvironment.test.ts
 @@ -387,17 +387,25 @@ describe("OtelEnvironment", () => {
@@ -299,7 +310,7 @@ index 21df52609..97260ad34 100644
          T3CODE_OTEL_SDK_DISABLED: "true",
        }),
 diff --git a/packages/shared/src/otelEnvironment.ts b/packages/shared/src/otelEnvironment.ts
-index 95392206a..39fdbd333 100644
+index 9539220..39fdbd3 100644
 --- a/packages/shared/src/otelEnvironment.ts
 +++ b/packages/shared/src/otelEnvironment.ts
 @@ -324,7 +324,7 @@ export const isRelayTracingEnabled = (env: Readonly<Record<string, string | unde

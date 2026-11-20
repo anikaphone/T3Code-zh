@@ -16,13 +16,9 @@ try {
   prepareOut(out);
   const started = performance.now();
   const jobs = [
-    { name: "plugin-tests", kind: "tests", args: ["--test", "plugin/__tests__/*.test.ts", "scripts/lib/t3-connect-config.test.ts"] },
-    { name: "check-dict-tests", kind: "dict-tests", args: ["scripts/check-dict.test.ts"] },
-    { name: "check-dict-web", kind: "dict", args: ["scripts/check-dict.ts", "dict/zh-CN.json"] },
-    { name: "check-dict-desktop", kind: "dict", args: ["scripts/check-dict.ts", "dict/zh-CN.desktop.json"] },
-    { name: "dict-regress", kind: "regress", args: ["scripts/dict-regress.ts", source] },
-    { name: "exotic", kind: "exotic", args: ["scripts/check-exotic-forms.ts", source] },
+    { name: "windows-ci-tests", kind: "tests", args: ["--test", "scripts/windows/windows-ci.test.ts", "scripts/lib/t3-connect-config.test.ts"] },
     { name: "generated-guard", kind: "tests", args: ["--test", "scripts/lib/upstream-generated.test.ts"] },
+    { name: "tooling-tests", kind: "tests", args: ["--test", "scripts/lib/iteration-tooling.test.ts", "scripts/lib/release-hygiene.test.ts"] },
     ...["web", "desktop"].map((area) => ({ name: `${area}-typecheck`, kind: "tsc",
       command: path.join(ROOT, ".build/src/node_modules/.bin/effect-tsgo"),
       args: ["tsrs", "--noEmit", "--incremental", "false", "--composite", "false"], cwd: path.join(ROOT, ".build/src/apps", area) })),

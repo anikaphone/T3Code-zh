@@ -28,9 +28,9 @@ import {
 } from "./package-windows.ts";
 import { listPatches, porcelainPath, WINDOWS_PATCH_DIR } from "./prepare-source.ts";
 
-const VERSION = "0.1.10-zh.1";
-const UPSTREAM_TAG = "v0.1.10";
-const UPSTREAM_COMMIT = "7d32075e3757ded707914e2450c3e392a9665765";
+const VERSION = "0.1.11-zh.1";
+const UPSTREAM_TAG = "v0.1.11";
+const UPSTREAM_COMMIT = "59651c1761f6c63e9b6056839067066968e6a406";
 const WORKFLOW = path.join(ZH_ROOT, ".github/workflows/build-windows.yml");
 const WINDOWS_PATCH = path.join(WINDOWS_PATCH_DIR, "0001-windows-zh-packaging.patch");
 
@@ -39,29 +39,30 @@ const WINDOWS_PATCH = path.join(WINDOWS_PATCH_DIR, "0001-windows-zh-packaging.pa
 
 test("从当前 build-zh.sh 读出全部常量", () => {
   const c = readBuildZhConstants(path.join(ZH_ROOT, "scripts/build-zh.sh"));
-  assert.match(c.baselineCommit, /^[0-9a-f]{40}$/);
-  assert.equal(c.wrapperName, "vite.zh.config.ts");
-  assert.ok(c.desktopI18nFiles.length >= 3);
-  for (const [from] of c.desktopI18nFiles) assert.ok(fs.existsSync(path.join(ZH_ROOT, from)), from);
-  assert.ok(fs.existsSync(path.join(ZH_ROOT, "build", c.wrapperName)));
-  assert.ok(c.minTranslate > 0);
+  assert.equal(c.baselineTag, UPSTREAM_TAG);
+  assert.equal(c.baselineCommit, UPSTREAM_COMMIT);
   assert.ok(c.guardText.length > 0);
+  assert.ok(c.desktopMainGuardText.length > 0);
+  assert.equal(c.appLicenseName, "T3-Code-LICENSE.txt");
 });
 
 test("常量解析：只认字面量，读取到的变量缺失 / 展开 / 重复时报错", () => {
   const base = fs.readFileSync(path.join(ZH_ROOT, "scripts/build-zh.sh"), "utf8");
   assert.throws(() => buildZhConstantsFromText(base.replace(/^GUARD_TEXT=.*$/m, "")), /GUARD_TEXT/);
   assert.throws(() => buildZhConstantsFromText(base.replace(/^GUARD_TEXT=.*$/m, 'GUARD_TEXT="${X}"')), /展开/);
-  assert.throws(() => buildZhConstantsFromText(`${base}\nMIN_TRANSLATE=1\n`), /多次/);
+  assert.throws(() => buildZhConstantsFromText(`${base}\nGUARD_TEXT='dup'\n`), /多次/);
   assert.throws(() => buildZhConstantsFromText(base.replace(/^BASELINE_COMMIT=.*$/m, 'BASELINE_COMMIT="abc"')), /40 位/);
+  assert.throws(() => buildZhConstantsFromText(base.replace(/^BASELINE_TAG=.*$/m, 'BASELINE_TAG="bad"')), /格式异常/);
   // 不读取的变量重复赋值不影响（build-zh.sh 里 STEP_NO 顶格赋值两次）。
   assert.doesNotThrow(() => buildZhConstantsFromText(`${base}\nSTEP_NO=99\n`));
   const arrayText = base.replace(
-    /^DESKTOP_I18N_FILES=\($/m,
-    "DESKTOP_I18N_FILES=(\n  # 注释行\n",
+    /^UPSTREAM_GENERATED_FILES=\($/m,
+    "UPSTREAM_GENERATED_FILES=(\n  # 注释行\n",
   );
-  assert.equal(buildZhConstantsFromText(arrayText).desktopI18nFiles.length, readBuildZhConstants(path.join(ZH_ROOT, "scripts/build-zh.sh")).desktopI18nFiles.length);
-  assert.throws(() => buildZhConstantsFromText(base.replace(/"dict\/zh-CN\.desktop\.json:zh-CN\.desktop\.json"/, '"../x:y"')), /路径异常/);
+  assert.equal(
+    buildZhConstantsFromText(arrayText).upstreamGeneratedFiles.length,
+    readBuildZhConstants(path.join(ZH_ROOT, "scripts/build-zh.sh")).upstreamGeneratedFiles.length,
+  );
 });
 
 // ---------------------------------------------------------------------------
@@ -180,7 +181,7 @@ test("staging build 配置：通过与各类不符", () => {
 
 test("输出目录：只有一个安装包、没有更新清单", () => {
   const exe = installerName(VERSION);
-  assert.equal(exe, "T3-Code-0.1.10-zh.1-x64.exe");
+  assert.equal(exe, "T3-Code-0.1.11-zh.1-x64.exe");
   assert.deepEqual(checkOutputEntries([exe, `${exe}.blockmap`, "builder-debug.yml", "builder-effective-config.yaml"], VERSION), []);
   assert.match(checkOutputEntries([exe, "latest.yml"], VERSION).join("\n"), /更新清单/);
   assert.match(checkOutputEntries([exe, "nightly.yml"], VERSION).join("\n"), /更新清单/);
@@ -215,7 +216,7 @@ test("win-unpacked 文件清单：语言包、许可证、WSL runtime、无更�
 
 test("CLI 归档结构检查", () => {
   const stem = cliArchiveStem(VERSION);
-  assert.equal(stem, "t3-0.1.10-zh.1-linux-x64");
+  assert.equal(stem, "t3-0.1.11-zh.1-linux-x64");
   const listing = [`./${stem}/`, `${stem}/t3`, `${stem}/client/`, `${stem}/client/index.html`, `${stem}/node_modules/`, `${stem}/node_modules/node-pty/build/Release/pty.node`].join("\n");
   const members = normalizeTarMembers(listing);
   assert.deepEqual(checkCliArchiveMembers(members, VERSION), []);
@@ -325,7 +326,7 @@ test("0025 遥测关闭补丁：可打到基线源码，默认停用 PostHog、�
     assert.match(webPlatform, /const analyticsDevice = \{\s+id: Effect\.succeedNone,\s+\};/);
 
     const webPublicConfig = fs.readFileSync(path.join(dir, "apps/web/src/cloud/publicConfig.ts"), "utf8");
-    assert.match(webPublicConfig, /typeof window === "undefined" \|\| window\.desktopBridge\?\.getRelayTelemetryEnabled\(\) !== true/);
+    assert.match(webPublicConfig, /if \(typeof window === "undefined" \|\| !window\.desktopBridge\) return false;/);
 
     const otel = fs.readFileSync(path.join(dir, "packages/shared/src/otelEnvironment.ts"), "utf8");
     assert.match(otel, /telemetry\.value === true && !\(t3\.value \?\? spec\.value \?\? false\)/);
@@ -374,6 +375,44 @@ test("0026 Antigravity 多问题补丁：可打到基线源码并挂载 extractA
       "utf8",
     );
     assert.match(adapter, /extractElicitationForm:\s*extractAntigravityElicitationForm/);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("共享补丁清单：仅保留 0005 / 0019 / 0025 / 0026 且全部可按序打到基线源码", (t) => {
+  const patches = listPatches(path.join(ZH_ROOT, "patches"));
+  assert.deepEqual(
+    patches.map((file) => path.basename(file)),
+    [
+      "0005-desktop-zh-hans-localization.patch",
+      "0019-bundle-t3-code-license.patch",
+      "0025-disable-telemetry.patch",
+      "0026-antigravity-multi-question.patch",
+    ],
+  );
+  const upstream = upstreamGitDir();
+  if (!upstream) return t.skip(`找不到 ${UPSTREAM_TAG} = ${UPSTREAM_COMMIT} 的上游 git 对象`);
+  const touched = new Set<string>();
+  for (const patch of patches) {
+    for (const match of fs.readFileSync(patch, "utf8").matchAll(/^diff --git a\/(.+) b\//gm)) {
+      touched.add(match[1]!);
+    }
+  }
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "t3zh-all-patches-"));
+  const git = (...args: string[]) =>
+    execFileSync("git", ["-C", dir, "-c", "core.autocrlf=false", ...args], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+  try {
+    git("init", "-q");
+    for (const file of touched) {
+      const target = path.join(dir, file);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.writeFileSync(target, execFileSync("git", ["-C", upstream, "show", `${UPSTREAM_TAG}:${file}`]));
+    }
+    for (const patch of patches) git("apply", patch);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }

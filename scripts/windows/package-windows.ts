@@ -168,10 +168,11 @@ function checkAsarContents(asar: AsarModule, resources: string, version: string,
   const mainRel = "apps/desktop/dist-electron/main.cjs";
   const preloadRel = "apps/desktop/dist-electron/preload.cjs";
   check(appEntries.includes(mainRel) && appEntries.includes(preloadRel), "app.asar 里缺 main.cjs 或 preload.cjs");
-  const mainCode = read("app.asar", mainRel).toString("utf8");
-  check(mainCode.includes(constants.desktopMainGuardText), `app.asar main.cjs 里找不到「${constants.desktopMainGuardText}」`);
-  check(mainCode.includes(constants.desktopArgumentGuardText), `app.asar main.cjs 里找不到 ${constants.desktopArgumentGuardText}`);
-  check(read("app.asar", preloadRel).toString("utf8").includes(constants.desktopPreloadGuardText), `app.asar preload.cjs 里找不到 ${constants.desktopPreloadGuardText}`);
+  const desktopJs = appEntries.filter((rel) => rel.startsWith("apps/desktop/dist-electron/") && /\.(?:js|mjs|cjs)$/.test(rel));
+  check(
+    desktopJs.some((rel) => read("app.asar", rel).toString("utf8").includes(constants.desktopMainGuardText)),
+    `app.asar 的 dist-electron 里找不到「${constants.desktopMainGuardText}」`,
+  );
   const appPackage = JSON.parse(read("app.asar", "package.json").toString("utf8"));
   check(appPackage.version === version, `app.asar package.json 的 version 是 ${appPackage.version}`);
   return { clientGuardAsset: guardHit, clientVersionAsset: versionHit };

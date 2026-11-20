@@ -30,8 +30,6 @@ import {
   ZH_ROOT,
 } from "./lib/common.ts";
 
-const STATS_FILE = path.join(ZH_ROOT, "reports/transform-stats.json");
-
 function guardBuildChain(src: string, constants: BuildZhConstants): void {
   const checks: [string, string, string][] = [
     ["apps/server/vite.config.ts", "run.tasks.build.command", constants.expectedServerBuildCommand],
@@ -54,27 +52,20 @@ function guardBuildChain(src: string, constants: BuildZhConstants): void {
   check(mismatches.length === 0, `上游构建链变了，需要同步 build-zh.sh：\n${mismatches.join("\n")}`);
 }
 
-function buildWeb(src: string, version: string, constants: BuildZhConstants): number {
-  fs.rmSync(STATS_FILE, { force: true });
+function buildWeb(src: string, version: string, constants: BuildZhConstants): void {
   const env = withSrcBinPath(src, process.env);
   env.APP_VERSION = version;
-  env.T3ZH_ROOT = ZH_ROOT;
-  run("vp", ["build", "-c", constants.wrapperName], {
+  run("vp", ["build"], {
     cwd: path.join(src, "apps/web"),
     env,
     shell: process.platform === "win32",
   });
   const dist = path.join(src, "apps/web/dist");
   check(fs.existsSync(path.join(dist, "index.html")), "apps/web/dist/index.html 不存在");
-  check(fs.existsSync(STATS_FILE), `没有生成 ${path.relative(ZH_ROOT, STATS_FILE)}（插件没运行？）`);
-  const translated = Number(JSON.parse(fs.readFileSync(STATS_FILE, "utf8")).totals?.translate);
-  log(`转换总数 ${translated}（阈值 ${constants.minTranslate}）`);
-  check(Number.isFinite(translated) && translated >= constants.minTranslate, `转换总数 ${translated} 低于阈值 ${constants.minTranslate}`);
   const hit = findTextInJs(dist, constants.guardText);
-  check(hit, `apps/web/dist 里找不到固定中文「${constants.guardText}」：词库没有打包进去`);
-  log(`固定中文「${constants.guardText}」见于 apps/web/dist/${hit}`);
+  check(hit, `apps/web/dist 里找不到上游原生中文「${constants.guardText}」：中文词库没有打包进去`);
+  log(`原生中文「${constants.guardText}」见于 apps/web/dist/${hit}`);
   check(findTextInJs(path.join(dist, "assets"), version), `web 产物未包含交付版本 ${version}`);
-  return translated;
 }
 
 function buildServer(src: string, version: string, constants: BuildZhConstants): string {
@@ -118,11 +109,9 @@ function buildDesktop(src: string, constants: BuildZhConstants): void {
   const main = path.join(dist, "main.cjs");
   const preload = path.join(dist, "preload.cjs");
   check(fs.existsSync(main) && fs.existsSync(preload), "apps/desktop/dist-electron 里缺 main.cjs 或 preload.cjs");
-  const mainCode = fs.readFileSync(main, "utf8");
-  check(mainCode.includes(constants.desktopMainGuardText), `main.cjs 里找不到「${constants.desktopMainGuardText}」：桌面词库没有打包进去`);
-  check(mainCode.includes(constants.desktopArgumentGuardText), `main.cjs 里找不到 ${constants.desktopArgumentGuardText}`);
-  check(fs.readFileSync(preload, "utf8").includes(constants.desktopPreloadGuardText), `preload.cjs 里找不到 ${constants.desktopPreloadGuardText}`);
-  log("桌面产物守卫通过");
+  const mainHit = findTextInJs(dist, constants.desktopMainGuardText);
+  check(mainHit, `apps/desktop/dist-electron 里找不到「${constants.desktopMainGuardText}」：上游原生桌面中文词库没有打包进去`);
+  log(`桌面产物守卫通过（${mainHit}）`);
   run(process.execPath, [path.join(ZH_ROOT, "scripts/lib/t3-connect-config.ts"), "check-artifacts", src]);
 }
 
@@ -135,7 +124,7 @@ if (isMainModule(import.meta.url)) {
     delete process.env.ELECTRON_RUN_AS_NODE;
 
     guardBuildChain(src, constants);
-    const translated = buildWeb(src, version, constants);
+    buildWeb(src, version, constants);
     const serverVersion = buildServer(src, version, constants);
     buildDesktop(src, constants);
 
@@ -143,14 +132,11 @@ if (isMainModule(import.meta.url)) {
     if (evidence) {
       writeJson(path.resolve(evidence), {
         version,
-        translate: translated,
-        minTranslate: constants.minTranslate,
         serverVersion,
-        transformStatsSha256: sha256File(STATS_FILE),
         desktopMainSha256: sha256File(path.join(src, "apps/desktop/dist-electron/main.cjs")),
         serverEntrySha256: sha256File(path.join(src, "apps/server/dist/bin.mjs")),
       });
     }
-    log("中文 JS bundle 构建完成");
+    log("JS bundle 构建完成");
   });
 }

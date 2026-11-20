@@ -1,6 +1,6 @@
 ﻿param(
   [Parameter(Mandatory = $false, Position = 0)]
-  [string]$Version = "0.1.10-zh.1",
+  [string]$Version = "0.1.11-zh.1",
   [Parameter(Mandatory = $false)]
   [string]$WslRuntime = "",
   [Parameter(Mandatory = $false)]
@@ -18,7 +18,7 @@ Write-Host "[build-zh-win] 1. 重置并核对 .build/src 基线源码树..."
 git -C $Src -c core.autocrlf=false reset --hard HEAD
 git -C $Src -c core.autocrlf=false clean -fd -e node_modules -e native/resource-monitor/target
 
-Write-Host "[build-zh-win] 2. 应用共享补丁与 Windows 打包补丁，注入汉化与 T3 Connect 配置..."
+Write-Host "[build-zh-win] 2. 应用共享补丁与 Windows 打包补丁，注入 T3 Connect 配置..."
 node (Join-Path $ZhRoot "scripts/windows/prepare-source.ts") prepare `
   --src $Src `
   --version $Version `
